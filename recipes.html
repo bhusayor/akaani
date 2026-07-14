@@ -1,0 +1,763 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Recipe bundles — akaani</title>
+  <meta name="description" content="Nigerian recipe bundles built around your goals. Full macros, step-by-step instructions, and a tip from Lu on every page. One-time purchase, instant PDF download." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    /* ============ RECIPE BUNDLE PAGE ============ */
+
+    /* hero */
+    .bh {
+      position: relative; overflow: hidden;
+      background: var(--ink); color: var(--bg);
+      padding: 170px clamp(20px, 5vw, 72px) clamp(70px, 9vh, 110px);
+      border-radius: 0 0 48px 48px;
+    }
+    .bh__inner { max-width: 1280px; margin: 0 auto; display: grid; grid-template-columns: 1.4fr 1fr; gap: clamp(30px, 4vw, 70px); align-items: center; }
+    .bh h1 { font-size: clamp(2.7rem, 5.6vw, 4.8rem); margin-bottom: 22px; }
+    .bh__sub { color: rgba(251, 245, 236, 0.72); font-size: clamp(1rem, 1.4vw, 1.18rem); max-width: 560px; margin-bottom: 34px; }
+    .bh__ticks { display: flex; flex-wrap: wrap; gap: 10px; }
+    .bh__tick {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-size: 0.86rem; font-weight: 600;
+      padding: 10px 18px; border-radius: 999px;
+      background: rgba(251, 245, 236, 0.07);
+      border: 1px solid rgba(251, 245, 236, 0.18);
+    }
+    .bh__tick i { font-style: normal; color: var(--accent); font-weight: 800; }
+    .bh__actions { display: flex; gap: 14px; flex-wrap: wrap; margin-bottom: 34px; }
+
+    /* hero visual: fanned bundle covers */
+    .bh__visual { position: relative; justify-self: center; width: clamp(260px, 26vw, 380px); aspect-ratio: 4 / 5; }
+    .bh__card {
+      position: absolute; inset: 0;
+      border-radius: 24px; overflow: hidden;
+      box-shadow: 0 40px 80px rgba(0, 0, 0, 0.45);
+      border: 4px solid var(--paper);
+    }
+    .bh__card img { width: 100%; height: 100%; object-fit: cover; }
+    .bh__card--back { transform: rotate(7deg) translate(9%, 5%); }
+    .bh__card--front { transform: rotate(-5deg) translate(-6%, -2%); }
+    .bh__card figcaption {
+      position: absolute; left: 14px; right: 14px; bottom: 14px;
+      background: var(--paper); color: var(--ink);
+      border-radius: 14px; padding: 10px 16px;
+      font-size: 0.85rem; font-weight: 700;
+      display: flex; justify-content: space-between; align-items: center;
+    }
+    .bh__card figcaption em { font-style: normal; color: var(--accent); }
+    .bh__ghost {
+      position: absolute; right: -1%; bottom: -14%;
+      font-size: clamp(8rem, 20vw, 19rem); font-weight: 900; line-height: 1;
+      color: rgba(251, 245, 236, 0.04); letter-spacing: -0.05em;
+      pointer-events: none; user-select: none;
+    }
+
+    /* bundle grid */
+    .shop { padding: clamp(80px, 12vh, 140px) clamp(20px, 5vw, 72px); }
+    .shop__grid { max-width: 1280px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: clamp(20px, 2.6vw, 36px); }
+    .product {
+      background: var(--paper); border: 1px solid var(--line);
+      border-radius: var(--radius-lg); overflow: hidden;
+      display: flex; flex-direction: column;
+      transform: translateY(var(--plx, 0px));
+      transition: transform 0.5s var(--ease), box-shadow 0.5s;
+    }
+    .product:hover { transform: translateY(calc(var(--plx, 0px) - 10px)); box-shadow: 0 30px 60px rgba(0, 51, 51, 0.14); }
+    .product__img { position: relative; aspect-ratio: 16 / 9; overflow: hidden; }
+    .product__img img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.8s var(--ease); }
+    .product:hover .product__img img { transform: scale(1.07); }
+    .product__price {
+      position: absolute; right: 16px; bottom: -18px;
+      background: var(--accent); color: #fff;
+      font-size: 1.15rem; font-weight: 800;
+      padding: 12px 22px; border-radius: 999px;
+      box-shadow: 0 12px 30px rgba(218, 112, 0, 0.4);
+    }
+    .product__count {
+      position: absolute; top: 16px; left: 16px;
+      background: var(--paper); color: var(--ink);
+      font-size: 0.75rem; font-weight: 700;
+      padding: 7px 15px; border-radius: 999px;
+    }
+    .product__body { padding: clamp(24px, 2.6vw, 36px); display: flex; flex-direction: column; flex: 1; }
+    .product__body h3 { font-size: clamp(1.5rem, 2vw, 1.9rem); margin: 8px 0 6px; }
+    .product__tagline { font-size: 0.95rem; font-weight: 700; color: var(--accent); margin-bottom: 12px; }
+    .product__body > p { color: var(--ink-soft); font-size: 0.95rem; margin-bottom: 18px; }
+    .product__chips { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 24px; }
+    .product__chips span {
+      font-size: 0.74rem; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase;
+      padding: 6px 13px; border-radius: 999px;
+      background: var(--bg-soft); color: var(--accent);
+    }
+    .product__actions { margin-top: auto; display: flex; gap: 10px; }
+    .product__actions .btn { flex: 1; }
+
+    /* every-bundle strip */
+    .includes { padding: 0 clamp(20px, 5vw, 72px) clamp(80px, 12vh, 140px); }
+    .includes__inner {
+      max-width: 1280px; margin: 0 auto;
+      background: var(--bg-soft); border-radius: var(--radius-lg);
+      padding: clamp(26px, 3vw, 44px);
+      display: grid; grid-template-columns: auto repeat(4, 1fr);
+      gap: clamp(18px, 2.6vw, 40px); align-items: center;
+    }
+    .includes__title { font-size: 1.05rem; font-weight: 800; max-width: 160px; }
+    .includes__item { font-size: 0.9rem; color: var(--ink-soft); display: flex; gap: 10px; align-items: flex-start; }
+    .includes__item i { font-style: normal; color: var(--accent); font-weight: 800; }
+
+    /* consultation */
+    .consult { padding: 0 clamp(20px, 5vw, 72px) clamp(90px, 14vh, 160px); }
+    .consult__inner {
+      max-width: 1280px; margin: 0 auto;
+      background: var(--ink); color: var(--bg);
+      border-radius: 40px; overflow: hidden; position: relative;
+      display: grid; grid-template-columns: 1.2fr 0.8fr;
+    }
+    .consult__body { padding: clamp(36px, 5vw, 76px); }
+    .consult__body .section-head__kicker { margin-bottom: 14px; }
+    .consult__body h2 { margin-bottom: 18px; }
+    .consult__body > p { color: rgba(251, 245, 236, 0.72); max-width: 520px; margin-bottom: 30px; font-size: 1.05rem; }
+    .consult__list { list-style: none; display: grid; grid-template-columns: 1fr 1fr; gap: 14px 26px; margin-bottom: 34px; max-width: 560px; }
+    .consult__list li { display: flex; gap: 10px; font-size: 0.95rem; align-items: flex-start; }
+    .consult__list li::before { content: "✓"; color: var(--accent); font-weight: 800; }
+    .consult__actions { display: flex; align-items: center; gap: 18px; flex-wrap: wrap; }
+    .consult__slots { font-size: 0.85rem; color: rgba(251, 245, 236, 0.55); }
+    .consult__side {
+      position: relative;
+      display: flex; align-items: center; justify-content: center;
+      padding: clamp(30px, 4vw, 60px);
+    }
+    .consult__card {
+      width: min(320px, 100%);
+      background: var(--paper); color: var(--ink);
+      border-radius: 24px; padding: 28px;
+      box-shadow: 0 40px 80px rgba(0, 0, 0, 0.4);
+      transform: rotate(-3deg);
+    }
+    .consult__card > b { display: block; font-size: 1.3rem; margin: 12px 0 18px; }
+    .consult__card-tag {
+      display: inline-block; background: var(--accent); color: #fff;
+      font-size: 0.7rem; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase;
+      padding: 6px 14px; border-radius: 999px;
+    }
+    .consult__card-row {
+      display: flex; justify-content: space-between; gap: 12px;
+      font-size: 0.92rem; padding: 11px 0;
+      border-top: 1px solid var(--line);
+    }
+    .consult__card-row span { color: var(--ink-soft); }
+    .consult__card-foot {
+      margin-top: 16px; text-align: center;
+      background: var(--bg-soft); color: var(--accent);
+      font-size: 0.85rem; font-weight: 700;
+      padding: 11px; border-radius: 999px;
+    }
+
+    /* cart toast */
+    .toast {
+      position: fixed; left: 50%; bottom: 30px; z-index: 200;
+      transform: translate(-50%, 120px);
+      background: var(--ink); color: var(--bg);
+      font-weight: 600; font-size: 0.95rem;
+      padding: 15px 26px; border-radius: 999px;
+      box-shadow: 0 20px 50px rgba(0, 51, 51, 0.35);
+      display: flex; align-items: center; gap: 10px;
+      opacity: 0; pointer-events: none;
+    }
+    .toast i { font-style: normal; color: var(--accent); font-weight: 800; }
+
+    /* floating cart bubble — only alive when the cart has items */
+    .cartfab {
+      position: fixed; right: 26px; bottom: 26px; z-index: 210;
+      width: 62px; height: 62px; border-radius: 50%;
+      background: var(--accent); color: #fff;
+      border: none; cursor: pointer;
+      display: grid; place-items: center;
+      box-shadow: 0 18px 44px rgba(218, 112, 0, 0.45);
+      transform: scale(0); opacity: 0;
+      transition: background 0.3s;
+    }
+    .cartfab:hover { background: var(--ink); }
+    .cartfab svg { width: 26px; height: 26px; }
+    .cartfab__count {
+      position: absolute; top: -4px; right: -4px;
+      min-width: 24px; height: 24px; border-radius: 999px;
+      background: var(--ink); color: #fff;
+      font-size: 0.75rem; font-weight: 800;
+      display: grid; place-items: center; padding: 0 7px;
+      border: 2px solid var(--bg);
+    }
+
+    /* cart drawer */
+    .cartveil {
+      position: fixed; inset: 0; z-index: 220;
+      background: rgba(0, 26, 26, 0.5);
+      opacity: 0; pointer-events: none;
+      transition: opacity 0.4s;
+    }
+    .cartveil.is-open { opacity: 1; pointer-events: auto; }
+    .cartdrawer {
+      position: fixed; top: 0; right: 0; bottom: 0; z-index: 230;
+      width: min(420px, 92vw);
+      background: var(--paper); color: var(--ink);
+      display: flex; flex-direction: column;
+      transform: translateX(105%);
+      box-shadow: -30px 0 80px rgba(0, 26, 26, 0.25);
+    }
+    .cartdrawer__head {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 24px 26px; border-bottom: 1px solid var(--line);
+    }
+    .cartdrawer__head b { font-size: 1.25rem; }
+    .cartdrawer__close {
+      background: var(--bg-soft); border: none; cursor: pointer;
+      width: 40px; height: 40px; border-radius: 50%;
+      font-size: 1.1rem; color: var(--ink);
+      transition: background 0.3s, transform 0.3s;
+    }
+    .cartdrawer__close:hover { background: var(--accent); color: #fff; transform: rotate(90deg); }
+    .cartdrawer__items { flex: 1; overflow-y: auto; padding: 10px 26px; }
+    .cartitem {
+      display: flex; gap: 14px; align-items: center;
+      padding: 18px 0; border-bottom: 1px solid var(--line);
+    }
+    .cartitem img { width: 64px; height: 64px; border-radius: 14px; object-fit: cover; }
+    .cartitem__info { flex: 1; }
+    .cartitem__info b { display: block; font-size: 0.98rem; }
+    .cartitem__info em { font-style: normal; color: var(--accent); font-weight: 700; font-size: 0.9rem; }
+    .cartitem__qty { display: flex; align-items: center; gap: 10px; }
+    .cartitem__qty button {
+      width: 28px; height: 28px; border-radius: 50%;
+      border: 1.5px solid var(--line); background: none; color: var(--ink);
+      font-weight: 800; cursor: pointer; transition: all 0.25s;
+    }
+    .cartitem__qty button:hover { border-color: var(--accent); color: var(--accent); }
+    .cartitem__qty b { min-width: 18px; text-align: center; font-size: 0.95rem; }
+    .cartitem__remove {
+      background: none; border: none; cursor: pointer;
+      color: var(--ink-soft); font-size: 1rem; padding: 6px;
+      transition: color 0.25s;
+    }
+    .cartitem__remove:hover { color: #C0392B; }
+    .cartdrawer__empty { text-align: center; padding: 70px 20px; color: var(--ink-soft); }
+    .cartdrawer__empty b { display: block; font-size: 1.15rem; color: var(--ink); margin-bottom: 8px; }
+    .cartdrawer__foot { padding: 22px 26px 28px; border-top: 1px solid var(--line); }
+    .cartdrawer__total {
+      display: flex; justify-content: space-between; align-items: center;
+      font-size: 1.05rem; margin-bottom: 16px;
+    }
+    .cartdrawer__total b { font-size: 1.35rem; color: var(--accent); }
+    .cartdrawer__foot .btn { width: 100%; }
+    .cartdrawer__hint { text-align: center; font-size: 0.8rem; color: var(--ink-soft); margin-top: 12px; }
+
+    @media (max-width: 1024px) {
+      .bh__inner { grid-template-columns: 1fr; }
+      .bh__mascot { display: none; }
+      .shop__grid { grid-template-columns: 1fr; max-width: 620px; }
+      .includes__inner { grid-template-columns: 1fr 1fr; }
+      .includes__title { max-width: none; grid-column: 1 / -1; }
+      .consult__inner { grid-template-columns: 1fr; }
+      .consult__side { order: -1; padding-top: 40px; }
+    }
+    @media (max-width: 720px) {
+      .includes__inner { grid-template-columns: 1fr; }
+      .product__actions { flex-direction: column; }
+      .consult__list { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ============ NAV ============ -->
+  <header class="nav" id="nav">
+    <div class="nav__inner">
+      <a class="nav__logo" href="index.html">akaani<span class="nav__dot">.</span></a>
+      <nav class="nav__links">
+        <a href="meals.html">Meals</a>
+        <a href="recipes.html" class="is-active">Recipe bundle</a>
+        <a href="blog.html">Blog</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+      <a href="index.html#cta" class="btn btn--accent nav__cta">Get the app</a>
+      <button class="nav__burger" id="burger" aria-label="Open menu"><span></span><span></span></button>
+    </div>
+  </header>
+
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="meals.html">Meals</a>
+    <a href="recipes.html" class="is-active">Recipe bundle</a>
+    <a href="blog.html">Blog</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+    <a href="index.html#cta" class="btn btn--accent">Get the app</a>
+  </div>
+
+  <main>
+
+    <!-- ============ HERO ============ -->
+    <section class="bh">
+      <div class="bh__ghost" aria-hidden="true">recipes</div>
+      <div class="bh__inner">
+        <div>
+          <p class="section-head__kicker">Recipe bundles</p>
+          <h1>Nigerian recipes built<br /><span class="accent-text">around your goals.</span></h1>
+          <p class="bh__sub">5–7 recipes per bundle. Full macros, step-by-step instructions, and a tip from Lu on every page. Pick your goal, download, and start cooking today.</p>
+          <div class="bh__actions">
+            <a href="#bundles" class="btn btn--accent btn--lg">Shop the bundles</a>
+            <a href="#consult" class="btn btn--ghost btn--lg">Book a consultation</a>
+          </div>
+          <div class="bh__ticks">
+            <span class="bh__tick"><i>✓</i> Instant PDF download</span>
+            <span class="bh__tick"><i>✓</i> Full macro breakdown</span>
+            <span class="bh__tick"><i>✓</i> Nigerian ingredients</span>
+            <span class="bh__tick"><i>✓</i> One-time purchase, no subscription</span>
+          </div>
+        </div>
+        <div class="bh__visual" id="bhVisual" aria-hidden="true">
+          <figure class="bh__card bh__card--back">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/63/Goat_meat_pepper_soup_served_with_bread.jpg/1920px-Goat_meat_pepper_soup_served_with_bread.jpg" alt="" />
+            <figcaption>Cut Season <em>$5.99</em></figcaption>
+          </figure>
+          <figure class="bh__card bh__card--front">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fc/Suya_preparation_for_grilling_5.jpg/1920px-Suya_preparation_for_grilling_5.jpg" alt="" />
+            <figcaption>Mama Put Macros <em>$4.99</em></figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ BUNDLES ============ -->
+    <section class="shop" id="bundles">
+      <div class="section-head section-head--row">
+        <div>
+          <p class="section-head__kicker">Pick your goal</p>
+          <h2>Four bundles.<br />One honest kitchen.</h2>
+        </div>
+      </div>
+      <div class="shop__grid">
+
+        <article class="product" data-name="Mama Put Macros" data-price="4.99">
+          <div class="product__img">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fc/Suya_preparation_for_grilling_5.jpg/1920px-Suya_preparation_for_grilling_5.jpg" alt="Suya on a street grill" loading="lazy" />
+            <span class="product__count">5 recipes</span>
+            <span class="product__price">$4.99</span>
+          </div>
+          <div class="product__body">
+            <p class="product__tagline">Street-food classics, macro optimized.</p>
+            <h3>Mama Put Macros</h3>
+            <p>The roadside flavours you grew up on — rebuilt so the macros work as hard as the taste. Full ingredients, step-by-step instructions, and a tip from Lu in every recipe.</p>
+            <div class="product__chips"><span>Balanced macros</span><span>Breakfast</span><span>Lunch</span></div>
+            <div class="product__actions">
+              <button class="btn btn--ghost-dark add-cart" type="button">Add to cart</button>
+              <a href="https://useakaani.com/recipes" class="btn btn--dark">Buy now</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="product" data-name="Roots &amp; Restore" data-price="4.99">
+          <div class="product__img">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Afang_soup_and_pounded_yam_03.jpg/1920px-Afang_soup_and_pounded_yam_03.jpg" alt="Afang soup with pounded yam" loading="lazy" />
+            <span class="product__count">5 recipes</span>
+            <span class="product__price">$4.99</span>
+          </div>
+          <div class="product__body">
+            <p class="product__tagline">Ancient ingredients, modern gut health.</p>
+            <h3>Roots &amp; Restore</h3>
+            <p>Five fibre-rich, gut-friendly recipes curated to aid digestion — the vegetables and roots our grandmothers swore by, with the science to back them up.</p>
+            <div class="product__chips"><span>Gut health</span><span>Digestion</span><span>Fibre-rich</span></div>
+            <div class="product__actions">
+              <button class="btn btn--ghost-dark add-cart" type="button">Add to cart</button>
+              <a href="https://useakaani.com/recipes" class="btn btn--dark">Buy now</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="product" data-name="Cut Season" data-price="5.99">
+          <div class="product__img">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/63/Goat_meat_pepper_soup_served_with_bread.jpg/1920px-Goat_meat_pepper_soup_served_with_bread.jpg" alt="Goat meat pepper soup" loading="lazy" />
+            <span class="product__count">7 recipes</span>
+            <span class="product__price">$5.99</span>
+          </div>
+          <div class="product__body">
+            <p class="product__tagline">Eat less, lose more, stay Nigerian.</p>
+            <h3>Cut Season</h3>
+            <p>Seven low-calorie, high-protein recipes curated for fat loss without giving up the food you love. Big flavour, high satiety, honest portions.</p>
+            <div class="product__chips"><span>Fat loss</span><span>Low calorie</span><span>High satiety</span></div>
+            <div class="product__actions">
+              <button class="btn btn--ghost-dark add-cart" type="button">Add to cart</button>
+              <a href="https://useakaani.com/recipes" class="btn btn--dark">Buy now</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="product" data-name="The Protein Pot" data-price="4.99">
+          <div class="product__img">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/89/Egusi_soup_in_a_plate.jpg/1920px-Egusi_soup_in_a_plate.jpg" alt="Egusi soup with assorted meat" loading="lazy" />
+            <span class="product__count">7 recipes</span>
+            <span class="product__price">$4.99</span>
+          </div>
+          <div class="product__body">
+            <p class="product__tagline">Maximum protein. Pure Nigerian.</p>
+            <h3>The Protein Pot</h3>
+            <p>Seven recipes curated for muscle building and active lifestyles — the pots that fuel your gym week without a single chicken-and-rice cliché.</p>
+            <div class="product__chips"><span>Muscle building</span><span>Active lifestyle</span></div>
+            <div class="product__actions">
+              <button class="btn btn--ghost-dark add-cart" type="button">Add to cart</button>
+              <a href="https://useakaani.com/recipes" class="btn btn--dark">Buy now</a>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- ============ EVERY BUNDLE INCLUDES ============ -->
+    <section class="includes">
+      <div class="includes__inner">
+        <p class="includes__title">Inside every bundle</p>
+        <p class="includes__item"><i>✓</i> Full ingredient lists in local measures</p>
+        <p class="includes__item"><i>✓</i> Step-by-step cooking instructions</p>
+        <p class="includes__item"><i>✓</i> Complete macro breakdown per serving</p>
+        <p class="includes__item"><i>✓</i> A tip from Lu on every page</p>
+      </div>
+    </section>
+
+    <!-- ============ BOOK A CONSULTANT ============ -->
+    <section class="consult" id="consult">
+      <div class="consult__inner">
+        <div class="consult__body">
+          <p class="section-head__kicker">Beyond the bundles</p>
+          <h2>Need something built<br /><span class="accent-text">just for you?</span></h2>
+          <p>Bundles cover the big goals — but every body is different. If you want more customization around your specific goal — a wedding cut, managing a health condition, feeding a family of five — sit down with an akaani nutrition coach and leave with a plan made for you.</p>
+          <ul class="consult__list">
+            <li>45-minute one-on-one video call</li>
+            <li>Personal Nigerian meal plan, built live</li>
+            <li>Macro targets set around your goal</li>
+            <li>Two weeks of follow-up inside the app</li>
+          </ul>
+          <div class="consult__actions">
+            <a href="mailto:hello@useakaani.com?subject=Book%20a%20consultation" class="btn btn--accent btn--lg">Book a consultation</a>
+            <span class="consult__slots">Limited slots each week</span>
+          </div>
+        </div>
+        <div class="consult__side" aria-hidden="true">
+          <div class="consult__card" id="consultCard">
+            <span class="consult__card-tag">1-on-1 session</span>
+            <b>Nutrition consultation</b>
+            <div class="consult__card-row"><span>Length</span><b>45 minutes</b></div>
+            <div class="consult__card-row"><span>Format</span><b>Video call</b></div>
+            <div class="consult__card-row"><span>You leave with</span><b>A personal plan</b></div>
+            <div class="consult__card-foot">Slots open every Monday</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="footer">
+    <div class="footer__top">
+      <div class="footer__brand">
+        <a class="footer__logo" href="index.html">akaani<span>.</span></a>
+        <p>Nigerian food was never the problem.<br />The apps were.</p>
+      </div>
+      <div class="footer__cols">
+        <div class="footer__col">
+          <h4>Product</h4>
+          <a href="meals.html">Meals</a>
+          <a href="recipes.html">Recipe bundles</a>
+          <a href="#consult">Consultations</a>
+          <a href="index.html#cta">Download</a>
+        </div>
+        <div class="footer__col">
+          <h4>Company</h4>
+          <a href="about.html">About</a>
+          <a href="blog.html">Blog</a>
+          <a href="index.html#faq">FAQ</a>
+          <a href="contact.html">Contact</a>
+        </div>
+        <div class="footer__col">
+          <h4>Social</h4>
+          <a href="#">Instagram</a>
+          <a href="#">TikTok</a>
+          <a href="#">X (Twitter)</a>
+          <a href="#">YouTube</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer__giant" aria-hidden="true">bundles</div>
+    <div class="footer__bottom">
+      <p class="footer__disclaimer">akaani provides nutritional guidance for informational purposes only<br />and is not a substitute for medical advice. <a href="disclaimer.html">Read our full disclaimer.</a></p>
+      <span>© 2026 akaani. All rights reserved.</span>
+      <div><a href="privacy.html">Privacy Policy</a><a href="terms.html">Terms of Service</a></div>
+    </div>
+  </footer>
+
+  <div class="toast" id="toast"><i>✓</i><span id="toastText">Added to cart</span></div>
+
+  <!-- floating cart -->
+  <button class="cartfab" id="cartFab" aria-label="Open cart">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="9" cy="21" r="1.6"/><circle cx="19" cy="21" r="1.6"/>
+      <path d="M2 3h3l2.6 12.5a1.8 1.8 0 0 0 1.8 1.5h9.2a1.8 1.8 0 0 0 1.8-1.4L22 8H6"/>
+    </svg>
+    <span class="cartfab__count" id="cartFabCount">0</span>
+  </button>
+
+  <div class="cartveil" id="cartVeil"></div>
+  <aside class="cartdrawer" id="cartDrawer" aria-label="Shopping cart">
+    <div class="cartdrawer__head">
+      <b>Your cart</b>
+      <button class="cartdrawer__close" id="cartClose" aria-label="Close cart">✕</button>
+    </div>
+    <div class="cartdrawer__items" id="cartItems"></div>
+    <div class="cartdrawer__foot" id="cartFoot">
+      <div class="cartdrawer__total"><span>Subtotal</span><b id="cartTotal">$0.00</b></div>
+      <a href="https://useakaani.com/recipes" class="btn btn--accent btn--lg">Checkout</a>
+      <p class="cartdrawer__hint">Instant PDF download after payment.</p>
+    </div>
+  </aside>
+
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.14/dist/lenis.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+  <script>
+    gsap.registerPlugin(ScrollTrigger);
+    const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    /* Lenis */
+    let lenis = null;
+    if (window.Lenis && !prefersReduced) {
+      document.documentElement.style.scrollBehavior = "auto";
+      lenis = new Lenis({ duration: 1.15, smoothWheel: true });
+      lenis.on("scroll", ScrollTrigger.update);
+      gsap.ticker.add((t) => lenis.raf(t * 1000));
+      gsap.ticker.lagSmoothing(0);
+    }
+    document.querySelectorAll('a[href^="#"]').forEach((a) => {
+      a.addEventListener("click", (e) => {
+        const id = a.getAttribute("href");
+        if (id.length > 1 && document.querySelector(id)) {
+          e.preventDefault();
+          lenis ? lenis.scrollTo(id, { duration: 1.4 }) : document.querySelector(id).scrollIntoView({ behavior: "smooth" });
+        }
+      });
+    });
+
+    /* sticky nav */
+    const nav = document.getElementById("nav");
+    ScrollTrigger.create({
+      start: "top -80",
+      onUpdate: (self) => nav.classList.toggle("nav--solid", self.scroll() > 80),
+    });
+    const burger = document.getElementById("burger");
+    const mobileMenu = document.getElementById("mobileMenu");
+    burger.addEventListener("click", () => {
+      burger.classList.toggle("is-open");
+      mobileMenu.classList.toggle("is-open");
+      document.body.style.overflow = mobileMenu.classList.contains("is-open") ? "hidden" : "";
+    });
+    mobileMenu.querySelectorAll("a").forEach((a) =>
+      a.addEventListener("click", () => {
+        burger.classList.remove("is-open");
+        mobileMenu.classList.remove("is-open");
+        document.body.style.overflow = "";
+      })
+    );
+
+    /* hero entrance */
+    gsap.timeline({ defaults: { ease: "power3.out" } })
+      .from(".bh .section-head__kicker, .bh h1, .bh__sub", { y: 44, autoAlpha: 0, duration: 0.9, stagger: 0.12, delay: 0.2 })
+      .from(".bh__actions .btn", { y: 24, autoAlpha: 0, duration: 0.6, stagger: 0.1 }, "-=0.55")
+      .from(".bh__tick", { y: 20, autoAlpha: 0, duration: 0.5, stagger: 0.08 }, "-=0.45")
+      .from(".bh__card--back", { y: 110, autoAlpha: 0, rotation: 14, duration: 1, ease: "power4.out" }, "-=0.9")
+      .from(".bh__card--front", { y: 140, autoAlpha: 0, rotation: -12, duration: 1, ease: "power4.out" }, "-=0.8");
+    if (!prefersReduced) {
+      gsap.to(".bh__card--front", { y: -12, duration: 2.6, yoyo: true, repeat: -1, ease: "sine.inOut" });
+      gsap.to(".bh__card--back", { y: 10, duration: 3, yoyo: true, repeat: -1, ease: "sine.inOut" });
+    }
+    gsap.to(".bh__ghost", {
+      xPercent: -12, ease: "none",
+      scrollTrigger: { trigger: ".bh", start: "top top", end: "bottom top", scrub: true },
+    });
+
+    /* reveals */
+    function staggerReveal(selector, opts = {}) {
+      const { lift = true, ...tween } = opts;
+      const items = gsap.utils.toArray(selector);
+      if (!items.length) return;
+      gsap.set(items, lift ? { y: 60, autoAlpha: 0 } : { autoAlpha: 0 });
+      ScrollTrigger.batch(items, {
+        start: "top 86%", once: true,
+        onEnter: (batch) => gsap.to(batch, {
+          ...(lift ? { y: 0 } : {}), autoAlpha: 1,
+          duration: 0.9, ease: "power3.out", stagger: 0.12,
+          onComplete: () => lift && gsap.set(batch, { clearProps: "transform" }),
+          ...tween,
+        }),
+      });
+    }
+    staggerReveal(".section-head");
+    staggerReveal(".product", { lift: false, stagger: 0.14 });
+    staggerReveal(".includes__inner");
+    staggerReveal(".consult__inner");
+
+    /* consult session card pop */
+    ScrollTrigger.create({
+      trigger: ".consult", start: "top 60%", once: true,
+      onEnter: () => gsap.from("#consultCard", { y: 80, autoAlpha: 0, rotation: 5, duration: 0.9, ease: "back.out(1.4)", delay: 0.25 }),
+    });
+
+    /* parallax */
+    function plxVar(el, amount) {
+      gsap.fromTo(el, { "--plx": amount + "px" }, {
+        "--plx": -amount + "px", ease: "none",
+        scrollTrigger: { trigger: el, start: "top bottom", end: "bottom top", scrub: true },
+      });
+    }
+    if (!prefersReduced) {
+      gsap.utils.toArray(".product").forEach((el, i) => plxVar(el, [14, 42, 20, 48][i] ?? 18));
+      gsap.utils.toArray(".section-head h2").forEach((el) =>
+        gsap.fromTo(el, { y: 24 }, { y: -24, ease: "none", scrollTrigger: { trigger: el, start: "top bottom", end: "bottom top", scrub: true } }));
+    }
+
+    /* magnetic buttons */
+    if (!prefersReduced && window.matchMedia("(pointer: fine)").matches) {
+      document.querySelectorAll(".btn").forEach((btn) => {
+        const xTo = gsap.quickTo(btn, "x", { duration: 0.4, ease: "power3.out" });
+        const yTo = gsap.quickTo(btn, "y", { duration: 0.4, ease: "power3.out" });
+        btn.addEventListener("mousemove", (e) => {
+          const r = btn.getBoundingClientRect();
+          xTo((e.clientX - r.left - r.width / 2) * 0.25);
+          yTo((e.clientY - r.top - r.height / 2) * 0.35);
+        });
+        btn.addEventListener("mouseleave", () => { xTo(0); yTo(0); });
+      });
+    }
+
+    /* ============ CART (real, persisted) ============ */
+    const CART_KEY = "akaani_cart";
+    let cart = JSON.parse(localStorage.getItem(CART_KEY) || "{}");
+
+    const fab = document.getElementById("cartFab");
+    const fabCount = document.getElementById("cartFabCount");
+    const veil = document.getElementById("cartVeil");
+    const drawer = document.getElementById("cartDrawer");
+    const itemsEl = document.getElementById("cartItems");
+    const footEl = document.getElementById("cartFoot");
+    const totalEl = document.getElementById("cartTotal");
+    const toast = document.getElementById("toast");
+    const toastText = document.getElementById("toastText");
+    let toastTl = null;
+    let fabShown = false;
+
+    const cartSize = () => Object.values(cart).reduce((n, it) => n + it.qty, 0);
+    const cartTotal = () => Object.values(cart).reduce((n, it) => n + it.qty * it.price, 0);
+    const save = () => localStorage.setItem(CART_KEY, JSON.stringify(cart));
+
+    function renderCart() {
+      const n = cartSize();
+      fabCount.textContent = n;
+
+      // bubble only lives when there's something in it
+      if (n > 0 && !fabShown) {
+        fabShown = true;
+        gsap.to(fab, { scale: 1, opacity: 1, duration: 0.55, ease: "back.out(1.8)" });
+      } else if (n === 0 && fabShown) {
+        fabShown = false;
+        gsap.to(fab, { scale: 0, opacity: 0, duration: 0.35, ease: "power2.in" });
+        closeCart();
+      }
+
+      if (n === 0) {
+        itemsEl.innerHTML = '<div class="cartdrawer__empty"><b>Your cart is empty</b>Pick a bundle and start cooking.</div>';
+        footEl.style.display = "none";
+        return;
+      }
+      footEl.style.display = "";
+      itemsEl.innerHTML = Object.entries(cart).map(([name, it]) => `
+        <div class="cartitem" data-name="${name}">
+          <img src="${it.img}" alt="" />
+          <div class="cartitem__info"><b>${name}</b><em>$${it.price.toFixed(2)}</em></div>
+          <div class="cartitem__qty">
+            <button type="button" data-act="dec" aria-label="Decrease">−</button>
+            <b>${it.qty}</b>
+            <button type="button" data-act="inc" aria-label="Increase">+</button>
+          </div>
+          <button class="cartitem__remove" type="button" data-act="del" aria-label="Remove">🗑</button>
+        </div>`).join("");
+      totalEl.textContent = "$" + cartTotal().toFixed(2);
+    }
+
+    function popBadge() {
+      gsap.fromTo(fabCount, { scale: 1.7 }, { scale: 1, duration: 0.45, ease: "back.out(2)" });
+      gsap.fromTo(fab, { rotation: -12 }, { rotation: 0, duration: 0.5, ease: "back.out(2)" });
+    }
+
+    function showToast(msg) {
+      toastText.textContent = msg;
+      if (toastTl) toastTl.kill();
+      toastTl = gsap.timeline()
+        .to(toast, { y: -120, opacity: 1, duration: 0.5, ease: "back.out(1.6)" })
+        .to(toast, { y: 0, opacity: 0, duration: 0.4, ease: "power2.in" }, "+=1.8");
+    }
+
+    function openCart() {
+      veil.classList.add("is-open");
+      gsap.to(drawer, { x: 0, duration: 0.55, ease: "power4.out" });
+      gsap.from(".cartitem", { x: 40, autoAlpha: 0, duration: 0.45, ease: "power3.out", stagger: 0.07, delay: 0.15 });
+      document.body.style.overflow = "hidden";
+      if (lenis) lenis.stop();
+    }
+    function closeCart() {
+      veil.classList.remove("is-open");
+      gsap.to(drawer, { x: "105%", duration: 0.45, ease: "power3.in" });
+      document.body.style.overflow = "";
+      if (lenis) lenis.start();
+    }
+
+    document.querySelectorAll(".add-cart").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const card = btn.closest(".product");
+        const name = card.dataset.name;
+        if (!cart[name]) {
+          cart[name] = { price: parseFloat(card.dataset.price), qty: 0, img: card.querySelector("img").src };
+        }
+        cart[name].qty++;
+        save(); renderCart(); popBadge();
+        showToast(name + " added to cart");
+      });
+    });
+
+    itemsEl.addEventListener("click", (e) => {
+      const btn = e.target.closest("button[data-act]");
+      if (!btn) return;
+      const name = btn.closest(".cartitem").dataset.name;
+      const act = btn.dataset.act;
+      if (act === "inc") cart[name].qty++;
+      if (act === "dec") { cart[name].qty--; if (cart[name].qty <= 0) delete cart[name]; }
+      if (act === "del") delete cart[name];
+      save(); renderCart();
+    });
+
+    fab.addEventListener("click", openCart);
+    veil.addEventListener("click", closeCart);
+    document.getElementById("cartClose").addEventListener("click", closeCart);
+    window.addEventListener("keydown", (e) => { if (e.key === "Escape") closeCart(); });
+
+    // restore persisted cart on load (badge appears without the pop)
+    renderCart();
+
+    window.addEventListener("load", () => ScrollTrigger.refresh());
+  </script>
+</body>
+</html>

@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Welcome Lu: your AI kitchen companion — akaani</title>
+  <meta name="description" content="Have you ever stared blankly at your refrigerator, overflowing with possibilities yet devoid of inspiration? Meet Lu — the AI kitchen companion crafted with care." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    /* ============ ARTICLE PAGE ============ */
+
+    /* reading progress */
+    .progress {
+      position: fixed; top: 0; left: 0; right: 0; height: 4px; z-index: 120;
+      pointer-events: none;
+    }
+    .progress i {
+      display: block; height: 100%; background: var(--accent);
+      transform: scaleX(0); transform-origin: left center;
+    }
+
+    /* article head */
+    .art { padding: 165px clamp(20px, 5vw, 72px) 0; }
+    .art__head { max-width: 840px; margin: 0 auto clamp(36px, 5vh, 56px); }
+    .art__back {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-size: 0.9rem; font-weight: 600; color: var(--ink-soft);
+      margin-bottom: 26px; transition: color 0.3s, transform 0.3s;
+    }
+    .art__back:hover { color: var(--accent); transform: translateX(-4px); }
+    .art__meta { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; font-size: 0.82rem; color: var(--ink-soft); margin-bottom: 20px; }
+    .art__cat {
+      background: var(--bg-soft); color: var(--accent);
+      font-weight: 700; padding: 5px 14px; border-radius: 999px;
+      text-transform: uppercase; letter-spacing: 0.05em; font-size: 0.72rem;
+    }
+    .art__title {
+      font-size: clamp(2.2rem, 5vw, 4rem);
+      line-height: 1.06; margin-bottom: 26px;
+    }
+    .art__title .line { display: block; overflow: hidden; }
+    .art__title .line__inner { display: block; transform: translateY(110%); }
+    .art__author { display: flex; align-items: center; gap: 14px; }
+    .art__avatar {
+      width: 46px; height: 46px; border-radius: 50%;
+      background: var(--accent); color: #fff;
+      display: grid; place-items: center;
+      font-weight: 800; font-size: 1.1rem;
+    }
+    .art__author b { display: block; font-size: 0.95rem; }
+    .art__author span { font-size: 0.8rem; color: var(--ink-soft); }
+
+    /* cover */
+    .art__cover {
+      max-width: 1100px; margin: 0 auto;
+      border-radius: var(--radius-lg); overflow: hidden;
+      background: #F2F2F8;
+      aspect-ratio: 21 / 10;
+      position: relative;
+    }
+    .art__cover img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; }
+
+    /* body */
+    .art__body {
+      max-width: 720px; margin: clamp(44px, 6vh, 70px) auto 0;
+      font-size: 1.12rem; line-height: 1.75; color: rgba(0, 51, 51, 0.86);
+    }
+    .art__body > p { margin-bottom: 26px; }
+    .art__body h2 {
+      font-size: clamp(1.5rem, 2.4vw, 2rem);
+      margin: 46px 0 18px; color: var(--ink);
+      line-height: 1.2;
+    }
+    .art__body .lead {
+      font-size: clamp(1.2rem, 1.8vw, 1.4rem);
+      font-weight: 500; color: var(--ink); line-height: 1.55;
+    }
+    .art__body ul { margin: 0 0 26px 22px; }
+    .art__body li { margin-bottom: 10px; }
+    .art__body li::marker { color: var(--accent); }
+
+    .pullquote {
+      border-left: 4px solid var(--accent);
+      padding: 6px 0 6px 26px;
+      margin: 38px 0;
+      font-size: clamp(1.3rem, 2vw, 1.6rem);
+      font-weight: 700; line-height: 1.35; color: var(--ink);
+    }
+
+    .lutip {
+      background: var(--bg-soft);
+      border-radius: var(--radius-md);
+      padding: 24px 26px;
+      margin: 38px 0;
+      display: flex; gap: 16px; align-items: flex-start;
+    }
+    .lutip__badge {
+      flex: none; width: 44px; height: 44px; border-radius: 50%;
+      background: var(--accent); color: #fff;
+      display: grid; place-items: center;
+      font-weight: 800; font-size: 0.95rem;
+    }
+    .lutip b { display: block; font-size: 0.95rem; margin-bottom: 4px; color: var(--ink); }
+    .lutip p { font-size: 0.98rem; margin: 0; color: var(--ink-soft); }
+
+    .art__figure { margin: 38px 0; border-radius: var(--radius-md); overflow: hidden; }
+    .art__figure img { width: 100%; display: block; }
+    .art__figure figcaption { font-size: 0.82rem; color: var(--ink-soft); padding: 12px 4px 0; text-align: center; }
+
+    /* share / tags */
+    .art__foot {
+      max-width: 720px; margin: clamp(44px, 6vh, 64px) auto 0;
+      padding: 26px 0;
+      border-top: 1px solid var(--line);
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 16px; flex-wrap: wrap;
+    }
+    .art__tags { display: flex; gap: 8px; flex-wrap: wrap; }
+    .art__tags span {
+      font-size: 0.76rem; font-weight: 700;
+      background: var(--bg-soft); color: var(--accent);
+      padding: 6px 14px; border-radius: 999px;
+    }
+    .art__share { display: flex; gap: 8px; align-items: center; }
+    .art__share a, .art__share button {
+      font: inherit; font-size: 0.85rem; font-weight: 600;
+      padding: 9px 18px; border-radius: 999px;
+      border: 1.5px solid var(--line); background: none; color: var(--ink);
+      cursor: pointer; transition: all 0.3s;
+    }
+    .art__share a:hover, .art__share button:hover { border-color: var(--accent); color: var(--accent); }
+
+    /* keep reading */
+    .related { padding: clamp(70px, 10vh, 110px) clamp(20px, 5vw, 72px) clamp(80px, 12vh, 130px); }
+    .related .section-head--row { margin-bottom: 40px; }
+    .related__grid {
+      max-width: 1280px; margin: 0 auto;
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: clamp(18px, 2.4vw, 32px);
+    }
+    .jpost {
+      background: var(--paper); border-radius: var(--radius-lg);
+      overflow: hidden; border: 1px solid var(--line);
+      cursor: pointer; display: block; color: var(--ink);
+      transition: transform 0.5s var(--ease), box-shadow 0.5s;
+    }
+    .jpost:hover { transform: translateY(-8px); box-shadow: 0 26px 50px rgba(0, 51, 51, 0.13); }
+    .jpost__img { position: relative; aspect-ratio: 16 / 10; overflow: hidden; }
+    .jpost__img img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.8s var(--ease); }
+    .jpost:hover .jpost__img img { transform: scale(1.08); }
+    .jpost__body { padding: 22px; }
+    .jpost__meta { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; font-size: 0.78rem; color: var(--ink-soft); }
+    .jpost__cat {
+      background: var(--bg-soft); color: var(--accent);
+      font-weight: 700; padding: 4px 12px; border-radius: 999px;
+      text-transform: uppercase; letter-spacing: 0.05em; font-size: 0.7rem;
+    }
+    .jpost__read { margin-left: auto; }
+    .jpost__body h3 { font-size: 1.15rem; line-height: 1.3; }
+
+
+    @media (max-width: 1024px) {
+      .related__grid { grid-template-columns: 1fr; max-width: 560px; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="progress" aria-hidden="true"><i id="progressBar"></i></div>
+
+  <!-- ============ NAV ============ -->
+  <header class="nav nav--solid" id="nav">
+    <div class="nav__inner">
+      <a class="nav__logo" href="index.html">akaani<span class="nav__dot">.</span></a>
+      <nav class="nav__links">
+        <a href="meals.html">Meals</a>
+        <a href="recipes.html">Recipe bundle</a>
+        <a href="blog.html" class="is-active">Blog</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+      <a href="index.html#cta" class="btn btn--accent nav__cta">Get the app</a>
+      <button class="nav__burger" id="burger" aria-label="Open menu"><span></span><span></span></button>
+    </div>
+  </header>
+
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="meals.html">Meals</a>
+    <a href="recipes.html">Recipe bundle</a>
+    <a href="blog.html" class="is-active">Blog</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+    <a href="index.html#cta" class="btn btn--accent">Get the app</a>
+  </div>
+
+  <main>
+
+    <!-- ============ ARTICLE ============ -->
+    <article class="art">
+      <div class="art__head">
+        <a class="art__back" href="blog.html">← Back to the journal</a>
+        <div class="art__meta">
+          <span class="art__cat">Food lifestyle</span>
+          <time>From the team</time>
+          <span>·</span>
+          <span>6 min read</span>
+        </div>
+        <h1 class="art__title">
+          <span class="line"><span class="line__inner">Welcome Lu: your AI</span></span>
+          <span class="line"><span class="line__inner">kitchen companion,</span></span>
+          <span class="line"><span class="line__inner accent-text">crafted with care.</span></span>
+        </h1>
+        <div class="art__author">
+          <span class="art__avatar">a</span>
+          <div>
+            <b>The akaani team</b>
+            <span>Lagos · Dallas · Seattle</span>
+          </div>
+        </div>
+      </div>
+
+      <figure class="art__cover" id="artCover">
+        <img src="assets/lu-welcome.png" alt="Lu, the akaani AI kitchen companion, holding a knife and a fresh pepper" />
+      </figure>
+
+      <div class="art__body" id="artBody">
+        <p class="lead">Have you ever stared blankly at your refrigerator, overflowing with possibilities yet devoid of inspiration? That exact moment — 7:04 pm, door open, cold light on your face — is why Lu exists.</p>
+
+        <p>We didn't set out to build a chatbot. We set out to build the friend every Nigerian kitchen deserves: someone who knows that egusi thickens differently depending on how you toast the seeds, that party jollof is a different dish from Tuesday jollof, and that "one cup of rice" means something very specific in your mother's house.</p>
+
+        <h2>Why we built Lu</h2>
+        <p>Every nutrition app we tried treated our food as an afterthought. Jollof rice reduced to "rice, cooked, with tomato sauce." Pounded yam missing entirely. Suya listed as "beef kebab." If the database doesn't respect the food, the numbers can't be trusted — and if the numbers can't be trusted, why track at all?</p>
+        <p>So we built our own database first: 200+ Nigerian dishes, measured in the portions we actually use — wraps, cups, bowls, pieces. Then we gave it a personality.</p>
+
+        <blockquote class="pullquote">"Lu answers like a friend who happens to know the macros of every Nigerian dish — swaps, portions, cooking tips and all."</blockquote>
+
+        <h2>What Lu actually does</h2>
+        <p>Think of Lu as part chef, part coach, all Naija. On any given day, Lu can:</p>
+        <ul>
+          <li><b>Answer the 7pm question.</b> "What can I eat tonight under 600 calories?" gets a real answer — efo riro with one wrap of eba, 540 kcal, 32g protein — not a lecture.</li>
+          <li><b>Swap smart.</b> Craving something heavier than your goal allows? Lu suggests the version that fits: cauliflower fufu instead of eba saves 120 kcal without losing the ritual.</li>
+          <li><b>Plan your week.</b> Tell Lu your goal and get a weekly Nigerian meal plan — grocery list included, Sunday market run sorted.</li>
+          <li><b>Nudge before you drift.</b> Forty grams short on protein this week? Lu notices on Wednesday, not after the weigh-in.</li>
+        </ul>
+
+        <div class="lutip">
+          <span class="lutip__badge">Lu</span>
+          <div>
+            <b>A tip from Lu</b>
+            <p>Toast your egusi seeds before grinding — deeper flavour, and you'll use less oil to get the same richness. Your macros will thank you.</p>
+          </div>
+        </div>
+
+        <h2>Crafted with care — literally</h2>
+        <p>Lu's knowledge comes from the same place your recipes do: real kitchens. Every dish in the database was validated against how the food is actually cooked and served, and Lu's suggestions are calibrated to your goals, your spice tolerance, and your history — not a generic template written for someone else's cuisine.</p>
+        <p>Even the little things matter. Lu greets you with "Ẹ káàbọ̀" because arriving at your own dinner table should feel like a welcome, not a weigh-in.</p>
+
+        <h2>Say hello</h2>
+        <p>Lu is live inside the akaani app today, free for your first 30 days. Open the chat, tell Lu what's in your fridge, and let the 7pm struggle end where it started — with good food, made yours.</p>
+      </div>
+
+      <div class="art__foot">
+        <div class="art__tags"><span>Lu</span><span>AI</span><span>Nigerian food</span><span>Product</span></div>
+        <div class="art__share">
+          <button type="button" id="copyLink">Copy link</button>
+          <a href="https://twitter.com/intent/tweet?text=Welcome%20Lu%3A%20your%20AI%20kitchen%20companion&url=https%3A%2F%2Fuseakaani.com%2Fblog" target="_blank" rel="noopener">Share on X</a>
+        </div>
+      </div>
+    </article>
+
+    <!-- ============ KEEP READING ============ -->
+    <section class="related">
+      <div class="section-head section-head--row">
+        <div>
+          <p class="section-head__kicker">Keep reading</p>
+          <h2>More from the journal.</h2>
+        </div>
+        <a href="blog.html" class="btn btn--ghost-dark">All stories →</a>
+      </div>
+      <div class="related__grid">
+        <a class="jpost" href="article.html">
+          <div class="jpost__img"><img src="https://useakaani.com/images/fridge.jpg" alt="An open fridge at dinner time" loading="lazy" /></div>
+          <div class="jpost__body">
+            <div class="jpost__meta"><span class="jpost__cat">Food lifestyle</span><span class="jpost__read">5 min</span></div>
+            <h3>The 7:00 PM struggle: why deciding dinner feels like a daily battle</h3>
+          </div>
+        </a>
+        <a class="jpost" href="article.html">
+          <div class="jpost__img"><img src="https://useakaani.com/images/third_post.jpg" alt="Technology and food" loading="lazy" /></div>
+          <div class="jpost__body">
+            <div class="jpost__meta"><span class="jpost__cat">Food lifestyle</span><span class="jpost__read">4 min</span></div>
+            <h3>Foodie tech: how AI is revolutionizing the way we eat</h3>
+          </div>
+        </a>
+        <a class="jpost" href="article.html">
+          <div class="jpost__img"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f5/Efo_Riro_with_fried_mackerel_fishes_and_roasted_cowskin.jpg/1280px-Efo_Riro_with_fried_mackerel_fishes_and_roasted_cowskin.jpg" alt="Efo riro" loading="lazy" /></div>
+          <div class="jpost__body">
+            <div class="jpost__meta"><span class="jpost__cat">Nutrition</span><span class="jpost__read">6 min</span></div>
+            <h3>Efo riro is a protein play — if you build it right</h3>
+          </div>
+        </a>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="footer">
+    <div class="footer__top">
+      <div class="footer__brand">
+        <a class="footer__logo" href="index.html">akaani<span>.</span></a>
+        <p>Nigerian food was never the problem.<br />The apps were.</p>
+      </div>
+      <div class="footer__cols">
+        <div class="footer__col">
+          <h4>Product</h4>
+          <a href="meals.html">Meals</a>
+          <a href="recipes.html">Recipe bundles</a>
+          <a href="blog.html">Blog</a>
+          <a href="index.html#cta">Download</a>
+        </div>
+        <div class="footer__col">
+          <h4>Company</h4>
+          <a href="about.html">About</a>
+          <a href="index.html#faq">FAQ</a>
+          <a href="contact.html">Contact</a>
+        </div>
+        <div class="footer__col">
+          <h4>Social</h4>
+          <a href="#">Instagram</a>
+          <a href="#">TikTok</a>
+          <a href="#">X (Twitter)</a>
+          <a href="#">YouTube</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer__giant" aria-hidden="true">journal</div>
+    <div class="footer__bottom">
+      <p class="footer__disclaimer">akaani provides nutritional guidance for informational purposes only<br />and is not a substitute for medical advice. <a href="disclaimer.html">Read our full disclaimer.</a></p>
+      <span>© 2026 akaani. All rights reserved.</span>
+      <div><a href="privacy.html">Privacy Policy</a><a href="terms.html">Terms of Service</a></div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.14/dist/lenis.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+  <script>
+    gsap.registerPlugin(ScrollTrigger);
+    const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    /* Lenis */
+    let lenis = null;
+    if (window.Lenis && !prefersReduced) {
+      document.documentElement.style.scrollBehavior = "auto";
+      lenis = new Lenis({ duration: 1.15, smoothWheel: true });
+      lenis.on("scroll", ScrollTrigger.update);
+      gsap.ticker.add((t) => lenis.raf(t * 1000));
+      gsap.ticker.lagSmoothing(0);
+    }
+
+    /* burger */
+    const burger = document.getElementById("burger");
+    const mobileMenu = document.getElementById("mobileMenu");
+    burger.addEventListener("click", () => {
+      burger.classList.toggle("is-open");
+      mobileMenu.classList.toggle("is-open");
+      document.body.style.overflow = mobileMenu.classList.contains("is-open") ? "hidden" : "";
+    });
+    mobileMenu.querySelectorAll("a").forEach((a) =>
+      a.addEventListener("click", () => {
+        burger.classList.remove("is-open");
+        mobileMenu.classList.remove("is-open");
+        document.body.style.overflow = "";
+      })
+    );
+
+    /* reading progress bar, driven by article body position */
+    const progressBar = document.getElementById("progressBar");
+    ScrollTrigger.create({
+      trigger: "#artBody",
+      start: "top 20%",
+      end: "bottom 60%",
+      onUpdate: (self) => gsap.set(progressBar, { scaleX: self.progress }),
+    });
+
+    /* entrance */
+    gsap.timeline({ defaults: { ease: "power4.out" } })
+      .to(".art__title .line__inner", { y: 0, duration: 1.1, stagger: 0.1, delay: 0.2 })
+      .from(".art__back, .art__meta", { y: 20, autoAlpha: 0, duration: 0.6, stagger: 0.08 }, "-=0.9")
+      .from(".art__author", { y: 20, autoAlpha: 0, duration: 0.6 }, "-=0.6")
+      .from("#artCover", { y: 70, autoAlpha: 0, duration: 1, ease: "power3.out" }, "-=0.5");
+
+    /* body blocks fade in as you read */
+    gsap.utils.toArray("#artBody > *").forEach((el) => {
+      gsap.from(el, {
+        y: 34, autoAlpha: 0, duration: 0.8, ease: "power3.out",
+        scrollTrigger: { trigger: el, start: "top 90%", once: true },
+      });
+    });
+
+    /* related + newsletter reveals */
+    gsap.utils.toArray(".jpost, .section-head, .art__foot").forEach((el) => {
+      gsap.from(el, {
+        y: 50, autoAlpha: 0, duration: 0.9, ease: "power3.out",
+        scrollTrigger: { trigger: el, start: "top 88%", once: true },
+      });
+    });
+
+    /* ghost drift */
+    if (!prefersReduced) {
+    }
+
+    /* copy link */
+    document.getElementById("copyLink").addEventListener("click", (e) => {
+      navigator.clipboard.writeText(location.href).then(() => {
+        e.target.textContent = "Copied ✓";
+        setTimeout(() => (e.target.textContent = "Copy link"), 2000);
+      });
+    });
+
+    /* magnetic buttons */
+    if (!prefersReduced && window.matchMedia("(pointer: fine)").matches) {
+      document.querySelectorAll(".btn").forEach((btn) => {
+        const xTo = gsap.quickTo(btn, "x", { duration: 0.4, ease: "power3.out" });
+        const yTo = gsap.quickTo(btn, "y", { duration: 0.4, ease: "power3.out" });
+        btn.addEventListener("mousemove", (e) => {
+          const r = btn.getBoundingClientRect();
+          xTo((e.clientX - r.left - r.width / 2) * 0.25);
+          yTo((e.clientY - r.top - r.height / 2) * 0.35);
+        });
+        btn.addEventListener("mouseleave", () => { xTo(0); yTo(0); });
+      });
+    }
+
+    window.addEventListener("load", () => ScrollTrigger.refresh());
+  </script>
+</body>
+</html>

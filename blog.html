@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Blog — akaani</title>
+  <meta name="description" content="Read exciting stories about African cuisine — food, culture, nutrition science and the akaani kitchen." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    /* ============ BLOG PAGE ============ */
+
+    /* hero */
+    .jh {
+      position: relative; overflow: hidden;
+      padding: 175px clamp(20px, 5vw, 72px) clamp(50px, 7vh, 80px);
+    }
+    .jh__inner { max-width: 1280px; margin: 0 auto; }
+    .jh__kicker-row { display: flex; align-items: center; gap: 14px; margin-bottom: 20px; }
+    .jh__count {
+      font-size: 0.78rem; font-weight: 700;
+      background: var(--bg-soft); color: var(--accent);
+      padding: 6px 14px; border-radius: 999px;
+    }
+    .jh h1 {
+      font-size: clamp(2.8rem, 6.4vw, 5.6rem);
+      max-width: 1000px; margin-bottom: 30px;
+    }
+    .jh h1 .line { display: block; overflow: hidden; }
+    .jh h1 .line__inner { display: block; transform: translateY(110%); }
+    .jh__filters { display: flex; gap: 10px; flex-wrap: wrap; }
+    .jh__filters button {
+      font: inherit; font-size: 0.88rem; font-weight: 600;
+      padding: 10px 22px; border-radius: 999px;
+      border: 1.5px solid var(--line); background: none; color: var(--ink-soft);
+      cursor: pointer; transition: all 0.3s;
+    }
+    .jh__filters button:hover { border-color: var(--accent); color: var(--accent); }
+    .jh__filters button.is-on { background: var(--ink); border-color: var(--ink); color: var(--bg); }
+
+    /* featured */
+    .jfeat { padding: 0 clamp(20px, 5vw, 72px) clamp(26px, 3.4vw, 44px); }
+    .jfeat__card {
+      max-width: 1280px; margin: 0 auto;
+      display: grid; grid-template-columns: 1.15fr 1fr;
+      background: var(--ink); color: var(--bg);
+      border-radius: var(--radius-lg); overflow: hidden;
+      min-height: 460px;
+    }
+    .jfeat__img { position: relative; overflow: hidden; }
+    /* the source graphic has baked-in text — frame the mascot side, no crop-drift */
+    .jfeat__img img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 30%; }
+    .jfeat__badge {
+      position: absolute; top: 18px; left: 18px;
+      background: var(--accent); color: #fff;
+      font-size: 0.72rem; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase;
+      padding: 7px 16px; border-radius: 999px;
+    }
+    .jfeat__body { padding: clamp(28px, 4vw, 64px); align-self: center; }
+    .jfeat__body h2 { font-size: clamp(1.7rem, 2.8vw, 2.6rem); line-height: 1.12; margin: 14px 0 16px; }
+    .jfeat__body p { color: rgba(251, 245, 236, 0.72); margin-bottom: 28px; max-width: 480px; }
+    .jfeat__meta { display: flex; align-items: center; gap: 12px; font-size: 0.8rem; color: rgba(251, 245, 236, 0.55); }
+    .jfeat__cat {
+      background: rgba(251, 245, 236, 0.1); color: var(--accent);
+      font-weight: 700; padding: 4px 12px; border-radius: 999px;
+      text-transform: uppercase; letter-spacing: 0.05em; font-size: 0.7rem;
+    }
+    .jfeat .btn--dark { background: var(--accent); }
+    .jfeat .btn--dark:hover { background: var(--paper); color: var(--ink); }
+
+    /* grid */
+    .jgrid { padding: 0 clamp(20px, 5vw, 72px) clamp(80px, 12vh, 130px); }
+    .jgrid__inner {
+      max-width: 1280px; margin: 0 auto;
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: clamp(18px, 2.4vw, 32px);
+    }
+    .jpost {
+      background: var(--paper); border-radius: var(--radius-lg);
+      overflow: hidden; border: 1px solid var(--line);
+      cursor: pointer; display: block; color: var(--ink);
+      transform: translateY(var(--plx, 0px));
+      transition: transform 0.5s var(--ease), box-shadow 0.5s;
+    }
+    .jpost:hover { transform: translateY(calc(var(--plx, 0px) - 8px)); box-shadow: 0 26px 50px rgba(0, 51, 51, 0.13); }
+    .jpost.is-hidden { display: none; }
+    .jpost__img { position: relative; aspect-ratio: 16 / 10; overflow: hidden; }
+    .jpost__img img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.8s var(--ease); }
+    .jpost:hover .jpost__img img { transform: scale(1.08) rotate(0.6deg); }
+    .jpost__arrow {
+      position: absolute; right: 14px; bottom: 14px;
+      width: 42px; height: 42px; border-radius: 50%;
+      background: var(--paper); color: var(--ink);
+      display: grid; place-items: center;
+      font-size: 1.1rem; font-weight: 700;
+      transform: translateY(60px);
+      transition: transform 0.45s var(--ease), background 0.3s, color 0.3s;
+    }
+    .jpost:hover .jpost__arrow { transform: translateY(0); background: var(--accent); color: #fff; }
+    .jpost__body { padding: 22px; }
+    .jpost__meta { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; font-size: 0.78rem; color: var(--ink-soft); }
+    .jpost__cat {
+      background: var(--bg-soft); color: var(--accent);
+      font-weight: 700; padding: 4px 12px; border-radius: 999px;
+      text-transform: uppercase; letter-spacing: 0.05em; font-size: 0.7rem;
+    }
+    .jpost__read { margin-left: auto; }
+    .jpost__body h3 { font-size: 1.2rem; line-height: 1.3; margin-bottom: 10px; }
+    .jpost__body h3 span {
+      text-decoration: underline; text-decoration-color: transparent;
+      text-decoration-thickness: 2px; text-underline-offset: 4px;
+      transition: text-decoration-color 0.45s var(--ease);
+    }
+    .jpost:hover h3 span { text-decoration-color: var(--accent); }
+    .jpost__excerpt { font-size: 0.9rem; color: var(--ink-soft); }
+    .jgrid__empty { grid-column: 1 / -1; text-align: center; padding: 60px 0; color: var(--ink-soft); display: none; }
+
+
+    @media (max-width: 1024px) {
+      .jfeat__card { grid-template-columns: 1fr; }
+      .jfeat__img { min-height: 280px; }
+      .jgrid__inner { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 720px) {
+      .jgrid__inner { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ============ NAV ============ -->
+  <header class="nav" id="nav">
+    <div class="nav__inner">
+      <a class="nav__logo" href="index.html">akaani<span class="nav__dot">.</span></a>
+      <nav class="nav__links">
+        <a href="meals.html">Meals</a>
+        <a href="recipes.html">Recipe bundle</a>
+        <a href="blog.html" class="is-active">Blog</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+      <a href="index.html#cta" class="btn btn--accent nav__cta">Get the app</a>
+      <button class="nav__burger" id="burger" aria-label="Open menu"><span></span><span></span></button>
+    </div>
+  </header>
+
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="meals.html">Meals</a>
+    <a href="recipes.html">Recipe bundle</a>
+    <a href="blog.html" class="is-active">Blog</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+    <a href="index.html#cta" class="btn btn--accent">Get the app</a>
+  </div>
+
+  <main>
+
+    <!-- ============ HERO ============ -->
+    <section class="jh">
+      <div class="jh__inner">
+        <div class="jh__kicker-row">
+          <p class="section-head__kicker" style="margin:0">The akaani journal</p>
+          <span class="jh__count">7 stories</span>
+        </div>
+        <h1>
+          <span class="line"><span class="line__inner">Read exciting stories</span></span>
+          <span class="line"><span class="line__inner">about <span class="accent-text">African cuisine.</span></span></span>
+        </h1>
+        <div class="jh__filters" id="filters" aria-label="Filter articles">
+          <button class="is-on" data-filter="all">All</button>
+          <button data-filter="lifestyle">Food lifestyle</button>
+          <button data-filter="nutrition">Nutrition</button>
+          <button data-filter="recipes">Recipes</button>
+          <button data-filter="deepdive">Deep dives</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ FEATURED ============ -->
+    <section class="jfeat">
+      <a class="jfeat__card" id="featCard" href="article.html">
+        <div class="jfeat__img">
+          <img id="featImg" src="assets/lu-welcome.png" alt="Lu, the akaani AI kitchen companion" />
+          <span class="jfeat__badge">Featured</span>
+        </div>
+        <div class="jfeat__body">
+          <div class="jfeat__meta"><span class="jfeat__cat">Food lifestyle</span><time>From the team</time><span>6 min read</span></div>
+          <h2>Welcome Lu: your AI kitchen companion, crafted with care</h2>
+          <p>Have you ever stared blankly at your refrigerator, overflowing with possibilities yet devoid of inspiration? Meet the companion we built for exactly that moment.</p>
+          <span class="btn btn--dark">Read the story →</span>
+        </div>
+      </a>
+    </section>
+
+    <!-- ============ GRID ============ -->
+    <section class="jgrid">
+      <div class="jgrid__inner" id="grid">
+
+        <a class="jpost" data-cat="lifestyle" href="article.html">
+          <div class="jpost__img"><img src="https://useakaani.com/images/fridge.jpg" alt="An open fridge at dinner time" loading="lazy" /><span class="jpost__arrow">→</span></div>
+          <div class="jpost__body">
+            <div class="jpost__meta"><span class="jpost__cat">Food lifestyle</span><span class="jpost__read">5 min</span></div>
+            <h3><span>The 7:00 PM struggle: why deciding what's for dinner feels like a daily battle (and how to win)</span></h3>
+            <p class="jpost__excerpt">Living the busy life in a bustling US city? You know the drill: alarm clock screams…</p>
+          </div>
+        </a>
+
+        <a class="jpost" data-cat="lifestyle" href="article.html">
+          <div class="jpost__img"><img src="https://useakaani.com/images/third_post.jpg" alt="Technology and food" loading="lazy" /><span class="jpost__arrow">→</span></div>
+          <div class="jpost__body">
+            <div class="jpost__meta"><span class="jpost__cat">Food lifestyle</span><span class="jpost__read">4 min</span></div>
+            <h3><span>Foodie tech: how artificial intelligence is revolutionizing the way we eat</span></h3>
+            <p class="jpost__excerpt">From smart pantries to macro-aware meal planning — the quiet revolution happening in our kitchens.</p>
+          </div>
+        </a>
+
+        <a class="jpost" data-cat="nutrition" href="article.html">
+          <div class="jpost__img"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f5/Efo_Riro_with_fried_mackerel_fishes_and_roasted_cowskin.jpg/1280px-Efo_Riro_with_fried_mackerel_fishes_and_roasted_cowskin.jpg" alt="Efo riro with fried mackerel" loading="lazy" /><span class="jpost__arrow">→</span></div>
+          <div class="jpost__body">
+            <div class="jpost__meta"><span class="jpost__cat">Nutrition</span><span class="jpost__read">6 min</span></div>
+            <h3><span>Efo riro is a protein play — if you build it right</span></h3>
+            <p class="jpost__excerpt">The Yoruba classic can carry 35g+ of protein per bowl. The macro math, ingredient by ingredient.</p>
+          </div>
+        </a>
+
+        <a class="jpost" data-cat="nutrition" href="article.html">
+          <div class="jpost__img"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b4/Suya_with_pepper_sauce.jpg/1280px-Suya_with_pepper_sauce.jpg" alt="Suya with pepper sauce" loading="lazy" /><span class="jpost__arrow">→</span></div>
+          <div class="jpost__body">
+            <div class="jpost__meta"><span class="jpost__cat">Nutrition</span><span class="jpost__read">4 min</span></div>
+            <h3><span>Suya: the original street-food protein</span></h3>
+            <p class="jpost__excerpt">Lean beef, yaji spice, open fire — why the roadside classic beats most protein bars.</p>
+          </div>
+        </a>
+
+        <a class="jpost" data-cat="deepdive" href="article.html">
+          <div class="jpost__img"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/89/Egusi_soup_in_a_plate.jpg/1920px-Egusi_soup_in_a_plate.jpg" alt="Egusi soup" loading="lazy" /><span class="jpost__arrow">→</span></div>
+          <div class="jpost__body">
+            <div class="jpost__meta"><span class="jpost__cat">Deep dive</span><span class="jpost__read">7 min</span></div>
+            <h3><span>Why egusi never made it into food databases</span></h3>
+            <p class="jpost__excerpt">A story about barcodes, colonial-era food tables, and the meals they left behind.</p>
+          </div>
+        </a>
+
+        <a class="jpost" data-cat="recipes" href="article.html">
+          <div class="jpost__img"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0d/Jollof_%28Jollof-_Rice%29.jpg/1920px-Jollof_%28Jollof-_Rice%29.jpg" alt="Jollof rice" loading="lazy" /><span class="jpost__arrow">→</span></div>
+          <div class="jpost__body">
+            <div class="jpost__meta"><span class="jpost__cat">Recipes</span><span class="jpost__read">5 min</span></div>
+            <h3><span>Party jollof vs. cut-season jollof: one pot, two macros</span></h3>
+            <p class="jpost__excerpt">Same smoke, same party energy — 240 fewer calories per plate. Here's the technique.</p>
+          </div>
+        </a>
+
+        <p class="jgrid__empty" id="gridEmpty">No stories in this category yet — more are cooking. 🍲</p>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="footer">
+    <div class="footer__top">
+      <div class="footer__brand">
+        <a class="footer__logo" href="index.html">akaani<span>.</span></a>
+        <p>Nigerian food was never the problem.<br />The apps were.</p>
+      </div>
+      <div class="footer__cols">
+        <div class="footer__col">
+          <h4>Product</h4>
+          <a href="meals.html">Meals</a>
+          <a href="recipes.html">Recipe bundles</a>
+          <a href="blog.html">Blog</a>
+          <a href="index.html#cta">Download</a>
+        </div>
+        <div class="footer__col">
+          <h4>Company</h4>
+          <a href="about.html">About</a>
+          <a href="index.html#faq">FAQ</a>
+          <a href="contact.html">Contact</a>
+        </div>
+        <div class="footer__col">
+          <h4>Social</h4>
+          <a href="#">Instagram</a>
+          <a href="#">TikTok</a>
+          <a href="#">X (Twitter)</a>
+          <a href="#">YouTube</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer__giant" aria-hidden="true">journal</div>
+    <div class="footer__bottom">
+      <p class="footer__disclaimer">akaani provides nutritional guidance for informational purposes only<br />and is not a substitute for medical advice. <a href="disclaimer.html">Read our full disclaimer.</a></p>
+      <span>© 2026 akaani. All rights reserved.</span>
+      <div><a href="privacy.html">Privacy Policy</a><a href="terms.html">Terms of Service</a></div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.14/dist/lenis.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+  <script>
+    gsap.registerPlugin(ScrollTrigger);
+    const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    /* Lenis */
+    let lenis = null;
+    if (window.Lenis && !prefersReduced) {
+      document.documentElement.style.scrollBehavior = "auto";
+      lenis = new Lenis({ duration: 1.15, smoothWheel: true });
+      lenis.on("scroll", ScrollTrigger.update);
+      gsap.ticker.add((t) => lenis.raf(t * 1000));
+      gsap.ticker.lagSmoothing(0);
+    }
+    document.querySelectorAll('a[href^="#"]').forEach((a) => {
+      a.addEventListener("click", (e) => {
+        const id = a.getAttribute("href");
+        if (id.length > 1 && document.querySelector(id)) {
+          e.preventDefault();
+          lenis ? lenis.scrollTo(id, { duration: 1.4 }) : document.querySelector(id).scrollIntoView({ behavior: "smooth" });
+        }
+      });
+    });
+
+    /* sticky nav */
+    const nav = document.getElementById("nav");
+    nav.classList.add("nav--solid"); // light page: solid from the start
+    const burger = document.getElementById("burger");
+    const mobileMenu = document.getElementById("mobileMenu");
+    burger.addEventListener("click", () => {
+      burger.classList.toggle("is-open");
+      mobileMenu.classList.toggle("is-open");
+      document.body.style.overflow = mobileMenu.classList.contains("is-open") ? "hidden" : "";
+    });
+    mobileMenu.querySelectorAll("a").forEach((a) =>
+      a.addEventListener("click", () => {
+        burger.classList.remove("is-open");
+        mobileMenu.classList.remove("is-open");
+        document.body.style.overflow = "";
+      })
+    );
+
+    /* hero entrance */
+    gsap.timeline({ defaults: { ease: "power4.out" } })
+      .to(".jh h1 .line__inner", { y: 0, duration: 1.1, stagger: 0.12, delay: 0.25 })
+      .from(".jh__kicker-row", { y: 24, autoAlpha: 0, duration: 0.7 }, "-=0.9")
+      .from(".jh__filters button", { y: 20, autoAlpha: 0, duration: 0.5, stagger: 0.07 }, "-=0.6");
+
+    /* featured: clip wipe + inner parallax */
+    const feat = document.getElementById("featCard");
+    gsap.set(feat, { clipPath: "inset(0 100% 0 0 round 28px)" });
+    gsap.set(".jfeat__body > *", { autoAlpha: 0, y: 30 });
+    ScrollTrigger.create({
+      trigger: feat, start: "top 82%", once: true,
+      onEnter: () => {
+        gsap.to(feat, { clipPath: "inset(0 0% 0 0 round 28px)", duration: 1.1, ease: "power4.inOut" });
+        gsap.to(".jfeat__body > *", { autoAlpha: 1, y: 0, duration: 0.8, ease: "power3.out", stagger: 0.1, delay: 0.5 });
+      },
+    });
+
+    /* grid reveals + parallax */
+    function staggerReveal(selector, opts = {}) {
+      const { lift = true, ...tween } = opts;
+      const items = gsap.utils.toArray(selector);
+      if (!items.length) return;
+      gsap.set(items, lift ? { y: 60, autoAlpha: 0 } : { autoAlpha: 0 });
+      ScrollTrigger.batch(items, {
+        start: "top 88%", once: true,
+        onEnter: (batch) => gsap.to(batch, {
+          ...(lift ? { y: 0 } : {}), autoAlpha: 1,
+          duration: 0.9, ease: "power3.out", stagger: 0.1,
+          onComplete: () => lift && gsap.set(batch, { clearProps: "transform" }),
+          ...tween,
+        }),
+      });
+    }
+    staggerReveal(".jpost", { lift: false, stagger: 0.1 });
+
+    function plxVar(el, amount) {
+      gsap.fromTo(el, { "--plx": amount + "px" }, {
+        "--plx": -amount + "px", ease: "none",
+        scrollTrigger: { trigger: el, start: "top bottom", end: "bottom top", scrub: true },
+      });
+    }
+    if (!prefersReduced) {
+      gsap.utils.toArray(".jpost").forEach((el, i) => plxVar(el, [12, 38, 20, 44, 16, 34][i] ?? 18));
+    }
+
+    /* working category filter */
+    const posts = gsap.utils.toArray(".jpost");
+    const empty = document.getElementById("gridEmpty");
+    document.querySelectorAll("#filters button").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        document.querySelectorAll("#filters button").forEach((b) => b.classList.remove("is-on"));
+        btn.classList.add("is-on");
+        const f = btn.dataset.filter;
+        const showing = posts.filter((p) => f === "all" || p.dataset.cat === f);
+        const hiding = posts.filter((p) => !(f === "all" || p.dataset.cat === f));
+        gsap.to(hiding, {
+          autoAlpha: 0, scale: 0.94, duration: 0.25, ease: "power2.in", stagger: 0.03,
+          onComplete: () => {
+            hiding.forEach((p) => p.classList.add("is-hidden"));
+            showing.forEach((p) => p.classList.remove("is-hidden"));
+            empty.style.display = showing.length ? "none" : "block";
+            gsap.fromTo(showing, { autoAlpha: 0, y: 30, scale: 0.97 },
+              { autoAlpha: 1, y: 0, scale: 1, duration: 0.5, ease: "power3.out", stagger: 0.07, clearProps: "scale" });
+            ScrollTrigger.refresh();
+          },
+        });
+        if (!hiding.length) {
+          showing.forEach((p) => p.classList.remove("is-hidden"));
+          empty.style.display = "none";
+          gsap.fromTo(showing, { autoAlpha: 0, y: 30 }, { autoAlpha: 1, y: 0, duration: 0.5, ease: "power3.out", stagger: 0.07 });
+          ScrollTrigger.refresh();
+        }
+      });
+    });
+
+    /* magnetic buttons */
+    if (!prefersReduced && window.matchMedia("(pointer: fine)").matches) {
+      document.querySelectorAll(".btn").forEach((btn) => {
+        const xTo = gsap.quickTo(btn, "x", { duration: 0.4, ease: "power3.out" });
+        const yTo = gsap.quickTo(btn, "y", { duration: 0.4, ease: "power3.out" });
+        btn.addEventListener("mousemove", (e) => {
+          const r = btn.getBoundingClientRect();
+          xTo((e.clientX - r.left - r.width / 2) * 0.25);
+          yTo((e.clientY - r.top - r.height / 2) * 0.35);
+        });
+        btn.addEventListener("mouseleave", () => { xTo(0); yTo(0); });
+      });
+    }
+
+    window.addEventListener("load", () => ScrollTrigger.refresh());
+  </script>
+</body>
+</html>

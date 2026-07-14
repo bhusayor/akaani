@@ -1,0 +1,37 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:www.userank.com)",
+      "WebFetch(domain:useakaani.com)",
+      "Bash(curl -s -A \"Mozilla/5.0 \\(Macintosh; Intel Mac OS X 10_15_7\\) AppleWebKit/537.36 \\(KHTML, like Gecko\\) Chrome/126 Safari/537.36\" \"https://www.pexels.com/search/videos/african%20food%20cooking/\")",
+      "Bash(curl -sL -A \"Mozilla/5.0 \\(Macintosh; Intel Mac OS X 10_15_7\\) AppleWebKit/537.36 \\(KHTML, like Gecko\\) Chrome/126 Safari/537.36\" \"https://www.pexels.com/search/videos/african%20food/\" -o /private/tmp/claude-501/-Users-mac-Desktop-akaani-website/015bb539-84a5-4df2-a3c3-0dd3eac8fee1/scratchpad/pexels.html)",
+      "Bash(curl -s \"https://commons.wikimedia.org/w/api.php?action=query&format=json&list=search&srsearch=nigerian%20food%20cooking%20filetype:video&srnamespace=6&srlimit=20\")",
+      "Bash(python3 -c \"import json,sys; [print\\(r['title']\\) for r in json.load\\(sys.stdin\\)['query']['search']]\")",
+      "Bash(curl -s \"https://commons.wikimedia.org/w/api.php?action=query&format=json&list=search&srsearch=jollof%20rice%20filetype:video&srnamespace=6&srlimit=15\")",
+      "Bash(curl -sL -A Mozilla/5.0 https://mixkit.co/free-stock-video/food/ -o /private/tmp/claude-501/-Users-mac-Desktop-akaani-website/015bb539-84a5-4df2-a3c3-0dd3eac8fee1/scratchpad/mixkit.html)",
+      "Bash(curl -sL -A Mozilla/5.0 https://mixkit.co/free-stock-video/cooking/ -o /private/tmp/claude-501/-Users-mac-Desktop-akaani-website/015bb539-84a5-4df2-a3c3-0dd3eac8fee1/scratchpad/mixkit2.html)",
+      "Bash(curl -s \"https://commons.wikimedia.org/w/api.php?action=query&format=json&prop=imageinfo&iiprop=url&iiurlwidth=1200&titles=File:Egusi_soup_in_a_plate.jpg|File:Suya_with_pepper_sauce.jpg|File:Afang_soup_and_pounded_yam_03.jpg|File:Goat_meat_pepper_soup_served_with_bread.jpg|File:Efo_Riro_with_fried_mackerel_fishes_and_roasted_cowskin.jpg|File:Jollof_rice_and_tomato_stew.jpg\")",
+      "Bash(python3 -c ' *)",
+      "Bash(node --check \"/Users/mac/Desktop/akaani website/main.js\")",
+      "Bash('/Applications/Google Chrome.app/Contents/MacOS/Google Chrome' --headless --disable-gpu --window-size=1440,900 --virtual-time-budget=9000 --hide-scrollbars --screenshot=/private/tmp/claude-501/-Users-mac-Desktop-akaani-website/015bb539-84a5-4df2-a3c3-0dd3eac8fee1/scratchpad/shot_hero.png file:///Users/mac/Desktop/akaani%20website/index.html)",
+      "Bash(npm i *)",
+      "Bash(node -e ' *)",
+      "Bash(open \"/Users/mac/Desktop/akaani website/index.html\")",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\\\\n\" \"https://cdn.jsdelivr.net/npm/lenis@1.1.14/dist/lenis.min.js\")",
+      "Bash(node verify2.js)",
+      "Bash(curl -s \"https://commons.wikimedia.org/w/api.php?action=query&format=json&prop=imageinfo&iiprop=url&iiurlwidth=2000&titles=File:Jollof_\\(Jollof-_Rice\\).jpg|File:Pot_of_Egusi_soup.jpg|File:Egusi_soup_in_a_plate.jpg|File:Suya_preparation_for_grilling_5.jpg|File:Suya_with_pepper_sauce.jpg|File:Afang_soup_and_pounded_yam_03.jpg|File:Goat_meat_pepper_soup_served_with_bread.jpg|File:Efo_Riro_with_fried_mackerel_fishes_and_roasted_cowskin.jpg|File:Jollof_rice_and_tomato_stew.jpg\")",
+      "Bash(node verify3.js)",
+      "Bash(curl -s -o /dev/null -w \"1080: %{http_code}\\\\n\" -r 0-0 \"https://assets.mixkit.co/videos/4672/4672-1080.mp4\")",
+      "Bash(curl -s -o /dev/null -w \"720: %{http_code}\\\\n\" -r 0-0 \"https://assets.mixkit.co/videos/4672/4672-720.mp4\")",
+      "Bash(curl -s -o /dev/null -w \"4678 again: %{http_code}\\\\n\" -r 0-0 \"https://assets.mixkit.co/videos/4678/4678-1080.mp4\")",
+      "Bash(curl -sL -A Mozilla/5.0 https://mixkit.co/free-stock-video/african/ -o /private/tmp/claude-501/-Users-mac-Desktop-akaani-website/015bb539-84a5-4df2-a3c3-0dd3eac8fee1/scratchpad/mx_af.html)",
+      "Bash(curl -s \"https://commons.wikimedia.org/w/api.php?action=query&format=json&generator=search&gsrsearch=nigerian%20cooking%20filetype:video&gsrnamespace=6&gsrlimit=20&prop=imageinfo&iiprop=url|size|mediatype\")",
+      "Bash(curl -s https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/From_Yam_To_Plate.webm/960px--From_Yam_To_Plate.webm.jpg -o /private/tmp/claude-501/-Users-mac-Desktop-akaani-website/015bb539-84a5-4df2-a3c3-0dd3eac8fee1/scratchpad/f_yam.jpg)",
+      "Bash(curl -s https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/Local_Grinding_Of_Pepper.webm/960px--Local_Grinding_Of_Pepper.webm.jpg -o /private/tmp/claude-501/-Users-mac-Desktop-akaani-website/015bb539-84a5-4df2-a3c3-0dd3eac8fee1/scratchpad/f_pepper.jpg)",
+      "Bash(curl -s https://upload.wikimedia.org/wikipedia/commons/thumb/7/79/Cutting_Vegitable_In_A_Market.webm/960px--Cutting_Vegitable_In_A_Market.webm.jpg -o /private/tmp/claude-501/-Users-mac-Desktop-akaani-website/015bb539-84a5-4df2-a3c3-0dd3eac8fee1/scratchpad/f_market.jpg)",
+      "Bash(curl -s https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Breadfruit_%28Ukwa%29.webm/960px--Breadfruit_%28Ukwa%29.webm.jpg -o /private/tmp/claude-501/-Users-mac-Desktop-akaani-website/015bb539-84a5-4df2-a3c3-0dd3eac8fee1/scratchpad/f_ukwa.jpg)",
+      "Bash(sed -i '' 's|<a href=\"#waitlist\">Meals</a>|<a href=\"meals.html\">Meals</a>|g' index.html)",
+      "Bash(sed -i '' 's|<a href=\"index.html#waitlist\">Meals</a>|<a href=\"meals.html\">Meals</a>|' recipes.html)"
+    ]
+  }
+}

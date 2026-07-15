@@ -12,21 +12,61 @@
   <style>
     /* ============ MEALS PAGE ============ */
 
-    /* hero */
-    .mh { position: relative; height: 100svh; min-height: 640px; display: flex; align-items: flex-end; overflow: hidden; color: #fff; }
-    .mh__media { position: absolute; inset: 0; }
-    .mh__media video { width: 100%; height: 100%; object-fit: cover; }
-    .mh__scrim { position: absolute; inset: 0; background: rgba(0, 26, 26, 0.55); }
-    .mh__content { position: relative; z-index: 2; padding: 0 clamp(20px, 5vw, 72px) clamp(48px, 8vh, 90px); max-width: 980px; }
-    .mh__title { font-size: clamp(2.7rem, 7vw, 5.8rem); font-weight: 900; margin-bottom: 22px; }
-    .mh__desc { font-size: clamp(1.02rem, 1.5vw, 1.25rem); max-width: 600px; color: rgba(255, 255, 255, 0.85); margin-bottom: 34px; }
+    /* hero — split: copy left, packed-meals image right */
+    .mh {
+      position: relative; min-height: 100svh;
+      display: flex; align-items: center;
+      overflow: hidden;
+      padding: 150px clamp(20px, 5vw, 72px) clamp(50px, 7vh, 80px);
+    }
+    .mh__inner {
+      max-width: 1280px; margin: 0 auto; width: 100%;
+      display: grid; grid-template-columns: 1.15fr 1fr;
+      gap: clamp(30px, 5vw, 80px); align-items: center;
+    }
+    .mh__title { font-size: clamp(2.5rem, 4.8vw, 4.4rem); font-weight: 900; margin-bottom: 22px; color: var(--ink); }
+    .mh__desc { font-size: clamp(1.02rem, 1.4vw, 1.18rem); max-width: 560px; color: var(--ink-soft); margin-bottom: 34px; }
     .mh__desc b { color: var(--accent); }
     .mh__cities { display: inline-flex; align-items: center; gap: 10px; flex-wrap: wrap; margin-bottom: 26px; }
     .mh__city {
       font-size: 0.85rem; font-weight: 600; padding: 8px 18px; border-radius: 999px;
-      background: rgba(255, 253, 248, 0.14); border: 1px solid rgba(255, 255, 255, 0.28);
+      background: var(--bg-soft); color: var(--ink);
+      border: 1px solid rgba(218, 112, 0, 0.25);
     }
     .mh__city i { font-style: normal; color: var(--accent); margin-right: 6px; }
+
+    .mh__visual { position: relative; justify-self: center; width: min(480px, 100%); }
+    .mh__photo {
+      border-radius: 30px; overflow: hidden;
+      aspect-ratio: 4 / 4.4;
+      border: 6px solid var(--paper);
+      box-shadow: 0 40px 80px rgba(0, 51, 51, 0.2);
+      transform: rotate(1.5deg);
+    }
+    .mh__photo img { width: 100%; height: 100%; object-fit: cover; }
+    .mh__badge {
+      position: absolute; top: -18px; left: -16px;
+      background: var(--ink); color: var(--bg);
+      font-size: 0.88rem; font-weight: 700;
+      padding: 12px 20px; border-radius: 16px; border-bottom-left-radius: 4px;
+      box-shadow: 0 18px 44px rgba(0, 51, 51, 0.22);
+    }
+    .mh__badge span { color: var(--accent); }
+    .mh__badge2 {
+      position: absolute; bottom: -16px; right: -12px;
+      display: flex; align-items: center; gap: 8px;
+      background: var(--paper); color: var(--ink);
+      font-size: 0.85rem; font-weight: 700;
+      padding: 12px 18px; border-radius: 999px;
+      box-shadow: 0 18px 44px rgba(0, 51, 51, 0.18);
+    }
+    .mh__badge2 i { font-style: normal; width: 8px; height: 8px; border-radius: 50%; background: var(--accent); }
+    @media (max-width: 980px) {
+      .mh__inner { grid-template-columns: 1fr; }
+      .mh__visual { width: min(400px, 92%); margin-top: 16px; }
+      .mh__badge { left: -4px; }
+      .mh__badge2 { right: -2px; }
+    }
 
     /* steps — clean editorial columns */
     .steps { padding: clamp(90px, 14vh, 160px) clamp(20px, 5vw, 72px); }
@@ -315,25 +355,29 @@
 
     <!-- ============ HERO ============ -->
     <section class="mh">
-      <div class="mh__media">
-        <video id="mhVideo" autoplay muted loop playsinline
-          src="https://assets.mixkit.co/videos/14927/14927-720.mp4"></video>
-        <div class="mh__scrim"></div>
-      </div>
-      <div class="mh__content">
-        <div class="mh__cities">
-          <span class="mh__city"><i>●</i>Dallas</span>
-          <span class="mh__city"><i>●</i>Houston</span>
-          <span class="mh__city"><i>●</i>Seattle</span>
+      <div class="mh__inner">
+        <div class="mh__content">
+          <div class="mh__cities">
+            <span class="mh__city"><i>●</i>Dallas</span>
+            <span class="mh__city"><i>●</i>Houston</span>
+            <span class="mh__city"><i>●</i>Seattle</span>
+          </div>
+          <h1 class="mh__title">
+            <span class="line"><span class="line__inner">Authentic Nigerian meals,</span></span>
+            <span class="line"><span class="line__inner accent-text">delivered weekly.</span></span>
+          </h1>
+          <p class="mh__desc">Skip the cooking without skipping the culture. akaani Meals delivers authentic Nigerian dishes freshly prepared by professional chefs to homes in <b>Dallas</b>, <b>Houston</b>, and <b>Seattle</b> every weekend.</p>
+          <div class="hero__actions">
+            <a href="#waitlist" class="btn btn--accent btn--lg">Join the waitlist</a>
+            <a href="#how" class="btn btn--ghost-dark btn--lg">How it works</a>
+          </div>
         </div>
-        <h1 class="mh__title">
-          <span class="line"><span class="line__inner">Authentic Nigerian meals,</span></span>
-          <span class="line"><span class="line__inner accent-text">delivered weekly.</span></span>
-        </h1>
-        <p class="mh__desc">Chef-prepared, macro-counted, and at your door every weekend. No chopping, no pots to wash — just heat, serve, and eat like you're home.</p>
-        <div class="hero__actions">
-          <a href="#waitlist" class="btn btn--accent btn--lg">Join the waitlist</a>
-          <a href="#how" class="btn btn--ghost btn--lg">How it works</a>
+        <div class="mh__visual" id="mhVisual" aria-hidden="true">
+          <div class="mh__photo">
+            <img src="assets/meals-hero.jpg" alt="A week of chef-prepared meals packed in delivery containers" />
+          </div>
+          <div class="mh__badge">📦 Your week, packed — <span>12 meals</span></div>
+          <div class="mh__badge2"><i></i>Chef-prepared · Delivered Sat &amp; Sun</div>
         </div>
       </div>
     </section>
@@ -633,12 +677,9 @@
       });
     });
 
-    /* sticky nav */
+    /* sticky nav: always solid (light hero) */
     const nav = document.getElementById("nav");
-    ScrollTrigger.create({
-      start: "top -80",
-      onUpdate: (self) => nav.classList.toggle("nav--solid", self.scroll() > 80),
-    });
+    nav.classList.add("nav--solid");
     const burger = document.getElementById("burger");
     const mobileMenu = document.getElementById("mobileMenu");
     burger.addEventListener("click", () => {
@@ -660,14 +701,17 @@
       .from(".mh__cities .mh__city", { y: 20, autoAlpha: 0, duration: 0.6, stagger: 0.08 }, "-=0.9")
       .from(".mh__desc", { y: 30, autoAlpha: 0, duration: 0.9 }, "-=0.6")
       .from(".mh .hero__actions .btn", { y: 24, autoAlpha: 0, duration: 0.7, stagger: 0.1 }, "-=0.6");
-    gsap.to("#mhVideo", {
-      scale: 1.16, ease: "none",
-      scrollTrigger: { trigger: ".mh", start: "top top", end: "bottom top", scrub: true },
-    });
-    gsap.to(".mh__content", {
-      yPercent: -16, autoAlpha: 0.2, ease: "none",
-      scrollTrigger: { trigger: ".mh", start: "top top", end: "bottom 25%", scrub: true },
-    });
+    gsap.timeline({ defaults: { ease: "power4.out" }, delay: 0.15 })
+      .from(".mh__photo", { y: 80, autoAlpha: 0, rotation: -4, duration: 1 })
+      .from(".mh__badge, .mh__badge2", { scale: 0, autoAlpha: 0, duration: 0.55, ease: "back.out(1.9)", stagger: 0.18, transformOrigin: "bottom left" }, "-=0.4");
+    if (!prefersReduced) {
+      gsap.to(".mh__badge", { y: -8, duration: 2.4, yoyo: true, repeat: -1, ease: "sine.inOut", delay: 1.8 });
+      gsap.to(".mh__badge2", { y: 7, duration: 2.8, yoyo: true, repeat: -1, ease: "sine.inOut", delay: 2.1 });
+      gsap.to("#mhVisual", {
+        y: 60, ease: "none",
+        scrollTrigger: { trigger: ".mh", start: "top top", end: "bottom top", scrub: true },
+      });
+    }
 
     /* reveals */
     function staggerReveal(selector, opts = {}) {

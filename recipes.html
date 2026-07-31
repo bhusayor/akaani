@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Recipe bundles — akaani</title>
-  <meta name="description" content="Nigerian recipe bundles built around your goals. Full macros, step-by-step instructions, and a tip from Lu on every page. One-time purchase, instant PDF download." />
+  <title>Consultation and recipe bundles | akaani</title>
+  <meta name="description" content="Book a 45-minute one-on-one consultation with an akaani registered dietitian. Personal Nigerian meal plan, macro targets, and two weeks of follow-up. Recipe bundles also available." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
@@ -22,36 +22,35 @@
     .bh__inner { max-width: 1280px; margin: 0 auto; display: grid; grid-template-columns: 1.4fr 1fr; gap: clamp(30px, 4vw, 70px); align-items: center; }
     .bh h1 { font-size: clamp(2.7rem, 5.6vw, 4.8rem); margin-bottom: 22px; }
     .bh__sub { color: rgba(251, 245, 236, 0.72); font-size: clamp(1rem, 1.4vw, 1.18rem); max-width: 560px; margin-bottom: 34px; }
-    .bh__ticks { display: flex; flex-wrap: wrap; gap: 10px; }
-    .bh__tick {
-      display: inline-flex; align-items: center; gap: 8px;
-      font-size: 0.86rem; font-weight: 600;
-      padding: 10px 18px; border-radius: 999px;
-      background: rgba(251, 245, 236, 0.07);
-      border: 1px solid rgba(251, 245, 236, 0.18);
-    }
-    .bh__tick i { font-style: normal; color: var(--accent); font-weight: 800; }
     .bh__actions { display: flex; gap: 14px; flex-wrap: wrap; margin-bottom: 34px; }
 
-    /* hero visual: fanned bundle covers */
-    .bh__visual { position: relative; justify-self: center; width: clamp(260px, 26vw, 380px); aspect-ratio: 4 / 5; }
-    .bh__card {
-      position: absolute; inset: 0;
-      border-radius: 24px; overflow: hidden;
+    /* hero visual: consultation photo + floating badges */
+    .bh__visual { position: relative; justify-self: center; width: clamp(300px, 30vw, 440px); }
+    .bh__photo {
+      border-radius: 28px; overflow: hidden;
+      aspect-ratio: 4 / 4.2;
+      border: 5px solid var(--paper);
       box-shadow: 0 40px 80px rgba(0, 0, 0, 0.45);
-      border: 4px solid var(--paper);
+      transform: rotate(1.5deg);
     }
-    .bh__card img { width: 100%; height: 100%; object-fit: cover; }
-    .bh__card--back { transform: rotate(7deg) translate(9%, 5%); }
-    .bh__card--front { transform: rotate(-5deg) translate(-6%, -2%); }
-    .bh__card figcaption {
-      position: absolute; left: 14px; right: 14px; bottom: 14px;
+    .bh__photo img { width: 100%; height: 100%; object-fit: cover; object-position: 62% center; }
+    .bh__pricebadge {
+      position: absolute; top: -20px; left: -18px;
+      background: var(--accent); color: #fff;
+      font-size: 1.35rem; font-weight: 800; line-height: 1.1;
+      padding: 14px 22px; border-radius: 18px; border-bottom-left-radius: 4px;
+      box-shadow: 0 18px 44px rgba(0, 0, 0, 0.4);
+    }
+    .bh__pricebadge span { display: block; font-size: 0.72rem; font-weight: 600; opacity: 0.85; letter-spacing: 0.06em; text-transform: uppercase; margin-top: 2px; }
+    .bh__planbadge {
+      position: absolute; bottom: -16px; right: -12px;
+      display: flex; align-items: center; gap: 8px;
       background: var(--paper); color: var(--ink);
-      border-radius: 14px; padding: 10px 16px;
       font-size: 0.85rem; font-weight: 700;
-      display: flex; justify-content: space-between; align-items: center;
+      padding: 12px 18px; border-radius: 999px;
+      box-shadow: 0 18px 44px rgba(0, 0, 0, 0.35);
     }
-    .bh__card figcaption em { font-style: normal; color: var(--accent); }
+    .bh__planbadge i { font-style: normal; width: 8px; height: 8px; border-radius: 50%; background: var(--accent); }
     .bh__ghost {
       position: absolute; right: -1%; bottom: -14%;
       font-size: clamp(8rem, 20vw, 19rem); font-weight: 900; line-height: 1;
@@ -61,7 +60,8 @@
 
     /* bundle grid */
     .shop { padding: clamp(80px, 12vh, 140px) clamp(20px, 5vw, 72px); }
-    .shop__grid { max-width: 1280px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: clamp(20px, 2.6vw, 36px); }
+    .shop__grid { max-width: 1280px; margin: 0 auto; display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(18px, 2.2vw, 30px); }
+    @media (min-width: 1025px) { .shop__grid .product:nth-child(4) { grid-column: 2; } }
     .product {
       background: var(--paper); border: 1px solid var(--line);
       border-radius: var(--radius-lg); overflow: hidden;
@@ -86,34 +86,21 @@
       font-size: 0.75rem; font-weight: 700;
       padding: 7px 15px; border-radius: 999px;
     }
-    .product__body { padding: clamp(24px, 2.6vw, 36px); display: flex; flex-direction: column; flex: 1; }
-    .product__body h3 { font-size: clamp(1.5rem, 2vw, 1.9rem); margin: 8px 0 6px; }
-    .product__tagline { font-size: 0.95rem; font-weight: 700; color: var(--accent); margin-bottom: 12px; }
-    .product__body > p { color: var(--ink-soft); font-size: 0.95rem; margin-bottom: 18px; }
+    .product__body { padding: clamp(22px, 2vw, 28px); display: flex; flex-direction: column; flex: 1; }
+    .product__body h3 { font-size: clamp(1.35rem, 1.6vw, 1.55rem); margin: 8px 0 6px; }
+    .product__tagline { font-size: 0.88rem; font-weight: 700; color: var(--accent); margin-bottom: 10px; }
+    .product__body > p { color: var(--ink-soft); font-size: 0.92rem; line-height: 1.6; margin-bottom: 18px; }
     .product__chips { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 24px; }
     .product__chips span {
       font-size: 0.74rem; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase;
       padding: 6px 13px; border-radius: 999px;
       background: var(--bg-soft); color: var(--accent);
     }
-    .product__actions { margin-top: auto; display: flex; gap: 10px; }
+    .product__actions { margin-top: auto; display: flex; gap: 8px; flex-wrap: wrap; }
     .product__actions .btn { flex: 1; }
 
-    /* every-bundle strip */
-    .includes { padding: 0 clamp(20px, 5vw, 72px) clamp(80px, 12vh, 140px); }
-    .includes__inner {
-      max-width: 1280px; margin: 0 auto;
-      background: var(--bg-soft); border-radius: var(--radius-lg);
-      padding: clamp(26px, 3vw, 44px);
-      display: grid; grid-template-columns: auto repeat(4, 1fr);
-      gap: clamp(18px, 2.6vw, 40px); align-items: center;
-    }
-    .includes__title { font-size: 1.05rem; font-weight: 800; max-width: 160px; }
-    .includes__item { font-size: 0.9rem; color: var(--ink-soft); display: flex; gap: 10px; align-items: flex-start; }
-    .includes__item i { font-style: normal; color: var(--accent); font-weight: 800; }
-
     /* consultation */
-    .consult { padding: 0 clamp(20px, 5vw, 72px) clamp(90px, 14vh, 160px); }
+    .consult { padding: clamp(90px, 13vh, 150px) clamp(20px, 5vw, 72px) clamp(90px, 14vh, 160px); }
     .consult__inner {
       max-width: 1280px; margin: 0 auto;
       background: var(--ink); color: var(--bg);
@@ -124,24 +111,43 @@
     .consult__body .section-head__kicker { margin-bottom: 14px; }
     .consult__body h2 { margin-bottom: 18px; }
     .consult__body > p { color: rgba(251, 245, 236, 0.72); max-width: 520px; margin-bottom: 30px; font-size: 1.05rem; }
-    .consult__list { list-style: none; display: grid; grid-template-columns: 1fr 1fr; gap: 14px 26px; margin-bottom: 34px; max-width: 560px; }
-    .consult__list li { display: flex; gap: 10px; font-size: 0.95rem; align-items: flex-start; }
-    .consult__list li::before { content: "✓"; color: var(--accent); font-weight: 800; }
-    .consult__actions { display: flex; align-items: center; gap: 18px; flex-wrap: wrap; }
-    .consult__slots { font-size: 0.85rem; color: rgba(251, 245, 236, 0.55); }
+    /* numbered vertical flow */
+    .consult__steps { list-style: none; margin: 0; padding: 0; max-width: 480px; }
+    .consult__steps li { position: relative; padding: 0 0 26px 60px; }
+    .consult__steps li:last-child { padding-bottom: 0; }
+    .consult__steps li::before {
+      content: attr(data-n);
+      position: absolute; left: 0; top: -2px;
+      width: 40px; height: 40px; border-radius: 50%;
+      display: grid; place-items: center;
+      font-size: 0.78rem; font-weight: 800; letter-spacing: 0.06em;
+      color: var(--accent);
+      background: rgba(218, 112, 0, 0.12);
+      border: 1px solid rgba(218, 112, 0, 0.4);
+    }
+    .consult__steps li::after {
+      content: ""; position: absolute; left: 20px; top: 46px; bottom: 6px;
+      width: 1px; background: rgba(251, 245, 236, 0.16);
+    }
+    .consult__steps li:last-child::after { display: none; }
+    .consult__steps b { display: block; font-size: 1.05rem; margin-bottom: 5px; }
+    .consult__steps span { font-size: 0.93rem; line-height: 1.55; color: rgba(251, 245, 236, 0.6); }
     .consult__side {
       position: relative;
       display: flex; align-items: center; justify-content: center;
       padding: clamp(30px, 4vw, 60px);
     }
     .consult__card {
-      width: min(320px, 100%);
+      width: min(340px, 100%);
       background: var(--paper); color: var(--ink);
-      border-radius: 24px; padding: 28px;
+      border-radius: 26px; padding: 30px;
       box-shadow: 0 40px 80px rgba(0, 0, 0, 0.4);
-      transform: rotate(-3deg);
     }
-    .consult__card > b { display: block; font-size: 1.3rem; margin: 12px 0 18px; }
+    .consult__card > b { display: block; font-size: 1.3rem; margin: 14px 0 0; }
+    .consult__price { display: flex; align-items: baseline; gap: 8px; margin: 10px 0 20px; }
+    .consult__price b { font-size: 2.3rem; font-weight: 800; line-height: 1; color: var(--ink); }
+    .consult__price span { font-size: 0.82rem; font-weight: 600; color: var(--ink-soft); }
+    .consult__card .btn { width: 100%; justify-content: center; margin-top: 22px; }
     .consult__card-tag {
       display: inline-block; background: var(--accent); color: #fff;
       font-size: 0.7rem; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase;
@@ -154,10 +160,8 @@
     }
     .consult__card-row span { color: var(--ink-soft); }
     .consult__card-foot {
-      margin-top: 16px; text-align: center;
-      background: var(--bg-soft); color: var(--accent);
-      font-size: 0.85rem; font-weight: 700;
-      padding: 11px; border-radius: 999px;
+      margin-top: 14px; text-align: center;
+      font-size: 0.78rem; color: var(--ink-soft);
     }
 
     /* cart toast */
@@ -173,7 +177,7 @@
     }
     .toast i { font-style: normal; color: var(--accent); font-weight: 800; }
 
-    /* floating cart bubble — only alive when the cart has items */
+    /* floating cart bubble: only alive when the cart has items */
     .cartfab {
       position: fixed; right: 26px; bottom: 26px; z-index: 210;
       width: 62px; height: 62px; border-radius: 50%;
@@ -260,16 +264,13 @@
     @media (max-width: 1024px) {
       .bh__inner { grid-template-columns: 1fr; }
       .bh__mascot { display: none; }
-      .shop__grid { grid-template-columns: 1fr; max-width: 620px; }
-      .includes__inner { grid-template-columns: 1fr 1fr; }
-      .includes__title { max-width: none; grid-column: 1 / -1; }
+      .shop__grid { grid-template-columns: repeat(2, 1fr); }
       .consult__inner { grid-template-columns: 1fr; }
-      .consult__side { order: -1; padding-top: 40px; }
+      .consult__side { order: -1; padding: 0 0 40px; }
     }
     @media (max-width: 720px) {
-      .includes__inner { grid-template-columns: 1fr; }
+      .shop__grid { grid-template-columns: 1fr; max-width: 440px; }
       .product__actions { flex-direction: column; }
-      .consult__list { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -286,7 +287,7 @@
         <a href="about.html">About</a>
         <a href="contact.html">Contact</a>
       </nav>
-      <a href="index.html#cta" class="btn btn--accent nav__cta">Get the app</a>
+      <a href="#consult" class="btn btn--accent nav__cta">Book consultation</a>
       <button class="nav__burger" id="burger" aria-label="Open menu"><span></span><span></span></button>
     </div>
   </header>
@@ -297,39 +298,59 @@
     <a href="blog.html">Blog</a>
     <a href="about.html">About</a>
     <a href="contact.html">Contact</a>
-    <a href="index.html#cta" class="btn btn--accent">Get the app</a>
+    <a href="#consult" class="btn btn--accent">Book consultation</a>
   </div>
 
   <main>
 
     <!-- ============ HERO ============ -->
     <section class="bh">
-      <div class="bh__ghost" aria-hidden="true">recipes</div>
+      <div class="bh__ghost" aria-hidden="true">consult</div>
       <div class="bh__inner">
         <div>
-          <p class="section-head__kicker">Recipe bundles</p>
-          <h1>Nigerian recipes built<br /><span class="accent-text">around your goals.</span></h1>
-          <p class="bh__sub">5–7 recipes per bundle. Full macros, step-by-step instructions, and a tip from Lu on every page. Pick your goal, download, and start cooking today.</p>
+          <p class="section-head__kicker">1-on-1 nutrition consultation</p>
+          <h1>Stop guessing.<br /><span class="accent-text">Get a plan built for your body.</span></h1>
+          <p class="bh__sub">A personal Nigerian meal plan delivered to your app and your inbox within 24 hours, built around your goal, your health and your budget. Or grab a recipe bundle below if you just need better food this week.</p>
           <div class="bh__actions">
-            <a href="#bundles" class="btn btn--accent btn--lg">Shop the bundles</a>
-            <a href="#consult" class="btn btn--ghost btn--lg">Book a consultation</a>
-          </div>
-          <div class="bh__ticks">
-            <span class="bh__tick"><i>✓</i> Instant PDF download</span>
-            <span class="bh__tick"><i>✓</i> Full macro breakdown</span>
-            <span class="bh__tick"><i>✓</i> Nigerian ingredients</span>
-            <span class="bh__tick"><i>✓</i> One-time purchase, no subscription</span>
+            <a href="https://calendly.com/useakaani" target="_blank" rel="noopener" class="btn btn--accent btn--lg">Book consultation</a>
+            <a href="#bundles" class="btn btn--ghost btn--lg">Browse recipe bundles</a>
           </div>
         </div>
         <div class="bh__visual" id="bhVisual" aria-hidden="true">
-          <figure class="bh__card bh__card--back">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/63/Goat_meat_pepper_soup_served_with_bread.jpg/1920px-Goat_meat_pepper_soup_served_with_bread.jpg" alt="" />
-            <figcaption>Cut Season <em>$5.99</em></figcaption>
-          </figure>
-          <figure class="bh__card bh__card--front">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fc/Suya_preparation_for_grilling_5.jpg/1920px-Suya_preparation_for_grilling_5.jpg" alt="" />
-            <figcaption>Mama Put Macros <em>$4.99</em></figcaption>
-          </figure>
+          <div class="bh__photo">
+            <img src="assets/consult-hero.jpg" alt="A woman on a video call with an akaani dietitian" />
+          </div>
+          <div class="bh__pricebadge">₦50,000<span>per session</span></div>
+          <div class="bh__planbadge"><i></i>Plan in your inbox in 24 hours</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ BOOK A CONSULTANT ============ -->
+    <section class="consult" id="consult">
+      <div class="consult__inner">
+        <div class="consult__body">
+          <p class="section-head__kicker">What you get</p>
+          <h2>One session.<br /><span class="accent-text">A plan made for you.</span></h2>
+          <p>Bundles cover the big goals, but every body is different. If you want more customization around your specific goal, sit down with an akaani nutrition coach and leave with a plan made for you.</p>
+          <ol class="consult__steps">
+            <li data-n="01"><b>45-minute video call</b><span>One-on-one with an akaani nutrition coach.</span></li>
+            <li data-n="02"><b>A personal Nigerian meal plan</b><span>In your app and inbox within 24 hours.</span></li>
+            <li data-n="03"><b>Macro targets set for you</b><span>Numbers you can hit, on food you already eat.</span></li>
+            <li data-n="04"><b>Two weeks of follow-up</b><span>Questions answered by email after the call.</span></li>
+          </ol>
+        </div>
+        <div class="consult__side">
+          <div class="consult__card" id="consultCard">
+            <span class="consult__card-tag">1-on-1 session</span>
+            <b>Nutrition consultation</b>
+            <div class="consult__price"><b>₦50,000</b><span>per session</span></div>
+            <div class="consult__card-row"><span>Length</span><b>45 minutes</b></div>
+            <div class="consult__card-row"><span>Format</span><b>Video call</b></div>
+            <div class="consult__card-row"><span>Your plan</span><b>Within 24 hours</b></div>
+            <a href="https://calendly.com/useakaani" target="_blank" rel="noopener" class="btn btn--accent btn--lg">Book consultation</a>
+            <p class="consult__card-foot">Scheduled via Calendly. Reschedule anytime.</p>
+          </div>
         </div>
       </div>
     </section>
@@ -338,8 +359,9 @@
     <section class="shop" id="bundles">
       <div class="section-head section-head--row">
         <div>
-          <p class="section-head__kicker">Pick your goal</p>
-          <h2>Four bundles.<br />One honest kitchen.</h2>
+          <p class="section-head__kicker">Recipe bundles</p>
+          <h2>Prefer to cook it<br /><span class="accent-text">yourself?</span></h2>
+          <p class="section-head__sub">5 to 7 recipes per bundle, with full macros, step-by-step instructions, and a tip from Lu on every page. Instant PDF download, one-time purchase.</p>
         </div>
       </div>
       <div class="shop__grid">
@@ -353,7 +375,7 @@
           <div class="product__body">
             <p class="product__tagline">Street-food classics, macro optimized.</p>
             <h3>Mama Put Macros</h3>
-            <p>The roadside flavours you grew up on — rebuilt so the macros work as hard as the taste. Full ingredients, step-by-step instructions, and a tip from Lu in every recipe.</p>
+            <p>The roadside flavours you grew up on, rebuilt so the macros work as hard as the taste. Full ingredients, step-by-step instructions, and a tip from Lu in every recipe.</p>
             <div class="product__chips"><span>Balanced macros</span><span>Breakfast</span><span>Lunch</span></div>
             <div class="product__actions">
               <button class="btn btn--ghost-dark add-cart" type="button">Add to cart</button>
@@ -371,7 +393,7 @@
           <div class="product__body">
             <p class="product__tagline">Ancient ingredients, modern gut health.</p>
             <h3>Roots &amp; Restore</h3>
-            <p>Five fibre-rich, gut-friendly recipes curated to aid digestion — the vegetables and roots our grandmothers swore by, with the science to back them up.</p>
+            <p>Five fibre-rich, gut-friendly recipes curated to aid digestion. The vegetables and roots our grandmothers swore by, with the science to back them up.</p>
             <div class="product__chips"><span>Gut health</span><span>Digestion</span><span>Fibre-rich</span></div>
             <div class="product__actions">
               <button class="btn btn--ghost-dark add-cart" type="button">Add to cart</button>
@@ -407,7 +429,7 @@
           <div class="product__body">
             <p class="product__tagline">Maximum protein. Pure Nigerian.</p>
             <h3>The Protein Pot</h3>
-            <p>Seven recipes curated for muscle building and active lifestyles — the pots that fuel your gym week without a single chicken-and-rice cliché.</p>
+            <p>Seven recipes curated for muscle building and active lifestyles. The pots that fuel your gym week without a single chicken-and-rice cliché.</p>
             <div class="product__chips"><span>Muscle building</span><span>Active lifestyle</span></div>
             <div class="product__actions">
               <button class="btn btn--ghost-dark add-cart" type="button">Add to cart</button>
@@ -416,48 +438,6 @@
           </div>
         </article>
 
-      </div>
-    </section>
-
-    <!-- ============ EVERY BUNDLE INCLUDES ============ -->
-    <section class="includes">
-      <div class="includes__inner">
-        <p class="includes__title">Inside every bundle</p>
-        <p class="includes__item"><i>✓</i> Full ingredient lists in local measures</p>
-        <p class="includes__item"><i>✓</i> Step-by-step cooking instructions</p>
-        <p class="includes__item"><i>✓</i> Complete macro breakdown per serving</p>
-        <p class="includes__item"><i>✓</i> A tip from Lu on every page</p>
-      </div>
-    </section>
-
-    <!-- ============ BOOK A CONSULTANT ============ -->
-    <section class="consult" id="consult">
-      <div class="consult__inner">
-        <div class="consult__body">
-          <p class="section-head__kicker">Beyond the bundles</p>
-          <h2>Need something built<br /><span class="accent-text">just for you?</span></h2>
-          <p>Bundles cover the big goals — but every body is different. If you want more customization around your specific goal — a wedding cut, managing a health condition, feeding a family of five — sit down with an akaani nutrition coach and leave with a plan made for you.</p>
-          <ul class="consult__list">
-            <li>45-minute one-on-one video call</li>
-            <li>Personal Nigerian meal plan, built live</li>
-            <li>Macro targets set around your goal</li>
-            <li>Two weeks of follow-up inside the app</li>
-          </ul>
-          <div class="consult__actions">
-            <a href="mailto:hello@useakaani.com?subject=Book%20a%20consultation" class="btn btn--accent btn--lg">Book a consultation</a>
-            <span class="consult__slots">Limited slots each week</span>
-          </div>
-        </div>
-        <div class="consult__side" aria-hidden="true">
-          <div class="consult__card" id="consultCard">
-            <span class="consult__card-tag">1-on-1 session</span>
-            <b>Nutrition consultation</b>
-            <div class="consult__card-row"><span>Length</span><b>45 minutes</b></div>
-            <div class="consult__card-row"><span>Format</span><b>Video call</b></div>
-            <div class="consult__card-row"><span>You leave with</span><b>A personal plan</b></div>
-            <div class="consult__card-foot">Slots open every Monday</div>
-          </div>
-        </div>
       </div>
     </section>
 
@@ -579,11 +559,11 @@
       .from(".bh .section-head__kicker, .bh h1, .bh__sub", { y: 44, autoAlpha: 0, duration: 0.9, stagger: 0.12, delay: 0.2 })
       .from(".bh__actions .btn", { y: 24, autoAlpha: 0, duration: 0.6, stagger: 0.1 }, "-=0.55")
       .from(".bh__tick", { y: 20, autoAlpha: 0, duration: 0.5, stagger: 0.08 }, "-=0.45")
-      .from(".bh__card--back", { y: 110, autoAlpha: 0, rotation: 14, duration: 1, ease: "power4.out" }, "-=0.9")
-      .from(".bh__card--front", { y: 140, autoAlpha: 0, rotation: -12, duration: 1, ease: "power4.out" }, "-=0.8");
+      .from(".bh__photo", { y: 90, autoAlpha: 0, rotation: -4, duration: 1, ease: "power4.out" }, "-=0.9")
+      .from(".bh__pricebadge, .bh__planbadge", { scale: 0, autoAlpha: 0, duration: 0.55, ease: "back.out(1.9)", stagger: 0.18, transformOrigin: "bottom left" }, "-=0.4");
     if (!prefersReduced) {
-      gsap.to(".bh__card--front", { y: -12, duration: 2.6, yoyo: true, repeat: -1, ease: "sine.inOut" });
-      gsap.to(".bh__card--back", { y: 10, duration: 3, yoyo: true, repeat: -1, ease: "sine.inOut" });
+      gsap.to(".bh__pricebadge", { y: -8, duration: 2.4, yoyo: true, repeat: -1, ease: "sine.inOut", delay: 1.8 });
+      gsap.to(".bh__planbadge", { y: 7, duration: 2.8, yoyo: true, repeat: -1, ease: "sine.inOut", delay: 2.1 });
     }
     gsap.to(".bh__ghost", {
       xPercent: -12, ease: "none",
@@ -608,7 +588,6 @@
     }
     staggerReveal(".section-head");
     staggerReveal(".product", { lift: false, stagger: 0.14 });
-    staggerReveal(".includes__inner");
     staggerReveal(".consult__inner");
 
     /* consult session card pop */

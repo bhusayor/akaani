@@ -59,64 +59,30 @@
     }
 
     /* what you can ask a dietitian */
-    .ask { position: relative; padding: clamp(80px, 12vh, 130px) clamp(20px, 5vw, 72px) clamp(46px, 7vh, 70px); }
-    .ask__head { max-width: 1280px; margin: 0 auto 36px; }
+    .ask { padding: clamp(80px, 12vh, 130px) clamp(20px, 5vw, 72px) clamp(46px, 7vh, 70px); }
+    .ask__head { max-width: 1280px; margin: 0 auto 44px; }
     .ask__head h2 { margin-bottom: 16px; }
     .ask__head p { color: var(--ink-soft); max-width: 640px; font-size: 1.05rem; }
-
-    .ask__topics { max-width: 1280px; margin: 0 auto 22px; display: flex; flex-wrap: wrap; gap: 10px; }
-    .topic {
-      font: inherit; font-size: 0.88rem; font-weight: 700;
-      display: inline-flex; align-items: center; gap: 9px;
-      padding: 11px 20px; border-radius: 999px; cursor: pointer;
-      background: var(--paper); color: var(--ink-soft);
-      border: 1.5px solid var(--line);
-      transition: background 0.35s, color 0.35s, border-color 0.35s, transform 0.35s var(--ease);
+    .ask__grid {
+      max-width: 1280px; margin: 0 auto;
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      gap: clamp(14px, 1.8vw, 22px);
     }
-    .topic::before {
-      content: ""; width: 7px; height: 7px; border-radius: 50%;
-      background: currentColor; opacity: 0.45; transition: opacity 0.3s, background 0.3s;
+    .askcard {
+      background: var(--paper); border: 1px solid var(--line);
+      border-radius: 22px; border-bottom-left-radius: 6px;
+      padding: 24px 22px;
+      display: flex; flex-direction: column; gap: 16px;
+      transition: transform 0.5s var(--ease), box-shadow 0.5s, border-color 0.4s;
     }
-    .topic:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-3px); }
-    .topic.is-on { background: var(--ink); border-color: var(--ink); color: var(--bg); }
-    .topic.is-on::before { background: var(--accent); opacity: 1; }
-
-    .ask__panel {
-      position: relative; max-width: 1280px; margin: 0 auto;
-      background: var(--ink); color: var(--bg);
-      border-radius: 36px; overflow: hidden;
-      padding: clamp(30px, 4.2vw, 62px);
-      display: grid; grid-template-columns: 1.02fr 1fr;
-      gap: clamp(26px, 4vw, 60px);
-      will-change: transform;
+    .askcard:hover { transform: translateY(-6px); border-color: var(--accent); box-shadow: 0 22px 44px rgba(0, 51, 51, 0.12); }
+    .askcard q { font-size: 1.02rem; font-weight: 600; line-height: 1.5; color: var(--ink); }
+    .askcard span {
+      margin-top: auto; align-self: flex-start;
+      font-size: 0.7rem; font-weight: 800; letter-spacing: 0.09em; text-transform: uppercase;
+      color: var(--accent); background: var(--bg-soft);
+      padding: 6px 13px; border-radius: 999px;
     }
-    .ask__glow {
-      position: absolute; width: 460px; height: 460px; border-radius: 50%;
-      background: rgba(218, 112, 0, 0.16); filter: blur(90px);
-      top: -160px; right: -120px; pointer-events: none;
-    }
-    .ask__quote { position: relative; z-index: 1; }
-    .ask__quotemark {
-      display: block; font-size: 4.6rem; line-height: 0.5;
-      font-weight: 900; color: var(--accent); margin-bottom: 22px;
-    }
-    .ask__quote blockquote {
-      font-size: clamp(1.55rem, 2.7vw, 2.5rem); font-weight: 800;
-      line-height: 1.2; margin: 0;
-    }
-    .ask__answer { position: relative; z-index: 1; align-self: center; }
-    .ask__label {
-      font-size: 0.73rem; font-weight: 800; letter-spacing: 0.18em; text-transform: uppercase;
-      color: var(--accent); margin-bottom: 18px;
-    }
-    .ask__points { list-style: none; display: flex; flex-direction: column; gap: 14px; margin: 0 0 30px; }
-    .ask__points li {
-      display: flex; gap: 13px; align-items: flex-start;
-      font-size: 1rem; line-height: 1.55; color: rgba(251, 245, 236, 0.78);
-    }
-    .ask__points li b { color: var(--accent); font-weight: 800; flex: none; }
-    .ask__bar { position: absolute; left: 0; right: 0; bottom: 0; height: 3px; background: rgba(251, 245, 236, 0.12); }
-    .ask__bar i { display: block; height: 100%; background: var(--accent); transform: scaleX(0); transform-origin: left center; }
     .ask__note {
       max-width: 1280px; margin: 32px auto 0;
       font-size: 0.97rem; color: var(--ink-soft);
@@ -137,21 +103,8 @@
       font-size: 0.8rem; font-weight: 800; letter-spacing: 0.08em;
       margin-bottom: 20px;
     }
-    .whycard { transition: transform 0.5s var(--ease); }
-    .whycard:hover { transform: translateY(-6px); }
-    .whycard i { transition: background 0.4s, transform 0.5s var(--ease); }
-    .whycard:hover i { background: var(--accent); transform: rotate(-6deg) scale(1.06); }
     .whycard h3 { font-size: clamp(1.2rem, 1.7vw, 1.4rem); margin-bottom: 10px; }
     .whycard p { color: var(--ink-soft); font-size: 0.99rem; line-height: 1.62; }
-
-    /* scroll progress */
-    .pageprog { position: fixed; top: 0; left: 0; right: 0; height: 3px; z-index: 150; pointer-events: none; }
-    .pageprog i { display: block; height: 100%; background: var(--accent); transform: scaleX(0); transform-origin: left center; }
-
-    /* word-by-word scrub reveal */
-    .w { color: rgba(0, 51, 51, 0.16); transition: color 0.18s linear; }
-    .w.is-on { color: var(--ink); }
-    .w--accent.is-on { color: var(--accent); }
 
     /* bundle grid */
     .shop { padding: clamp(80px, 12vh, 140px) clamp(20px, 5vw, 72px); }
@@ -359,22 +312,20 @@
     @media (max-width: 1024px) {
       .bh__inner { grid-template-columns: 1fr; }
       .bh__mascot { display: none; }
-      .ask__panel { grid-template-columns: 1fr; }
+      .ask__grid { grid-template-columns: repeat(2, 1fr); }
       .why__grid { grid-template-columns: 1fr; max-width: 620px; }
       .shop__grid { grid-template-columns: repeat(2, 1fr); }
       .consult__inner { grid-template-columns: 1fr; }
       .consult__side { order: -1; padding: 0 0 40px; }
     }
     @media (max-width: 720px) {
-      .ask__panel { border-radius: 28px; }
+      .ask__grid { grid-template-columns: 1fr; max-width: 440px; }
       .shop__grid { grid-template-columns: 1fr; max-width: 440px; }
       .product__actions { flex-direction: column; }
     }
   </style>
 </head>
 <body>
-
-  <div class="pageprog" aria-hidden="true"><i id="pageBar"></i></div>
 
   <!-- ============ NAV ============ -->
   <header class="nav" id="nav">
@@ -430,35 +381,19 @@
     <section class="ask" id="ask">
       <div class="ask__head">
         <p class="section-head__kicker">What you can ask</p>
-        <h2 id="askHead">Come with the real question. Leave with a real answer.</h2>
-        <p>A registered dietitian is trained to advise on food and health, not just calories. Tap a topic and see what your session would actually cover.</p>
+        <h2>Come with the real question.<br /><span class="accent-text">Leave with a real answer.</span></h2>
+        <p>A registered dietitian is trained to advise on food and health, not just calories. If any of these sound like you, this session was built for you.</p>
       </div>
-
-      <div class="ask__topics" id="askTopics">
-        <button class="topic is-on" type="button">PCOS</button>
-        <button class="topic" type="button">Diabetes</button>
-        <button class="topic" type="button">Blood pressure</button>
-        <button class="topic" type="button">Gut health</button>
-        <button class="topic" type="button">Fat loss</button>
-        <button class="topic" type="button">Muscle gain</button>
-        <button class="topic" type="button">Pregnancy</button>
-        <button class="topic" type="button">Anaemia</button>
+      <div class="ask__grid">
+        <article class="askcard"><q>I have PCOS. What should my plate actually look like?</q><span>PCOS</span></article>
+        <article class="askcard"><q>I am prediabetic. Do I really have to give up swallow?</q><span>Diabetes</span></article>
+        <article class="askcard"><q>My BP is high. Is it only salt I need to worry about?</q><span>Blood pressure</span></article>
+        <article class="askcard"><q>Why am I bloated after almost every meal I eat?</q><span>Gut health</span></article>
+        <article class="askcard"><q>I am eating less and still not losing weight. What now?</q><span>Fat loss</span></article>
+        <article class="askcard"><q>I train five days a week. Am I even eating enough protein?</q><span>Muscle gain</span></article>
+        <article class="askcard"><q>I am pregnant. What do I actually need more of right now?</q><span>Pregnancy</span></article>
+        <article class="askcard"><q>My iron came back low. What should I be eating for it?</q><span>Anaemia</span></article>
       </div>
-
-      <div class="ask__panel" id="askPanel">
-        <div class="ask__glow" aria-hidden="true"></div>
-        <div class="ask__quote">
-          <span class="ask__quotemark" aria-hidden="true">&ldquo;</span>
-          <blockquote id="askQ">I have PCOS. What should my plate actually look like?</blockquote>
-        </div>
-        <div class="ask__answer">
-          <p class="ask__label">Your dietitian will look at</p>
-          <ul class="ask__points" id="askPoints"></ul>
-          <a href="https://calendly.com/useakaani" target="_blank" rel="noopener" class="btn btn--accent">Ask this on your call</a>
-        </div>
-        <div class="ask__bar" aria-hidden="true"><i id="askBar"></i></div>
-      </div>
-
       <p class="ask__note"><b>Not on this list?</b> Bring it to the call anyway. Your dietitian works alongside your doctor, never instead of them.</p>
     </section>
 
@@ -467,7 +402,7 @@
       <div class="why__inner">
         <div class="why__head">
           <p class="section-head__kicker">Why a dietitian</p>
-          <h2 id="whyHead">You do not need to be sick to see a dietitian.</h2>
+          <h2>You do not need to be sick<br /><span class="accent-text">to see a dietitian.</span></h2>
           <p>Most people book because something is not adding up. The weight, the bloating, the energy, the lab results, the food you were told to stop eating. A registered dietitian is the person actually qualified to sort that out.</p>
         </div>
         <div class="why__grid">
@@ -752,6 +687,7 @@
     }
     staggerReveal(".section-head");
     staggerReveal(".ask__head");
+    staggerReveal(".askcard", { lift: false, stagger: 0.08 });
     staggerReveal(".ask__note");
     staggerReveal(".why__head");
     staggerReveal(".whycard", { stagger: 0.12 });
@@ -903,179 +839,6 @@
 
     // restore persisted cart on load (badge appears without the pop)
     renderCart();
-
-
-    /* ============ SCROLL PROGRESS ============ */
-    ScrollTrigger.create({
-      start: 0, end: "max",
-      onUpdate: (self) => gsap.set("#pageBar", { scaleX: self.progress }),
-    });
-
-    /* ============ WORD-BY-WORD SCRUB HEADLINES ============ */
-    function scrubWords(el, trigger, accentFrom) {
-      if (!el) return;
-      const words = el.textContent.trim().split(/\s+/);
-      const from = accentFrom === undefined ? words.length : accentFrom;
-      el.innerHTML = words.map((w, i) => `<span class="w${i >= from ? " w--accent" : ""}">${w}</span>`).join(" ");
-      const spans = el.querySelectorAll(".w");
-      ScrollTrigger.create({
-        trigger: trigger || el, start: "top 82%", end: "bottom 55%", scrub: 0.4,
-        onUpdate: (self) => {
-          const n = Math.ceil(self.progress * spans.length);
-          spans.forEach((s, i) => s.classList.toggle("is-on", i < n));
-        },
-      });
-    }
-    scrubWords(document.getElementById("askHead"), ".ask__head", 5);
-    scrubWords(document.getElementById("whyHead"), ".why__head", 7);
-
-    /* ============ INTERACTIVE "ASK A DIETITIAN" PANEL ============ */
-    const ASK = [
-      { q: "I have PCOS. What should my plate actually look like?",
-        p: ["How your carbs are spread across the day, not just how many", "Fibre and protein in the swallow and rice you already eat", "Your cycle, your weight history and whatever your doctor has flagged"] },
-      { q: "I am prediabetic. Do I really have to give up swallow?",
-        p: ["Portion size and pairing, so swallow stops spiking you", "Which staples stay, which get swapped, and how often", "Your readings and medication timing, alongside your doctor"] },
-      { q: "My BP is high. Is it only salt I need to worry about?",
-        p: ["The sodium hiding in seasoning cubes, dried fish and processed meat", "Potassium-rich foods already in your market list", "Weight, alcohol and sleep, next to your doctor's plan"] },
-      { q: "Why am I bloated after almost every meal I eat?",
-        p: ["Which foods and combinations set it off for you", "Fibre load, water, and how fast you are eating", "Whether this is a food issue or one to send back to your doctor"] },
-      { q: "I am eating less and still not losing weight. What now?",
-        p: ["What your day actually looks like, not what you think it looks like", "A protein floor so you lose fat and keep muscle", "Sleep, stress, and how fast you are trying to lose"] },
-      { q: "I train five days a week. Am I even eating enough protein?",
-        p: ["Protein per meal, not just per day", "Nigerian protein that fits your budget, not imported powder", "How training days and rest days should differ"] },
-      { q: "I am pregnant. What do I actually need more of right now?",
-        p: ["Iron, folate, calcium and protein from everyday food", "Meals that still count on the days nausea wins", "What to avoid and what is safe to keep eating, with your antenatal team"] },
-      { q: "My iron came back low. What should I be eating for it?",
-        p: ["Iron-rich Nigerian foods and what quietly blocks absorption", "Pairing with vitamin C so more of it lands", "Following up with your doctor on supplements and repeat labs"] },
-    ];
-
-    const askTopics = [...document.querySelectorAll("#askTopics .topic")];
-    const askQ = document.getElementById("askQ");
-    const askPoints = document.getElementById("askPoints");
-    const askBar = document.getElementById("askBar");
-    const askPanel = document.getElementById("askPanel");
-    let askI = -1, askTimer = null, askVisible = false, askPaused = false;
-
-    function renderAsk(i, dir) {
-      const d = ASK[i];
-      askTopics.forEach((t, n) => t.classList.toggle("is-on", n === i));
-      gsap.timeline()
-        .to([askQ, askPoints], { autoAlpha: 0, y: -14 * dir, duration: 0.22, ease: "power2.in" })
-        .add(() => {
-          askQ.textContent = d.q;
-          askPoints.innerHTML = d.p.map((t) => `<li><b>&rarr;</b><span>${t}</span></li>`).join("");
-        })
-        .fromTo(askQ, { autoAlpha: 0, y: 22 * dir }, { autoAlpha: 1, y: 0, duration: 0.5, ease: "power3.out" })
-        .fromTo(askPoints.children, { autoAlpha: 0, y: 18 },
-          { autoAlpha: 1, y: 0, duration: 0.45, ease: "power3.out", stagger: 0.09 }, "-=0.34")
-        .set(askPoints, { autoAlpha: 1 }, 0.22);
-    }
-
-    function startAskTimer() {
-      if (askTimer) askTimer.kill();
-      gsap.set(askBar, { scaleX: 0 });
-      if (prefersReduced) return;
-      askTimer = gsap.to(askBar, {
-        scaleX: 1, duration: 6, ease: "none",
-        onComplete: () => setAsk((askI + 1) % ASK.length, 1),
-      });
-      if (askPaused || !askVisible) askTimer.pause();
-    }
-
-    function setAsk(i, dir) {
-      if (i === askI) return;
-      const d = dir || (askI === -1 ? 1 : (i > askI ? 1 : -1));
-      askI = i;
-      renderAsk(i, d);
-      startAskTimer();
-    }
-
-    askTopics.forEach((t, i) => t.addEventListener("click", () => setAsk(i)));
-    ["pointerenter", "focusin"].forEach((e) => askPanel.addEventListener(e, () => { askPaused = true; askTimer && askTimer.pause(); }));
-    ["pointerleave", "focusout"].forEach((e) => askPanel.addEventListener(e, () => { askPaused = false; if (askVisible) askTimer && askTimer.play(); }));
-
-    ScrollTrigger.create({
-      trigger: ".ask", start: "top 75%", end: "bottom 20%",
-      onToggle: (self) => {
-        askVisible = self.isActive;
-        if (!askTimer) return;
-        self.isActive && !askPaused ? askTimer.play() : askTimer.pause();
-      },
-    });
-    setAsk(0, 1);
-
-    /* pointer tilt on the panel */
-    if (!prefersReduced && window.matchMedia("(pointer: fine)").matches) {
-      gsap.set(askPanel, { transformPerspective: 1200 });
-      const rx = gsap.quickTo(askPanel, "rotationX", { duration: 0.6, ease: "power3.out" });
-      const ry = gsap.quickTo(askPanel, "rotationY", { duration: 0.6, ease: "power3.out" });
-      askPanel.addEventListener("pointermove", (e) => {
-        const r = askPanel.getBoundingClientRect();
-        rx(((e.clientY - r.top) / r.height - 0.5) * -5);
-        ry(((e.clientX - r.left) / r.width - 0.5) * 6);
-      });
-      askPanel.addEventListener("pointerleave", () => { rx(0); ry(0); });
-      gsap.to(".ask__glow", { xPercent: -18, yPercent: 22, duration: 9, yoyo: true, repeat: -1, ease: "sine.inOut" });
-    }
-
-    /* topics cascade in */
-    gsap.from(askTopics, {
-      y: 22, autoAlpha: 0, scale: 0.92, duration: 0.5, ease: "back.out(1.7)", stagger: 0.05,
-      scrollTrigger: { trigger: "#askTopics", start: "top 88%", once: true },
-    });
-    gsap.from("#askPanel", {
-      y: 60, autoAlpha: 0, duration: 0.9, ease: "power3.out",
-      scrollTrigger: { trigger: "#askPanel", start: "top 88%", once: true },
-    });
-
-    /* ============ WHY CARDS: 3D rise ============ */
-    gsap.set(".whycard", { transformPerspective: 900 });
-    ScrollTrigger.batch(".whycard", {
-      start: "top 88%", once: true,
-      onEnter: (batch) => gsap.from(batch, {
-        y: 70, autoAlpha: 0, rotationX: -14, duration: 0.9, ease: "power3.out", stagger: 0.13,
-      }),
-    });
-
-    /* ============ HERO: pointer parallax ============ */
-    if (!prefersReduced && window.matchMedia("(pointer: fine)").matches) {
-      const hx = gsap.quickTo(".bh__photo", "x", { duration: 0.9, ease: "power3.out" });
-      const hy = gsap.quickTo(".bh__photo", "y", { duration: 0.9, ease: "power3.out" });
-      const bx = gsap.quickTo(".bh__pricebadge", "x", { duration: 1.1, ease: "power3.out" });
-      const px = gsap.quickTo(".bh__planbadge", "x", { duration: 1.1, ease: "power3.out" });
-      document.querySelector(".bh").addEventListener("pointermove", (e) => {
-        const cx = (e.clientX / window.innerWidth - 0.5);
-        const cy = (e.clientY / window.innerHeight - 0.5);
-        hx(cx * 26); hy(cy * 18); bx(cx * -34); px(cx * 40);
-      });
-    }
-
-    /* ============ BUNDLES: image clip reveal ============ */
-    gsap.utils.toArray(".product__img").forEach((el) => {
-      gsap.fromTo(el, { clipPath: "inset(0 0 100% 0)" }, {
-        clipPath: "inset(0 0 0% 0)", duration: 1, ease: "power4.inOut",
-        scrollTrigger: { trigger: el, start: "top 90%", once: true },
-      });
-    });
-
-    /* ============ CONSULT: steps draw + price count ============ */
-    ScrollTrigger.create({
-      trigger: ".consult__steps", start: "top 85%", once: true,
-      onEnter: () => gsap.from(".consult__steps li", { x: -26, autoAlpha: 0, duration: 0.7, ease: "power3.out", stagger: 0.13 }),
-    });
-    const priceEl = document.querySelector(".consult__price b");
-    if (priceEl) {
-      ScrollTrigger.create({
-        trigger: priceEl, start: "top 90%", once: true,
-        onEnter: () => {
-          const o = { v: 0 };
-          gsap.to(o, {
-            v: 50000, duration: 1.4, ease: "power2.out",
-            onUpdate: () => { priceEl.textContent = "\u20A6" + Math.round(o.v).toLocaleString(); },
-          });
-        },
-      });
-    }
 
     window.addEventListener("load", () => ScrollTrigger.refresh());
   </script>

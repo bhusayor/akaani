@@ -59,43 +59,81 @@
     }
 
     /* what you can ask a dietitian */
-    .ask { padding: clamp(80px, 12vh, 130px) clamp(20px, 5vw, 72px) clamp(46px, 7vh, 70px); }
-    .ask__head { max-width: 1280px; margin: 0 auto 44px; }
+    .ask {
+      padding: clamp(80px, 12vh, 130px) clamp(20px, 5vw, 72px) clamp(46px, 7vh, 70px);
+    }
+    .ask__frame {
+      max-width: 1280px; margin: 0 auto;
+      display: grid; grid-template-columns: 0.9fr 1.1fr;
+      gap: clamp(28px, 3.4vw, 52px);
+      align-items: start;
+      background: linear-gradient(180deg, rgba(255,255,255,0.8), rgba(251,245,236,0.92));
+      border: 2px solid rgba(0, 51, 51, 0.14);
+      border-radius: 32px;
+      padding: clamp(26px, 3vw, 42px);
+      box-shadow: 0 22px 54px rgba(0, 51, 51, 0.08);
+    }
+    .ask__head { padding-right: clamp(10px, 1.6vw, 24px); }
     .ask__head h2 { margin-bottom: 16px; }
     .ask__head p { color: var(--ink-soft); max-width: 640px; font-size: 1.05rem; }
     .ask__grid {
-      max-width: 1280px; margin: 0 auto;
-      display: grid; grid-template-columns: repeat(4, 1fr);
+      display: grid; grid-template-columns: repeat(2, 1fr);
       gap: clamp(14px, 1.8vw, 22px);
     }
     .askcard {
-      background: var(--paper); border: 1px solid var(--line);
+      background: #fff; border: 2px solid rgba(0, 51, 51, 0.12);
       border-radius: 22px; border-bottom-left-radius: 6px;
       padding: 24px 22px;
       display: flex; flex-direction: column; gap: 16px;
       transition: transform 0.5s var(--ease), box-shadow 0.5s, border-color 0.4s;
+      box-shadow: inset 0 0 0 1px rgba(0, 51, 51, 0.03);
     }
-    .askcard:hover { transform: translateY(-6px); border-color: var(--accent); box-shadow: 0 22px 44px rgba(0, 51, 51, 0.12); }
+    .askcard:hover {
+      transform: translateY(-6px);
+      border-color: rgba(218, 112, 0, 0.72);
+      box-shadow: 0 22px 44px rgba(0, 51, 51, 0.12);
+    }
     .askcard q { font-size: 1.02rem; font-weight: 600; line-height: 1.5; color: var(--ink); }
     .askcard span {
       margin-top: auto; align-self: flex-start;
       font-size: 0.7rem; font-weight: 800; letter-spacing: 0.09em; text-transform: uppercase;
       color: var(--accent); background: var(--bg-soft);
       padding: 6px 13px; border-radius: 999px;
+      border: 1px solid rgba(218, 112, 0, 0.24);
     }
     .ask__note {
-      max-width: 1280px; margin: 32px auto 0;
+      max-width: 1280px; margin: 26px auto 0;
       font-size: 0.97rem; color: var(--ink-soft);
     }
     .ask__note b { color: var(--ink); }
 
     /* why a dietitian */
-    .why { background: var(--bg-soft); padding: clamp(80px, 12vh, 130px) clamp(20px, 5vw, 72px); }
+    .why {
+      background: var(--bg-soft);
+      padding: clamp(80px, 12vh, 130px) clamp(20px, 5vw, 72px);
+    }
     .why__inner { max-width: 1280px; margin: 0 auto; }
+    .why__frame {
+      background: #fff;
+      border: 2px solid rgba(0, 51, 51, 0.14);
+      border-radius: 32px;
+      padding: clamp(26px, 3vw, 42px);
+      box-shadow: 0 22px 54px rgba(0, 51, 51, 0.08);
+    }
     .why__head { max-width: 760px; margin-bottom: clamp(40px, 5vw, 60px); }
     .why__head h2 { margin-bottom: 16px; }
     .why__head p { color: var(--ink-soft); font-size: 1.06rem; }
-    .why__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(20px, 3vw, 44px); }
+    .why__grid {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: clamp(20px, 3vw, 44px);
+    }
+    .whycard {
+      background: linear-gradient(180deg, #fff, #fcfaf5);
+      border: 2px solid rgba(0, 51, 51, 0.12);
+      border-radius: 24px;
+      padding: 24px 24px 26px;
+      box-shadow: inset 0 0 0 1px rgba(0, 51, 51, 0.03);
+    }
     .whycard i {
       font-style: normal; display: grid; place-items: center;
       width: 46px; height: 46px; border-radius: 14px;
@@ -105,6 +143,24 @@
     }
     .whycard h3 { font-size: clamp(1.2rem, 1.7vw, 1.4rem); margin-bottom: 10px; }
     .whycard p { color: var(--ink-soft); font-size: 0.99rem; line-height: 1.62; }
+
+    @media (max-width: 900px) {
+      .ask__frame { grid-template-columns: 1fr; }
+      .ask__grid { grid-template-columns: 1fr; }
+      .why__grid { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 640px) {
+      .ask__frame,
+      .why__frame {
+        padding: 22px;
+        border-radius: 24px;
+      }
+      .askcard,
+      .whycard {
+        border-radius: 18px;
+      }
+    }
 
     /* bundle grid */
     .shop { padding: clamp(80px, 12vh, 140px) clamp(20px, 5vw, 72px); }
@@ -379,20 +435,22 @@
 
     <!-- ============ WHAT YOU CAN ASK ============ -->
     <section class="ask" id="ask">
-      <div class="ask__head">
-        <p class="section-head__kicker">What you can ask</p>
-        <h2>Come with the real question.<br /><span class="accent-text">Leave with a real answer.</span></h2>
-        <p>A registered dietitian is trained to advise on food and health, not just calories. If any of these sound like you, this session was built for you.</p>
-      </div>
-      <div class="ask__grid">
-        <article class="askcard"><q>I have PCOS. What should my plate actually look like?</q><span>PCOS</span></article>
-        <article class="askcard"><q>I am prediabetic. Do I really have to give up swallow?</q><span>Diabetes</span></article>
-        <article class="askcard"><q>My BP is high. Is it only salt I need to worry about?</q><span>Blood pressure</span></article>
-        <article class="askcard"><q>Why am I bloated after almost every meal I eat?</q><span>Gut health</span></article>
-        <article class="askcard"><q>I am eating less and still not losing weight. What now?</q><span>Fat loss</span></article>
-        <article class="askcard"><q>I train five days a week. Am I even eating enough protein?</q><span>Muscle gain</span></article>
-        <article class="askcard"><q>I am pregnant. What do I actually need more of right now?</q><span>Pregnancy</span></article>
-        <article class="askcard"><q>My iron came back low. What should I be eating for it?</q><span>Anaemia</span></article>
+      <div class="ask__frame">
+        <div class="ask__head">
+          <p class="section-head__kicker">What you can ask</p>
+          <h2>Come with the real question.<br /><span class="accent-text">Leave with a real answer.</span></h2>
+          <p>A registered dietitian is trained to advise on food and health, not just calories. If any of these sound like you, this session was built for you.</p>
+        </div>
+        <div class="ask__grid">
+          <article class="askcard"><q>I have PCOS. What should my plate actually look like?</q><span>PCOS</span></article>
+          <article class="askcard"><q>I am prediabetic. Do I really have to give up swallow?</q><span>Diabetes</span></article>
+          <article class="askcard"><q>My BP is high. Is it only salt I need to worry about?</q><span>Blood pressure</span></article>
+          <article class="askcard"><q>Why am I bloated after almost every meal I eat?</q><span>Gut health</span></article>
+          <article class="askcard"><q>I am eating less and still not losing weight. What now?</q><span>Fat loss</span></article>
+          <article class="askcard"><q>I train five days a week. Am I even eating enough protein?</q><span>Muscle gain</span></article>
+          <article class="askcard"><q>I am pregnant. What do I actually need more of right now?</q><span>Pregnancy</span></article>
+          <article class="askcard"><q>My iron came back low. What should I be eating for it?</q><span>Anaemia</span></article>
+        </div>
       </div>
       <p class="ask__note"><b>Not on this list?</b> Bring it to the call anyway. Your dietitian works alongside your doctor, never instead of them.</p>
     </section>
@@ -400,27 +458,29 @@
     <!-- ============ WHY A DIETITIAN ============ -->
     <section class="why">
       <div class="why__inner">
-        <div class="why__head">
-          <p class="section-head__kicker">Why a dietitian</p>
-          <h2>You do not need to be sick<br /><span class="accent-text">to see a dietitian.</span></h2>
-          <p>Most people book because something is not adding up. The weight, the bloating, the energy, the lab results, the food you were told to stop eating. A registered dietitian is the person actually qualified to sort that out.</p>
-        </div>
-        <div class="why__grid">
-          <article class="whycard">
-            <i>RD</i>
-            <h3>Qualified, not guessing</h3>
-            <p>Registered dietitians are trained and licensed to give nutrition advice for real health conditions. That is a different thing from advice off the internet or a friend who lost weight once.</p>
-          </article>
-          <article class="whycard">
-            <i>YOU</i>
-            <h3>Your body, your life</h3>
-            <p>Your labs, your medication, your work schedule, your budget, the people you cook for. All of it shapes the plan, so the plan is one you can actually keep.</p>
-          </article>
-          <article class="whycard">
-            <i>9ja</i>
-            <h3>Nigerian food stays</h3>
-            <p>No salmon and quinoa. Your dietitian builds around rice, swallow, soups, beans and the food you already buy, then shows you how to make it work for your goal.</p>
-          </article>
+        <div class="why__frame">
+          <div class="why__head">
+            <p class="section-head__kicker">Why a dietitian</p>
+            <h2>You do not need to be sick<br /><span class="accent-text">to see a dietitian.</span></h2>
+            <p>Most people book because something is not adding up. The weight, the bloating, the energy, the lab results, the food you were told to stop eating. A registered dietitian is the person actually qualified to sort that out.</p>
+          </div>
+          <div class="why__grid">
+            <article class="whycard">
+              <i>RD</i>
+              <h3>Qualified, not guessing</h3>
+              <p>Registered dietitians are trained and licensed to give nutrition advice for real health conditions. That is a different thing from advice off the internet or a friend who lost weight once.</p>
+            </article>
+            <article class="whycard">
+              <i>YOU</i>
+              <h3>Your body, your life</h3>
+              <p>Your labs, your medication, your work schedule, your budget, the people you cook for. All of it shapes the plan, so the plan is one you can actually keep.</p>
+            </article>
+            <article class="whycard">
+              <i>9ja</i>
+              <h3>Nigerian food stays</h3>
+              <p>No salmon and quinoa. Your dietitian builds around rice, swallow, soups, beans and the food you already buy, then shows you how to make it work for your goal.</p>
+            </article>
+          </div>
         </div>
       </div>
     </section>

@@ -58,6 +58,54 @@
       pointer-events: none; user-select: none;
     }
 
+    /* what you can ask a dietitian */
+    .ask { padding: clamp(80px, 12vh, 130px) clamp(20px, 5vw, 72px) clamp(46px, 7vh, 70px); }
+    .ask__head { max-width: 1280px; margin: 0 auto 44px; }
+    .ask__head h2 { margin-bottom: 16px; }
+    .ask__head p { color: var(--ink-soft); max-width: 640px; font-size: 1.05rem; }
+    .ask__grid {
+      max-width: 1280px; margin: 0 auto;
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      gap: clamp(14px, 1.8vw, 22px);
+    }
+    .askcard {
+      background: var(--paper); border: 1px solid var(--line);
+      border-radius: 22px; border-bottom-left-radius: 6px;
+      padding: 24px 22px;
+      display: flex; flex-direction: column; gap: 16px;
+      transition: transform 0.5s var(--ease), box-shadow 0.5s, border-color 0.4s;
+    }
+    .askcard:hover { transform: translateY(-6px); border-color: var(--accent); box-shadow: 0 22px 44px rgba(0, 51, 51, 0.12); }
+    .askcard q { font-size: 1.02rem; font-weight: 600; line-height: 1.5; color: var(--ink); }
+    .askcard span {
+      margin-top: auto; align-self: flex-start;
+      font-size: 0.7rem; font-weight: 800; letter-spacing: 0.09em; text-transform: uppercase;
+      color: var(--accent); background: var(--bg-soft);
+      padding: 6px 13px; border-radius: 999px;
+    }
+    .ask__note {
+      max-width: 1280px; margin: 32px auto 0;
+      font-size: 0.97rem; color: var(--ink-soft);
+    }
+    .ask__note b { color: var(--ink); }
+
+    /* why a dietitian */
+    .why { background: var(--bg-soft); padding: clamp(80px, 12vh, 130px) clamp(20px, 5vw, 72px); }
+    .why__inner { max-width: 1280px; margin: 0 auto; }
+    .why__head { max-width: 760px; margin-bottom: clamp(40px, 5vw, 60px); }
+    .why__head h2 { margin-bottom: 16px; }
+    .why__head p { color: var(--ink-soft); font-size: 1.06rem; }
+    .why__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(20px, 3vw, 44px); }
+    .whycard i {
+      font-style: normal; display: grid; place-items: center;
+      width: 46px; height: 46px; border-radius: 14px;
+      background: var(--ink); color: var(--bg);
+      font-size: 0.8rem; font-weight: 800; letter-spacing: 0.08em;
+      margin-bottom: 20px;
+    }
+    .whycard h3 { font-size: clamp(1.2rem, 1.7vw, 1.4rem); margin-bottom: 10px; }
+    .whycard p { color: var(--ink-soft); font-size: 0.99rem; line-height: 1.62; }
+
     /* bundle grid */
     .shop { padding: clamp(80px, 12vh, 140px) clamp(20px, 5vw, 72px); }
     .shop__grid { max-width: 1280px; margin: 0 auto; display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(18px, 2.2vw, 30px); }
@@ -264,11 +312,14 @@
     @media (max-width: 1024px) {
       .bh__inner { grid-template-columns: 1fr; }
       .bh__mascot { display: none; }
+      .ask__grid { grid-template-columns: repeat(2, 1fr); }
+      .why__grid { grid-template-columns: 1fr; max-width: 620px; }
       .shop__grid { grid-template-columns: repeat(2, 1fr); }
       .consult__inner { grid-template-columns: 1fr; }
       .consult__side { order: -1; padding: 0 0 40px; }
     }
     @media (max-width: 720px) {
+      .ask__grid { grid-template-columns: 1fr; max-width: 440px; }
       .shop__grid { grid-template-columns: 1fr; max-width: 440px; }
       .product__actions { flex-direction: column; }
     }
@@ -308,9 +359,9 @@
       <div class="bh__ghost" aria-hidden="true">consult</div>
       <div class="bh__inner">
         <div>
-          <p class="section-head__kicker">1-on-1 nutrition consultation</p>
+          <p class="section-head__kicker">Talk to a registered dietitian</p>
           <h1>Stop guessing.<br /><span class="accent-text">Get a plan built for your body.</span></h1>
-          <p class="bh__sub">A personal Nigerian meal plan delivered to your app and your inbox within 24 hours, built around your goal, your health and your budget. Or grab a recipe bundle below if you just need better food this week.</p>
+          <p class="bh__sub">Sit with a registered dietitian who is qualified to speak on your goal and your health. PCOS, diabetes, blood pressure, gut issues, training, pregnancy. You leave with a personal Nigerian meal plan in your app and inbox within 24 hours.</p>
           <div class="bh__actions">
             <a href="https://calendly.com/useakaani" target="_blank" rel="noopener" class="btn btn--accent btn--lg">Book consultation</a>
             <a href="#bundles" class="btn btn--ghost btn--lg">Browse recipe bundles</a>
@@ -326,15 +377,63 @@
       </div>
     </section>
 
+    <!-- ============ WHAT YOU CAN ASK ============ -->
+    <section class="ask" id="ask">
+      <div class="ask__head">
+        <p class="section-head__kicker">What you can ask</p>
+        <h2>Come with the real question.<br /><span class="accent-text">Leave with a real answer.</span></h2>
+        <p>A registered dietitian is trained to advise on food and health, not just calories. If any of these sound like you, this session was built for you.</p>
+      </div>
+      <div class="ask__grid">
+        <article class="askcard"><q>I have PCOS. What should my plate actually look like?</q><span>PCOS</span></article>
+        <article class="askcard"><q>I am prediabetic. Do I really have to give up swallow?</q><span>Diabetes</span></article>
+        <article class="askcard"><q>My BP is high. Is it only salt I need to worry about?</q><span>Blood pressure</span></article>
+        <article class="askcard"><q>Why am I bloated after almost every meal I eat?</q><span>Gut health</span></article>
+        <article class="askcard"><q>I am eating less and still not losing weight. What now?</q><span>Fat loss</span></article>
+        <article class="askcard"><q>I train five days a week. Am I even eating enough protein?</q><span>Muscle gain</span></article>
+        <article class="askcard"><q>I am pregnant. What do I actually need more of right now?</q><span>Pregnancy</span></article>
+        <article class="askcard"><q>My iron came back low. What should I be eating for it?</q><span>Anaemia</span></article>
+      </div>
+      <p class="ask__note"><b>Not on this list?</b> Bring it to the call anyway. Your dietitian works alongside your doctor, never instead of them.</p>
+    </section>
+
+    <!-- ============ WHY A DIETITIAN ============ -->
+    <section class="why">
+      <div class="why__inner">
+        <div class="why__head">
+          <p class="section-head__kicker">Why a dietitian</p>
+          <h2>You do not need to be sick<br /><span class="accent-text">to see a dietitian.</span></h2>
+          <p>Most people book because something is not adding up. The weight, the bloating, the energy, the lab results, the food you were told to stop eating. A registered dietitian is the person actually qualified to sort that out.</p>
+        </div>
+        <div class="why__grid">
+          <article class="whycard">
+            <i>RD</i>
+            <h3>Qualified, not guessing</h3>
+            <p>Registered dietitians are trained and licensed to give nutrition advice for real health conditions. That is a different thing from advice off the internet or a friend who lost weight once.</p>
+          </article>
+          <article class="whycard">
+            <i>YOU</i>
+            <h3>Your body, your life</h3>
+            <p>Your labs, your medication, your work schedule, your budget, the people you cook for. All of it shapes the plan, so the plan is one you can actually keep.</p>
+          </article>
+          <article class="whycard">
+            <i>9ja</i>
+            <h3>Nigerian food stays</h3>
+            <p>No salmon and quinoa. Your dietitian builds around rice, swallow, soups, beans and the food you already buy, then shows you how to make it work for your goal.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
     <!-- ============ BOOK A CONSULTANT ============ -->
     <section class="consult" id="consult">
       <div class="consult__inner">
         <div class="consult__body">
           <p class="section-head__kicker">What you get</p>
           <h2>One session.<br /><span class="accent-text">A plan made for you.</span></h2>
-          <p>Bundles cover the big goals, but every body is different. If you want more customization around your specific goal, sit down with an akaani nutrition coach and leave with a plan made for you.</p>
+          <p>Every body is different. If you want customization around your specific goal, your condition and your budget, sit down with an akaani registered dietitian and leave with a plan made for you.</p>
           <ol class="consult__steps">
-            <li data-n="01"><b>45-minute video call</b><span>One-on-one with an akaani nutrition coach.</span></li>
+            <li data-n="01"><b>45-minute video call</b><span>One-on-one with an akaani registered dietitian.</span></li>
             <li data-n="02"><b>A personal Nigerian meal plan</b><span>In your app and inbox within 24 hours.</span></li>
             <li data-n="03"><b>Macro targets set for you</b><span>Numbers you can hit, on food you already eat.</span></li>
             <li data-n="04"><b>Two weeks of follow-up</b><span>Questions answered by email after the call.</span></li>
@@ -360,8 +459,8 @@
       <div class="section-head section-head--row">
         <div>
           <p class="section-head__kicker">Recipe bundles</p>
-          <h2>Prefer to cook it<br /><span class="accent-text">yourself?</span></h2>
-          <p class="section-head__sub">5 to 7 recipes per bundle, with full macros, step-by-step instructions, and a tip from Lu on every page. Instant PDF download, one-time purchase.</p>
+          <h2>A plan is easier to keep<br /><span class="accent-text">when the recipes exist.</span></h2>
+          <p class="section-head__sub">Bundles are built around the same goals your dietitian works with. Start with one while you wait for your session, or pick up the one they point you to after it. 5 to 7 recipes each, full macros, and a tip from Lu on every page.</p>
         </div>
       </div>
       <div class="shop__grid">
@@ -587,6 +686,11 @@
       });
     }
     staggerReveal(".section-head");
+    staggerReveal(".ask__head");
+    staggerReveal(".askcard", { lift: false, stagger: 0.08 });
+    staggerReveal(".ask__note");
+    staggerReveal(".why__head");
+    staggerReveal(".whycard", { stagger: 0.12 });
     staggerReveal(".product", { lift: false, stagger: 0.14 });
     staggerReveal(".consult__inner");
 

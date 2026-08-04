@@ -67,65 +67,64 @@
 
     /* --- section 2: what you can ask --- */
     .ask { padding: clamp(80px, 12vh, 130px) clamp(20px, 5vw, 72px); }
-    .ask__inner {
-      max-width: 1280px; margin: 0 auto;
-      display: grid; grid-template-columns: 0.82fr 1.18fr;
-      gap: clamp(30px, 5vw, 84px); align-items: start;
-    }
-    .ask__side { position: sticky; top: 118px; }
-    .ask__side h2 { margin-bottom: 18px; }
-    .ask__side > p { color: var(--ink-soft); font-size: 1.04rem; line-height: 1.65; max-width: 400px; }
-    .ask__note {
-      margin-top: 30px; padding: 20px 22px;
-      border: 1px solid var(--line); border-left: 3px solid var(--accent);
-      border-radius: 4px 16px 16px 4px;
-      font-size: 0.93rem; line-height: 1.6; color: var(--ink-soft);
-      background: var(--paper);
-    }
-    .ask__note b { color: var(--ink); }
+    .ask__head { max-width: 1280px; margin: 0 auto clamp(38px, 4.4vw, 54px); }
+    .ask__head h2 { margin-bottom: 16px; }
+    .ask__head > p { color: var(--ink-soft); font-size: 1.05rem; line-height: 1.65; max-width: 620px; }
 
-    .ask__list { }
-    .ask__group {
-      display: flex; align-items: center; gap: 12px;
-      font-size: 0.73rem; font-weight: 800; letter-spacing: 0.16em; text-transform: uppercase;
-      color: var(--ink); padding-bottom: 12px;
-      border-bottom: 2px solid var(--ink);
+    .ask__grid {
+      max-width: 1280px; margin: 0 auto;
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: clamp(20px, 2.6vw, 34px);
+      align-items: start;
     }
-    .ask__group + .askrow { border-top: none; }
-    .ask__group:not(:first-child) { margin-top: 46px; }
-    .ask__group span {
-      font-size: 0.72rem; font-weight: 700; letter-spacing: 0.02em; text-transform: none;
-      color: var(--ink-soft);
+    .askpanel {
+      background: var(--paper); border: 1px solid var(--line);
+      border-radius: 28px; overflow: hidden;
+      transition: border-color 0.4s, box-shadow 0.5s;
     }
-    .askrow {
-      position: relative; display: grid;
-      grid-template-columns: 132px 1fr 40px; gap: clamp(14px, 2vw, 28px); align-items: center;
-      padding: clamp(20px, 2.2vw, 27px) 4px;
-      border-bottom: 1px solid var(--line);
-      cursor: default;
-      transition: padding-left 0.45s var(--ease), background 0.45s;
+    .askpanel:hover { border-color: rgba(218, 112, 0, 0.45); box-shadow: 0 26px 54px rgba(0, 51, 51, 0.09); }
+    .askpanel__head { padding: clamp(24px, 2.6vw, 34px); border-bottom: 1px solid var(--line); }
+    .askpanel__head b {
+      display: flex; align-items: center; gap: 11px;
+      font-size: clamp(1.12rem, 1.5vw, 1.34rem); margin-bottom: 8px;
     }
-    .askrow::after {
-      content: ""; position: absolute; left: 0; bottom: -1px;
-      height: 1px; width: 0; background: var(--accent);
-      transition: width 0.55s var(--ease);
+    .askpanel__head b::before {
+      content: ""; width: 9px; height: 9px; border-radius: 50%;
+      background: var(--accent); flex: none;
     }
-    .askrow:hover { padding-left: 16px; background: rgba(251, 245, 236, 0.6); }
-    .askrow:hover::after { width: 100%; }
-    .askrow__tag {
-      font-size: 0.7rem; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase;
-      color: var(--accent);
+    .askpanel__head span { display: block; font-size: 0.94rem; line-height: 1.55; color: var(--ink-soft); padding-left: 20px; }
+
+    .askitem {
+      position: relative; display: block;
+      padding: 17px clamp(24px, 2.6vw, 34px);
+      border-top: 1px solid var(--line);
+      transition: background 0.4s, padding-left 0.4s var(--ease);
     }
-    .askrow q { font-size: clamp(1.02rem, 1.45vw, 1.28rem); font-weight: 600; line-height: 1.42; color: var(--ink); }
-    .askrow__mark {
-      justify-self: end;
-      width: 34px; height: 34px; border-radius: 50%;
-      border: 1.5px solid var(--line);
-      display: grid; place-items: center;
-      font-size: 0.9rem; font-weight: 800; color: var(--ink-soft);
-      transition: border-color 0.4s, color 0.4s, background 0.4s;
+    .askitem:first-of-type { border-top: none; }
+    .askitem::before {
+      content: ""; position: absolute; left: 0; top: 8px; bottom: 8px; width: 3px;
+      background: var(--accent); border-radius: 0 3px 3px 0;
+      transform: scaleY(0); transform-origin: center;
+      transition: transform 0.45s var(--ease);
     }
-    .askrow:hover .askrow__mark { border-color: var(--accent); color: #fff; background: var(--accent); }
+    .askitem:hover { background: rgba(247, 228, 203, 0.4); padding-left: calc(clamp(24px, 2.6vw, 34px) + 8px); }
+    .askitem:hover::before { transform: scaleY(1); }
+    .askitem__tag {
+      display: block; font-size: 0.69rem; font-weight: 800;
+      letter-spacing: 0.14em; text-transform: uppercase;
+      color: var(--accent); margin-bottom: 6px;
+    }
+    .askitem q { font-size: clamp(1rem, 1.25vw, 1.1rem); font-weight: 600; line-height: 1.45; color: var(--ink); }
+
+    .ask__foot {
+      max-width: 1280px; margin: clamp(24px, 3vw, 36px) auto 0;
+      background: var(--bg-soft); border-radius: 26px;
+      padding: clamp(26px, 3vw, 38px);
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 26px; flex-wrap: wrap;
+    }
+    .ask__foot b { display: block; font-size: 1.14rem; margin-bottom: 6px; }
+    .ask__foot p { color: var(--ink-soft); font-size: 0.97rem; line-height: 1.6; max-width: 620px; }
 
     /* --- section 3: why a dietitian --- */
     .why { background: var(--bg-soft); padding: clamp(80px, 12vh, 130px) clamp(20px, 5vw, 72px); }
@@ -231,15 +230,13 @@
     @media (max-width: 1024px) {
       .dh__inner { grid-template-columns: 1fr; }
       .dh__visual { display: none; }
-      .ask__inner { grid-template-columns: 1fr; }
-      .ask__side { position: static; }
+      .ask__grid { grid-template-columns: 1fr; }
       .compare { grid-template-columns: 1fr; }
       .how__inner { grid-template-columns: 1fr; }
       .how__side { order: -1; padding-bottom: 0; }
     }
     @media (max-width: 640px) {
-      .askrow { grid-template-columns: 1fr 34px; row-gap: 8px; }
-      .askrow__tag { grid-column: 1 / -1; }
+      .ask__foot { flex-direction: column; align-items: flex-start; }
     }
   </style>
 </head>
@@ -299,70 +296,75 @@
 
     <!-- ============ WHAT YOU CAN ASK ============ -->
     <section class="ask" id="ask">
-      <div class="ask__inner">
-        <div class="ask__side">
-          <span class="rule"><i></i></span>
-          <p class="section-head__kicker">What you can ask</p>
-          <h2>Bring the question<br /><span class="accent-text">you have been googling.</span></h2>
-          <p>A registered dietitian is trained to advise on food and health, not just calories. These are the questions people actually bring to an akaani session.</p>
-          <p class="ask__note"><b>Not on this list?</b> Bring it anyway. Your dietitian works alongside your doctor, never instead of them.</p>
-        </div>
+      <div class="ask__head">
+        <span class="rule"><i></i></span>
+        <p class="section-head__kicker">What you can ask</p>
+        <h2>Bring the question<br /><span class="accent-text">you have been googling.</span></h2>
+        <p>A registered dietitian is qualified to talk about food and health, not just calories. Find yourself in one of these.</p>
+      </div>
 
-        <div class="ask__list">
-          <p class="ask__group">Health conditions <span>your dietitian is qualified to advise on</span></p>
-          <div class="askrow">
-            <span class="askrow__tag">PCOS</span>
-            <q>I have PCOS. What should my plate actually look like?</q>
-            <span class="askrow__mark">?</span>
+      <div class="ask__grid">
+        <article class="askpanel">
+          <div class="askpanel__head">
+            <b>A doctor has mentioned something</b>
+            <span>Conditions your dietitian is trained to build a plan around, alongside your doctor.</span>
           </div>
-          <div class="askrow">
-            <span class="askrow__tag">Diabetes</span>
-            <q>I am prediabetic. Do I really have to give up swallow?</q>
-            <span class="askrow__mark">?</span>
+          <div class="askitem">
+            <span class="askitem__tag">PCOS</span>
+            <q>What should my plate actually look like?</q>
           </div>
-          <div class="askrow">
-            <span class="askrow__tag">Blood pressure</span>
-            <q>My BP is high. Is salt the only thing I should worry about?</q>
-            <span class="askrow__mark">?</span>
+          <div class="askitem">
+            <span class="askitem__tag">Prediabetes and diabetes</span>
+            <q>Do I really have to give up swallow?</q>
           </div>
-          <div class="askrow">
-            <span class="askrow__tag">Gut health</span>
-            <q>Why am I bloated after almost every meal I eat?</q>
-            <span class="askrow__mark">?</span>
+          <div class="askitem">
+            <span class="askitem__tag">High blood pressure</span>
+            <q>Is salt the only thing I should worry about?</q>
           </div>
-          <div class="askrow">
-            <span class="askrow__tag">Anaemia</span>
-            <q>My iron came back low. What should I be eating?</q>
-            <span class="askrow__mark">?</span>
+          <div class="askitem">
+            <span class="askitem__tag">Low iron</span>
+            <q>What should I be eating to bring it back up?</q>
           </div>
-          <div class="askrow">
-            <span class="askrow__tag">Pregnancy</span>
-            <q>I am pregnant. What do I need more of right now?</q>
-            <span class="askrow__mark">?</span>
+          <div class="askitem">
+            <span class="askitem__tag">Pregnancy</span>
+            <q>What do I need more of right now?</q>
           </div>
+        </article>
 
-          <p class="ask__group">Goals and training <span>no diagnosis needed</span></p>
-          <div class="askrow">
-            <span class="askrow__tag">Fat loss</span>
-            <q>I am eating less and still not losing weight. What now?</q>
-            <span class="askrow__mark">?</span>
+        <article class="askpanel">
+          <div class="askpanel__head">
+            <b>Something just feels off</b>
+            <span>No diagnosis needed. This is why most people book their first session.</span>
           </div>
-          <div class="askrow">
-            <span class="askrow__tag">Muscle gain</span>
-            <q>I train five days a week. Am I eating enough protein?</q>
-            <span class="askrow__mark">?</span>
+          <div class="askitem">
+            <span class="askitem__tag">Fat loss</span>
+            <q>I am eating less and still not losing weight.</q>
           </div>
-          <div class="askrow">
-            <span class="askrow__tag">Energy</span>
-            <q>I crash every afternoon. Is it what I am eating?</q>
-            <span class="askrow__mark">?</span>
+          <div class="askitem">
+            <span class="askitem__tag">Training</span>
+            <q>Am I even eating enough protein for my gym week?</q>
           </div>
-          <div class="askrow">
-            <span class="askrow__tag">Budget</span>
+          <div class="askitem">
+            <span class="askitem__tag">Bloating</span>
+            <q>Why does almost every meal leave me uncomfortable?</q>
+          </div>
+          <div class="askitem">
+            <span class="askitem__tag">Energy</span>
+            <q>Why do I crash by three in the afternoon?</q>
+          </div>
+          <div class="askitem">
+            <span class="askitem__tag">Budget</span>
             <q>How do I eat better without spending more?</q>
-            <span class="askrow__mark">?</span>
           </div>
+        </article>
+      </div>
+
+      <div class="ask__foot">
+        <div>
+          <b>Your question is not on the list?</b>
+          <p>Bring it anyway. If it touches what you eat, it is worth 45 minutes. Your dietitian works alongside your doctor, never instead of them.</p>
         </div>
+        <a href="https://calendly.com/useakaani" target="_blank" rel="noopener" class="btn btn--accent btn--lg">Book consultation</a>
       </div>
     </section>
 
@@ -597,8 +599,9 @@
         }),
       });
     }
-    staggerReveal(".ask__side > *", { stagger: 0.1 });
-    staggerReveal(".askrow", { lift: false, stagger: 0.07 });
+    staggerReveal(".ask__head > *", { stagger: 0.1 });
+    staggerReveal(".askpanel", { stagger: 0.14 });
+    staggerReveal(".ask__foot");
     staggerReveal(".why__head > *", { stagger: 0.1 });
     staggerReveal(".compare");
     staggerReveal(".why__foot");

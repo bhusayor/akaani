@@ -15,9 +15,7 @@
     /* --- hero --- */
     .dh {
       position: relative; overflow: hidden;
-      background: var(--ink); color: var(--bg);
       padding: 165px clamp(20px, 5vw, 72px) clamp(70px, 9vh, 110px);
-      border-radius: 0 0 48px 48px;
     }
     .dh__inner {
       max-width: 1280px; margin: 0 auto;
@@ -25,12 +23,12 @@
       gap: clamp(30px, 4vw, 70px); align-items: center;
     }
     .dh h1 { font-size: clamp(2.6rem, 5.2vw, 4.5rem); margin-bottom: 24px; }
-    .dh__sub { color: rgba(251, 245, 236, 0.72); font-size: clamp(1rem, 1.35vw, 1.16rem); line-height: 1.65; max-width: 560px; margin-bottom: 34px; }
+    .dh__sub { color: var(--ink-soft); font-size: clamp(1rem, 1.35vw, 1.16rem); line-height: 1.65; max-width: 560px; margin-bottom: 34px; }
     .dh__actions { display: flex; gap: 14px; flex-wrap: wrap; }
     .dh__ghost {
       position: absolute; right: -1%; bottom: -14%;
       font-size: clamp(8rem, 20vw, 19rem); font-weight: 900; line-height: 1;
-      color: rgba(251, 245, 236, 0.04); letter-spacing: -0.05em;
+      color: rgba(0, 51, 51, 0.05); letter-spacing: -0.05em;
       pointer-events: none; user-select: none;
     }
     .dh__visual { position: relative; justify-self: center; width: clamp(300px, 30vw, 430px); }
@@ -38,7 +36,7 @@
       border-radius: 28px; overflow: hidden;
       aspect-ratio: 4 / 4.2;
       border: 5px solid var(--paper);
-      box-shadow: 0 40px 80px rgba(0, 0, 0, 0.45);
+      box-shadow: 0 40px 80px rgba(0, 51, 51, 0.2);
       transform: rotate(1.5deg);
     }
     .dh__photo img { width: 100%; height: 100%; object-fit: cover; object-position: 62% center; }
@@ -47,7 +45,7 @@
       background: var(--accent); color: #fff;
       font-size: 1.35rem; font-weight: 800; line-height: 1.1;
       padding: 14px 22px; border-radius: 18px; border-bottom-left-radius: 4px;
-      box-shadow: 0 18px 44px rgba(0, 0, 0, 0.4);
+      box-shadow: 0 18px 44px rgba(218, 112, 0, 0.35);
     }
     .dh__pricebadge span { display: block; font-size: 0.7rem; font-weight: 600; opacity: 0.85; letter-spacing: 0.06em; text-transform: uppercase; margin-top: 3px; }
     .dh__planbadge {
@@ -56,7 +54,8 @@
       background: var(--paper); color: var(--ink);
       font-size: 0.84rem; font-weight: 700;
       padding: 12px 18px; border-radius: 999px;
-      box-shadow: 0 18px 44px rgba(0, 0, 0, 0.35);
+      border: 1px solid var(--line);
+      box-shadow: 0 18px 44px rgba(0, 51, 51, 0.16);
     }
     .dh__planbadge i { font-style: normal; width: 8px; height: 8px; border-radius: 50%; background: var(--accent); }
 
@@ -252,7 +251,7 @@
 <body>
 
   <!-- ============ NAV ============ -->
-  <header class="nav" id="nav">
+  <header class="nav nav--solid" id="nav">
     <div class="nav__inner">
       <a class="nav__logo" href="index.html">akaani<span class="nav__dot">.</span></a>
       <nav class="nav__links">
@@ -290,7 +289,7 @@
           <p class="dh__sub">Sit with a registered dietitian who is qualified to speak on your goal and your health. PCOS, diabetes, blood pressure, gut issues, training, pregnancy. You leave with a personal Nigerian meal plan in your mail within 24 hours.</p>
           <div class="dh__actions">
             <a href="https://calendly.com/useakaani" target="_blank" rel="noopener" class="btn btn--accent btn--lg">Book consultation</a>
-            <a href="#ask" class="btn btn--ghost btn--lg">See what you can ask</a>
+            <a href="#ask" class="btn btn--ghost-dark btn--lg">See what you can ask</a>
           </div>
         </div>
         <div class="dh__visual" id="dhVisual" aria-hidden="true">
@@ -558,10 +557,7 @@
 
     /* sticky nav */
     const nav = document.getElementById("nav");
-    ScrollTrigger.create({
-      start: "top -80",
-      onUpdate: (self) => nav.classList.toggle("nav--solid", self.scroll() > 80),
-    });
+    nav.classList.add("nav--solid");
     const burger = document.getElementById("burger");
     const mobileMenu = document.getElementById("mobileMenu");
     burger.addEventListener("click", () => {

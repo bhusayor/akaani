@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Talk to a dietitian | akaani</title>
-  <meta name="description" content="A 45-minute video call with a registered dietitian who understands Nigerian food. Bring your goal or your health condition. Personal meal plan in your mail within 24 hours." />
+  <title>Talk to our in-house dietitian | akaani</title>
+  <meta name="description" content="A 45-minute video call with akaani's in-house registered dietitian. Hypertension, diabetes, PCOS and more. Personal Nigerian meal guide in your mail within 24 hours." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
@@ -213,6 +213,42 @@
     .bookcard .btn { width: 100%; justify-content: center; margin-top: 22px; }
     .bookcard__foot { margin-top: 14px; text-align: center; font-size: 0.78rem; color: var(--ink-soft); }
 
+    /* --- most asked flag --- */
+    .askitem__most {
+      display: inline-block; margin-left: 8px; vertical-align: middle;
+      font-size: 0.58rem; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase;
+      font-style: normal; background: var(--ink); color: #fff;
+      padding: 3px 9px; border-radius: 999px;
+    }
+
+    /* --- inside your guide --- */
+    .guide { padding: 0 clamp(20px, 5vw, 72px) clamp(80px, 12vh, 130px); }
+    .guide__inner { max-width: 1280px; margin: 0 auto; }
+    .guide__head { max-width: 720px; margin: 0 auto clamp(32px, 3.6vw, 46px); text-align: center; }
+    .guide__head h2 { font-size: clamp(1.9rem, 3.2vw, 2.6rem); margin-bottom: 14px; }
+    .guide__head p { color: var(--ink-soft); font-size: 1.02rem; line-height: 1.65; }
+    .guide__grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: clamp(16px, 2vw, 24px); }
+    .guidecard {
+      background: #FAFAF8; border: 1px solid var(--line);
+      border-radius: 22px; padding: clamp(22px, 2.2vw, 28px);
+      transition: transform 0.5s var(--ease), border-color 0.4s;
+    }
+    .guidecard:hover { transform: translateY(-6px); border-color: rgba(218, 112, 0, 0.45); }
+    .guidecard i {
+      font-style: normal; display: block;
+      font-size: 0.72rem; font-weight: 800; letter-spacing: 0.18em;
+      color: var(--accent); margin-bottom: 16px;
+    }
+    .guidecard b { display: block; font-size: 1.06rem; margin-bottom: 8px; }
+    .guidecard p { color: var(--ink-soft); font-size: 0.93rem; line-height: 1.6; }
+    .guide__note {
+      margin: clamp(24px, 2.6vw, 32px) auto 0; max-width: 760px; text-align: center;
+      font-size: 0.95rem; color: var(--ink-soft);
+    }
+    .guide__note b { color: var(--ink); }
+    @media (max-width: 1024px) { .guide__grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 640px) { .guide__grid { grid-template-columns: 1fr; } }
+
     /* --- FAQ --- */
     .faq2 { padding: clamp(80px, 12vh, 130px) clamp(20px, 5vw, 72px) clamp(60px, 8vh, 90px); }
     .faq2__head { max-width: 760px; margin: 0 auto clamp(34px, 4vw, 50px); text-align: center; }
@@ -347,9 +383,9 @@
       <div class="dh__ghost" aria-hidden="true">dietitian</div>
       <div class="dh__inner">
         <div>
-          <p class="section-head__kicker">1-on-1 dietitian consultation</p>
-          <h1>Talk to a dietitian who knows <span class="accent-text">Nigerian food.</span></h1>
-          <p class="dh__sub">Sit with a registered dietitian who is qualified to speak on your goal and your health. PCOS, diabetes, blood pressure, gut issues, training, pregnancy. You leave with a personal Nigerian meal plan in your mail within 24 hours.</p>
+          <p class="section-head__kicker">1-on-1 with our in-house dietitian</p>
+          <h1>Talk to our in-house dietitian who knows <span class="accent-text">Nigerian food.</span></h1>
+          <p class="dh__sub">Sit with akaani's own registered dietitian, qualified to speak on your goal and your health. Hypertension, diabetes, PCOS, gut issues, training, pregnancy. You leave with a personal Nigerian meal guide in your mail within 24 hours.</p>
           <div class="dh__actions">
             <a href="https://calendly.com/useakaani" target="_blank" rel="noopener" class="btn btn--dark btn--lg">Book consultation</a>
             <a href="#ask" class="btn btn--ghost-dark btn--lg">See what you can ask</a>
@@ -357,10 +393,10 @@
         </div>
         <div class="dh__visual" id="dhVisual" aria-hidden="true">
           <div class="dh__photo">
-            <img src="assets/consult-hero.jpg" alt="A dietitian talking a client through her meal plan" />
+            <img src="assets/consult-hero.jpg" alt="akaani's in-house dietitian on a video consultation" />
           </div>
           <div class="dh__pricebadge">₦50,000<span>per session</span></div>
-          <div class="dh__planbadge"><i></i>Meal plan in your mail in 24 hours</div>
+          <div class="dh__planbadge"><i></i>Meal guide in your mail in 24 hours</div>
         </div>
       </div>
     </section>
@@ -377,19 +413,19 @@
         <article class="askpanel">
           <div class="askpanel__head">
             <b>A doctor has mentioned something</b>
-            <span>Conditions your dietitian is trained to build a plan around, alongside your doctor.</span>
+            <span>What our dietitian sees most, and is trained to build a guide around alongside your doctor.</span>
           </div>
           <div class="askitem">
-            <span class="askitem__tag">PCOS</span>
-            <q>What should my plate actually look like?</q>
+            <span class="askitem__tag">Hypertension <em class="askitem__most">Most asked</em></span>
+            <q>My BP is high. Is salt the only thing I should worry about?</q>
           </div>
           <div class="askitem">
-            <span class="askitem__tag">Prediabetes and diabetes</span>
-            <q>Do I really have to give up swallow?</q>
+            <span class="askitem__tag">Diabetes <em class="askitem__most">Most asked</em></span>
+            <q>I am diabetic. Do I really have to give up swallow?</q>
           </div>
           <div class="askitem">
-            <span class="askitem__tag">High blood pressure</span>
-            <q>Is salt the only thing I should worry about?</q>
+            <span class="askitem__tag">PCOS <em class="askitem__most">Most asked</em></span>
+            <q>I have PCOS. What should my plate actually look like?</q>
           </div>
           <div class="askitem">
             <span class="askitem__tag">Low iron</span>
@@ -449,13 +485,13 @@
         <div class="why__grid">
           <article class="whycard">
             <i>RD</i>
-            <h3>Qualified, not guessing</h3>
-            <p>Registered dietitians are trained and licensed to give nutrition advice for real health conditions. That is a different thing from advice off the internet, or a friend who lost weight once.</p>
+            <h3>In-house and qualified</h3>
+            <p>Our dietitian is in-house, trained and licensed to give nutrition advice for real health conditions. Not a marketplace of strangers, and a different thing entirely from advice off the internet.</p>
           </article>
           <article class="whycard">
             <i>YOU</i>
             <h3>Your body, your life</h3>
-            <p>Your results, your medication, your work schedule, your budget, the people you cook for. All of it shapes the plan, so the plan is one you can actually keep.</p>
+            <p>Your results, your medication, your work schedule, your budget, the people you cook for. All of it shapes the guide, so it is one you can actually keep.</p>
           </article>
           <article class="whycard">
             <i>9ja</i>
@@ -471,12 +507,12 @@
       <div class="how__inner">
         <div class="how__body">
           <p class="section-head__kicker">What you get</p>
-          <h2>One session.<br /><span class="accent-text">A plan made for you.</span></h2>
+          <h2>One session.<br /><span class="accent-text">A guide made for you.</span></h2>
           <p>Nothing to fill in before you book. Pick a time, show up, and talk.</p>
           <ol class="how__steps">
             <li><i>01</i><b>Pick your time</b><span>Choose a slot and pay once. No forms, no prep.</span></li>
-            <li><i>02</i><b>45-minute video call</b><span>One-on-one with an akaani registered dietitian.</span></li>
-            <li><i>03</i><b>A personal Nigerian meal plan</b><span>In your mail within 24 hours of the call.</span></li>
+            <li><i>02</i><b>45-minute video call</b><span>One-on-one with akaani's in-house registered dietitian.</span></li>
+            <li><i>03</i><b>A personal Nigerian meal guide</b><span>In your mail within 24 hours of the call.</span></li>
             <li><i>04</i><b>Macro targets set for you</b><span>Numbers you can hit, on food you already eat.</span></li>
           </ol>
         </div>
@@ -487,11 +523,45 @@
             <div class="bookcard__price"><b>₦50,000</b><span>per session</span></div>
             <div class="bookcard__row"><span>Length</span><b>45 minutes</b></div>
             <div class="bookcard__row"><span>Format</span><b>Video call</b></div>
-            <div class="bookcard__row"><span>Your plan</span><b>Within 24 hours</b></div>
+            <div class="bookcard__row"><span>Your guide</span><b>Within 24 hours</b></div>
             <a href="https://calendly.com/useakaani" target="_blank" rel="noopener" class="btn btn--accent btn--lg">Book consultation</a>
             <p class="bookcard__foot">Scheduled via Calendly. Reschedule anytime.</p>
           </div>
         </div>
+      </div>
+    </section>
+
+    <!-- ============ INSIDE YOUR GUIDE ============ -->
+    <section class="guide">
+      <div class="guide__inner">
+        <div class="guide__head">
+          <p class="section-head__kicker">Your meal guide</p>
+          <h2>Not advice you have to decode.<br /><span class="accent-text">A guide you can cook from.</span></h2>
+          <p>Everything your dietitian works out on the call arrives written down, in the measures you already use.</p>
+        </div>
+        <div class="guide__grid">
+          <article class="guidecard">
+            <i>01</i>
+            <b>A week, mapped out</b>
+            <p>Breakfast, lunch and dinner for seven days, built from the food you already cook.</p>
+          </article>
+          <article class="guidecard">
+            <i>02</i>
+            <b>Portions you can see</b>
+            <p>Cups, wraps, bowls and pieces. No weighing scale, no grams you have to imagine.</p>
+          </article>
+          <article class="guidecard">
+            <i>03</i>
+            <b>Swaps that keep the taste</b>
+            <p>What to change and what to leave alone, for the meals you are not giving up.</p>
+          </article>
+          <article class="guidecard">
+            <i>04</i>
+            <b>Your numbers, explained</b>
+            <p>Calories and macros set for your body, with what they mean at the table.</p>
+          </article>
+        </div>
+        <p class="guide__note"><b>Managing something specific?</b> Hypertension, diabetes and PCOS guides are built around your readings and your medication, alongside your doctor.</p>
       </div>
     </section>
 
@@ -504,7 +574,7 @@
       <div class="faq2__list">
         <details class="faq2__item">
           <summary>Is a dietitian the same as a nutritionist?<span class="faq2__icon"></span></summary>
-          <div class="faq2__answer"><p>Not quite. A registered dietitian is trained, licensed and regulated to give nutrition advice for medical conditions, which is why they can work with things like diabetes, PCOS and hypertension. Anyone can call themselves a nutritionist.</p></div>
+          <div class="faq2__answer"><p>Not quite. A registered dietitian is trained, licensed and regulated to give nutrition advice for medical conditions, which is why ours can work with hypertension, diabetes and PCOS. Anyone can call themselves a nutritionist. akaani works with an in-house dietitian, so the person on your call is the same person who writes your guide.</p></div>
         </details>
         <details class="faq2__item">
           <summary>Do I need lab results before the call?<span class="faq2__icon"></span></summary>
@@ -512,7 +582,7 @@
         </details>
         <details class="faq2__item">
           <summary>Will I be told to stop eating Nigerian food?<span class="faq2__icon"></span></summary>
-          <div class="faq2__answer"><p>No. That is the entire point of akaani. Your plan is built on the food you already cook and buy, adjusted in portion, pairing and frequency rather than replaced.</p></div>
+          <div class="faq2__answer"><p>No. That is the entire point of akaani. Your guide is built on the food you already cook and buy, adjusted in portion, pairing and frequency rather than replaced.</p></div>
         </details>
         <details class="faq2__item">
           <summary>What if I need to reschedule?<span class="faq2__icon"></span></summary>
@@ -520,7 +590,7 @@
         </details>
         <details class="faq2__item">
           <summary>I am not sick. Is this still for me?<span class="faq2__icon"></span></summary>
-          <div class="faq2__answer"><p>Yes. Most people book for fat loss, muscle gain, energy, pregnancy, or simply to stop guessing at every meal. You do not need a diagnosis to want a plan that fits your body.</p></div>
+          <div class="faq2__answer"><p>Yes. Most people book for fat loss, muscle gain, energy, pregnancy, or simply to stop guessing at every meal. You do not need a diagnosis to want a guide that fits your body.</p></div>
         </details>
       </div>
 
@@ -644,6 +714,9 @@
     staggerReveal(".why__head > *", { stagger: 0.1 });
     staggerReveal(".whycard", { stagger: 0.12 });
     staggerReveal(".how__inner");
+    staggerReveal(".guide__head > *", { stagger: 0.1 });
+    staggerReveal(".guidecard", { stagger: 0.1 });
+    staggerReveal(".guide__note");
     staggerReveal(".faq2__head");
     staggerReveal(".faq2__item", { lift: false, stagger: 0.07 });
     staggerReveal(".faq2__cta");

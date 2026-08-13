@@ -1,1 +1,7 @@
 .DS_Store
+
+# next
+akaani-next/node_modules
+akaani-next/.next
+akaani-next/out
+akaani-next/next-env.d.ts

@@ -1,0 +1,116 @@
+/* ============ BLOG PAGE ============ */
+
+    /* hero */
+    .jh {
+      position: relative; overflow: hidden;
+      padding: 175px clamp(20px, 5vw, 72px) clamp(50px, 7vh, 80px);
+    }
+    .jh__inner { max-width: 1280px; margin: 0 auto; }
+    .jh__kicker-row { display: flex; align-items: center; gap: 14px; margin-bottom: 20px; }
+    .jh__count {
+      font-size: 0.78rem; font-weight: 700;
+      background: var(--bg-soft); color: var(--accent);
+      padding: 6px 14px; border-radius: 999px;
+    }
+    .jh h1 {
+      font-size: clamp(2.8rem, 6.4vw, 5.6rem);
+      max-width: 1000px; margin-bottom: 30px;
+    }
+    .jh h1 .line { display: block; overflow: hidden; }
+    .jh h1 .line__inner { display: block; transform: translateY(110%); }
+    .jh__filters { display: flex; gap: 10px; flex-wrap: wrap; }
+    .jh__filters button {
+      font: inherit; font-size: 0.88rem; font-weight: 600;
+      padding: 10px 22px; border-radius: 999px;
+      border: 1.5px solid var(--line); background: none; color: var(--ink-soft);
+      cursor: pointer; transition: all 0.3s;
+    }
+    .jh__filters button:hover { border-color: var(--accent); color: var(--accent); }
+    .jh__filters button.is-on { background: var(--ink); border-color: var(--ink); color: var(--bg); }
+
+    /* featured */
+    .jfeat { padding: 0 clamp(20px, 5vw, 72px) clamp(26px, 3.4vw, 44px); }
+    .jfeat__card {
+      max-width: 1280px; margin: 0 auto;
+      display: grid; grid-template-columns: 1.15fr 1fr;
+      background: var(--ink); color: var(--bg);
+      border-radius: var(--radius-lg); overflow: hidden;
+      min-height: 460px;
+    }
+    .jfeat__img { position: relative; overflow: hidden; }
+    /* the source graphic has baked-in text — frame the mascot side, no crop-drift */
+    .jfeat__img img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 30%; }
+    .jfeat__badge {
+      position: absolute; top: 18px; left: 18px;
+      background: var(--accent); color: #fff;
+      font-size: 0.72rem; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase;
+      padding: 7px 16px; border-radius: 999px;
+    }
+    .jfeat__body { padding: clamp(28px, 4vw, 64px); align-self: center; }
+    .jfeat__body h2 { font-size: clamp(1.7rem, 2.8vw, 2.6rem); line-height: 1.12; margin: 14px 0 16px; }
+    .jfeat__body p { color: rgba(251, 245, 236, 0.72); margin-bottom: 28px; max-width: 480px; }
+    .jfeat__meta { display: flex; align-items: center; gap: 12px; font-size: 0.8rem; color: rgba(251, 245, 236, 0.55); }
+    .jfeat__cat {
+      background: rgba(251, 245, 236, 0.1); color: var(--accent);
+      font-weight: 700; padding: 4px 12px; border-radius: 999px;
+      text-transform: uppercase; letter-spacing: 0.05em; font-size: 0.7rem;
+    }
+    .jfeat .btn--dark { background: var(--accent); }
+    .jfeat .btn--dark:hover { background: var(--paper); color: var(--ink); }
+
+    /* grid */
+    .jgrid { padding: 0 clamp(20px, 5vw, 72px) clamp(80px, 12vh, 130px); }
+    .jgrid__inner {
+      max-width: 1280px; margin: 0 auto;
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: clamp(18px, 2.4vw, 32px);
+    }
+    .jpost {
+      background: var(--paper); border-radius: var(--radius-lg);
+      overflow: hidden; border: 1px solid var(--line);
+      cursor: pointer; display: block; color: var(--ink);
+      transform: translateY(var(--plx, 0px));
+      transition: transform 0.5s var(--ease), box-shadow 0.5s;
+    }
+    .jpost:hover { transform: translateY(calc(var(--plx, 0px) - 8px)); box-shadow: 0 26px 50px rgba(0, 51, 51, 0.13); }
+    .jpost.is-hidden { display: none; }
+    .jpost__img { position: relative; aspect-ratio: 16 / 10; overflow: hidden; }
+    .jpost__img img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.8s var(--ease); }
+    .jpost:hover .jpost__img img { transform: scale(1.08) rotate(0.6deg); }
+    .jpost__arrow {
+      position: absolute; right: 14px; bottom: 14px;
+      width: 42px; height: 42px; border-radius: 50%;
+      background: var(--paper); color: var(--ink);
+      display: grid; place-items: center;
+      font-size: 1.1rem; font-weight: 700;
+      transform: translateY(60px);
+      transition: transform 0.45s var(--ease), background 0.3s, color 0.3s;
+    }
+    .jpost:hover .jpost__arrow { transform: translateY(0); background: var(--accent); color: #fff; }
+    .jpost__body { padding: 22px; }
+    .jpost__meta { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; font-size: 0.78rem; color: var(--ink-soft); }
+    .jpost__cat {
+      background: var(--bg-soft); color: var(--accent);
+      font-weight: 700; padding: 4px 12px; border-radius: 999px;
+      text-transform: uppercase; letter-spacing: 0.05em; font-size: 0.7rem;
+    }
+    .jpost__read { margin-left: auto; }
+    .jpost__body h3 { font-size: 1.2rem; line-height: 1.3; margin-bottom: 10px; }
+    .jpost__body h3 span {
+      text-decoration: underline; text-decoration-color: transparent;
+      text-decoration-thickness: 2px; text-underline-offset: 4px;
+      transition: text-decoration-color 0.45s var(--ease);
+    }
+    .jpost:hover h3 span { text-decoration-color: var(--accent); }
+    .jpost__excerpt { font-size: 0.9rem; color: var(--ink-soft); }
+    .jgrid__empty { grid-column: 1 / -1; text-align: center; padding: 60px 0; color: var(--ink-soft); display: none; }
+
+
+    @media (max-width: 1024px) {
+      .jfeat__card { grid-template-columns: 1fr; }
+      .jfeat__img { min-height: 280px; }
+      .jgrid__inner { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 720px) {
+      .jgrid__inner { grid-template-columns: 1fr; }
+    }

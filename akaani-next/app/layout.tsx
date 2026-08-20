@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Outfit } from "next/font/google";
-import "../styles/base.css";
+import "./globals.css";
 import SmoothScroll from "@/components/SmoothScroll";
 
 const outfit = Outfit({

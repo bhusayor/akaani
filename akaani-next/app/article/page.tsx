@@ -3,8 +3,8 @@ import Link from "next/link";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 import Motion from "./Motion";
-import ProgressBar from "@/components/ProgressBar";
 import "../../styles/article.css";
+import ProgressBar from "@/components/ProgressBar";
 
 export const metadata: Metadata = {
   title: "Welcome Lu: your AI kitchen companion | akaani",
@@ -18,11 +18,9 @@ export default function ArticlePage() {
       <ProgressBar />
       <Motion />
 
-      <main>
-
-
-    
-    <article className="art">
+      <main className="py-16 lg:py-24">
+      <div className="max-w-7xl mx-auto px-6 lg:px-8">
+      <article className="art">
       <div className="art__head">
         <a className="art__back" href="/blog">← Back to the journal</a>
         <div className="art__meta">
@@ -92,7 +90,7 @@ export default function ArticlePage() {
           <a href="https://twitter.com/intent/tweet?text=Welcome%20Lu%3A%20your%20AI%20kitchen%20companion&url=https%3A%2F%2Fuseakaani.com%2Fblog" target="_blank" rel="noopener">Share on X</a>
         </div>
       </div>
-    </article>
+      </article>
 
     
     <section className="related">
@@ -127,6 +125,7 @@ export default function ArticlePage() {
         </a>
       </div>
     </section>
+      </div>
       </main>
 
       <Footer giant="journal" />

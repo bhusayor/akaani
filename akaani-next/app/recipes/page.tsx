@@ -19,30 +19,29 @@ export default function RecipesPage() {
 
       <main>
 
-
     
-    <section className="rh">
-      <div className="rh__inner">
-        <div>
+    <section className="rh py-16 lg:py-24">
+      <div className="rh__inner max-w-7xl mx-auto px-6 lg:px-8 flex flex-col lg:flex-row items-center gap-8">
+        <div className="flex-1">
           <p className="section-head__kicker">Recipe bundles</p>
-          <h1>Nigerian recipes with the <span className="accent-text">maths already done.</span></h1>
-          <p className="rh__sub">Every bundle is five to seven recipes built for one goal, with the macros worked out, the steps written plainly, and a tip from Lu on every page. Buy it once, download it straight away, cook from it forever.</p>
-          <div className="rh__actions">
+          <h1 className="text-3xl md:text-4xl font-extrabold leading-tight">Nigerian recipes with the <span className="accent-text">maths already done.</span></h1>
+          <p className="rh__sub text-gray-700 dark:text-gray-300 mt-4">Every bundle is five to seven recipes built for one goal, with the macros worked out, the steps written plainly, and a tip from Lu on every page. Buy it once, download it straight away, cook from it forever.</p>
+          <div className="rh__actions mt-6">
             <a href="#bundles" className="btn btn--accent btn--lg">Browse bundles</a>
           </div>
-          <div className="rh__ticks">
+          <div className="rh__ticks mt-4 flex gap-4 flex-wrap text-sm text-gray-600">
             <span className="rh__tick"><i>✓</i> Instant PDF download</span>
             <span className="rh__tick"><i>✓</i> Full macro breakdown</span>
             <span className="rh__tick"><i>✓</i> Ingredients you can buy here</span>
             <span className="rh__tick"><i>✓</i> One-time purchase</span>
           </div>
         </div>
-        <div className="rh__visual" id="rhVisual" aria-hidden="true">
-          <figure className="rh__card rh__card--back">
+        <div className="rh__visual flex-1 max-w-md mx-auto" id="rhVisual" aria-hidden="true">
+          <figure className="rh__card rh__card--back rounded-lg overflow-hidden shadow-sm">
             <img src="/assets/asun.jpg" alt="" />
             <figcaption>The Protein Pot <em>$4.99</em></figcaption>
           </figure>
-          <figure className="rh__card rh__card--front">
+          <figure className="rh__card rh__card--front rounded-lg overflow-hidden shadow-lg mt-4">
             <img src="/assets/rice-stew.jpg" alt="" />
             <figcaption>Mama Put Macros <em>$4.99</em></figcaption>
           </figure>

@@ -18,7 +18,8 @@ export default function DisclaimerPage() {
       <ProgressBar />
       <Motion />
 
-      <main>
+      <main className="py-16 lg:py-24">
+    <div className="max-w-7xl mx-auto px-6 lg:px-8">
 
     <section className="lg">
       <div className="lg__head">
@@ -39,6 +40,7 @@ export default function DisclaimerPage() {
         </div>
       </div>
     </section>
+    </div>
       </main>
 
       <Footer giant="akaani" />

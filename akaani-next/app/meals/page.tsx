@@ -23,32 +23,31 @@ export default function MealsPage() {
 
       <main>
 
-
     
-    <section className="mh">
-      <div className="mh__inner">
-        <div className="mh__content">
-          <div className="mh__cities">
-            <span className="mh__city"><i>●</i>Dallas</span>
-            <span className="mh__city"><i>●</i>Houston</span>
+    <section className="mh py-16 lg:py-24">
+      <div className="mh__inner max-w-7xl mx-auto px-6 lg:px-8 flex flex-col lg:flex-row items-center gap-8">
+        <div className="mh__content flex-1">
+          <div className="mh__cities text-sm text-gray-600">
+            <span className="mh__city mr-3"><i>●</i>Dallas</span>
+            <span className="mh__city mr-3"><i>●</i>Houston</span>
             <span className="mh__city"><i>●</i>Seattle</span>
           </div>
-          <h1 className="mh__title">
+          <h1 className="mh__title text-3xl md:text-4xl font-extrabold leading-tight mt-3">
             <span className="line"><span className="line__inner">Authentic Nigerian meals,</span></span>
             <span className="line"><span className="line__inner accent-text">delivered weekly.</span></span>
           </h1>
-          <p className="mh__desc">Skip the cooking without skipping the culture. akaani Meals delivers authentic Nigerian dishes freshly prepared by professional chefs to homes in <b>Dallas</b>, <b>Houston</b>, and <b>Seattle</b> every weekend.</p>
-          <div className="hero__actions">
+          <p className="mh__desc text-gray-700 dark:text-gray-300 mt-4">Skip the cooking without skipping the culture. akaani Meals delivers authentic Nigerian dishes freshly prepared by professional chefs to homes in <b>Dallas</b>, <b>Houston</b>, and <b>Seattle</b> every weekend.</p>
+          <div className="hero__actions mt-6 flex gap-4">
             <a href="#waitlist" className="btn btn--accent btn--lg">Join the waitlist</a>
             <a href="#how" className="btn btn--ghost-dark btn--lg">How it works</a>
           </div>
         </div>
-        <div className="mh__visual" id="mhVisual" aria-hidden="true">
-          <div className="mh__photo">
+        <div className="mh__visual flex-1 max-w-md mx-auto" id="mhVisual" aria-hidden="true">
+          <div className="mh__photo rounded-lg overflow-hidden shadow">
             <img src="/assets/meals-hero.jpg" alt="A week of chef-prepared meals packed in delivery containers" />
           </div>
-          <div className="mh__badge">📦 Your week, packed — <span>12 meals</span></div>
-          <div className="mh__badge2"><i></i>Chef-prepared · Delivered Sat &amp; Sun</div>
+          <div className="mh__badge mt-4">📦 Your week, packed — <span>12 meals</span></div>
+          <div className="mh__badge2 mt-2"><i></i>Chef-prepared · Delivered Sat &amp; Sun</div>
         </div>
       </div>
     </section>

@@ -3,8 +3,8 @@ import Link from "next/link";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 import Motion from "./Motion";
-import FormBehavior from "@/components/FormBehavior";
 import "../../styles/blog.css";
+import FormBehavior from "@/components/FormBehavior";
 
 export const metadata: Metadata = {
   title: "Blog | akaani",
@@ -19,8 +19,8 @@ export default function BlogPage() {
       <FormBehavior kind="blogFilters" />
       <FormBehavior kind="newsletter" />
 
-      <main>
-
+      <main className="py-16 lg:py-24">
+      <div className="max-w-7xl mx-auto px-6 lg:px-8">
 
     
     <section className="jh">
@@ -120,6 +120,7 @@ export default function BlogPage() {
         <p className="jgrid__empty" id="gridEmpty">No stories in this category yet — more are cooking. 🍲</p>
       </div>
     </section>
+      </div>
       </main>
 
       <Footer giant="journal" />

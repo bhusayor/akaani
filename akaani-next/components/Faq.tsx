@@ -1,68 +1,61 @@
 "use client";
 
-import { useRef } from "react";
-import { gsap } from "gsap";
+import { useState } from "react";
+import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 
-export type FaqEntry = { q: string; a: string };
+export type FaqItem = { q: string; a: string };
 
-type FaqProps = {
-  items: FaqEntry[];
-  /** `plus` matches the dietitian design, `bar` the older home/meals styling. */
-  variant?: "plus" | "bar";
-};
-
-/** Accordion with a height tween, so the open/close matches the static build. */
-export default function Faq({ items, variant = "plus" }: FaqProps) {
-  const listRef = useRef<HTMLDivElement>(null);
-  const cls = variant === "plus" ? "faq2" : "faq";
-
-  const toggle = (e: React.MouseEvent<HTMLElement>) => {
-    e.preventDefault();
-    const item = (e.currentTarget as HTMLElement).closest("details") as HTMLDetailsElement | null;
-    if (!item) return;
-    const answer = item.querySelector<HTMLElement>(`.${cls}__answer`);
-    if (!answer) return;
-
-    if (item.open) {
-      gsap.to(answer, {
-        height: 0,
-        autoAlpha: 0,
-        duration: 0.4,
-        ease: "power2.inOut",
-        onComplete: () => {
-          item.open = false;
-          gsap.set(answer, { clearProps: "all" });
-        },
-      });
-    } else {
-      item.open = true;
-      gsap.fromTo(
-        answer,
-        { height: 0, autoAlpha: 0 },
-        {
-          height: "auto",
-          autoAlpha: 1,
-          duration: 0.5,
-          ease: "power3.out",
-          onComplete: () => gsap.set(answer, { clearProps: "height" }),
-        },
-      );
-    }
-  };
+/** Accordion with a Framer Motion height transition. */
+export default function Faq({ items }: { items: FaqItem[] }) {
+  const [openIndex, setOpenIndex] = useState<number | null>(null);
+  const reduced = useReducedMotion();
 
   return (
-    <div className={`${cls}__list`} ref={listRef}>
-      {items.map((item) => (
-        <details className={`${cls}__item`} key={item.q}>
-          <summary onClick={toggle}>
-            {item.q}
-            <span className={`${cls}__icon`} />
-          </summary>
-          <div className={`${cls}__answer`}>
-            <p>{item.a}</p>
+    <div className="mx-auto max-w-[900px] border-t border-line">
+      {items.map((item, i) => {
+        const open = openIndex === i;
+        return (
+          <div key={item.q} className="border-b border-line">
+            <button
+              type="button"
+              onClick={() => setOpenIndex(open ? null : i)}
+              aria-expanded={open}
+              className="flex w-full items-center justify-between gap-5 py-6 pr-1 text-left text-[clamp(1rem,1.2vw,1.1rem)] font-semibold text-ink transition-colors duration-300 hover:text-accent"
+            >
+              {item.q}
+              <span
+                className={
+                  "relative h-7 w-7 flex-none rounded-full border-[1.5px] transition-colors duration-300 " +
+                  (open ? "border-accent" : "border-line")
+                }
+              >
+                <span className="absolute inset-x-[7px] top-1/2 h-[2px] -translate-y-1/2 rounded-sm bg-accent" />
+                <span
+                  className={
+                    "absolute inset-y-[7px] left-1/2 w-[2px] -translate-x-1/2 rounded-sm bg-accent transition-transform duration-400 ease-brand " +
+                    (open ? "scale-y-0" : "scale-y-100")
+                  }
+                />
+              </span>
+            </button>
+
+            <AnimatePresence initial={false}>
+              {open && (
+                <motion.div
+                  key="answer"
+                  initial={reduced ? false : { height: 0, opacity: 0 }}
+                  animate={{ height: "auto", opacity: 1 }}
+                  exit={{ height: 0, opacity: 0 }}
+                  transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+                  className="overflow-hidden"
+                >
+                  <p className="pb-7 pr-11 text-[1rem] leading-[1.65] text-ink-soft">{item.a}</p>
+                </motion.div>
+              )}
+            </AnimatePresence>
           </div>
-        </details>
-      ))}
+        );
+      })}
     </div>
   );
 }

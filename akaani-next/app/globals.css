@@ -1,49 +1,63 @@
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/* Cascade order: the legacy stylesheet from the static site sits *below*
+   Tailwind's utilities so utility classes always win on converted pages. */
+@layer theme, base, components, legacy, utilities;
+
+@import "tailwindcss";
+@import "../styles/base.css" layer(legacy);
+
+/* ============================================================
+   akaani design tokens (Tailwind v4 CSS-first config)
+   Palette: white bg · pastel orange · ink #003333 · accent #DA7000
+   ============================================================ */
+@theme {
+  --color-bg: #ffffff;
+  --color-bg-soft: #f7e4cb;
+  --color-ink: #003333;
+  --color-ink-soft: rgba(0, 51, 51, 0.62);
+  --color-accent: #da7000;
+  --color-accent-soft: #f3d4af;
+  --color-paper: #fffdf8;
+  --color-line: rgba(0, 51, 51, 0.12);
+  --color-mist: #f5f5f3;
+  --color-tint: #fafaf8;
+
+  --font-sans: var(--font-outfit), ui-sans-serif, system-ui, sans-serif;
+
+  --ease-brand: cubic-bezier(0.65, 0.05, 0, 1);
+
+  --radius-brand: 28px;
+  --radius-panel: 34px;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
-html {
-  height: 100%;
-}
-
-html,
-body {
-  max-width: 100vw;
-  overflow-x: hidden;
-}
-
-body {
-  min-height: 100%;
-  display: flex;
-  flex-direction: column;
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-* {
-  box-sizing: border-box;
-  padding: 0;
-  margin: 0;
-}
-
-a {
-  color: inherit;
-  text-decoration: none;
-}
-
-@media (prefers-color-scheme: dark) {
+@layer base {
   html {
-    color-scheme: dark;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background: var(--color-bg);
+    color: var(--color-ink);
+    line-height: 1.55;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1,
+  h2,
+  h3 {
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    line-height: 1.04;
+  }
+
+  img,
+  video {
+    display: block;
+    max-width: 100%;
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
   }
 }

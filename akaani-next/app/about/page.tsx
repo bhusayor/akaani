@@ -19,24 +19,23 @@ export default function AboutPage() {
 
       <main>
 
-
     
-    <section className="ah">
-      <div className="ah__inner">
-        <div>
+    <section className="ah py-16 lg:py-24">
+      <div className="ah__inner max-w-7xl mx-auto px-6 lg:px-8 flex flex-col lg:flex-row items-center gap-8">
+        <div className="flex-1">
           <p className="section-head__kicker">About akaani</p>
-          <h1>
+          <h1 className="text-3xl md:text-4xl font-extrabold leading-tight">
             <span className="line"><span className="line__inner">We're building the</span></span>
             <span className="line"><span className="line__inner">first AI meal platform</span></span>
             <span className="line"><span className="line__inner">made for <span className="accent-text">Nigerian food.</span></span></span>
           </h1>
-          <p className="ah__sub">akaani is the first AI-powered meal platform that truly understands West African cuisine and turns it into a precision health tool for millions of people.</p>
-          <div className="ah__actions">
+          <p className="ah__sub text-gray-700 dark:text-gray-300 mt-4">akaani is the first AI-powered meal platform that truly understands West African cuisine and turns it into a precision health tool for millions of people.</p>
+          <div className="ah__actions mt-6 flex gap-4">
             <a href="/#cta" className="btn btn--accent btn--lg">Start free — 30 days</a>
             <a href="#team" className="btn btn--ghost-dark btn--lg">Meet the team</a>
           </div>
         </div>
-        <div className="ah__mascot" id="ahMascot" aria-hidden="true">
+        <div className="ah__mascot flex-1 max-w-md mx-auto" id="ahMascot" aria-hidden="true">
           <Lu />
           <div className="ah__mascot-shadow"></div>
         </div>

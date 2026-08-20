@@ -21,20 +21,19 @@ export default function ContactPage() {
 
       <main>
 
-
     
-    <section className="ch">
-      <div className="ch__inner">
-        <div>
+    <section className="ch py-16 lg:py-24">
+      <div className="ch__inner max-w-7xl mx-auto px-6 lg:px-8 flex flex-col lg:flex-row items-center gap-8">
+        <div className="flex-1">
           <p className="section-head__kicker">Contact</p>
-          <h1>
+          <h1 className="text-3xl md:text-4xl font-extrabold leading-tight">
             <span className="line"><span className="line__inner">Talk to us.</span></span>
             <span className="line"><span className="line__inner accent-text">We answer fast.</span></span>
           </h1>
-          <p className="ch__sub">Questions, ideas, partnerships, press — or just to argue about whose jollof is better. The kitchen door is open.</p>
+          <p className="ch__sub text-gray-700 dark:text-gray-300 mt-4">Questions, ideas, partnerships, press — or just to argue about whose jollof is better. The kitchen door is open.</p>
         </div>
-        <div className="ch__visual" id="chVisual" aria-hidden="true">
-          <div className="ch__photo">
+        <div className="ch__visual flex-1 max-w-md mx-auto" id="chVisual" aria-hidden="true">
+          <div className="ch__photo rounded-lg overflow-hidden shadow">
             <img src="/assets/contact-hero.jpg" alt="A smiling woman in Lagos holding her phone" />
           </div>
           <div className="ch__bubble">Hi akaani! 👋</div>

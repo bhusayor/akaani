@@ -93,38 +93,30 @@
     /* --- focus cards --- */
     .focus__grid {
       max-width: 1280px; margin: 0 auto;
-      display: grid; grid-template-columns: repeat(6, 1fr);
-      gap: clamp(18px, 2.2vw, 28px); align-items: stretch;
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: clamp(16px, 1.8vw, 22px); align-items: stretch;
     }
     .focus {
-      grid-column: span 2;
       display: flex; flex-direction: column;
-      background: var(--paper); border: 1px solid var(--line);
-      border-radius: 26px; padding: clamp(24px, 2.6vw, 32px);
-      transition: transform 0.5s var(--ease), border-color 0.4s, box-shadow 0.5s;
+      background: #fff; border: 1px solid var(--line);
+      border-radius: 20px; padding: clamp(24px, 2.4vw, 32px);
+      transition: transform 0.45s var(--ease), border-color 0.3s;
     }
-    .focus--wide { grid-column: span 3; }
-    .focus:hover { transform: translateY(-6px); border-color: rgba(218, 112, 0, 0.45); box-shadow: 0 26px 54px rgba(0, 51, 51, 0.09); }
-    .focus h3 {
-      display: flex; align-items: flex-start; gap: 10px;
-      font-size: clamp(1.1rem, 1.45vw, 1.3rem); line-height: 1.25; margin-bottom: 10px;
-    }
-    .focus h3::before {
-      content: ""; flex: none; margin-top: 9px;
-      width: 7px; height: 7px; border-radius: 50%; background: var(--accent);
-    }
-    .focus__who { padding-left: 17px; font-size: 0.95rem; line-height: 1.6; color: var(--ink-soft); margin-bottom: 16px; }
+    .focus:hover { transform: translateY(-6px); border-color: rgba(0, 51, 51, 0.35); }
+    .focus__n { display: block; margin-bottom: 20px; font-size: 0.72rem; font-weight: 800; letter-spacing: 0.2em; color: var(--accent); }
+    .focus h3 { font-size: clamp(1.08rem, 1.4vw, 1.26rem); line-height: 1.25; margin-bottom: 12px; }
+    .focus__who { font-size: 0.95rem; line-height: 1.6; color: var(--ink-soft); margin-bottom: 20px; }
     .focus__q {
-      display: block; margin-bottom: 20px; padding-left: 15px;
-      border-left: 2px solid rgba(218, 112, 0, 0.35);
-      font-size: 0.97rem; font-weight: 600; line-height: 1.5; color: var(--ink);
+      display: block; margin-bottom: 24px;
+      font-size: 0.97rem; font-weight: 600; font-style: italic; line-height: 1.5;
+      color: rgba(0, 51, 51, 0.8);
     }
-    .focus__tags { margin-top: auto; padding-left: 17px; display: flex; flex-wrap: wrap; gap: 8px; }
-    .focus__tags span {
-      background: var(--bg-soft); color: var(--accent);
-      padding: 6px 12px; border-radius: 999px;
-      font-size: 0.68rem; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase;
+    .focus__tags {
+      margin-top: auto; padding-top: 16px; border-top: 1px solid var(--line);
+      font-size: 0.7rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--ink-soft);
     }
+    .focus__tags i { font-style: normal; color: var(--accent); padding: 0 8px; }
 
     /* --- meet your dietitian --- */
     .rd { padding: clamp(80px, 12vh, 130px) clamp(20px, 5vw, 72px); }
@@ -159,7 +151,7 @@
     .rd__list li:last-child { border-bottom: 1px solid var(--line); }
     .rd__list i { font-style: normal; color: var(--accent); font-weight: 800; flex: none; margin-top: 2px; }
 
-    .guide__grid.guide__grid--six { grid-template-columns: repeat(3, 1fr); }
+    
 
     /* --- section 3: why a dietitian --- */
     .why { background: #F5F5F3; padding: clamp(80px, 12vh, 130px) clamp(20px, 5vw, 72px); }
@@ -248,20 +240,28 @@
     .guide__head { max-width: 720px; margin: 0 auto clamp(32px, 3.6vw, 46px); text-align: center; }
     .guide__head h2 { font-size: clamp(1.9rem, 3.2vw, 2.6rem); margin-bottom: 14px; }
     .guide__head p { color: var(--ink-soft); font-size: 1.02rem; line-height: 1.65; }
-    .guide__grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: clamp(16px, 2vw, 24px); }
+    .guide__table {
+      max-width: 1180px; margin: 0 auto;
+      border: 1px solid var(--line); border-radius: 24px; overflow: hidden;
+    }
+    .guide__grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 1px; background: var(--line);
+    }
     .guidecard {
-      background: #FAFAF8; border: 1px solid var(--line);
-      border-radius: 22px; padding: clamp(22px, 2.2vw, 28px);
-      transition: transform 0.5s var(--ease), border-color 0.4s;
+      display: flex; align-items: flex-start; gap: 20px;
+      background: #fff; padding: clamp(26px, 2.6vw, 36px);
+      transition: transform 0.4s var(--ease);
     }
-    .guidecard:hover { transform: translateY(-6px); border-color: rgba(218, 112, 0, 0.45); }
+    .guidecard:hover { transform: translateX(6px); }
+    .guidecard:hover i { color: var(--accent); }
     .guidecard i {
-      font-style: normal; display: block;
-      font-size: 0.72rem; font-weight: 800; letter-spacing: 0.18em;
-      color: var(--accent); margin-bottom: 16px;
+      flex: none; width: 36px; padding-top: 3px;
+      font-style: normal; font-size: 1.05rem; font-weight: 800; line-height: 1;
+      color: rgba(218, 112, 0, 0.45); transition: color 0.3s;
     }
-    .guidecard b { display: block; font-size: 1.06rem; margin-bottom: 8px; }
-    .guidecard p { color: var(--ink-soft); font-size: 0.93rem; line-height: 1.6; }
+    .guidecard b { display: block; margin-bottom: 8px; font-size: 1.08rem; font-weight: 700; line-height: 1.3; }
+    .guidecard p { font-size: 0.95rem; line-height: 1.6; color: var(--ink-soft); }
     .guide__note {
       margin: clamp(28px, 3vw, 38px) auto 0; max-width: 1280px;
       padding-left: 18px; border-left: 3px solid var(--accent);
@@ -270,12 +270,10 @@
     .guide__note b { color: var(--ink); }
     @media (max-width: 1024px) {
       .focus__grid { grid-template-columns: 1fr 1fr; }
-      .focus, .focus--wide { grid-column: span 1; }
-      .guide__grid.guide__grid--six { grid-template-columns: 1fr 1fr; }
       .rd__inner { grid-template-columns: 1fr; } .guide__grid { grid-template-columns: repeat(2, 1fr); } }
     @media (max-width: 640px) {
       .focus__grid { grid-template-columns: 1fr; }
-      .guide__grid.guide__grid--six { grid-template-columns: 1fr; } .guide__grid { grid-template-columns: 1fr; } }
+      .guide__grid { grid-template-columns: 1fr; } .guide__grid { grid-template-columns: 1fr; } }
 
     /* --- FAQ --- */
     .faq2 { padding: clamp(80px, 12vh, 130px) clamp(20px, 5vw, 72px) clamp(60px, 8vh, 90px); }
@@ -438,34 +436,39 @@
 
       <div class="focus__grid">
         <article class="focus">
+          <span class="focus__n">01</span>
           <h3>Weight Management Consultation</h3>
           <p class="focus__who">For weight that will not move, or will not stay off, without giving up the food you love.</p>
           <q class="focus__q">I am eating less and still not losing weight.</q>
-          <div class="focus__tags"><span>Fat loss</span><span>PCOS</span><span>Sustainable habits</span></div>
+          <p class="focus__tags">Fat loss<i>·</i>PCOS<i>·</i>Sustainable habits</p>
         </article>
         <article class="focus">
+          <span class="focus__n">02</span>
           <h3>Fitness Nutrition Consultation</h3>
           <p class="focus__who">For training, performance and recovery, built on Nigerian food rather than imported supplements.</p>
           <q class="focus__q">Am I even eating enough protein for my gym week?</q>
-          <div class="focus__tags"><span>Protein</span><span>Training days</span><span>Muscle gain</span></div>
+          <p class="focus__tags">Protein<i>·</i>Training days<i>·</i>Muscle gain</p>
         </article>
         <article class="focus">
+          <span class="focus__n">03</span>
           <h3>African Diet Nutrition Review</h3>
           <p class="focus__who">A proper look at what you already eat, and what it is doing for your health.</p>
           <q class="focus__q">Is my everyday diet working for me, or against me?</q>
-          <div class="focus__tags"><span>Hypertension</span><span>Diabetes</span><span>Portions</span></div>
+          <p class="focus__tags">Hypertension<i>·</i>Diabetes<i>·</i>Portions</p>
         </article>
-        <article class="focus focus--wide">
+        <article class="focus">
+          <span class="focus__n">04</span>
           <h3>Healthy Eating Reset</h3>
           <p class="focus__who">For starting again after things slipped, without a regime you will abandon in a week.</p>
           <q class="focus__q">I want to eat better. I just do not know where to start.</q>
-          <div class="focus__tags"><span>Energy</span><span>Digestion</span><span>Routine</span></div>
+          <p class="focus__tags">Energy<i>·</i>Digestion<i>·</i>Routine</p>
         </article>
-        <article class="focus focus--wide">
+        <article class="focus">
+          <span class="focus__n">05</span>
           <h3>Family Nutrition Planning</h3>
           <p class="focus__who">For the whole household, so one pot can work for everybody at the table.</p>
           <q class="focus__q">How do I cook once and still feed everyone properly?</q>
-          <div class="focus__tags"><span>Children</span><span>One-pot cooking</span><span>Budget</span></div>
+          <p class="focus__tags">Children<i>·</i>One-pot cooking<i>·</i>Budget</p>
         </article>
       </div>
 
@@ -564,37 +567,51 @@
           <h2>Your Personal<br /><span class="accent-text">Nutrition Guide.</span></h2>
           <p>Written after your call and in your inbox within 24 hours, built entirely around the food you already buy.</p>
         </div>
-        <div class="guide__grid guide__grid--six">
-          <article class="guidecard">
-            <i>01</i>
-            <b>Your nutrition targets</b>
-            <p>Personalized calorie and macro targets, where appropriate for your goals.</p>
-          </article>
-          <article class="guidecard">
-            <i>02</i>
-            <b>Your plate &amp; portion guidance</b>
-            <p>Practical portions using familiar measures and the foods you already eat.</p>
-          </article>
-          <article class="guidecard">
-            <i>03</i>
-            <b>Your nutrition priorities</b>
-            <p>3 to 5 clear areas to focus on, based on your consultation.</p>
-          </article>
-          <article class="guidecard">
-            <i>04</i>
-            <b>Foods &amp; meals to prioritize</b>
-            <p>Nigerian foods and meal combinations that support your goals.</p>
-          </article>
-          <article class="guidecard">
-            <i>05</i>
-            <b>Practical Nigerian food swaps</b>
-            <p>Simple changes that improve nutrition without giving up the foods you enjoy.</p>
-          </article>
-          <article class="guidecard">
-            <i>06</i>
-            <b>Sample meal combinations</b>
-            <p>Examples of what breakfast, lunch and dinner could look like based on your recommendations.</p>
-          </article>
+        <div class="guide__table">
+          <div class="guide__grid">
+            <article class="guidecard">
+              <i>01</i>
+              <div>
+                <b>Your nutrition targets</b>
+                <p>Personalized calorie and macro targets, where appropriate for your goals.</p>
+              </div>
+            </article>
+            <article class="guidecard">
+              <i>02</i>
+              <div>
+                <b>Your plate &amp; portion guidance</b>
+                <p>Practical portions using familiar measures and the foods you already eat.</p>
+              </div>
+            </article>
+            <article class="guidecard">
+              <i>03</i>
+              <div>
+                <b>Your nutrition priorities</b>
+                <p>3 to 5 clear areas to focus on, based on your consultation.</p>
+              </div>
+            </article>
+            <article class="guidecard">
+              <i>04</i>
+              <div>
+                <b>Foods &amp; meals to prioritize</b>
+                <p>Nigerian foods and meal combinations that support your goals.</p>
+              </div>
+            </article>
+            <article class="guidecard">
+              <i>05</i>
+              <div>
+                <b>Practical Nigerian food swaps</b>
+                <p>Simple changes that improve nutrition without giving up the foods you enjoy.</p>
+              </div>
+            </article>
+            <article class="guidecard">
+              <i>06</i>
+              <div>
+                <b>Sample meal combinations</b>
+                <p>Examples of what breakfast, lunch and dinner could look like based on your recommendations.</p>
+              </div>
+            </article>
+          </div>
         </div>
         <p class="guide__note"><b>A week, mapped out.</b> A practical 7-day guide built around the foods you already eat, with meal ideas you can mix, match and repeat. Managing hypertension, diabetes or PCOS? It is shaped by your readings, your medication and what your doctor has already told you.</p>
       </div>

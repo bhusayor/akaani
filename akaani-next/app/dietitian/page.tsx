@@ -6,6 +6,8 @@ import Faq from "@/components/Faq";
 import Button from "@/components/ui/Button";
 import FadeIn from "@/components/motion/FadeIn";
 import { Stagger, StaggerItem } from "@/components/motion/Stagger";
+import HoverLift from "@/components/motion/HoverLift";
+import HoverRow from "@/components/motion/HoverRow";
 import Motion from "./Motion";
 
 export const metadata: Metadata = {
@@ -18,36 +20,39 @@ const CALENDLY = "https://calendly.com/useakaani";
 
 const FOCUS = [
   {
+    n: "01",
     title: "Weight Management Consultation",
     who: "For weight that will not move, or will not stay off, without giving up the food you love.",
     q: "I am eating less and still not losing weight.",
     tags: ["Fat loss", "PCOS", "Sustainable habits"],
   },
   {
+    n: "02",
     title: "Fitness Nutrition Consultation",
     who: "For training, performance and recovery, built on Nigerian food rather than imported supplements.",
     q: "Am I even eating enough protein for my gym week?",
     tags: ["Protein", "Training days", "Muscle gain"],
   },
   {
+    n: "03",
     title: "African Diet Nutrition Review",
     who: "A proper look at what you already eat, and what it is doing for your health.",
     q: "Is my everyday diet working for me, or against me?",
     tags: ["Hypertension", "Diabetes", "Portions"],
   },
   {
+    n: "04",
     title: "Healthy Eating Reset",
     who: "For starting again after things slipped, without a regime you will abandon in a week.",
     q: "I want to eat better. I just do not know where to start.",
     tags: ["Energy", "Digestion", "Routine"],
-    wide: true,
   },
   {
+    n: "05",
     title: "Family Nutrition Planning",
     who: "For the whole household, so one pot can work for everybody at the table.",
     q: "How do I cook once and still feed everyone properly?",
     tags: ["Children", "One-pot cooking", "Budget"],
-    wide: true,
   },
 ];
 
@@ -144,28 +149,39 @@ const FAQS = [
 const KICKER = "mb-4 text-[0.85rem] font-bold uppercase tracking-[0.2em] text-accent";
 const SECTION_X = "px-5 sm:px-8 lg:px-[72px]";
 
-function FocusCard({ title, who, q, tags }: { title: string; who: string; q: string; tags: string[] }) {
+function FocusCard({
+  n,
+  title,
+  who,
+  q,
+  tags,
+  index,
+}: {
+  n: string;
+  title: string;
+  who: string;
+  q: string;
+  tags: string[];
+  index: number;
+}) {
   return (
-    <article className="group flex h-full flex-col rounded-[26px] border border-line bg-paper p-6 transition-[transform,border-color,box-shadow] duration-500 ease-brand hover:-translate-y-1.5 hover:border-accent/45 hover:shadow-[0_26px_54px_rgba(0,51,51,0.09)] md:p-8">
-      <h3 className="mb-2.5 flex items-start gap-2.5 text-[clamp(1.1rem,1.45vw,1.3rem)] leading-[1.25]">
-        <span className="mt-[9px] h-[7px] w-[7px] flex-none rounded-full bg-accent" />
-        {title}
-      </h3>
-      <p className="mb-4 pl-[17px] text-[0.95rem] leading-[1.6] text-ink-soft">{who}</p>
-      <q className="mb-5 block border-l-2 border-accent/35 pl-[15px] text-[0.97rem] font-semibold leading-[1.5] text-ink">
-        {q}
-      </q>
-      <div className="mt-auto flex flex-wrap gap-2 pl-[17px]">
-        {tags.map((t) => (
-          <span
-            key={t}
-            className="rounded-full bg-bg-soft px-3 py-1.5 text-[0.68rem] font-extrabold uppercase tracking-[0.1em] text-accent"
-          >
+    <HoverLift
+      index={index}
+      className="group flex h-full flex-col rounded-[20px] border border-line bg-white p-7 transition-colors duration-300 hover:border-ink/35 md:p-8"
+    >
+      <span className="mb-5 block text-[0.72rem] font-extrabold tracking-[0.2em] text-accent">{n}</span>
+      <h3 className="mb-3 text-[clamp(1.08rem,1.4vw,1.26rem)] leading-[1.25]">{title}</h3>
+      <p className="mb-5 text-[0.95rem] leading-[1.6] text-ink-soft">{who}</p>
+      <q className="mb-6 block text-[0.97rem] font-semibold italic leading-[1.5] text-ink/80">{q}</q>
+      <p className="mt-auto border-t border-line pt-4 text-[0.7rem] font-bold uppercase tracking-[0.12em] text-ink-soft">
+        {tags.map((t, i) => (
+          <span key={t}>
+            {i > 0 && <span className="px-2 text-accent">·</span>}
             {t}
           </span>
         ))}
-      </div>
-    </article>
+      </p>
+    </HoverLift>
   );
 }
 
@@ -264,16 +280,11 @@ export default function DietitianPage() {
             </p>
           </FadeIn>
 
-          <Stagger
-            className="mx-auto grid max-w-[1280px] items-stretch gap-[clamp(18px,2.2vw,28px)] sm:grid-cols-2 lg:grid-cols-6"
-            gap={0.09}
-          >
-            {FOCUS.map((f) => (
-              <StaggerItem key={f.title} className={`h-full ${f.wide ? "lg:col-span-3" : "lg:col-span-2"}`}>
-                <FocusCard {...f} />
-              </StaggerItem>
+          <div className="mx-auto grid max-w-[1280px] items-stretch gap-[clamp(16px,1.8vw,22px)] sm:grid-cols-2 lg:grid-cols-3">
+            {FOCUS.map((f, i) => (
+              <FocusCard key={f.title} {...f} index={i} />
             ))}
-          </Stagger>
+          </div>
 
           <FadeIn className="mx-auto mt-[clamp(24px,3vw,36px)] flex max-w-[1280px] flex-wrap items-center justify-between gap-6 rounded-[26px] bg-bg-soft p-[clamp(26px,3vw,38px)]">
             <div>
@@ -444,7 +455,7 @@ export default function DietitianPage() {
 
         {/* ---------- your personal nutrition guide ---------- */}
         <section className={`pb-[clamp(80px,12vh,130px)] ${SECTION_X}`}>
-          <FadeIn className="mx-auto mb-[clamp(30px,3.6vw,44px)] max-w-[780px] text-center">
+          <FadeIn className="mx-auto mb-[clamp(32px,3.8vw,48px)] max-w-[780px] text-center">
             <p className={KICKER}>What you receive</p>
             <h2 className="mb-4 text-[clamp(2.2rem,4.6vw,3.8rem)]">
               Your Personal
@@ -456,21 +467,29 @@ export default function DietitianPage() {
             </p>
           </FadeIn>
 
-          <Stagger className="mx-auto grid max-w-[1280px] gap-[clamp(16px,2vw,24px)] sm:grid-cols-2 lg:grid-cols-3" gap={0.08}>
-            {DELIVERABLE.map((card, i) => (
-              <StaggerItem key={card.title} className="h-full">
-                <article className="h-full rounded-[22px] border border-line bg-tint p-6 transition-[transform,border-color] duration-500 ease-brand hover:-translate-y-1.5 hover:border-accent/45 md:p-7">
-                  <i className="mb-4 block text-[0.72rem] font-extrabold not-italic tracking-[0.2em] text-accent">
+          {/* A contents page, not a card grid: cells sit on a 1px gap so the
+              dividers are the only decoration. */}
+          <div className="mx-auto max-w-[1180px] overflow-hidden rounded-[24px] border border-line">
+            <div className="grid gap-px bg-line sm:grid-cols-2">
+              {DELIVERABLE.map((card, i) => (
+                <HoverRow
+                  key={card.title}
+                  index={i}
+                  className="group flex items-start gap-5 bg-white p-7 md:p-9"
+                >
+                  <span className="w-9 flex-none pt-[3px] text-[1.05rem] font-extrabold leading-none text-accent/45 transition-colors duration-300 group-hover:text-accent">
                     {String(i + 1).padStart(2, "0")}
-                  </i>
-                  <h3 className="mb-2.5 text-[1.1rem] leading-[1.3]">{card.title}</h3>
-                  <p className="text-[0.94rem] leading-[1.6] text-ink-soft">{card.body}</p>
-                </article>
-              </StaggerItem>
-            ))}
-          </Stagger>
+                  </span>
+                  <span className="block">
+                    <b className="mb-2 block text-[1.08rem] font-bold leading-[1.3]">{card.title}</b>
+                    <span className="block text-[0.95rem] leading-[1.6] text-ink-soft">{card.body}</span>
+                  </span>
+                </HoverRow>
+              ))}
+            </div>
+          </div>
 
-          <FadeIn className="mx-auto mt-[clamp(24px,3vw,34px)] max-w-[1280px] border-l-[3px] border-accent pl-[18px] text-[0.96rem] leading-[1.6] text-ink-soft">
+          <FadeIn className="mx-auto mt-[clamp(24px,3vw,34px)] max-w-[1180px] border-l-[3px] border-accent pl-[18px] text-[0.96rem] leading-[1.6] text-ink-soft">
             <b className="text-ink">A week, mapped out.</b> A practical 7-day guide built around the foods you already
             eat, with meal ideas you can mix, match and repeat. Managing hypertension, diabetes or PCOS? It is shaped by
             your readings, your medication and what your doctor has already told you.

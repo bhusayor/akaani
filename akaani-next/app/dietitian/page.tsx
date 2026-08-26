@@ -521,50 +521,84 @@ export default function DietitianPage() {
             </p>
           </FadeIn>
 
-          {/* Presented as the document itself: ink header, then contents. */}
-          <FadeIn className="mx-auto max-w-[1180px] overflow-hidden rounded-[26px] border border-line">
-            <div className="flex flex-wrap items-center justify-between gap-4 bg-ink px-7 py-5 text-bg md:px-9">
-              <div className="flex items-center gap-3.5">
-                <span className="grid h-10 w-10 flex-none place-items-center rounded-xl bg-accent text-white">
-                  <svg
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="1.7"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    className="h-[19px] w-[19px]"
-                    aria-hidden="true"
-                  >
-                    <path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8Z" />
-                    <path d="M14 3v5h5M9 13h6M9 17h4" />
-                  </svg>
+          {/* The guide shown as the document it is, with its contents alongside. */}
+          <div className="mx-auto grid max-w-[1180px] items-start gap-[clamp(36px,5vw,72px)] lg:grid-cols-[minmax(0,0.82fr)_minmax(0,1.18fr)]">
+            <FadeIn className="mx-auto w-full max-w-[410px] pr-5 pt-5">
+              <div className="relative" data-gsap="guide-cover">
+              {/* the page behind, so it reads as a stack rather than a card */}
+              <div
+                aria-hidden="true"
+                className="absolute inset-0 translate-x-5 -translate-y-5 rotate-[3deg] rounded-[22px] border border-line bg-mist"
+              />
+
+              <article className="relative flex aspect-[1/1.24] flex-col justify-between rounded-[22px] border border-line bg-white p-8 shadow-[0_34px_70px_-30px_rgba(0,51,51,0.4)]">
+                <span className="text-[1.06rem] font-extrabold tracking-tight">
+                  akaani<span className="text-accent">.</span>
                 </span>
-                <span>
-                  <b className="block text-[1.02rem] leading-tight">Personal Nutrition Guide</b>
-                  <span className="text-[0.82rem] text-bg/55">Prepared for you after your call</span>
+
+                <div>
+                  <p className="mb-3 text-[0.62rem] font-extrabold uppercase tracking-[0.2em] text-accent">
+                    Prepared for you
+                  </p>
+                  <h3 className="mb-4 text-[clamp(1.5rem,2.3vw,1.95rem)] leading-[1.08]">
+                    Personal Nutrition Guide<span className="text-accent">.</span>
+                  </h3>
+                  <p className="text-[0.88rem] leading-[1.55] text-ink-soft">
+                    Built around the foods you already eat.
+                  </p>
+                </div>
+
+                <dl className="space-y-3 border-t border-line pt-5 text-[0.78rem]">
+                  {[
+                    ["Written by", "Registered Dietitian"],
+                    ["Covers", "7 days"],
+                  ].map(([k, v]) => (
+                    <div key={k} className="flex items-baseline justify-between gap-4">
+                      <dt className="font-bold uppercase tracking-[0.1em] text-ink/35">{k}</dt>
+                      <dd className="font-semibold">{v}</dd>
+                    </div>
+                  ))}
+                </dl>
+              </article>
+
+              <span className="absolute -bottom-4 left-6 flex items-center gap-2 rounded-full bg-ink px-4 py-2.5 text-[0.72rem] font-bold uppercase tracking-[0.1em] text-bg shadow-[0_12px_30px_-12px_rgba(0,51,51,0.6)]">
+                <i className="h-1.5 w-1.5 rounded-full bg-accent" />
+                  In your inbox · 24 hours
                 </span>
               </div>
-              <span className="flex items-center gap-2 rounded-full border border-bg/20 px-4 py-2 text-[0.76rem] font-bold uppercase tracking-[0.1em] text-bg/75">
-                <i className="h-1.5 w-1.5 rounded-full bg-accent" />
-                In your inbox · 24 hours
-              </span>
-            </div>
+            </FadeIn>
 
-            <div className="grid gap-px bg-line sm:grid-cols-2">
-              {DELIVERABLE.map((card, i) => (
-                <HoverRow key={card.title} index={i} className="group flex items-start gap-5 bg-white p-7 md:p-8">
-                  <span className="grid h-8 w-8 flex-none place-items-center rounded-lg border border-line text-[0.78rem] font-extrabold text-ink/35 transition-colors duration-300 group-hover:border-accent group-hover:bg-accent group-hover:text-white">
-                    {String(i + 1).padStart(2, "0")}
-                  </span>
-                  <span className="block">
-                    <b className="mb-2 block text-[1.06rem] font-bold leading-[1.3]">{card.title}</b>
-                    <span className="block text-[0.94rem] leading-[1.6] text-ink-soft">{card.body}</span>
-                  </span>
-                </HoverRow>
-              ))}
+            <div>
+              <FadeIn className="mb-2 flex items-center gap-4">
+                <p className="text-[0.68rem] font-extrabold uppercase tracking-[0.2em] text-ink/40">Inside the guide</p>
+                <span className="h-px flex-1 bg-line" />
+                <p className="text-[0.68rem] font-extrabold uppercase tracking-[0.2em] text-ink/40">
+                  {DELIVERABLE.length} sections
+                </p>
+              </FadeIn>
+
+              <ul>
+                {DELIVERABLE.map((card, i) => (
+                  <HoverRow
+                    key={card.title}
+                    as="li"
+                    index={i}
+                    className="group flex items-start gap-5 border-b border-line py-5 last:border-0"
+                  >
+                    <span className="pt-0.5 text-[0.78rem] font-extrabold tabular-nums text-accent/40 transition-colors duration-300 group-hover:text-accent">
+                      {String(i + 1).padStart(2, "0")}
+                    </span>
+                    <span className="block">
+                      <b className="mb-1.5 block text-[1.05rem] font-bold leading-[1.3] transition-colors duration-300 group-hover:text-accent">
+                        {card.title}
+                      </b>
+                      <span className="block text-[0.93rem] leading-[1.6] text-ink-soft">{card.body}</span>
+                    </span>
+                  </HoverRow>
+                ))}
+              </ul>
             </div>
-          </FadeIn>
+          </div>
 
           <FadeIn className="mx-auto mt-[clamp(24px,3vw,34px)] max-w-[1180px] border-l-[3px] border-accent pl-[18px] text-[0.96rem] leading-[1.6] text-ink-soft">
             <b className="text-ink">A week, mapped out.</b> A practical 7-day guide built around the foods you already

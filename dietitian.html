@@ -266,52 +266,74 @@
     .guide__head { max-width: 720px; margin: 0 auto clamp(32px, 3.6vw, 46px); text-align: center; }
     .guide__head h2 { font-size: clamp(1.9rem, 3.2vw, 2.6rem); margin-bottom: 14px; }
     .guide__head p { color: var(--ink-soft); font-size: 1.02rem; line-height: 1.65; }
-    .guide__table {
+    /* --- the guide, shown as the document it is --- */
+    .guide__spread {
       max-width: 1180px; margin: 0 auto;
-      border: 1px solid var(--line); border-radius: 26px; overflow: hidden;
+      display: grid; grid-template-columns: 0.82fr 1.18fr;
+      gap: clamp(36px, 5vw, 72px); align-items: start;
     }
-    .guide__grid {
-      display: grid; grid-template-columns: 1fr 1fr;
-      gap: 1px; background: var(--line);
+    /* the wrapper reserves the room the offset page needs, so it never
+       pushes the page wide on small screens */
+    .guide__cover-wrap { width: 100%; max-width: 410px; margin: 0 auto; padding: 20px 20px 0 0; }
+    .guide__stack { position: relative; }
+    .guide__back {
+      position: absolute; inset: 0;
+      transform: translate(20px, -20px) rotate(3deg);
+      border: 1px solid var(--line); border-radius: 22px; background: var(--mist);
     }
-    .guidecard {
+    .guide__cover {
+      position: relative; display: flex; flex-direction: column; justify-content: space-between;
+      aspect-ratio: 1 / 1.24; padding: 32px;
+      background: #fff; border: 1px solid var(--line); border-radius: 22px;
+      box-shadow: 0 34px 70px -30px rgba(0, 51, 51, 0.4);
+    }
+    .guide__mark { font-size: 1.06rem; font-weight: 800; letter-spacing: -0.02em; }
+    .guide__mark i { font-style: normal; color: var(--accent); }
+    .guide__cover-kicker {
+      margin-bottom: 12px; font-size: 0.62rem; font-weight: 800;
+      letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent);
+    }
+    .guide__cover h3 { margin-bottom: 16px; font-size: clamp(1.5rem, 2.3vw, 1.95rem); line-height: 1.08; }
+    .guide__cover h3 i { font-style: normal; color: var(--accent); }
+    .guide__cover-sub { font-size: 0.88rem; line-height: 1.55; color: var(--ink-soft); }
+    .guide__meta { border-top: 1px solid var(--line); padding-top: 20px; font-size: 0.78rem; }
+    .guide__meta div { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; }
+    .guide__meta div + div { margin-top: 12px; }
+    .guide__meta dt { font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(0, 51, 51, 0.35); }
+    .guide__meta dd { font-weight: 600; }
+    .guide__badge {
+      position: absolute; left: 24px; bottom: -16px;
+      display: flex; align-items: center; gap: 8px;
+      background: var(--ink); color: var(--bg); border-radius: 999px;
+      padding: 10px 16px; font-size: 0.72rem; font-weight: 700;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      box-shadow: 0 12px 30px -12px rgba(0, 51, 51, 0.6);
+    }
+    .guide__badge i { width: 6px; height: 6px; border-radius: 50%; background: var(--accent); }
+
+    .guide__toc-head { display: flex; align-items: center; gap: 16px; margin-bottom: 8px; }
+    .guide__toc-head span {
+      font-size: 0.68rem; font-weight: 800; letter-spacing: 0.2em;
+      text-transform: uppercase; color: rgba(0, 51, 51, 0.4);
+    }
+    .guide__toc-head hr { flex: 1; height: 1px; border: 0; background: var(--line); }
+    .guide__toc { list-style: none; }
+    .guide__toc li {
       display: flex; align-items: flex-start; gap: 20px;
-      background: #fff; padding: clamp(26px, 2.6vw, 36px);
+      padding: 20px 0; border-bottom: 1px solid var(--line);
       transition: transform 0.4s var(--ease);
     }
-    .guidecard:hover { transform: translateX(6px); }
-    .guidecard:hover i { color: var(--accent); }
-    .guidecard i {
-      flex: none; display: grid; place-items: center;
-      width: 32px; height: 32px; border-radius: 10px; border: 1px solid var(--line);
-      font-style: normal; font-size: 0.78rem; font-weight: 800; line-height: 1;
-      color: rgba(0, 51, 51, 0.35);
-      transition: color 0.3s, background 0.3s, border-color 0.3s;
+    .guide__toc li:last-child { border-bottom: 0; }
+    .guide__toc li:hover { transform: translateX(6px); }
+    .guide__toc li > i {
+      flex: none; padding-top: 2px; font-style: normal;
+      font-size: 0.78rem; font-weight: 800; font-variant-numeric: tabular-nums;
+      color: rgba(218, 112, 0, 0.4); transition: color 0.3s;
     }
-    .guidecard:hover i { background: var(--accent); border-color: var(--accent); color: #fff; }
-
-    /* the panel presents itself as the document it describes */
-    .guidedoc {
-      display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px;
-      background: var(--ink); color: var(--bg); padding: 20px clamp(26px, 2.6vw, 36px);
-    }
-    .guidedoc-id { display: flex; align-items: center; gap: 14px; }
-    .guidedoc-icon {
-      flex: none; display: grid; place-items: center;
-      width: 40px; height: 40px; border-radius: 12px; background: var(--accent); color: #fff;
-    }
-    .guidedoc-icon svg { width: 19px; height: 19px; }
-    .guidedoc b { display: block; font-size: 1.02rem; line-height: 1.2; color: var(--bg); }
-    .guidedoc-sub { font-size: 0.82rem; color: rgba(255, 255, 255, 0.55); }
-    .guidedoc-pill {
-      display: flex; align-items: center; gap: 8px;
-      border: 1px solid rgba(255, 255, 255, 0.2); border-radius: 999px;
-      padding: 8px 16px; font-size: 0.76rem; font-weight: 700;
-      letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255, 255, 255, 0.75);
-    }
-    .guidedoc-pill i { width: 6px; height: 6px; border-radius: 50%; background: var(--accent); }
-    .guidecard b { display: block; margin-bottom: 8px; font-size: 1.08rem; font-weight: 700; line-height: 1.3; }
-    .guidecard p { font-size: 0.95rem; line-height: 1.6; color: var(--ink-soft); }
+    .guide__toc li:hover > i { color: var(--accent); }
+    .guide__toc b { display: block; margin-bottom: 6px; font-size: 1.05rem; font-weight: 700; line-height: 1.3; transition: color 0.3s; }
+    .guide__toc li:hover b { color: var(--accent); }
+    .guide__toc p { font-size: 0.93rem; line-height: 1.6; color: var(--ink-soft); }
     .guide__note {
       margin: clamp(28px, 3vw, 38px) auto 0; max-width: 1280px;
       padding-left: 18px; border-left: 3px solid var(--accent);
@@ -320,10 +342,10 @@
     .guide__note b { color: var(--ink); }
     @media (max-width: 1024px) {
       .focus__grid { grid-template-columns: 1fr 1fr; }
-      .rd__inner { grid-template-columns: 1fr; } .guide__grid { grid-template-columns: repeat(2, 1fr); } }
+      .rd__inner { grid-template-columns: 1fr; } .guide__spread { grid-template-columns: 1fr; } }
     @media (max-width: 640px) {
       .focus__grid { grid-template-columns: 1fr; }
-      .guide__grid { grid-template-columns: 1fr; } .guide__grid { grid-template-columns: 1fr; } }
+      .guide__cover { padding: 26px; } }
 
     /* --- FAQ --- */
     .faq2 { padding: clamp(80px, 12vh, 130px) clamp(20px, 5vw, 72px) clamp(60px, 8vh, 90px); }
@@ -633,60 +655,76 @@
           <h2>Your Personal<br /><span class="accent-text">Nutrition Guide.</span></h2>
           <p>Written after your call and in your inbox within 24 hours, built entirely around the food you already buy.</p>
         </div>
-        <div class="guide__table">
-          <div class="guidedoc">
-            <div class="guidedoc-id">
-              <span class="guidedoc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8Z"/><path d="M14 3v5h5M9 13h6M9 17h4"/></svg></span>
-              <span>
-                <b>Personal Nutrition Guide</b>
-                <span class="guidedoc-sub">Prepared for you after your call</span>
-              </span>
+        <div class="guide__spread">
+          <div class="guide__cover-wrap">
+            <div class="guide__stack">
+              <div class="guide__back" aria-hidden="true"></div>
+              <article class="guide__cover">
+                <span class="guide__mark">akaani<i>.</i></span>
+                <div>
+                  <p class="guide__cover-kicker">Prepared for you</p>
+                  <h3>Personal Nutrition Guide<i>.</i></h3>
+                  <p class="guide__cover-sub">Built around the foods you already eat.</p>
+                </div>
+                <dl class="guide__meta">
+                  <div><dt>Written by</dt><dd>Registered Dietitian</dd></div>
+                  <div><dt>Covers</dt><dd>7 days</dd></div>
+                </dl>
+              </article>
+              <span class="guide__badge"><i></i>In your inbox &middot; 24 hours</span>
             </div>
-            <span class="guidedoc-pill"><i></i>In your inbox &middot; 24 hours</span>
           </div>
-          <div class="guide__grid">
-            <article class="guidecard">
+
+          <div>
+            <div class="guide__toc-head">
+              <span>Inside the guide</span>
+              <hr />
+              <span>6 sections</span>
+            </div>
+            <ul class="guide__toc">
+            <li>
               <i>01</i>
               <div>
                 <b>Your nutrition targets</b>
                 <p>Personalized calorie and macro targets, where appropriate for your goals.</p>
               </div>
-            </article>
-            <article class="guidecard">
+            </li>
+            <li>
               <i>02</i>
               <div>
                 <b>Your plate &amp; portion guidance</b>
                 <p>Practical portions using familiar measures and the foods you already eat.</p>
               </div>
-            </article>
-            <article class="guidecard">
+            </li>
+            <li>
               <i>03</i>
               <div>
                 <b>Your nutrition priorities</b>
                 <p>3 to 5 clear areas to focus on, based on your consultation.</p>
               </div>
-            </article>
-            <article class="guidecard">
+            </li>
+            <li>
               <i>04</i>
               <div>
                 <b>Foods &amp; meals to prioritize</b>
                 <p>Nigerian foods and meal combinations that support your goals.</p>
               </div>
-            </article>
-            <article class="guidecard">
+            </li>
+            <li>
               <i>05</i>
               <div>
                 <b>Practical Nigerian food swaps</b>
                 <p>Simple changes that improve nutrition without giving up the foods you enjoy.</p>
               </div>
-            </article>
-            <article class="guidecard">
+            </li>
+            <li>
               <i>06</i>
               <div>
                 <b>Sample meal combinations</b>
                 <p>Examples of what breakfast, lunch and dinner could look like based on your recommendations.</p>
               </div>
-            </article>
+            </li>
+            </ul>
           </div>
         </div>
         <p class="guide__note"><b>A week, mapped out.</b> A practical 7-day guide built around the foods you already eat, with meal ideas you can mix, match and repeat. Managing hypertension, diabetes or PCOS? It is shaped by your readings, your medication and what your doctor has already told you.</p>
@@ -842,8 +880,9 @@
     staggerReveal(".whycard", { stagger: 0.12 });
     staggerReveal(".how__inner");
     staggerReveal(".guide__head > *", { stagger: 0.1 });
-    staggerReveal(".guidedoc");
-    staggerReveal(".guidecard", { stagger: 0.08 });
+    staggerReveal(".guide__cover-wrap");
+    staggerReveal(".guide__toc-head");
+    staggerReveal(".guide__toc li", { stagger: 0.07 });
     staggerReveal(".rd__photo");
     staggerReveal(".rd__body > *", { stagger: 0.1 });
     staggerReveal(".guide__note");

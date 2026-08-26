@@ -49,6 +49,23 @@ export default function Motion() {
         scrollTrigger: { trigger: '[data-gsap="ghost"]', start: "top bottom", end: "bottom top", scrub: true },
       });
 
+      // The guide cover drifts against the contents beside it. Framer Motion
+      // owns y on the wrapper, so GSAP moves yPercent on the inner node.
+      gsap.fromTo(
+        '[data-gsap="guide-cover"]',
+        { yPercent: 4 },
+        {
+          yPercent: -6,
+          ease: "none",
+          scrollTrigger: {
+            trigger: '[data-gsap="guide-cover"]',
+            start: "top bottom",
+            end: "bottom top",
+            scrub: true,
+          },
+        },
+      );
+
       // Slow counter-scroll on the hero portrait.
       gsap.fromTo(
         '[data-gsap="hero-visual"] img',

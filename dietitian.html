@@ -267,73 +267,101 @@
     .guide__head h2 { font-size: clamp(1.9rem, 3.2vw, 2.6rem); margin-bottom: 14px; }
     .guide__head p { color: var(--ink-soft); font-size: 1.02rem; line-height: 1.65; }
     /* --- the guide, shown as the document it is --- */
-    .guide__spread {
+    /* --- the guide preview: pick a section, see the page it produces --- */
+    .gp {
       max-width: 1180px; margin: 0 auto;
-      display: grid; grid-template-columns: 0.82fr 1.18fr;
-      gap: clamp(36px, 5vw, 72px); align-items: start;
+      display: grid; grid-template-columns: 1fr 1.05fr;
+      gap: clamp(28px, 4vw, 60px); align-items: start;
     }
-    /* the wrapper reserves the room the offset page needs, so it never
-       pushes the page wide on small screens */
-    .guide__cover-wrap { width: 100%; max-width: 410px; margin: 0 auto; padding: 20px 20px 0 0; }
-    .guide__stack { position: relative; }
-    .guide__back {
-      position: absolute; inset: 0;
-      transform: translate(20px, -20px) rotate(3deg);
-      border: 1px solid var(--line); border-radius: 22px; background: var(--mist);
+    .gp__tabs { display: flex; flex-direction: column; }
+    .gp__tab {
+      position: relative; width: 100%; text-align: left; cursor: pointer;
+      background: none; border: 0; border-bottom: 1px solid var(--line);
+      padding: 20px 0 20px 20px; font: inherit; color: inherit;
+      transition: color 0.3s;
     }
-    .guide__cover {
-      position: relative; display: flex; flex-direction: column; justify-content: space-between;
-      aspect-ratio: 1 / 1.24; padding: 32px;
-      background: #fff; border: 1px solid var(--line); border-radius: 22px;
-      box-shadow: 0 34px 70px -30px rgba(0, 51, 51, 0.4);
+    /* the bar marks the active section, so the list reads as something you click */
+    .gp__tab::before {
+      content: ""; position: absolute; left: 0; top: 12px; bottom: 12px; width: 3px;
+      border-radius: 999px; background: var(--accent);
+      opacity: 0; transition: opacity 0.3s;
     }
-    .guide__mark { font-size: 1.06rem; font-weight: 800; letter-spacing: -0.02em; }
-    .guide__mark i { font-style: normal; color: var(--accent); }
-    .guide__cover-kicker {
-      margin-bottom: 12px; font-size: 0.62rem; font-weight: 800;
+    .gp__tab[aria-selected="true"]::before { opacity: 1; }
+    .gp__tab:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 8px; }
+    .gp__tab-row { display: flex; align-items: baseline; gap: 16px; }
+    .gp__tab i {
+      flex: none; font-style: normal; font-size: 0.72rem; font-weight: 800;
+      font-variant-numeric: tabular-nums; color: rgba(218, 112, 0, 0.4); transition: color 0.3s;
+    }
+    .gp__tab:hover i, .gp__tab[aria-selected="true"] i { color: var(--accent); }
+    .gp__tab b { display: block; font-size: 1.05rem; font-weight: 700; line-height: 1.3; transition: color 0.3s; }
+    .gp__tab:hover b, .gp__tab[aria-selected="true"] b { color: var(--accent); }
+    .gp__tab-sub { display: block; margin-top: 6px; font-size: 0.93rem; line-height: 1.6; color: var(--ink-soft); }
+
+    .gp__frame {
+      border: 1px solid var(--line); border-radius: 22px; overflow: hidden; background: #fff;
+      box-shadow: 0 30px 60px -34px rgba(0, 51, 51, 0.45);
+    }
+    .gp__framehead {
+      display: flex; align-items: center; justify-content: space-between; gap: 16px;
+      border-bottom: 1px solid var(--line); padding: 16px clamp(24px, 2.4vw, 32px);
+    }
+    .gp__framehead > span:first-child {
+      font-size: 0.72rem; font-weight: 800; letter-spacing: 0.14em;
+      text-transform: uppercase; color: rgba(0, 51, 51, 0.35);
+    }
+    .gp__tag {
+      border: 1px solid var(--line); border-radius: 999px; padding: 4px 10px;
+      font-size: 0.62rem; font-weight: 800; letter-spacing: 0.12em;
+      text-transform: uppercase; color: rgba(0, 51, 51, 0.35);
+    }
+    .gp__body { min-height: 352px; padding: clamp(26px, 2.6vw, 36px) clamp(24px, 2.4vw, 32px); }
+    .gp__page[hidden] { display: none; }
+    .gp__page { animation: gpIn 0.32s var(--ease) both; }
+    @keyframes gpIn { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: none; } }
+    .gp__page-kicker {
+      margin-bottom: 6px; font-size: 0.66rem; font-weight: 800;
       letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent);
     }
-    .guide__cover h3 { margin-bottom: 16px; font-size: clamp(1.5rem, 2.3vw, 1.95rem); line-height: 1.08; }
-    .guide__cover h3 i { font-style: normal; color: var(--accent); }
-    .guide__cover-sub { font-size: 0.88rem; line-height: 1.55; color: var(--ink-soft); }
-    .guide__meta { border-top: 1px solid var(--line); padding-top: 20px; font-size: 0.78rem; }
-    .guide__meta div { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; }
-    .guide__meta div + div { margin-top: 12px; }
-    .guide__meta dt { font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(0, 51, 51, 0.35); }
-    .guide__meta dd { font-weight: 600; }
-    .guide__badge {
-      position: absolute; left: 24px; bottom: -16px;
-      display: flex; align-items: center; gap: 8px;
-      background: var(--ink); color: var(--bg); border-radius: 999px;
-      padding: 10px 16px; font-size: 0.72rem; font-weight: 700;
-      letter-spacing: 0.1em; text-transform: uppercase;
-      box-shadow: 0 12px 30px -12px rgba(0, 51, 51, 0.6);
+    .gp__page h3 { margin-bottom: 24px; font-size: clamp(1.2rem, 1.7vw, 1.45rem); line-height: 1.2; }
+    .gp__note {
+      margin-top: 24px; border-top: 1px solid var(--line); padding-top: 20px;
+      font-size: 0.88rem; line-height: 1.55; color: var(--ink-soft);
     }
-    .guide__badge i { width: 6px; height: 6px; border-radius: 50%; background: var(--accent); }
+    .gp__caption { margin-top: 16px; font-size: 0.82rem; color: var(--ink-soft); }
 
-    .guide__toc-head { display: flex; align-items: center; gap: 16px; margin-bottom: 8px; }
-    .guide__toc-head span {
-      font-size: 0.68rem; font-weight: 800; letter-spacing: 0.2em;
-      text-transform: uppercase; color: rgba(0, 51, 51, 0.4);
+    /* the page contents themselves */
+    .gp__rows div, .gp__swaps li, .gp__meals li {
+      display: flex; border-bottom: 1px solid var(--line);
     }
-    .guide__toc-head hr { flex: 1; height: 1px; border: 0; background: var(--line); }
-    .guide__toc { list-style: none; }
-    .guide__toc li {
-      display: flex; align-items: flex-start; gap: 20px;
-      padding: 20px 0; border-bottom: 1px solid var(--line);
-      transition: transform 0.4s var(--ease);
+    .gp__rows div { align-items: baseline; justify-content: space-between; gap: 16px; padding-bottom: 14px; margin-bottom: 14px; }
+    .gp__rows div:last-child, .gp__swaps li:last-child, .gp__meals li:last-child { border-bottom: 0; margin-bottom: 0; padding-bottom: 0; }
+    .gp__rows dt { font-size: 0.9rem; color: var(--ink-soft); }
+    .gp__rows dd { font-size: 0.98rem; font-weight: 700; font-variant-numeric: tabular-nums; }
+    .gp__plate { display: flex; flex-wrap: wrap; align-items: center; gap: 28px; }
+    .gp__plate svg { flex: none; width: 126px; height: 126px; }
+    .gp__legend { list-style: none; display: grid; gap: 10px; }
+    .gp__legend li { display: flex; align-items: center; gap: 10px; font-size: 0.9rem; color: var(--ink-soft); }
+    .gp__legend i { width: 10px; height: 10px; border-radius: 50%; }
+    .gp__legend b { color: var(--ink); }
+    .gp__checks { list-style: none; display: grid; gap: 14px; }
+    .gp__checks li { display: flex; align-items: flex-start; gap: 12px; font-size: 0.94rem; line-height: 1.5; }
+    .gp__checks svg { flex: none; width: 16px; height: 16px; margin-top: 3px; color: var(--accent); }
+    .gp__chips { list-style: none; display: flex; flex-wrap: wrap; gap: 10px; }
+    .gp__chips li { border: 1px solid var(--line); border-radius: 999px; padding: 8px 14px; font-size: 0.88rem; font-weight: 600; }
+    .gp__swaps { list-style: none; }
+    .gp__swaps li { flex-wrap: wrap; align-items: center; gap: 12px; padding-bottom: 12px; margin-bottom: 12px; }
+    .gp__swaps s { font-size: 0.92rem; color: var(--ink-soft); text-decoration-color: rgba(0, 51, 51, 0.25); }
+    .gp__swaps i { font-style: normal; color: var(--accent); }
+    .gp__swaps b { font-size: 0.94rem; font-weight: 700; }
+    .gp__meals { list-style: none; }
+    .gp__meals li { gap: 16px; padding-bottom: 16px; margin-bottom: 16px; }
+    .gp__meals i {
+      flex: none; width: 74px; padding-top: 2px; font-style: normal;
+      font-size: 0.68rem; font-weight: 800; letter-spacing: 0.12em;
+      text-transform: uppercase; color: rgba(0, 51, 51, 0.35);
     }
-    .guide__toc li:last-child { border-bottom: 0; }
-    .guide__toc li:hover { transform: translateX(6px); }
-    .guide__toc li > i {
-      flex: none; padding-top: 2px; font-style: normal;
-      font-size: 0.78rem; font-weight: 800; font-variant-numeric: tabular-nums;
-      color: rgba(218, 112, 0, 0.4); transition: color 0.3s;
-    }
-    .guide__toc li:hover > i { color: var(--accent); }
-    .guide__toc b { display: block; margin-bottom: 6px; font-size: 1.05rem; font-weight: 700; line-height: 1.3; transition: color 0.3s; }
-    .guide__toc li:hover b { color: var(--accent); }
-    .guide__toc p { font-size: 0.93rem; line-height: 1.6; color: var(--ink-soft); }
+    .gp__meals span { font-size: 0.94rem; line-height: 1.5; }
     .guide__note {
       margin: clamp(28px, 3vw, 38px) auto 0; max-width: 1280px;
       padding-left: 18px; border-left: 3px solid var(--accent);
@@ -342,7 +370,22 @@
     .guide__note b { color: var(--ink); }
     @media (max-width: 1024px) {
       .focus__grid { grid-template-columns: 1fr 1fr; }
-      .rd__inner { grid-template-columns: 1fr; } .guide__spread { grid-template-columns: 1fr; } }
+      .rd__inner { grid-template-columns: 1fr; }
+      /* the contents become a scrolling chip strip above the page */
+      .gp { grid-template-columns: 1fr; }
+      .gp__tabs {
+        flex-direction: row; gap: 10px; margin: 0 -20px 8px; padding: 0 20px 8px;
+        overflow-x: auto; scroll-snap-type: x proximity;
+      }
+      .gp__tab {
+        flex: none; scroll-snap-align: start; width: auto;
+        border: 1px solid var(--line); border-radius: 999px; padding: 10px 16px;
+      }
+      .gp__tab::before { display: none; }
+      .gp__tab[aria-selected="true"] { background: var(--ink); border-color: var(--ink); }
+      .gp__tab[aria-selected="true"] b { color: var(--bg); }
+      .gp__tab b { white-space: nowrap; font-size: 0.92rem; }
+      .gp__tab-sub { display: none; } }
     @media (max-width: 640px) {
       .focus__grid { grid-template-columns: 1fr; }
       .guide__cover { padding: 26px; } }
@@ -655,76 +698,144 @@
           <h2>Your Personal<br /><span class="accent-text">Nutrition Guide.</span></h2>
           <p>Written after your call and in your inbox within 24 hours, built entirely around the food you already buy.</p>
         </div>
-        <div class="guide__spread">
-          <div class="guide__cover-wrap">
-            <div class="guide__stack">
-              <div class="guide__back" aria-hidden="true"></div>
-              <article class="guide__cover">
-                <span class="guide__mark">akaani<i>.</i></span>
-                <div>
-                  <p class="guide__cover-kicker">Prepared for you</p>
-                  <h3>Personal Nutrition Guide<i>.</i></h3>
-                  <p class="guide__cover-sub">Built around the foods you already eat.</p>
-                </div>
-                <dl class="guide__meta">
-                  <div><dt>Written by</dt><dd>Registered Dietitian</dd></div>
-                  <div><dt>Covers</dt><dd>7 days</dd></div>
-                </dl>
-              </article>
-              <span class="guide__badge"><i></i>In your inbox &middot; 24 hours</span>
-            </div>
+        <div class="gp">
+          <div class="gp__tabs" role="tablist" aria-label="Sections of the guide" aria-orientation="vertical">
+            <button class="gp__tab" type="button" role="tab" id="gp-tab-0" aria-controls="gp-page-0" aria-selected="true" tabindex="0">
+              <span class="gp__tab-row">
+                <i>01</i>
+                <span>
+                  <b>Your nutrition targets</b>
+                  <span class="gp__tab-sub">Personalized calorie and macro targets, where appropriate for your goals.</span>
+                </span>
+              </span>
+            </button>
+            <button class="gp__tab" type="button" role="tab" id="gp-tab-1" aria-controls="gp-page-1" aria-selected="false" tabindex="-1">
+              <span class="gp__tab-row">
+                <i>02</i>
+                <span>
+                  <b>Your plate &amp; portion guidance</b>
+                  <span class="gp__tab-sub">Practical portions using familiar measures and the foods you already eat.</span>
+                </span>
+              </span>
+            </button>
+            <button class="gp__tab" type="button" role="tab" id="gp-tab-2" aria-controls="gp-page-2" aria-selected="false" tabindex="-1">
+              <span class="gp__tab-row">
+                <i>03</i>
+                <span>
+                  <b>Your nutrition priorities</b>
+                  <span class="gp__tab-sub">3 to 5 clear areas to focus on, based on your consultation.</span>
+                </span>
+              </span>
+            </button>
+            <button class="gp__tab" type="button" role="tab" id="gp-tab-3" aria-controls="gp-page-3" aria-selected="false" tabindex="-1">
+              <span class="gp__tab-row">
+                <i>04</i>
+                <span>
+                  <b>Foods &amp; meals to prioritize</b>
+                  <span class="gp__tab-sub">Nigerian foods and meal combinations that support your goals.</span>
+                </span>
+              </span>
+            </button>
+            <button class="gp__tab" type="button" role="tab" id="gp-tab-4" aria-controls="gp-page-4" aria-selected="false" tabindex="-1">
+              <span class="gp__tab-row">
+                <i>05</i>
+                <span>
+                  <b>Practical Nigerian food swaps</b>
+                  <span class="gp__tab-sub">Simple changes that improve nutrition without giving up the foods you enjoy.</span>
+                </span>
+              </span>
+            </button>
+            <button class="gp__tab" type="button" role="tab" id="gp-tab-5" aria-controls="gp-page-5" aria-selected="false" tabindex="-1">
+              <span class="gp__tab-row">
+                <i>06</i>
+                <span>
+                  <b>Sample meal combinations</b>
+                  <span class="gp__tab-sub">Examples of what breakfast, lunch and dinner could look like based on your recommendations.</span>
+                </span>
+              </span>
+            </button>
           </div>
 
           <div>
-            <div class="guide__toc-head">
-              <span>Inside the guide</span>
-              <hr />
-              <span>6 sections</span>
+            <div class="gp__frame">
+              <div class="gp__framehead">
+                <span>Personal Nutrition Guide</span>
+                <span class="gp__tag">Example</span>
+              </div>
+              <div class="gp__body">
+              <div class="gp__page" id="gp-page-0" role="tabpanel" aria-labelledby="gp-tab-0">
+                <p class="gp__page-kicker">Section 01 of 06</p>
+                <h3>Your nutrition targets</h3>
+                <dl class="gp__rows">
+                  <div><dt>Energy</dt><dd>2,100 kcal</dd></div>
+                  <div><dt>Protein</dt><dd>105 g</dd></div>
+                  <div><dt>Fibre</dt><dd>30 g</dd></div>
+                  <div><dt>Added sugar</dt><dd>Under 25 g</dd></div>
+                </dl>
+                <p class="gp__note">Set with your dietitian on the call, and adjusted to your health, not a formula.</p>
+              </div>
+              <div class="gp__page" id="gp-page-1" role="tabpanel" aria-labelledby="gp-tab-1" hidden>
+                <p class="gp__page-kicker">Section 02 of 06</p>
+                <h3>Your plate &amp; portion guidance</h3>
+                <div class="gp__plate">
+                  <svg viewBox="0 0 120 120" aria-hidden="true">
+                    <circle cx="60" cy="60" r="54" fill="none" stroke-width="13" stroke="#003333" stroke-dasharray="169.6 339.3" transform="rotate(-90 60 60)" />
+                    <circle cx="60" cy="60" r="54" fill="none" stroke-width="13" stroke="#DA7000" stroke-dasharray="84.8 339.3" stroke-dashoffset="-169.6" transform="rotate(-90 60 60)" />
+                    <circle cx="60" cy="60" r="54" fill="none" stroke-width="13" stroke="rgba(0,51,51,.25)" stroke-dasharray="84.8 339.3" stroke-dashoffset="-254.5" transform="rotate(-90 60 60)" />
+                  </svg>
+                  <ul class="gp__legend">
+                    <li><i style="background:#003333"></i><b>50%</b> Vegetables &amp; soup</li>
+                    <li><i style="background:#DA7000"></i><b>25%</b> Protein</li>
+                    <li><i style="background:rgba(0,51,51,.25)"></i><b>25%</b> Swallow or rice</li>
+                  </ul>
+                </div>
+                <p class="gp__note">One plate, three parts. It works whether you are eating rice, swallow or beans.</p>
+              </div>
+              <div class="gp__page" id="gp-page-2" role="tabpanel" aria-labelledby="gp-tab-2" hidden>
+                <p class="gp__page-kicker">Section 03 of 06</p>
+                <h3>Your nutrition priorities</h3>
+                <ul class="gp__checks">
+                  <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12.5 4.5 4.5L19 7.5" /></svg><span>Anchor breakfast with a protein, not just bread or pap.</span></li>
+                  <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12.5 4.5 4.5L19 7.5" /></svg><span>Cut frying to twice a week. Boil, grill or bake the rest.</span></li>
+                  <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12.5 4.5 4.5L19 7.5" /></svg><span>Bring vegetables into the two meals you cook most often.</span></li>
+                  <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12.5 4.5 4.5L19 7.5" /></svg><span>Move your heaviest swallow to earlier in the day.</span></li>
+                </ul>
+                <p class="gp__note">Few enough to actually do. Nobody changes ten things at once.</p>
+              </div>
+              <div class="gp__page" id="gp-page-3" role="tabpanel" aria-labelledby="gp-tab-3" hidden>
+                <p class="gp__page-kicker">Section 04 of 06</p>
+                <h3>Foods &amp; meals to prioritize</h3>
+                <ul class="gp__chips">
+                  <li>Efo riro</li><li>Moi moi</li><li>Ofada rice</li><li>Beans &amp; plantain</li>
+                  <li>Okra soup</li><li>Mackerel</li><li>Garden egg</li><li>Unripe plantain</li>
+                </ul>
+                <p class="gp__note">Foods you can buy at your usual market, not imported substitutes.</p>
+              </div>
+              <div class="gp__page" id="gp-page-4" role="tabpanel" aria-labelledby="gp-tab-4" hidden>
+                <p class="gp__page-kicker">Section 05 of 06</p>
+                <h3>Practical Nigerian food swaps</h3>
+                <ul class="gp__swaps">
+                  <li><s>White rice</s><i>&rarr;</i><b>Ofada or brown rice</b></li>
+                  <li><s>Fried plantain</s><i>&rarr;</i><b>Boiled or grilled plantain</b></li>
+                  <li><s>Soft drink</s><i>&rarr;</i><b>Zobo, no sugar</b></li>
+                  <li><s>Buttered bread</s><i>&rarr;</i><b>Bread with eggs or beans</b></li>
+                </ul>
+                <p class="gp__note">Same meal, small change. Nothing on this list is a food you have to give up.</p>
+              </div>
+              <div class="gp__page" id="gp-page-5" role="tabpanel" aria-labelledby="gp-tab-5" hidden>
+                <p class="gp__page-kicker">Section 06 of 06</p>
+                <h3>Sample meal combinations</h3>
+                <ul class="gp__meals">
+                  <li><i>Breakfast</i><span>Pap with moi moi, and a boiled egg.</span></li>
+                  <li><i>Lunch</i><span>Ofada rice, efo riro, grilled fish.</span></li>
+                  <li><i>Dinner</i><span>Beans and unripe plantain porridge.</span></li>
+                  <li><i>If hungry</i><span>Groundnuts, garden egg, or an orange.</span></li>
+                </ul>
+                <p class="gp__note">Mix, match and repeat across the week. These are starting points, not rules.</p>
+              </div>
+              </div>
             </div>
-            <ul class="guide__toc">
-            <li>
-              <i>01</i>
-              <div>
-                <b>Your nutrition targets</b>
-                <p>Personalized calorie and macro targets, where appropriate for your goals.</p>
-              </div>
-            </li>
-            <li>
-              <i>02</i>
-              <div>
-                <b>Your plate &amp; portion guidance</b>
-                <p>Practical portions using familiar measures and the foods you already eat.</p>
-              </div>
-            </li>
-            <li>
-              <i>03</i>
-              <div>
-                <b>Your nutrition priorities</b>
-                <p>3 to 5 clear areas to focus on, based on your consultation.</p>
-              </div>
-            </li>
-            <li>
-              <i>04</i>
-              <div>
-                <b>Foods &amp; meals to prioritize</b>
-                <p>Nigerian foods and meal combinations that support your goals.</p>
-              </div>
-            </li>
-            <li>
-              <i>05</i>
-              <div>
-                <b>Practical Nigerian food swaps</b>
-                <p>Simple changes that improve nutrition without giving up the foods you enjoy.</p>
-              </div>
-            </li>
-            <li>
-              <i>06</i>
-              <div>
-                <b>Sample meal combinations</b>
-                <p>Examples of what breakfast, lunch and dinner could look like based on your recommendations.</p>
-              </div>
-            </li>
-            </ul>
+            <p class="gp__caption">A preview. Your own guide is written after your call.</p>
           </div>
         </div>
         <p class="guide__note"><b>A week, mapped out.</b> A practical 7-day guide built around the foods you already eat, with meal ideas you can mix, match and repeat. Managing hypertension, diabetes or PCOS? It is shaped by your readings, your medication and what your doctor has already told you.</p>
@@ -880,12 +991,48 @@
     staggerReveal(".whycard", { stagger: 0.12 });
     staggerReveal(".how__inner");
     staggerReveal(".guide__head > *", { stagger: 0.1 });
-    staggerReveal(".guide__cover-wrap");
-    staggerReveal(".guide__toc-head");
-    staggerReveal(".guide__toc li", { stagger: 0.07 });
+    staggerReveal(".gp__tab", { stagger: 0.07 });
+    staggerReveal(".gp__frame");
     staggerReveal(".rd__photo");
     staggerReveal(".rd__body > *", { stagger: 0.1 });
     staggerReveal(".guide__note");
+
+    /* --- guide preview tabs --- */
+    (function () {
+      var list = document.querySelector(".gp__tabs");
+      if (!list) return;
+      var tabs = Array.prototype.slice.call(list.querySelectorAll(".gp__tab"));
+
+      function select(i, focus) {
+        tabs.forEach(function (tab, n) {
+          var on = n === i;
+          tab.setAttribute("aria-selected", on ? "true" : "false");
+          tab.tabIndex = on ? 0 : -1;
+          var page = document.getElementById(tab.getAttribute("aria-controls"));
+          if (!page) return;
+          page.hidden = !on;
+          /* restart the entry animation on the page coming in */
+          if (on) { page.style.animation = "none"; void page.offsetWidth; page.style.animation = ""; }
+        });
+        if (focus) tabs[i].focus();
+      }
+
+      tabs.forEach(function (tab, i) {
+        tab.addEventListener("click", function () { select(i); });
+      });
+
+      var STEP = { ArrowDown: 1, ArrowRight: 1, ArrowUp: -1, ArrowLeft: -1 };
+      list.addEventListener("keydown", function (e) {
+        var current = tabs.findIndex(function (t) { return t.getAttribute("aria-selected") === "true"; });
+        var next;
+        if (STEP[e.key] !== undefined) next = current + STEP[e.key];
+        else if (e.key === "Home") next = 0;
+        else if (e.key === "End") next = tabs.length - 1;
+        else return;
+        e.preventDefault();
+        select(Math.min(tabs.length - 1, Math.max(0, next)), true);
+      });
+    })();
     staggerReveal(".faq2__head");
     staggerReveal(".faq2__item", { lift: false, stagger: 0.07 });
     staggerReveal(".faq2__cta");

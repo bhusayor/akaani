@@ -71,24 +71,6 @@
     .ask__head > p { color: var(--ink-soft); font-size: 1.05rem; line-height: 1.65; }
 
 
-    .ask__foot {
-      max-width: 1280px; margin: clamp(24px, 3vw, 36px) auto 0;
-      background: var(--bg-soft); border-radius: 26px;
-      padding: clamp(26px, 3vw, 38px);
-      display: flex; align-items: center; justify-content: space-between;
-      gap: 26px; flex-wrap: wrap;
-    }
-    .ask__foot b { display: block; font-size: 1.14rem; margin-bottom: 6px; }
-    .ask__foot-link {
-      display: inline-flex; align-items: center; gap: 8px; white-space: nowrap;
-      font-size: 0.97rem; font-weight: 700; color: var(--ink);
-      text-decoration: underline; text-decoration-color: var(--accent);
-      text-decoration-thickness: 2px; text-underline-offset: 5px;
-      transition: color 0.3s, gap 0.3s var(--ease);
-    }
-    .ask__foot-link:hover { color: var(--accent); gap: 13px; }
-    .ask__foot-link i { font-style: normal; color: var(--accent); }
-    .ask__foot p { color: var(--ink-soft); font-size: 0.97rem; line-height: 1.6; max-width: 620px; }
 
     /* --- focus cards --- */
     .focus__grid {
@@ -97,26 +79,70 @@
       gap: clamp(16px, 1.8vw, 22px); align-items: stretch;
     }
     .focus {
+      position: relative; overflow: hidden;
       display: flex; flex-direction: column;
       background: #fff; border: 1px solid var(--line);
-      border-radius: 20px; padding: clamp(24px, 2.4vw, 32px);
-      transition: transform 0.45s var(--ease), border-color 0.3s;
+      border-radius: 22px; padding: clamp(24px, 2.4vw, 32px);
+      transition: transform 0.45s var(--ease), border-color 0.3s, box-shadow 0.3s;
     }
-    .focus:hover { transform: translateY(-6px); border-color: rgba(0, 51, 51, 0.35); }
-    .focus__n { display: block; margin-bottom: 20px; font-size: 0.72rem; font-weight: 800; letter-spacing: 0.2em; color: var(--accent); }
-    .focus h3 { font-size: clamp(1.08rem, 1.4vw, 1.26rem); line-height: 1.25; margin-bottom: 12px; }
+    .focus:hover {
+      transform: translateY(-6px);
+      border-color: rgba(0, 51, 51, 0.25);
+      box-shadow: 0 18px 40px rgba(0, 51, 51, 0.08);
+    }
+    /* accent rule that draws across the top on hover */
+    .focus::before {
+      content: ""; position: absolute; inset: 0 0 auto; height: 3px;
+      background: var(--accent); transform: scaleX(0); transform-origin: left;
+      transition: transform 0.5s var(--ease);
+    }
+    .focus:hover::before { transform: scaleX(1); }
+
+    .focus__top { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; margin-bottom: 24px; }
+    .focus__icon {
+      flex: none; display: grid; place-items: center;
+      width: 48px; height: 48px; border-radius: 16px;
+      background: var(--ink); color: var(--bg);
+      transition: background 0.3s;
+    }
+    .focus:hover .focus__icon { background: var(--accent); }
+    .focus__icon svg { width: 22px; height: 22px; }
+    .focus__n { font-size: 0.72rem; font-weight: 800; letter-spacing: 0.2em; color: rgba(0, 51, 51, 0.2); transition: color 0.3s; }
+    .focus:hover .focus__n { color: var(--accent); }
+    .focus__badge {
+      border-radius: 999px; background: var(--accent); color: #fff;
+      padding: 6px 12px; font-size: 0.62rem; font-weight: 800;
+      letter-spacing: 0.12em; text-transform: uppercase;
+    }
+    .focus h3 { font-size: clamp(1.08rem, 1.4vw, 1.24rem); line-height: 1.25; margin-bottom: 12px; }
     .focus__who { font-size: 0.95rem; line-height: 1.6; color: var(--ink-soft); margin-bottom: 20px; }
     .focus__q {
       display: block; margin-bottom: 24px;
-      font-size: 0.97rem; font-weight: 600; font-style: italic; line-height: 1.5;
-      color: rgba(0, 51, 51, 0.8);
+      padding-left: 16px; border-left: 2px solid rgba(218, 112, 0, 0.4);
+      font-size: 0.96rem; font-weight: 500; font-style: italic; line-height: 1.5;
+      color: rgba(0, 51, 51, 0.75);
     }
     .focus__tags {
       margin-top: auto; padding-top: 16px; border-top: 1px solid var(--line);
-      font-size: 0.7rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase;
+      font-size: 0.69rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase;
       color: var(--ink-soft);
     }
     .focus__tags i { font-style: normal; color: var(--accent); padding: 0 8px; }
+
+    /* the sixth cell: fills the grid so five cards leave no orphan slot */
+    .focus--dark { background: var(--ink); border-color: var(--ink); justify-content: space-between; }
+    .focus--dark:hover { border-color: var(--ink); }
+    .focus--dark .focus__icon { background: var(--accent); color: #fff; }
+    .focus--dark h3 { color: var(--bg); }
+    .focus--dark .focus__who { color: rgba(255, 255, 255, 0.6); margin-bottom: 0; }
+    .focus--dark-link {
+      display: inline-flex; align-items: center; gap: 8px; align-self: flex-start;
+      margin-top: 28px; padding-top: 20px; border-top: 1px solid rgba(255, 255, 255, 0.15);
+      font-size: 0.95rem; font-weight: 700; color: var(--bg); transition: color 0.3s;
+    }
+    .focus--dark-link i { font-style: normal; color: var(--accent); transition: transform 0.3s var(--ease); }
+    .focus--dark-link:hover { color: var(--accent); }
+    .focus--dark-link:hover i { transform: translateY(2px); }
 
     /* --- meet your dietitian --- */
     .rd { padding: clamp(80px, 12vh, 130px) clamp(20px, 5vw, 72px); }
@@ -242,7 +268,7 @@
     .guide__head p { color: var(--ink-soft); font-size: 1.02rem; line-height: 1.65; }
     .guide__table {
       max-width: 1180px; margin: 0 auto;
-      border: 1px solid var(--line); border-radius: 24px; overflow: hidden;
+      border: 1px solid var(--line); border-radius: 26px; overflow: hidden;
     }
     .guide__grid {
       display: grid; grid-template-columns: 1fr 1fr;
@@ -256,10 +282,34 @@
     .guidecard:hover { transform: translateX(6px); }
     .guidecard:hover i { color: var(--accent); }
     .guidecard i {
-      flex: none; width: 36px; padding-top: 3px;
-      font-style: normal; font-size: 1.05rem; font-weight: 800; line-height: 1;
-      color: rgba(218, 112, 0, 0.45); transition: color 0.3s;
+      flex: none; display: grid; place-items: center;
+      width: 32px; height: 32px; border-radius: 10px; border: 1px solid var(--line);
+      font-style: normal; font-size: 0.78rem; font-weight: 800; line-height: 1;
+      color: rgba(0, 51, 51, 0.35);
+      transition: color 0.3s, background 0.3s, border-color 0.3s;
     }
+    .guidecard:hover i { background: var(--accent); border-color: var(--accent); color: #fff; }
+
+    /* the panel presents itself as the document it describes */
+    .guidedoc {
+      display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px;
+      background: var(--ink); color: var(--bg); padding: 20px clamp(26px, 2.6vw, 36px);
+    }
+    .guidedoc-id { display: flex; align-items: center; gap: 14px; }
+    .guidedoc-icon {
+      flex: none; display: grid; place-items: center;
+      width: 40px; height: 40px; border-radius: 12px; background: var(--accent); color: #fff;
+    }
+    .guidedoc-icon svg { width: 19px; height: 19px; }
+    .guidedoc b { display: block; font-size: 1.02rem; line-height: 1.2; color: var(--bg); }
+    .guidedoc-sub { font-size: 0.82rem; color: rgba(255, 255, 255, 0.55); }
+    .guidedoc-pill {
+      display: flex; align-items: center; gap: 8px;
+      border: 1px solid rgba(255, 255, 255, 0.2); border-radius: 999px;
+      padding: 8px 16px; font-size: 0.76rem; font-weight: 700;
+      letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255, 255, 255, 0.75);
+    }
+    .guidedoc-pill i { width: 6px; height: 6px; border-radius: 50%; background: var(--accent); }
     .guidecard b { display: block; margin-bottom: 8px; font-size: 1.08rem; font-weight: 700; line-height: 1.3; }
     .guidecard p { font-size: 0.95rem; line-height: 1.6; color: var(--ink-soft); }
     .guide__note {
@@ -368,7 +418,6 @@
       .lfoot__right { align-items: flex-start; }
     }
     @media (max-width: 640px) {
-      .ask__foot { flex-direction: column; align-items: flex-start; }
     }
   </style>
 </head>
@@ -436,48 +485,65 @@
 
       <div class="focus__grid">
         <article class="focus">
-          <span class="focus__n">01</span>
+          <div class="focus__top">
+            <span class="focus__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 7l6 6 4-4 8 8"/><path d="M21 12v5h-5"/></svg></span>
+            <span class="focus__badge">Most booked</span>
+          </div>
           <h3>Weight Management Consultation</h3>
           <p class="focus__who">For weight that will not move, or will not stay off, without giving up the food you love.</p>
           <q class="focus__q">I am eating less and still not losing weight.</q>
           <p class="focus__tags">Fat loss<i>·</i>PCOS<i>·</i>Sustainable habits</p>
         </article>
         <article class="focus">
-          <span class="focus__n">02</span>
+          <div class="focus__top">
+            <span class="focus__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9v6M8 7v10M16 7v10M20 9v6"/><path d="M8 12h8"/></svg></span>
+            <span class="focus__n">02</span>
+          </div>
           <h3>Fitness Nutrition Consultation</h3>
           <p class="focus__who">For training, performance and recovery, built on Nigerian food rather than imported supplements.</p>
           <q class="focus__q">Am I even eating enough protein for my gym week?</q>
           <p class="focus__tags">Protein<i>·</i>Training days<i>·</i>Muscle gain</p>
         </article>
         <article class="focus">
-          <span class="focus__n">03</span>
+          <div class="focus__top">
+            <span class="focus__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12h18a9 9 0 0 1-18 0Z"/><path d="M9 6c0-1 1-1 1-2M13 6c0-1 1-1 1-2M17 6c0-1 1-1 1-2"/></svg></span>
+            <span class="focus__n">03</span>
+          </div>
           <h3>African Diet Nutrition Review</h3>
           <p class="focus__who">A proper look at what you already eat, and what it is doing for your health.</p>
           <q class="focus__q">Is my everyday diet working for me, or against me?</q>
           <p class="focus__tags">Hypertension<i>·</i>Diabetes<i>·</i>Portions</p>
         </article>
         <article class="focus">
-          <span class="focus__n">04</span>
+          <div class="focus__top">
+            <span class="focus__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 12a8 8 0 1 1-2.6-5.9"/><path d="M20 4v5h-5"/></svg></span>
+            <span class="focus__n">04</span>
+          </div>
           <h3>Healthy Eating Reset</h3>
           <p class="focus__who">For starting again after things slipped, without a regime you will abandon in a week.</p>
           <q class="focus__q">I want to eat better. I just do not know where to start.</q>
           <p class="focus__tags">Energy<i>·</i>Digestion<i>·</i>Routine</p>
         </article>
         <article class="focus">
-          <span class="focus__n">05</span>
+          <div class="focus__top">
+            <span class="focus__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8" r="3"/><circle cx="17" cy="9.5" r="2.2"/><path d="M3 20a6 6 0 0 1 12 0M15.5 20a4.5 4.5 0 0 1 5.5-4.4"/></svg></span>
+            <span class="focus__n">05</span>
+          </div>
           <h3>Family Nutrition Planning</h3>
           <p class="focus__who">For the whole household, so one pot can work for everybody at the table.</p>
           <q class="focus__q">How do I cook once and still feed everyone properly?</q>
           <p class="focus__tags">Children<i>·</i>One-pot cooking<i>·</i>Budget</p>
         </article>
-      </div>
-
-      <div class="ask__foot">
-        <div>
-          <b>Not sure which one you need?</b>
-          <p>Book anyway and say what is going on. Your dietitian will point the session where it is most useful, and works alongside your doctor, never instead of them.</p>
-        </div>
-        <a href="#book" class="ask__foot-link">See how the session works <i>&#8595;</i></a>
+        <article class="focus focus--dark">
+          <div>
+            <div class="focus__top">
+              <span class="focus__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9.1 9a3 3 0 0 1 5.8 1c0 2-3 3-3 3"/><path d="M12 17h.01"/><circle cx="12" cy="12" r="9.5"/></svg></span>
+            </div>
+            <h3>Not sure which one you need?</h3>
+            <p class="focus__who">Book anyway and say what is going on. Your dietitian will point the session where it is most useful, and works alongside your doctor, never instead of them.</p>
+          </div>
+          <a href="#book" class="focus--dark-link">See how the session works <i>&#8595;</i></a>
+        </article>
       </div>
     </section>
 
@@ -568,6 +634,16 @@
           <p>Written after your call and in your inbox within 24 hours, built entirely around the food you already buy.</p>
         </div>
         <div class="guide__table">
+          <div class="guidedoc">
+            <div class="guidedoc-id">
+              <span class="guidedoc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8Z"/><path d="M14 3v5h5M9 13h6M9 17h4"/></svg></span>
+              <span>
+                <b>Personal Nutrition Guide</b>
+                <span class="guidedoc-sub">Prepared for you after your call</span>
+              </span>
+            </div>
+            <span class="guidedoc-pill"><i></i>In your inbox &middot; 24 hours</span>
+          </div>
           <div class="guide__grid">
             <article class="guidecard">
               <i>01</i>
@@ -762,11 +838,11 @@
     }
     staggerReveal(".ask__head > *", { stagger: 0.1 });
     staggerReveal(".focus", { stagger: 0.1 });
-    staggerReveal(".ask__foot");
     staggerReveal(".why__head > *", { stagger: 0.1 });
     staggerReveal(".whycard", { stagger: 0.12 });
     staggerReveal(".how__inner");
     staggerReveal(".guide__head > *", { stagger: 0.1 });
+    staggerReveal(".guidedoc");
     staggerReveal(".guidecard", { stagger: 0.08 });
     staggerReveal(".rd__photo");
     staggerReveal(".rd__body > *", { stagger: 0.1 });

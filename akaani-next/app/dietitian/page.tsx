@@ -8,6 +8,7 @@ import FadeIn from "@/components/motion/FadeIn";
 import { Stagger, StaggerItem } from "@/components/motion/Stagger";
 import HoverLift from "@/components/motion/HoverLift";
 import HoverRow from "@/components/motion/HoverRow";
+import FocusIcon, { type FocusIconName } from "@/components/ui/FocusIcon";
 import Motion from "./Motion";
 
 export const metadata: Metadata = {
@@ -21,6 +22,8 @@ const CALENDLY = "https://calendly.com/useakaani";
 const FOCUS = [
   {
     n: "01",
+    icon: "weight" as FocusIconName,
+    popular: true,
     title: "Weight Management Consultation",
     who: "For weight that will not move, or will not stay off, without giving up the food you love.",
     q: "I am eating less and still not losing weight.",
@@ -28,6 +31,7 @@ const FOCUS = [
   },
   {
     n: "02",
+    icon: "fitness" as FocusIconName,
     title: "Fitness Nutrition Consultation",
     who: "For training, performance and recovery, built on Nigerian food rather than imported supplements.",
     q: "Am I even eating enough protein for my gym week?",
@@ -35,6 +39,7 @@ const FOCUS = [
   },
   {
     n: "03",
+    icon: "review" as FocusIconName,
     title: "African Diet Nutrition Review",
     who: "A proper look at what you already eat, and what it is doing for your health.",
     q: "Is my everyday diet working for me, or against me?",
@@ -42,6 +47,7 @@ const FOCUS = [
   },
   {
     n: "04",
+    icon: "reset" as FocusIconName,
     title: "Healthy Eating Reset",
     who: "For starting again after things slipped, without a regime you will abandon in a week.",
     q: "I want to eat better. I just do not know where to start.",
@@ -49,6 +55,7 @@ const FOCUS = [
   },
   {
     n: "05",
+    icon: "family" as FocusIconName,
     title: "Family Nutrition Planning",
     who: "For the whole household, so one pot can work for everybody at the table.",
     q: "How do I cook once and still feed everyone properly?",
@@ -151,29 +158,53 @@ const SECTION_X = "px-5 sm:px-8 lg:px-[72px]";
 
 function FocusCard({
   n,
+  icon,
   title,
   who,
   q,
   tags,
+  popular,
   index,
 }: {
   n: string;
+  icon: FocusIconName;
   title: string;
   who: string;
   q: string;
   tags: string[];
+  popular?: boolean;
   index: number;
 }) {
   return (
     <HoverLift
       index={index}
-      className="group flex h-full flex-col rounded-[20px] border border-line bg-white p-7 transition-colors duration-300 hover:border-ink/35 md:p-8"
+      className="group relative flex h-full flex-col overflow-hidden rounded-[22px] border border-line bg-white p-7 transition-[border-color,box-shadow] duration-300 hover:border-ink/25 hover:shadow-[0_18px_40px_rgba(0,51,51,0.08)] md:p-8"
     >
-      <span className="mb-5 block text-[0.72rem] font-extrabold tracking-[0.2em] text-accent">{n}</span>
-      <h3 className="mb-3 text-[clamp(1.08rem,1.4vw,1.26rem)] leading-[1.25]">{title}</h3>
+      {/* accent rule that draws across the top on hover */}
+      <span className="absolute inset-x-0 top-0 h-[3px] origin-left scale-x-0 bg-accent transition-transform duration-500 ease-brand group-hover:scale-x-100" />
+
+      <div className="mb-6 flex items-start justify-between gap-3">
+        <span className="grid h-12 w-12 flex-none place-items-center rounded-2xl bg-ink text-bg transition-colors duration-300 group-hover:bg-accent">
+          <FocusIcon name={icon} />
+        </span>
+        {popular ? (
+          <span className="rounded-full bg-accent px-3 py-1.5 text-[0.62rem] font-extrabold uppercase tracking-[0.12em] text-white">
+            Most booked
+          </span>
+        ) : (
+          <span className="text-[0.72rem] font-extrabold tracking-[0.2em] text-ink/20 transition-colors duration-300 group-hover:text-accent">
+            {n}
+          </span>
+        )}
+      </div>
+
+      <h3 className="mb-3 text-[clamp(1.08rem,1.4vw,1.24rem)] leading-[1.25]">{title}</h3>
       <p className="mb-5 text-[0.95rem] leading-[1.6] text-ink-soft">{who}</p>
-      <q className="mb-6 block text-[0.97rem] font-semibold italic leading-[1.5] text-ink/80">{q}</q>
-      <p className="mt-auto border-t border-line pt-4 text-[0.7rem] font-bold uppercase tracking-[0.12em] text-ink-soft">
+      <q className="mb-6 block border-l-2 border-accent/40 pl-4 text-[0.96rem] font-medium italic leading-[1.5] text-ink/75">
+        {q}
+      </q>
+
+      <p className="mt-auto border-t border-line pt-4 text-[0.69rem] font-bold uppercase tracking-[0.12em] text-ink-soft">
         {tags.map((t, i) => (
           <span key={t}>
             {i > 0 && <span className="px-2 text-accent">·</span>}
@@ -280,30 +311,53 @@ export default function DietitianPage() {
             </p>
           </FadeIn>
 
+          {/* 5 cards + the "not sure" card fill an even 6-cell grid, so no orphan slot. */}
           <div className="mx-auto grid max-w-[1280px] items-stretch gap-[clamp(16px,1.8vw,22px)] sm:grid-cols-2 lg:grid-cols-3">
             {FOCUS.map((f, i) => (
               <FocusCard key={f.title} {...f} index={i} />
             ))}
-          </div>
 
-          <FadeIn className="mx-auto mt-[clamp(24px,3vw,36px)] flex max-w-[1280px] flex-wrap items-center justify-between gap-6 rounded-[26px] bg-bg-soft p-[clamp(26px,3vw,38px)]">
-            <div>
-              <b className="mb-1.5 block text-[1.14rem]">Not sure which one you need?</b>
-              <p className="max-w-[620px] text-[0.97rem] leading-[1.6] text-ink-soft">
-                Book anyway and say what is going on. Your dietitian will point the session where it is most useful, and
-                works alongside your doctor, never instead of them.
-              </p>
-            </div>
-            <a
-              href="#book"
-              className="group inline-flex items-center gap-2 whitespace-nowrap text-[0.97rem] font-bold text-ink underline decoration-accent decoration-2 underline-offset-[5px] transition-colors duration-300 hover:text-accent"
+            <HoverLift
+              index={FOCUS.length}
+              className="group flex h-full flex-col justify-between rounded-[22px] bg-ink p-7 text-bg md:p-8"
             >
-              See how the session works
-              <i className="not-italic text-accent transition-transform duration-300 ease-brand group-hover:translate-y-0.5">
-                ↓
-              </i>
-            </a>
-          </FadeIn>
+              <div>
+                <span className="mb-6 grid h-12 w-12 place-items-center rounded-2xl bg-accent text-white">
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="1.7"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    className="h-[22px] w-[22px]"
+                    aria-hidden="true"
+                  >
+                    <path d="M9.1 9a3 3 0 0 1 5.8 1c0 2-3 3-3 3" />
+                    <path d="M12 17h.01" />
+                    <circle cx="12" cy="12" r="9.5" />
+                  </svg>
+                </span>
+                <h3 className="mb-3 text-[clamp(1.08rem,1.4vw,1.24rem)] leading-[1.25] text-bg">
+                  Not sure which one you need?
+                </h3>
+                <p className="text-[0.95rem] leading-[1.6] text-bg/60">
+                  Book anyway and say what is going on. Your dietitian will point the session where it is most useful,
+                  and works alongside your doctor, never instead of them.
+                </p>
+              </div>
+
+              <a
+                href="#book"
+                className="mt-7 inline-flex items-center gap-2 self-start border-t border-bg/15 pt-5 text-[0.95rem] font-bold text-bg transition-colors duration-300 hover:text-accent"
+              >
+                See how the session works
+                <i className="not-italic text-accent transition-transform duration-300 ease-brand group-hover:translate-y-0.5">
+                  ↓
+                </i>
+              </a>
+            </HoverLift>
+          </div>
         </section>
 
         {/* ---------- why a dietitian ---------- */}
@@ -467,27 +521,50 @@ export default function DietitianPage() {
             </p>
           </FadeIn>
 
-          {/* A contents page, not a card grid: cells sit on a 1px gap so the
-              dividers are the only decoration. */}
-          <div className="mx-auto max-w-[1180px] overflow-hidden rounded-[24px] border border-line">
+          {/* Presented as the document itself: ink header, then contents. */}
+          <FadeIn className="mx-auto max-w-[1180px] overflow-hidden rounded-[26px] border border-line">
+            <div className="flex flex-wrap items-center justify-between gap-4 bg-ink px-7 py-5 text-bg md:px-9">
+              <div className="flex items-center gap-3.5">
+                <span className="grid h-10 w-10 flex-none place-items-center rounded-xl bg-accent text-white">
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="1.7"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    className="h-[19px] w-[19px]"
+                    aria-hidden="true"
+                  >
+                    <path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8Z" />
+                    <path d="M14 3v5h5M9 13h6M9 17h4" />
+                  </svg>
+                </span>
+                <span>
+                  <b className="block text-[1.02rem] leading-tight">Personal Nutrition Guide</b>
+                  <span className="text-[0.82rem] text-bg/55">Prepared for you after your call</span>
+                </span>
+              </div>
+              <span className="flex items-center gap-2 rounded-full border border-bg/20 px-4 py-2 text-[0.76rem] font-bold uppercase tracking-[0.1em] text-bg/75">
+                <i className="h-1.5 w-1.5 rounded-full bg-accent" />
+                In your inbox · 24 hours
+              </span>
+            </div>
+
             <div className="grid gap-px bg-line sm:grid-cols-2">
               {DELIVERABLE.map((card, i) => (
-                <HoverRow
-                  key={card.title}
-                  index={i}
-                  className="group flex items-start gap-5 bg-white p-7 md:p-9"
-                >
-                  <span className="w-9 flex-none pt-[3px] text-[1.05rem] font-extrabold leading-none text-accent/45 transition-colors duration-300 group-hover:text-accent">
+                <HoverRow key={card.title} index={i} className="group flex items-start gap-5 bg-white p-7 md:p-8">
+                  <span className="grid h-8 w-8 flex-none place-items-center rounded-lg border border-line text-[0.78rem] font-extrabold text-ink/35 transition-colors duration-300 group-hover:border-accent group-hover:bg-accent group-hover:text-white">
                     {String(i + 1).padStart(2, "0")}
                   </span>
                   <span className="block">
-                    <b className="mb-2 block text-[1.08rem] font-bold leading-[1.3]">{card.title}</b>
-                    <span className="block text-[0.95rem] leading-[1.6] text-ink-soft">{card.body}</span>
+                    <b className="mb-2 block text-[1.06rem] font-bold leading-[1.3]">{card.title}</b>
+                    <span className="block text-[0.94rem] leading-[1.6] text-ink-soft">{card.body}</span>
                   </span>
                 </HoverRow>
               ))}
             </div>
-          </div>
+          </FadeIn>
 
           <FadeIn className="mx-auto mt-[clamp(24px,3vw,34px)] max-w-[1180px] border-l-[3px] border-accent pl-[18px] text-[0.96rem] leading-[1.6] text-ink-soft">
             <b className="text-ink">A week, mapped out.</b> A practical 7-day guide built around the foods you already

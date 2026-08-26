@@ -328,7 +328,7 @@ export default function GuidePreview() {
           <span className="hint-tap">Tap a section to preview its page</span>
         </p>
         <div className="overflow-hidden rounded-[22px] border border-line bg-white shadow-[0_30px_60px_-34px_rgba(0,51,51,0.45)]">
-          <div className="flex items-center justify-between gap-4 border-b border-line px-6 py-4 md:px-8">
+          <div className="flex items-center justify-between gap-3 border-b border-line px-5 py-3.5 sm:px-6 sm:py-4 md:px-8">
             <span className="text-[0.72rem] font-extrabold uppercase tracking-[0.14em] text-ink/35">
               Personal Nutrition Guide
             </span>
@@ -341,7 +341,7 @@ export default function GuidePreview() {
             role="tabpanel"
             id="guide-page"
             aria-labelledby={`guide-tab-${active}`}
-            className="min-h-[352px] px-6 py-7 md:px-8 md:py-9"
+            className="min-h-[248px] px-5 py-6 sm:px-6 sm:py-7 md:min-h-[352px] md:px-8 md:py-9"
           >
             <AnimatePresence mode="wait" initial={false}>
               <motion.div

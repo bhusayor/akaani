@@ -15,7 +15,7 @@
     /* --- hero --- */
     .dh {
       position: relative; overflow: hidden;
-      padding: 165px clamp(20px, 5vw, 72px) clamp(70px, 9vh, 110px);
+      padding: 165px clamp(20px, 5vw, 72px) clamp(48px, 7vh, 110px);
     }
     .dh__inner {
       max-width: 1280px; margin: 0 auto;
@@ -23,7 +23,7 @@
       gap: clamp(30px, 4vw, 70px); align-items: center;
     }
     .dh h1 { font-size: clamp(2.6rem, 5.2vw, 4.5rem); margin-bottom: 24px; }
-    .dh__sub { color: var(--ink-soft); font-size: clamp(1rem, 1.35vw, 1.16rem); line-height: 1.65; max-width: 560px; margin-bottom: 34px; }
+    .dh__sub { color: var(--ink-soft); font-size: clamp(1rem, 1.35vw, 1.16rem); line-height: 1.65; max-width: 560px; margin-bottom: 32px; }
     .dh__actions { display: flex; gap: 14px; flex-wrap: wrap; }
     .dh__ghost {
       position: absolute; right: -1%; bottom: -14%;
@@ -65,7 +65,7 @@
     .rule--light { background: rgba(251, 245, 236, 0.18); }
 
     /* --- section 2: what you can ask --- */
-    .ask { padding: clamp(80px, 12vh, 130px) clamp(20px, 5vw, 72px); }
+    .ask { padding: clamp(56px, 8vh, 130px) clamp(20px, 5vw, 72px); }
     .ask__head { max-width: 780px; margin: 0 auto clamp(38px, 4.4vw, 54px); text-align: center; }
     .ask__head h2 { margin-bottom: 16px; }
     .ask__head > p { color: var(--ink-soft); font-size: 1.05rem; line-height: 1.65; }
@@ -145,7 +145,7 @@
     .focus--dark-link:hover i { transform: translateY(2px); }
 
     /* --- meet your dietitian --- */
-    .rd { padding: clamp(80px, 12vh, 130px) clamp(20px, 5vw, 72px); }
+    .rd { padding: clamp(56px, 8vh, 130px) clamp(20px, 5vw, 72px); }
     .rd__inner {
       max-width: 1180px; margin: 0 auto;
       display: grid; grid-template-columns: 0.8fr 1.2fr;
@@ -180,7 +180,7 @@
     
 
     /* --- section 3: why a dietitian --- */
-    .why { background: #F5F5F3; padding: clamp(80px, 12vh, 130px) clamp(20px, 5vw, 72px); }
+    .why { background: #F5F5F3; padding: clamp(56px, 8vh, 130px) clamp(20px, 5vw, 72px); }
     .why__inner {
       max-width: 1180px; margin: 0 auto;
       background: #fff; border-radius: 34px;
@@ -189,7 +189,7 @@
     .why__head { max-width: 780px; margin-bottom: clamp(34px, 4vw, 48px); }
     .why__head h2 { margin-bottom: 16px; }
     .why__head p { color: var(--ink-soft); font-size: 1.06rem; line-height: 1.65; }
-    .why__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(16px, 2vw, 26px); }
+    .why__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(14px, 2vw, 26px); }
     .whycard {
       background: #FAFAF8; border: 1px solid var(--line);
       border-radius: 22px; padding: clamp(24px, 2.4vw, 30px);
@@ -208,7 +208,7 @@
 
 
     /* --- section 4: how it works --- */
-    .how { padding: clamp(80px, 12vh, 130px) clamp(20px, 5vw, 72px); }
+    .how { padding: clamp(56px, 8vh, 130px) clamp(20px, 5vw, 72px); }
     .how__inner {
       max-width: 1280px; margin: 0 auto;
       background: var(--ink); color: var(--bg);
@@ -274,6 +274,7 @@
       gap: clamp(28px, 4vw, 60px); align-items: start;
     }
     .gp__tabs { display: flex; flex-direction: column; }
+    @media (min-width: 1024px) { .gp > div:last-child { position: sticky; top: 112px; } }
     .gp__tab {
       position: relative; width: 100%; text-align: left; cursor: pointer;
       background: none; border: 0; border-bottom: 1px solid var(--line);
@@ -376,9 +377,10 @@
       font-size: 0.96rem; line-height: 1.6; color: var(--ink-soft);
     }
     .guide__note b { color: var(--ink); }
-    @media (max-width: 1024px) {
+    @media (max-width: 1023.98px) {
       .focus__grid { grid-template-columns: 1fr 1fr; }
       .rd__inner { grid-template-columns: 1fr; }
+      .rd__body > p { max-width: none; }
       /* the contents become a scrolling chip strip above the page */
       .gp { grid-template-columns: 1fr; }
       .gp__tabs {
@@ -400,7 +402,7 @@
       .guide__cover { padding: 26px; } }
 
     /* --- FAQ --- */
-    .faq2 { padding: clamp(80px, 12vh, 130px) clamp(20px, 5vw, 72px) clamp(60px, 8vh, 90px); }
+    .faq2 { padding: clamp(56px, 8vh, 130px) clamp(20px, 5vw, 72px) clamp(44px, 6vh, 90px); }
     .faq2__head { max-width: 760px; margin: 0 auto clamp(34px, 4vw, 50px); text-align: center; }
     .faq2__head p {
       font-size: 0.8rem; font-weight: 700; letter-spacing: 0.18em;
@@ -481,17 +483,40 @@
     .lfoot__bottom a { color: var(--accent); text-decoration: underline; text-underline-offset: 3px; }
 
 
-    @media (max-width: 1024px) {
+    @media (max-width: 1023.98px) {
       .dh__inner { grid-template-columns: 1fr; }
-      .dh__visual { display: none; }
+      /* the portrait used to be dropped entirely below this width */
+      .dh__inner { gap: 46px; }
+      .dh__visual { width: 100%; max-width: 500px; margin: 0 auto; justify-self: stretch; }
       .why__grid { grid-template-columns: 1fr; }
+      /* badge beside the text keeps the stacked cards compact */
+      .whycard { display: flex; align-items: flex-start; gap: 20px; padding: 24px; }
+      .whycard i { margin-bottom: 0; flex: none; }
+      .whycard h3 { margin-bottom: 8px; }
       .faq2__cta { text-align: center; }
       .how__inner { grid-template-columns: 1fr; }
       .how__side { order: -1; padding-bottom: 0; }
+      /* stacked columns kept desktop caps, stranding one-sided gutters */
+      .how__steps, .how__body > p { max-width: none; }
+      .bookcard { width: min(420px, 100%); }
+      .how__side { padding: 0 clamp(20px, 3vw, 46px) clamp(30px, 3vw, 46px); }
       .lfoot__top { flex-direction: column; align-items: flex-start; }
       .lfoot__right { align-items: flex-start; }
     }
     @media (max-width: 640px) {
+      .dh { padding-top: 104px; }
+      .dh__visual { max-width: 330px; }
+      .dh__actions { flex-direction: column; gap: 12px; }
+      .dh__actions .btn { width: 100%; }
+      /* desktop offsets put these in the page gutter on a phone */
+      .dh__pricebadge { left: -8px; top: -16px; padding: 12px 16px; font-size: 1.15rem; }
+      .dh__planbadge { right: -4px; padding: 10px 14px; font-size: 0.76rem; }
+      .whycard { padding: 20px; gap: 16px; }
+      .gp__body { min-height: 248px; padding: 24px 20px; }
+      .gp__framehead { padding: 14px 20px; }
+    }
+    @media (min-width: 641px) and (max-width: 1024px) {
+      .dh { padding-top: 132px; }
     }
   </style>
 </head>

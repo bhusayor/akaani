@@ -197,7 +197,7 @@ export default function DietitianPage() {
 
       <main>
         {/* ---------- hero ---------- */}
-        <section className={`relative overflow-hidden pb-[clamp(70px,9vh,110px)] pt-[165px] ${SECTION_X}`}>
+        <section className={`relative overflow-hidden pb-[clamp(48px,7vh,110px)] pt-[104px] sm:pt-[132px] lg:pt-[165px] ${SECTION_X}`}>
           <span
             aria-hidden="true"
             data-gsap="ghost"
@@ -217,18 +217,18 @@ export default function DietitianPage() {
                 </h1>
               </FadeIn>
               <FadeIn delay={0.16}>
-                <p className="mb-9 max-w-[560px] text-[clamp(1rem,1.35vw,1.16rem)] leading-[1.65] text-ink-soft">
+                <p className="mb-8 text-[clamp(1rem,1.35vw,1.16rem)] leading-[1.65] text-ink-soft sm:mb-9 lg:max-w-[560px]">
                   Sit with akaani&apos;s Registered Dietitian for personalized guidance around your goals, your health,
                   and the Nigerian foods you already eat. You leave with your Personal Nutrition Guide in your inbox
                   within 24 hours.
                 </p>
               </FadeIn>
               <FadeIn delay={0.24}>
-                <div className="flex flex-wrap gap-3.5">
-                  <Button href={CALENDLY} external variant="dark" size="lg">
+                <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:gap-3.5">
+                  <Button href={CALENDLY} external variant="dark" size="lg" className="w-full sm:w-auto">
                     Book consultation
                   </Button>
-                  <Button href="#ask" variant="ghostDark" size="lg">
+                  <Button href="#ask" variant="ghostDark" size="lg" className="w-full sm:w-auto">
                     See what we focus on
                   </Button>
                 </div>
@@ -236,7 +236,7 @@ export default function DietitianPage() {
             </div>
 
             <div
-              className="relative w-[clamp(300px,30vw,430px)] justify-self-center"
+              className="relative mx-auto w-full max-w-[330px] sm:max-w-[500px] lg:w-[clamp(300px,30vw,430px)] lg:max-w-none"
               aria-hidden="true"
               data-gsap="hero-visual"
             >
@@ -252,7 +252,7 @@ export default function DietitianPage() {
               </div>
               <div
                 data-gsap="price"
-                className="absolute -left-[18px] -top-5 rounded-[18px] rounded-bl-[4px] bg-accent px-[22px] py-3.5 text-[1.35rem] font-extrabold leading-[1.1] text-white shadow-[0_18px_44px_rgba(218,112,0,0.35)]"
+                className="absolute -left-2 -top-4 rounded-[18px] rounded-bl-[4px] bg-accent px-4 py-3 text-[1.15rem] font-extrabold leading-[1.1] text-white shadow-[0_18px_44px_rgba(218,112,0,0.35)] sm:-left-[18px] sm:-top-5 sm:px-[22px] sm:py-3.5 sm:text-[1.35rem]"
               >
                 ₦50,000
                 <span className="mt-[3px] block text-[0.7rem] font-semibold uppercase tracking-[0.06em] opacity-85">
@@ -261,7 +261,7 @@ export default function DietitianPage() {
               </div>
               <div
                 data-gsap="plan"
-                className="absolute -bottom-4 -right-3 flex items-center gap-2 rounded-full border border-line bg-paper px-[18px] py-3 text-[0.84rem] font-bold text-ink shadow-[0_18px_44px_rgba(0,51,51,0.16)]"
+                className="absolute -bottom-4 -right-1 flex items-center gap-2 rounded-full border border-line bg-paper px-3.5 py-2.5 text-[0.76rem] font-bold text-ink shadow-[0_18px_44px_rgba(0,51,51,0.16)] sm:-right-3 sm:px-[18px] sm:py-3 sm:text-[0.84rem]"
               >
                 <i className="h-2 w-2 rounded-full bg-accent" />
                 Your guide, in your inbox in 24 hours
@@ -271,7 +271,7 @@ export default function DietitianPage() {
         </section>
 
         {/* ---------- what we focus on ---------- */}
-        <section id="ask" className={`py-[clamp(80px,12vh,130px)] ${SECTION_X}`}>
+        <section id="ask" className={`py-[clamp(56px,8vh,130px)] ${SECTION_X}`}>
           <FadeIn className="mx-auto mb-[clamp(38px,4.4vw,54px)] max-w-[800px] text-center">
             <p className={KICKER}>What we focus on</p>
             <h2 className="mb-4 text-[clamp(2.2rem,4.6vw,3.8rem)]">
@@ -334,7 +334,7 @@ export default function DietitianPage() {
         </section>
 
         {/* ---------- why a dietitian ---------- */}
-        <section className={`bg-mist py-[clamp(80px,12vh,130px)] ${SECTION_X}`}>
+        <section className={`bg-mist py-[clamp(56px,8vh,130px)] ${SECTION_X}`}>
           <div className="mx-auto max-w-[1180px] rounded-[34px] bg-white p-[clamp(32px,4.4vw,64px)]">
             <FadeIn className="mb-[clamp(34px,4vw,48px)] max-w-[780px]">
               <p className={KICKER}>Why a dietitian</p>
@@ -350,15 +350,18 @@ export default function DietitianPage() {
               </p>
             </FadeIn>
 
-            <Stagger className="grid gap-[clamp(16px,2vw,26px)] md:grid-cols-3" gap={0.12}>
+            <Stagger className="grid gap-[clamp(14px,2vw,26px)] lg:grid-cols-3" gap={0.12}>
               {WHY.map((card) => (
                 <StaggerItem key={card.badge}>
-                  <article className="h-full rounded-[22px] border border-line bg-tint p-6 transition-[transform,border-color] duration-500 ease-brand hover:-translate-y-1.5 hover:border-accent/45 md:p-[30px]">
-                    <i className="mb-5 grid h-[46px] w-[46px] place-items-center rounded-[14px] bg-ink text-[0.78rem] font-extrabold not-italic tracking-[0.06em] text-bg">
+                  {/* below lg the badge sits beside the text, so stacking stays compact */}
+                  <article className="flex h-full gap-4 rounded-[22px] border border-line bg-tint p-5 transition-[transform,border-color] duration-500 ease-brand hover:-translate-y-1.5 hover:border-accent/45 sm:gap-5 sm:p-6 lg:flex-col lg:gap-0 lg:p-[30px]">
+                    <i className="grid h-[42px] w-[42px] flex-none place-items-center rounded-[14px] bg-ink text-[0.74rem] font-extrabold not-italic tracking-[0.06em] text-bg sm:h-[46px] sm:w-[46px] sm:text-[0.78rem] lg:mb-5">
                       {card.badge}
                     </i>
-                    <h3 className="mb-2.5 text-[clamp(1.1rem,1.5vw,1.28rem)]">{card.title}</h3>
-                    <p className="text-[0.95rem] leading-[1.62] text-ink-soft">{card.body}</p>
+                    <div>
+                      <h3 className="mb-2 text-[clamp(1.05rem,1.5vw,1.28rem)] lg:mb-2.5">{card.title}</h3>
+                      <p className="text-[0.94rem] leading-[1.62] text-ink-soft sm:text-[0.95rem]">{card.body}</p>
+                    </div>
                   </article>
                 </StaggerItem>
               ))}
@@ -367,9 +370,9 @@ export default function DietitianPage() {
         </section>
 
         {/* ---------- meet your dietitian ---------- */}
-        <section className={`py-[clamp(80px,12vh,130px)] ${SECTION_X}`}>
+        <section className={`py-[clamp(56px,8vh,130px)] ${SECTION_X}`}>
           <div className="mx-auto grid max-w-[1180px] items-center gap-[clamp(28px,4vw,64px)] lg:grid-cols-[0.8fr_1.2fr]">
-            <FadeIn className="relative w-full max-w-[420px] justify-self-center">
+            <FadeIn className="relative mx-auto w-full max-w-[340px] sm:max-w-[440px] lg:max-w-[420px]">
               <div className="aspect-[4/4.4] overflow-hidden rounded-[30px] border-[5px] border-paper shadow-[0_34px_70px_rgba(0,51,51,0.18)]">
                 <Image
                   src={DIETITIAN.photo}
@@ -394,18 +397,18 @@ export default function DietitianPage() {
                 </h2>
               </FadeIn>
               <FadeIn delay={0.08}>
-                <p className="mb-4 max-w-[560px] text-[1.03rem] leading-[1.7] text-ink-soft">
+                <p className="mb-4 text-[1.03rem] leading-[1.7] text-ink-soft lg:max-w-[560px]">
                   Every akaani consultation is run by our in-house Registered Dietitian. RD is a protected title: it
                   means formal training in nutrition and dietetics, supervised practice, and a licence to provide
                   medical nutrition therapy. It is not a weekend certificate, and it is not a wellness page.
                 </p>
-                <p className="mb-8 max-w-[560px] text-[1.03rem] leading-[1.7] text-ink-soft">
+                <p className="mb-8 text-[1.03rem] leading-[1.7] text-ink-soft lg:max-w-[560px]">
                   Her focus is West African food. Rice, swallow, soups, beans and the things you actually buy are the
                   starting point of your guide, not the thing you are told to give up.
                 </p>
               </FadeIn>
 
-              <Stagger className="max-w-[560px]" gap={0.08}>
+              <Stagger className="lg:max-w-[560px]" gap={0.08}>
                 {DIETITIAN.credentials.map((c) => (
                   <StaggerItem key={c}>
                     <div className="flex items-start gap-3.5 border-t border-line py-[13px] text-[0.98rem] leading-[1.55] last:border-b">
@@ -420,7 +423,7 @@ export default function DietitianPage() {
         </section>
 
         {/* ---------- what you get + booking ---------- */}
-        <section id="book" className={`py-[clamp(80px,12vh,130px)] ${SECTION_X}`}>
+        <section id="book" className={`py-[clamp(56px,8vh,130px)] ${SECTION_X}`}>
           <FadeIn className="mx-auto grid max-w-[1280px] overflow-hidden rounded-[40px] bg-ink text-bg lg:grid-cols-[1.15fr_0.85fr]">
             <div className="p-[clamp(34px,4.6vw,70px)]">
               <p className={KICKER}>What you get</p>
@@ -429,11 +432,11 @@ export default function DietitianPage() {
                 <br />
                 <span className="text-accent">A guide made for you.</span>
               </h2>
-              <p className="mb-9 max-w-[460px] text-[1.02rem] leading-[1.65] text-bg/70">
+              <p className="mb-8 text-[1.02rem] leading-[1.65] text-bg/70 lg:mb-9 lg:max-w-[460px]">
                 Nothing to fill in before you book. Pick a time, show up, and talk.
               </p>
 
-              <ol className="max-w-[520px]">
+              <ol className="lg:max-w-[520px]">
                 {STEPS.map((s) => (
                   <li
                     key={s.n}
@@ -449,8 +452,8 @@ export default function DietitianPage() {
               </ol>
             </div>
 
-            <div className="flex items-center justify-center p-[clamp(24px,3vw,46px)]">
-              <div className="w-full max-w-[340px] rounded-[26px] bg-paper p-[30px] text-ink shadow-[0_40px_80px_rgba(0,0,0,0.4)]">
+            <div className="flex items-center justify-center px-[clamp(20px,3vw,46px)] pb-[clamp(30px,3vw,46px)] lg:pt-[clamp(24px,3vw,46px)]">
+              <div className="w-full max-w-[420px] rounded-[26px] bg-paper lg:max-w-[340px] p-[30px] text-ink shadow-[0_40px_80px_rgba(0,0,0,0.4)]">
                 <span className="inline-block rounded-full bg-accent px-3.5 py-1.5 text-[0.7rem] font-extrabold uppercase tracking-[0.1em] text-white">
                   1-on-1 session
                 </span>
@@ -504,7 +507,7 @@ export default function DietitianPage() {
         </section>
 
         {/* ---------- faq ---------- */}
-        <section id="faq" className={`pb-[clamp(60px,8vh,90px)] ${SECTION_X}`}>
+        <section id="faq" className={`pb-[clamp(44px,6vh,90px)] ${SECTION_X}`}>
           <FadeIn className="mx-auto mb-[clamp(34px,4vw,50px)] max-w-[760px] text-center">
             <p className="mb-3.5 text-[0.8rem] font-bold uppercase tracking-[0.18em] text-ink-soft">Before you book</p>
             <h2 className="text-[clamp(1.9rem,3.2vw,2.6rem)]">Everything else you are wondering</h2>

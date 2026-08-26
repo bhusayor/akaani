@@ -1,7 +1,7 @@
 "use client";
 
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
-import { useRef, useState, type ReactNode } from "react";
+import { useEffect, useRef, useState, type ReactNode } from "react";
 
 /* ---------- small pieces the preview pages are built from ---------- */
 
@@ -220,6 +220,29 @@ export default function GuidePreview() {
   const [active, setActive] = useState(0);
   const reduced = useReducedMotion();
   const tabs = useRef<(HTMLButtonElement | null)[]>([]);
+  const hoverTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  useEffect(() => () => { if (hoverTimer.current) clearTimeout(hoverTimer.current); }, []);
+
+  function clearHover() {
+    if (hoverTimer.current) clearTimeout(hoverTimer.current);
+    hoverTimer.current = null;
+  }
+
+  /**
+   * Hover previews the section. The short delay is hover intent: sweeping the
+   * cursor down the list to reach one row should not fire every row on the way.
+   * Click and focus still switch immediately, for touch and keyboard.
+   */
+  function previewOnHover(i: number) {
+    clearHover();
+    hoverTimer.current = setTimeout(() => setActive(i), 70);
+  }
+
+  function select(i: number) {
+    clearHover();
+    setActive(i);
+  }
 
   /** Arrow keys walk the list, the way a tablist is expected to behave. */
   function onKeyDown(e: React.KeyboardEvent) {
@@ -230,7 +253,7 @@ export default function GuidePreview() {
     if (next === undefined) return;
     e.preventDefault();
     const i = Math.min(last, Math.max(0, next));
-    setActive(i);
+    select(i);
     tabs.current[i]?.focus();
   }
 
@@ -244,6 +267,7 @@ export default function GuidePreview() {
         aria-label="Sections of the guide"
         aria-orientation="vertical"
         onKeyDown={onKeyDown}
+        onMouseLeave={clearHover}
         className="-mx-5 flex snap-x gap-2.5 overflow-x-auto px-5 pb-2 lg:mx-0 lg:flex-col lg:gap-0 lg:overflow-visible lg:px-0 lg:pb-0"
       >
         {SECTIONS.map((s, i) => {
@@ -260,8 +284,10 @@ export default function GuidePreview() {
               aria-selected={on}
               aria-controls="guide-page"
               tabIndex={on ? 0 : -1}
-              onClick={() => setActive(i)}
-              className={`group relative flex-none snap-start rounded-full border px-4 py-2.5 text-left transition-colors duration-300 focus-visible:outline-2 focus-visible:outline-offset-[3px] focus-visible:outline-accent lg:w-full lg:flex-auto lg:rounded-none lg:border-0 lg:border-b lg:border-line lg:py-5 lg:pl-5 lg:pr-0 ${
+              onClick={() => select(i)}
+              onFocus={() => select(i)}
+              onMouseEnter={() => previewOnHover(i)}
+              className={`group relative flex-none cursor-pointer snap-start rounded-full border px-4 py-2.5 text-left transition-colors duration-300 focus-visible:outline-2 focus-visible:outline-offset-[3px] focus-visible:outline-accent lg:w-full lg:flex-auto lg:rounded-none lg:border-0 lg:border-b lg:border-line lg:py-5 lg:pl-5 lg:pr-0 ${
                 on ? "border-ink bg-ink text-bg lg:bg-transparent lg:text-ink" : "border-line hover:border-ink/30 lg:hover:border-line"
               }`}
             >
@@ -297,6 +323,10 @@ export default function GuidePreview() {
 
       {/* the page that section produces */}
       <div className="lg:sticky lg:top-28">
+        <p className="mb-3 hidden text-[0.68rem] font-extrabold uppercase tracking-[0.16em] text-ink/35 lg:block">
+          <span className="hint-hover">Hover a section to preview its page</span>
+          <span className="hint-tap">Tap a section to preview its page</span>
+        </p>
         <div className="overflow-hidden rounded-[22px] border border-line bg-white shadow-[0_30px_60px_-34px_rgba(0,51,51,0.45)]">
           <div className="flex items-center justify-between gap-4 border-b border-line px-6 py-4 md:px-8">
             <span className="text-[0.72rem] font-extrabold uppercase tracking-[0.14em] text-ink/35">
@@ -319,7 +349,7 @@ export default function GuidePreview() {
                 initial={reduced ? false : { opacity: 0, y: 12 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={reduced ? undefined : { opacity: 0, y: -8 }}
-                transition={{ duration: 0.32, ease: [0.16, 1, 0.3, 1] }}
+                transition={{ duration: 0.24, ease: [0.16, 1, 0.3, 1] }}
               >
                 <p className="mb-1.5 text-[0.66rem] font-extrabold uppercase tracking-[0.2em] text-accent">
                   Section {String(active + 1).padStart(2, "0")} of {String(SECTIONS.length).padStart(2, "0")}

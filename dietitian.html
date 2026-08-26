@@ -298,6 +298,14 @@
     .gp__tab:hover b, .gp__tab[aria-selected="true"] b { color: var(--accent); }
     .gp__tab-sub { display: block; margin-top: 6px; font-size: 0.93rem; line-height: 1.6; color: var(--ink-soft); }
 
+    .gp__hint {
+      margin-bottom: 12px; font-size: 0.68rem; font-weight: 800;
+      letter-spacing: 0.16em; text-transform: uppercase; color: rgba(0, 51, 51, 0.35);
+    }
+    /* the hint matches the device: pointer gets hover, touch gets tap */
+    @media (hover: hover) { .hint-tap { display: none; } }
+    @media (hover: none) { .hint-hover { display: none; } }
+    .gp__tab { cursor: pointer; }
     .gp__frame {
       border: 1px solid var(--line); border-radius: 22px; overflow: hidden; background: #fff;
       box-shadow: 0 30px 60px -34px rgba(0, 51, 51, 0.45);
@@ -317,7 +325,7 @@
     }
     .gp__body { min-height: 352px; padding: clamp(26px, 2.6vw, 36px) clamp(24px, 2.4vw, 32px); }
     .gp__page[hidden] { display: none; }
-    .gp__page { animation: gpIn 0.32s var(--ease) both; }
+    .gp__page { animation: gpIn 0.24s var(--ease) both; }
     @keyframes gpIn { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: none; } }
     .gp__page-kicker {
       margin-bottom: 6px; font-size: 0.66rem; font-weight: 800;
@@ -385,7 +393,8 @@
       .gp__tab[aria-selected="true"] { background: var(--ink); border-color: var(--ink); }
       .gp__tab[aria-selected="true"] b { color: var(--bg); }
       .gp__tab b { white-space: nowrap; font-size: 0.92rem; }
-      .gp__tab-sub { display: none; } }
+      .gp__tab-sub { display: none; }
+      .gp__hint { display: none; } }
     @media (max-width: 640px) {
       .focus__grid { grid-template-columns: 1fr; }
       .guide__cover { padding: 26px; } }
@@ -757,6 +766,10 @@
           </div>
 
           <div>
+            <p class="gp__hint">
+              <span class="hint-hover">Hover a section to preview its page</span>
+              <span class="hint-tap">Tap a section to preview its page</span>
+            </p>
             <div class="gp__frame">
               <div class="gp__framehead">
                 <span>Personal Nutrition Guide</span>
@@ -1017,9 +1030,21 @@
         if (focus) tabs[i].focus();
       }
 
+      /* Hover previews the section. The short delay is hover intent: sweeping
+         the cursor down the list to reach one row should not fire every row on
+         the way. Click and focus switch at once, for touch and keyboard. */
+      var timer = null;
+      function clearHover() { if (timer) clearTimeout(timer); timer = null; }
+
       tabs.forEach(function (tab, i) {
-        tab.addEventListener("click", function () { select(i); });
+        tab.addEventListener("click", function () { clearHover(); select(i); });
+        tab.addEventListener("focus", function () { clearHover(); select(i); });
+        tab.addEventListener("mouseenter", function () {
+          clearHover();
+          timer = setTimeout(function () { select(i); }, 70);
+        });
       });
+      list.addEventListener("mouseleave", clearHover);
 
       var STEP = { ArrowDown: 1, ArrowRight: 1, ArrowUp: -1, ArrowLeft: -1 };
       list.addEventListener("keydown", function (e) {
@@ -1030,6 +1055,7 @@
         else if (e.key === "End") next = tabs.length - 1;
         else return;
         e.preventDefault();
+        clearHover();
         select(Math.min(tabs.length - 1, Math.max(0, next)), true);
       });
     })();

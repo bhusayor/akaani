@@ -61,3 +61,12 @@
     text-decoration: none;
   }
 }
+
+/* Interaction hints that match the device: pointer devices get the hover
+   wording, touch devices get the tap wording. */
+@media (hover: hover) {
+  .hint-tap { display: none; }
+}
+@media (hover: none) {
+  .hint-hover { display: none; }
+}

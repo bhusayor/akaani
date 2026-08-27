@@ -268,7 +268,7 @@ export default function GuidePreview() {
         aria-orientation="vertical"
         onKeyDown={onKeyDown}
         onMouseLeave={clearHover}
-        className="-mx-5 flex snap-x gap-2.5 overflow-x-auto px-5 pb-2 lg:mx-0 lg:flex-col lg:gap-0 lg:overflow-visible lg:px-0 lg:pb-0"
+        className="-mx-5 flex snap-x scroll-px-5 gap-2.5 overflow-x-auto px-5 pb-2 sm:-mx-8 sm:scroll-px-8 sm:px-8 lg:mx-0 lg:flex-col lg:gap-0 lg:overflow-visible lg:px-0 lg:pb-0"
       >
         {SECTIONS.map((s, i) => {
           const on = i === active;
@@ -329,7 +329,7 @@ export default function GuidePreview() {
         </p>
         <div className="overflow-hidden rounded-[22px] border border-line bg-white shadow-[0_30px_60px_-34px_rgba(0,51,51,0.45)]">
           <div className="flex items-center justify-between gap-3 border-b border-line px-5 py-3.5 sm:px-6 sm:py-4 md:px-8">
-            <span className="text-[0.72rem] font-extrabold uppercase tracking-[0.14em] text-ink/35">
+            <span className="text-[0.62rem] font-extrabold uppercase tracking-[0.08em] text-ink/35 sm:text-[0.72rem] sm:tracking-[0.14em]">
               Personal Nigerian Meal Guide
             </span>
             <span className="rounded-full border border-line px-2.5 py-1 text-[0.62rem] font-extrabold uppercase tracking-[0.12em] text-ink/35">

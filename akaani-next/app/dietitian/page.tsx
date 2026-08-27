@@ -22,6 +22,7 @@ const CALENDLY = "https://calendly.com/useakaani";
 const FOCUS = [
   {
     icon: "pcos" as FocusIconName,
+    popular: true,
     title: "PCOS",
     q: "I am doing everything right and my weight still will not move.",
     outcome: "Insulin-aware portions and meal timing, built on the food you already cook.",
@@ -50,7 +51,6 @@ const FOCUS = [
   },
   {
     icon: "fatloss" as FocusIconName,
-    popular: true,
     title: "Fat loss",
     q: "I am eating less and still not losing weight.",
     outcome: "Calorie and protein targets you can actually hit on rice, swallow and soup.",
@@ -344,7 +344,7 @@ export default function DietitianPage() {
         </section>
 
         {/* ---------- what you get + booking ---------- */}
-        <section id="book" className={`py-[clamp(56px,8vh,130px)] ${SECTION_X}`}>
+        <section id="book" className={`pb-[clamp(32px,4vh,56px)] pt-[clamp(56px,8vh,130px)] ${SECTION_X}`}>
           <FadeIn className="mx-auto grid max-w-[1280px] overflow-hidden rounded-[40px] bg-ink text-bg lg:grid-cols-[1.15fr_0.85fr]">
             <div className="p-[clamp(34px,4.6vw,70px)] pb-0 lg:pb-[clamp(34px,4.6vw,70px)]">
               <p className={KICKER}>Booking</p>

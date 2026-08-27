@@ -9,6 +9,7 @@ import { Stagger, StaggerItem } from "@/components/motion/Stagger";
 import HoverLift from "@/components/motion/HoverLift";
 import FocusIcon, { type FocusIconName } from "@/components/ui/FocusIcon";
 import GuidePreview from "@/components/dietitian/GuidePreview";
+import SignsCheck from "@/components/dietitian/SignsCheck";
 import Motion from "./Motion";
 
 export const metadata: Metadata = {
@@ -247,64 +248,24 @@ export default function DietitianPage() {
           </div>
         </section>
 
-        {/* ---------- you might need a dietitian if ---------- */}
+        {/* ---------- not sure this is for you ---------- */}
         <section id="signs" className={`bg-mist ${SECTION_Y} ${SECTION_X}`}>
-          <FadeIn className="mx-auto mb-[clamp(28px,3.4vw,42px)] max-w-[760px] text-center">
+          <FadeIn className="mx-auto mb-[clamp(24px,3vw,36px)] max-w-[760px] text-center">
             <p className={KICKER}>Not sure this is for you?</p>
-            <h2 className="text-balance text-[clamp(1.95rem,4vw,3.2rem)]">
+            <h2 className="mb-4 text-balance text-[clamp(1.95rem,4vw,3.2rem)]">
               You might need a dietitian <span className="text-accent">if&hellip;</span>
             </h2>
-          </FadeIn>
-
-          <Stagger className="mx-auto grid max-w-[1000px] gap-x-[clamp(20px,3vw,44px)] sm:grid-cols-2" gap={0.07}>
-            {SIGNS.map((s) => (
-              <StaggerItem key={s}>
-                <p className="flex items-start gap-3.5 border-b border-line py-4 text-[0.99rem] leading-[1.5]">
-                  <svg
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2.4"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    className="mt-[3px] h-4 w-4 flex-none text-accent"
-                    aria-hidden="true"
-                  >
-                    <path d="m5 12.5 4.5 4.5L19 7.5" />
-                  </svg>
-                  {s}
-                </p>
-              </StaggerItem>
-            ))}
-          </Stagger>
-
-          <FadeIn className="mx-auto mt-[clamp(26px,3vw,38px)] flex max-w-[1000px] flex-col items-center gap-4 text-center sm:flex-row sm:justify-center">
-            <p className="text-[1.02rem] leading-[1.55]">
-              <b>Two or more?</b> <span className="text-ink-soft">That is what the session is for.</span>
-            </p>
-            <Button href={CALENDLY} external size="md" className="w-full sm:w-auto">
-              Book consultation
-            </Button>
-          </FadeIn>
-        </section>
-
-        {/* ---------- the meal guide ---------- */}
-        <section className={`${SECTION_Y} ${SECTION_X}`}>
-          <FadeIn className="mx-auto mb-[clamp(32px,3.8vw,48px)] max-w-[780px] text-center">
-            <p className={KICKER}>The guide</p>
-            <h2 className="mb-4 text-[clamp(2.2rem,4.6vw,3.8rem)]">
-              What do I <span className="text-accent">walk away with?</span>
-            </h2>
-            <p className="text-[1.03rem] leading-[1.65] text-ink-soft">
-              A 7-day meal guide, written for you after the call. Here is what is inside it.
+            <p className="text-[1.03rem] leading-[1.6] text-ink-soft">
+              Most people book without a diagnosis. See how many of these you recognise.
             </p>
           </FadeIn>
 
-          <GuidePreview />
-
+          <FadeIn>
+            <SignsCheck signs={SIGNS} cta={CALENDLY} />
+          </FadeIn>
         </section>
 
-        {/* ---------- what brings you here ---------- */}
+        {/* ---------- what we help with ---------- */}
         <section id="ask" className={`${SECTION_Y} ${SECTION_X}`}>
           <FadeIn className="mx-auto mb-[clamp(34px,4vw,52px)] max-w-[760px] text-center">
             <p className={KICKER}>What we help with</p>
@@ -353,6 +314,22 @@ export default function DietitianPage() {
               Book consultation
             </Button>
           </FadeIn>
+        </section>
+
+        {/* ---------- the meal guide ---------- */}
+        <section className={`${SECTION_Y} ${SECTION_X}`}>
+          <FadeIn className="mx-auto mb-[clamp(32px,3.8vw,48px)] max-w-[780px] text-center">
+            <p className={KICKER}>The guide</p>
+            <h2 className="mb-4 text-[clamp(2.2rem,4.6vw,3.8rem)]">
+              What do I <span className="text-accent">walk away with?</span>
+            </h2>
+            <p className="text-[1.03rem] leading-[1.65] text-ink-soft">
+              A 7-day meal guide, written for you after the call. Here is what is inside it.
+            </p>
+          </FadeIn>
+
+          <GuidePreview />
+
         </section>
 
         {/* ---------- who you are talking to ---------- */}

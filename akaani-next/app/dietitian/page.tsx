@@ -19,6 +19,15 @@ export const metadata: Metadata = {
 
 const CALENDLY = "https://calendly.com/useakaani";
 
+const SIGNS = [
+  "You are tired by 3pm most days, and it is not sleep.",
+  "Your weight has not moved in months, whatever you change.",
+  "A test came back borderline and nobody told you what to eat.",
+  "You feel heavy or bloated after most meals.",
+  "You have cut out foods you love and seen no difference.",
+  "Everyone gives you different advice and none of it fits your kitchen.",
+];
+
 const FOCUS = [
   {
     icon: "pcos" as FocusIconName,
@@ -196,8 +205,8 @@ export default function DietitianPage() {
                   <Button href={CALENDLY} external variant="dark" size="lg" className="w-full sm:w-auto">
                     Book consultation
                   </Button>
-                  <Button href="#ask" variant="ghostDark" size="lg" className="w-full sm:w-auto">
-                    What we help with
+                  <Button href="#signs" variant="ghostDark" size="lg" className="w-full sm:w-auto">
+                    Do I need this?
                   </Button>
                 </div>
               </FadeIn>
@@ -238,15 +247,72 @@ export default function DietitianPage() {
           </div>
         </section>
 
+        {/* ---------- you might need a dietitian if ---------- */}
+        <section id="signs" className={`bg-mist ${SECTION_Y} ${SECTION_X}`}>
+          <FadeIn className="mx-auto mb-[clamp(28px,3.4vw,42px)] max-w-[760px] text-center">
+            <p className={KICKER}>Not sure this is for you?</p>
+            <h2 className="text-balance text-[clamp(1.95rem,4vw,3.2rem)]">
+              You might need a dietitian <span className="text-accent">if&hellip;</span>
+            </h2>
+          </FadeIn>
+
+          <Stagger className="mx-auto grid max-w-[1000px] gap-x-[clamp(20px,3vw,44px)] sm:grid-cols-2" gap={0.07}>
+            {SIGNS.map((s) => (
+              <StaggerItem key={s}>
+                <p className="flex items-start gap-3.5 border-b border-line py-4 text-[0.99rem] leading-[1.5]">
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2.4"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    className="mt-[3px] h-4 w-4 flex-none text-accent"
+                    aria-hidden="true"
+                  >
+                    <path d="m5 12.5 4.5 4.5L19 7.5" />
+                  </svg>
+                  {s}
+                </p>
+              </StaggerItem>
+            ))}
+          </Stagger>
+
+          <FadeIn className="mx-auto mt-[clamp(26px,3vw,38px)] flex max-w-[1000px] flex-col items-center gap-4 text-center sm:flex-row sm:justify-center">
+            <p className="text-[1.02rem] leading-[1.55]">
+              <b>Two or more?</b> <span className="text-ink-soft">That is what the session is for.</span>
+            </p>
+            <Button href={CALENDLY} external size="md" className="w-full sm:w-auto">
+              Book consultation
+            </Button>
+          </FadeIn>
+        </section>
+
+        {/* ---------- the meal guide ---------- */}
+        <section className={`${SECTION_Y} ${SECTION_X}`}>
+          <FadeIn className="mx-auto mb-[clamp(32px,3.8vw,48px)] max-w-[780px] text-center">
+            <p className={KICKER}>The guide</p>
+            <h2 className="mb-4 text-[clamp(2.2rem,4.6vw,3.8rem)]">
+              What do I <span className="text-accent">walk away with?</span>
+            </h2>
+            <p className="text-[1.03rem] leading-[1.65] text-ink-soft">
+              A 7-day meal guide, written for you after the call. Here is what is inside it.
+            </p>
+          </FadeIn>
+
+          <GuidePreview />
+
+        </section>
+
         {/* ---------- what brings you here ---------- */}
         <section id="ask" className={`${SECTION_Y} ${SECTION_X}`}>
           <FadeIn className="mx-auto mb-[clamp(34px,4vw,52px)] max-w-[760px] text-center">
             <p className={KICKER}>What we help with</p>
             <h2 className="mb-4 text-[clamp(2.1rem,4.6vw,3.8rem)]">
-              What brings <span className="text-accent">you here?</span>
+              Already know <span className="text-accent">what you need?</span>
             </h2>
             <p className="text-[1.05rem] leading-[1.65] text-ink-soft">
-              Six reasons people book. You do not need a diagnosis to be one of them.
+              Six reasons people book. Pick the one that sounds like you.
             </p>
           </FadeIn>
 
@@ -276,9 +342,9 @@ export default function DietitianPage() {
                 </svg>
               </span>
               <p className="text-[0.97rem] leading-[1.55]">
-                <b className="block text-[1.05rem]">Not sure what is wrong, only that something is?</b>
+                <b className="block text-[1.05rem]">None of these quite fit?</b>
                 <span className="text-bg/60">
-                  You do not need a diagnosis or lab results. Bring what you have noticed and start there.
+                  Book anyway and say what is going on. Your session goes where it helps most.
                 </span>
               </p>
             </div>
@@ -335,22 +401,6 @@ export default function DietitianPage() {
               </Stagger>
             </div>
           </div>
-        </section>
-
-        {/* ---------- the meal guide ---------- */}
-        <section className={`${SECTION_Y} ${SECTION_X}`}>
-          <FadeIn className="mx-auto mb-[clamp(32px,3.8vw,48px)] max-w-[780px] text-center">
-            <p className={KICKER}>The guide</p>
-            <h2 className="mb-4 text-[clamp(2.2rem,4.6vw,3.8rem)]">
-              What do I <span className="text-accent">walk away with?</span>
-            </h2>
-            <p className="text-[1.03rem] leading-[1.65] text-ink-soft">
-              A 7-day meal guide, written for you after the call. Here is what is inside it.
-            </p>
-          </FadeIn>
-
-          <GuidePreview />
-
         </section>
 
         {/* ---------- what you get + booking ---------- */}

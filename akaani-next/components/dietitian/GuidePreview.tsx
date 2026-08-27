@@ -330,7 +330,7 @@ export default function GuidePreview() {
         <div className="overflow-hidden rounded-[22px] border border-line bg-white shadow-[0_30px_60px_-34px_rgba(0,51,51,0.45)]">
           <div className="flex items-center justify-between gap-3 border-b border-line px-5 py-3.5 sm:px-6 sm:py-4 md:px-8">
             <span className="text-[0.72rem] font-extrabold uppercase tracking-[0.14em] text-ink/35">
-              Personal Nutrition Guide
+              Personal Nigerian Meal Guide
             </span>
             <span className="rounded-full border border-line px-2.5 py-1 text-[0.62rem] font-extrabold uppercase tracking-[0.12em] text-ink/35">
               Example

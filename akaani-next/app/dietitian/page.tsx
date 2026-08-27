@@ -14,52 +14,54 @@ import Motion from "./Motion";
 export const metadata: Metadata = {
   title: "Talk to our in-house dietitian | akaani",
   description:
-    "A 45-minute video call with akaani's in-house Registered Dietitian. Weight management, fitness nutrition, African diet review, healthy eating resets and family planning. Your Personal Nutrition Guide lands in your inbox within 24 hours.",
+    "A 45-minute video call with akaani's in-house Registered Dietitian. Weight management, fitness nutrition, African diet review, healthy eating resets and family planning. Your Personal Nigerian Meal Guide lands in your inbox within 24 hours.",
 };
 
 const CALENDLY = "https://calendly.com/useakaani";
 
 const FOCUS = [
   {
-    n: "01",
-    icon: "weight" as FocusIconName,
+    icon: "pcos" as FocusIconName,
+    title: "PCOS",
+    q: "I am doing everything right and my weight still will not move.",
+    outcome: "Insulin-aware portions and meal timing, built on the food you already cook.",
+    tags: ["Insulin resistance", "Cycle", "Weight"],
+  },
+  {
+    icon: "diabetes" as FocusIconName,
+    title: "Diabetes",
+    q: "Can I still eat swallow?",
+    outcome: "Yes, in portions and pairings that keep your sugar steadier. Your readings shape the guide.",
+    tags: ["Blood sugar", "Portions", "Swallow"],
+  },
+  {
+    icon: "pressure" as FocusIconName,
+    title: "Blood pressure",
+    q: "I was told to cut salt, and nothing else.",
+    outcome: "What to change in your soups, your seasoning and your pot, past the salt advice.",
+    tags: ["Sodium", "Soups", "Readings"],
+  },
+  {
+    icon: "pregnancy" as FocusIconName,
+    title: "Pregnancy",
+    q: "What should I be eating now?",
+    outcome: "Iron, protein and folate from Nigerian food, trimester by trimester, alongside your antenatal care.",
+    tags: ["Trimesters", "Iron", "Folate"],
+  },
+  {
+    icon: "fatloss" as FocusIconName,
     popular: true,
+    title: "Fat loss",
     q: "I am eating less and still not losing weight.",
-    title: "Weight that will not move",
-    outcome: "You leave knowing your calorie and protein targets, and which of your regular meals to change first.",
-    tags: ["Fat loss", "PCOS", "Plateaus"],
+    outcome: "Calorie and protein targets you can actually hit on rice, swallow and soup.",
+    tags: ["Plateaus", "Portions", "Protein"],
   },
   {
-    n: "02",
-    icon: "fitness" as FocusIconName,
+    icon: "muscle" as FocusIconName,
+    title: "Muscle gain",
     q: "Am I eating enough protein for my gym week?",
-    title: "Training without the results",
-    outcome: "You leave with protein targets you can hit on Nigerian food, and what to eat around training days.",
-    tags: ["Protein", "Recovery", "Muscle gain"],
-  },
-  {
-    n: "03",
-    icon: "review" as FocusIconName,
-    q: "Is my everyday diet helping me or hurting me?",
-    title: "Numbers your doctor flagged",
-    outcome: "You leave with a read on what you currently eat, and the three changes that matter most for your BP, sugar or cholesterol.",
-    tags: ["Hypertension", "Diabetes", "Cholesterol"],
-  },
-  {
-    n: "04",
-    icon: "reset" as FocusIconName,
-    q: "I want to eat better. I do not know where to start.",
-    title: "Starting again",
-    outcome: "You leave with seven days mapped out, using meals you already know how to cook.",
-    tags: ["Energy", "Digestion", "Routine"],
-  },
-  {
-    n: "05",
-    icon: "family" as FocusIconName,
-    q: "How do I cook once and feed everyone well?",
-    title: "Feeding a household",
-    outcome: "You leave with one pot that works for the children, your partner and you.",
-    tags: ["Children", "One-pot", "Budget"],
+    outcome: "Protein targets from local food, and what to eat around training days.",
+    tags: ["Protein", "Training", "Recovery"],
   },
 ];
 
@@ -108,19 +110,17 @@ const KICKER = "mb-4 text-[0.85rem] font-bold uppercase tracking-[0.2em] text-ac
 const SECTION_X = "px-5 sm:px-8 lg:px-[72px]";
 
 function FocusCard({
-  n,
   icon,
-  q,
   title,
+  q,
   outcome,
   tags,
   popular,
   index,
 }: {
-  n: string;
   icon: FocusIconName;
-  q: string;
   title: string;
+  q: string;
   outcome: string;
   tags: string[];
   popular?: boolean;
@@ -129,34 +129,31 @@ function FocusCard({
   return (
     <HoverLift
       index={index}
-      className="group relative flex h-full flex-col overflow-hidden rounded-[22px] border border-line bg-white p-6 transition-[border-color,box-shadow] duration-300 hover:border-ink/25 hover:shadow-[0_18px_40px_rgba(0,51,51,0.08)] sm:p-7 md:p-8"
+      className="group relative flex h-full flex-col overflow-hidden rounded-[22px] border border-line bg-white p-6 transition-[border-color,box-shadow] duration-300 hover:border-ink/25 hover:shadow-[0_18px_40px_rgba(0,51,51,0.08)] sm:p-7"
     >
       <span className="absolute inset-x-0 top-0 h-[3px] origin-left scale-x-0 bg-accent transition-transform duration-500 ease-brand group-hover:scale-x-100" />
 
-      <div className="mb-5 flex items-start justify-between gap-3">
-        <span className="grid h-11 w-11 flex-none place-items-center rounded-2xl bg-ink text-bg transition-colors duration-300 group-hover:bg-accent">
-          <FocusIcon name={icon} />
-        </span>
-        {popular ? (
-          <span className="rounded-full bg-accent px-3 py-1.5 text-[0.62rem] font-extrabold uppercase tracking-[0.12em] text-white">
-            Most booked
+      <div className="mb-5 flex items-center justify-between gap-3">
+        <div className="flex items-center gap-3.5">
+          <span className="grid h-11 w-11 flex-none place-items-center rounded-2xl bg-ink text-bg transition-colors duration-300 group-hover:bg-accent">
+            <FocusIcon name={icon} />
           </span>
-        ) : (
-          <span className="text-[0.72rem] font-extrabold tracking-[0.2em] text-ink/20 transition-colors duration-300 group-hover:text-accent">
-            {n}
+          <h3 className="text-[clamp(1.12rem,1.5vw,1.3rem)] leading-[1.2]">{title}</h3>
+        </div>
+        {popular && (
+          <span className="flex-none rounded-full bg-accent px-2.5 py-1 text-[0.58rem] font-extrabold uppercase tracking-[0.1em] text-white">
+            Most booked
           </span>
         )}
       </div>
 
-      {/* the line someone recognises themselves in leads the card */}
-      <q className="mb-4 block text-[clamp(1.02rem,1.35vw,1.18rem)] font-semibold leading-[1.4] text-ink">{q}</q>
-      <p className="mb-5 text-[0.95rem] leading-[1.6] text-ink-soft">{outcome}</p>
+      <q className="mb-3.5 block text-[0.99rem] font-semibold leading-[1.45] text-ink">{q}</q>
+      <p className="mb-5 text-[0.94rem] leading-[1.6] text-ink-soft">{outcome}</p>
 
-      <p className="mt-auto flex flex-wrap items-center gap-x-2 gap-y-1 border-t border-line pt-4 text-[0.69rem] font-bold uppercase tracking-[0.12em] text-ink-soft">
-        <b className="text-ink">{title}</b>
-        {tags.map((t) => (
+      <p className="mt-auto flex flex-wrap gap-x-1 gap-y-1 border-t border-line pt-4 text-[0.68rem] font-bold uppercase tracking-[0.1em] text-ink-soft">
+        {tags.map((t, i) => (
           <span key={t}>
-            <span className="pr-2 text-accent">·</span>
+            {i > 0 && <span className="pr-1 text-accent">·</span>}
             {t}
           </span>
         ))}
@@ -185,17 +182,16 @@ export default function DietitianPage() {
           <div className="relative mx-auto grid max-w-[1280px] items-center gap-[clamp(30px,4vw,70px)] lg:grid-cols-[1.35fr_1fr]">
             <div>
               <FadeIn>
-                <p className={KICKER}>1-on-1 with akaani&apos;s registered dietitian</p>
-              </FadeIn>
-              <FadeIn delay={0.08}>
-                <h1 className="mb-6 text-[clamp(2.4rem,5.2vw,4.5rem)]">
-                  Stop guessing <span className="text-accent">what to eat.</span>
+                <h1 className="mb-6 text-[clamp(2.35rem,5vw,4.4rem)]">
+                  Talk to our in-house dietitian who knows{" "}
+                  <span className="text-accent">Nigerian food.</span>
                 </h1>
               </FadeIn>
               <FadeIn delay={0.16}>
                 <p className="mb-8 text-[clamp(1rem,1.35vw,1.16rem)] leading-[1.65] text-ink-soft sm:mb-9 lg:max-w-[560px]">
-                  45 minutes with a Registered Dietitian who knows rice, swallow and soup. You leave with a 7-day
-                  guide built on the food you already buy.
+                  Sit with someone qualified to speak on your goal and your health. Hypertension, diabetes, PCOS,
+                  gut issues, training, pregnancy. You leave with a personal Nigerian meal guide in your mail within
+                  24 hours.
                 </p>
               </FadeIn>
               <FadeIn delay={0.24}>
@@ -204,7 +200,7 @@ export default function DietitianPage() {
                     Book consultation
                   </Button>
                   <Button href="#ask" variant="ghostDark" size="lg" className="w-full sm:w-auto">
-                    Is this you?
+                    What we help with
                   </Button>
                 </div>
               </FadeIn>
@@ -239,70 +235,61 @@ export default function DietitianPage() {
                 className="absolute -bottom-4 right-0 flex items-center gap-2 rounded-full border border-line bg-paper px-3.5 py-2.5 text-[0.76rem] font-bold text-ink shadow-[0_18px_44px_rgba(0,51,51,0.16)] sm:-right-3 sm:px-[18px] sm:py-3 sm:text-[0.84rem]"
               >
                 <i className="h-2 w-2 rounded-full bg-accent" />
-                Your guide, in your inbox in 24 hours
+                45 minutes, on video
               </div>
             </div>
           </div>
         </section>
 
-        {/* ---------- what we focus on ---------- */}
+        {/* ---------- what brings you here ---------- */}
         <section id="ask" className={`py-[clamp(56px,8vh,130px)] ${SECTION_X}`}>
-          <FadeIn className="mx-auto mb-[clamp(38px,4.4vw,54px)] max-w-[800px] text-center">
-            <p className={KICKER}>Why people book</p>
-            <h2 className="mb-4 text-[clamp(2.2rem,4.6vw,3.8rem)]">
-              Sound <span className="text-accent">familiar?</span>
+          <FadeIn className="mx-auto mb-[clamp(34px,4vw,52px)] max-w-[760px] text-center">
+            <p className={KICKER}>What we help with</p>
+            <h2 className="mb-4 text-[clamp(2.1rem,4.6vw,3.8rem)]">
+              What brings <span className="text-accent">you here?</span>
             </h2>
             <p className="text-[1.05rem] leading-[1.65] text-ink-soft">
-              Five reasons people book. Pick the one that sounds like you.
+              Six reasons people book. Pick the one that sounds like you.
             </p>
           </FadeIn>
 
-          {/* 5 cards + the "not sure" card fill an even 6-cell grid, so no orphan slot. */}
-          <div className="mx-auto grid max-w-[1280px] items-stretch gap-[clamp(16px,1.8vw,22px)] sm:grid-cols-2 lg:grid-cols-3">
+          {/* six cards fill an even 3 x 2, so the reassurance sits below as a bar */}
+          <div className="mx-auto grid max-w-[1280px] items-stretch gap-[clamp(14px,1.8vw,22px)] sm:grid-cols-2 lg:grid-cols-3">
             {FOCUS.map((f, i) => (
               <FocusCard key={f.title} {...f} index={i} />
             ))}
-
-            <HoverLift
-              index={FOCUS.length}
-              className="group flex h-full flex-col justify-between rounded-[22px] bg-ink p-6 text-bg sm:p-7 md:p-8"
-            >
-              <div>
-                <span className="mb-6 grid h-12 w-12 place-items-center rounded-2xl bg-accent text-white">
-                  <svg
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="1.7"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    className="h-[22px] w-[22px]"
-                    aria-hidden="true"
-                  >
-                    <path d="M9.1 9a3 3 0 0 1 5.8 1c0 2-3 3-3 3" />
-                    <path d="M12 17h.01" />
-                    <circle cx="12" cy="12" r="9.5" />
-                  </svg>
-                </span>
-                <h3 className="mb-3 text-[clamp(1.08rem,1.4vw,1.24rem)] leading-[1.25] text-bg">
-                  None of these quite fit?
-                </h3>
-                <p className="text-[0.95rem] leading-[1.6] text-bg/60">
-                  Book anyway and say what is going on. Your dietitian will point the session where it helps most.
-                </p>
-              </div>
-
-              <a
-                href="#book"
-                className="mt-7 inline-flex items-center gap-2 self-start border-t border-bg/15 pt-5 text-[0.95rem] font-bold text-bg transition-colors duration-300 hover:text-accent"
-              >
-                See how booking works
-                <i className="not-italic text-accent transition-transform duration-300 ease-brand group-hover:translate-y-0.5">
-                  ↓
-                </i>
-              </a>
-            </HoverLift>
           </div>
+
+          <FadeIn className="mx-auto mt-[clamp(14px,1.8vw,22px)] flex max-w-[1280px] flex-col gap-5 rounded-[22px] bg-ink p-6 text-bg sm:flex-row sm:items-center sm:justify-between sm:p-7 md:px-9">
+            <div className="flex items-start gap-4">
+              <span className="grid h-11 w-11 flex-none place-items-center rounded-2xl bg-accent text-white">
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="1.7"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  className="h-[22px] w-[22px]"
+                  aria-hidden="true"
+                >
+                  <path d="M9.1 9a3 3 0 0 1 5.8 1c0 2-3 3-3 3" />
+                  <path d="M12 17h.01" />
+                  <circle cx="12" cy="12" r="9.5" />
+                </svg>
+              </span>
+              <p className="text-[0.97rem] leading-[1.55]">
+                <b className="block text-[1.05rem]">None of these quite fit?</b>
+                <span className="text-bg/60">
+                  Book anyway and say what is going on. Your session goes where it helps most.
+                </span>
+              </p>
+            </div>
+
+            <Button href={CALENDLY} external size="md" className="w-full flex-none sm:w-auto">
+              Book consultation
+            </Button>
+          </FadeIn>
         </section>
 
         {/* ---------- who you are talking to ---------- */}
@@ -415,7 +402,7 @@ export default function DietitianPage() {
           </FadeIn>
         </section>
 
-        {/* ---------- your personal nutrition guide ---------- */}
+        {/* ---------- the meal guide ---------- */}
         <section className={`pb-[clamp(80px,12vh,130px)] ${SECTION_X}`}>
           <FadeIn className="mx-auto mb-[clamp(32px,3.8vw,48px)] max-w-[780px] text-center">
             <p className={KICKER}>The guide</p>
@@ -423,16 +410,12 @@ export default function DietitianPage() {
               What do I <span className="text-accent">walk away with?</span>
             </h2>
             <p className="text-[1.03rem] leading-[1.65] text-ink-soft">
-              A 7-day guide, written for you after the call. Here is what is inside it.
+              A 7-day meal guide, written for you after the call. Here is what is inside it.
             </p>
           </FadeIn>
 
           <GuidePreview />
 
-          <FadeIn className="mx-auto mt-[clamp(24px,3vw,34px)] max-w-[1180px] border-l-[3px] border-accent pl-[18px] text-[0.96rem] leading-[1.6] text-ink-soft">
-            <b className="text-ink">Managing hypertension, diabetes or PCOS?</b> Your guide is shaped by your
-            readings, your medication and what your doctor has already told you.
-          </FadeIn>
         </section>
 
         {/* ---------- faq ---------- */}

@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Talk to our in-house dietitian | akaani</title>
-  <meta name="description" content="A 45-minute video call with akaani's in-house Registered Dietitian. Weight management, fitness nutrition, African diet review, healthy eating resets and family planning. Your Personal Nutrition Guide lands in your inbox within 24 hours." />
+  <meta name="description" content="A 45-minute video call with akaani's in-house Registered Dietitian. Weight management, fitness nutrition, African diet review, healthy eating resets and family planning. Your Personal Nigerian Meal Guide lands in your inbox within 24 hours." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
@@ -98,7 +98,7 @@
     }
     .focus:hover::before { transform: scaleX(1); }
 
-    .focus__top { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; margin-bottom: 24px; }
+    .focus__top { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 20px; }
     .focus__icon {
       flex: none; display: grid; place-items: center;
       width: 48px; height: 48px; border-radius: 16px;
@@ -107,17 +107,17 @@
     }
     .focus:hover .focus__icon { background: var(--accent); }
     .focus__icon svg { width: 22px; height: 22px; }
-    .focus__n { font-size: 0.72rem; font-weight: 800; letter-spacing: 0.2em; color: rgba(0, 51, 51, 0.2); transition: color 0.3s; }
-    .focus:hover .focus__n { color: var(--accent); }
+    .focus__id { display: flex; align-items: center; gap: 14px; min-width: 0; }
+    .focus h3 { font-size: clamp(1.12rem, 1.5vw, 1.3rem); line-height: 1.2; }
     .focus__badge {
       border-radius: 999px; background: var(--accent); color: #fff;
       padding: 6px 12px; font-size: 0.62rem; font-weight: 800;
       letter-spacing: 0.12em; text-transform: uppercase;
     }
     .focus__q {
-      display: block; margin-bottom: 16px;
-      font-size: clamp(1.02rem, 1.35vw, 1.18rem); font-weight: 600;
-      font-style: normal; line-height: 1.4; color: var(--ink);
+      display: block; margin-bottom: 14px;
+      font-size: 0.99rem; font-weight: 600;
+      font-style: normal; line-height: 1.45; color: var(--ink);
     }
     .focus__who { font-size: 0.95rem; line-height: 1.6; color: var(--ink-soft); margin-bottom: 20px; }
     .focus__tags {
@@ -126,23 +126,8 @@
       font-size: 0.69rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase;
       color: var(--ink-soft);
     }
-    .focus__tags b { color: var(--ink); }
     .focus__tags i { font-style: normal; color: var(--accent); padding: 0 8px; }
 
-    /* the sixth cell: fills the grid so five cards leave no orphan slot */
-    .focus--dark { background: var(--ink); border-color: var(--ink); justify-content: space-between; }
-    .focus--dark:hover { border-color: var(--ink); }
-    .focus--dark .focus__icon { background: var(--accent); color: #fff; }
-    .focus--dark h3 { color: var(--bg); }
-    .focus--dark .focus__who { color: rgba(255, 255, 255, 0.6); margin-bottom: 0; }
-    .focus--dark-link {
-      display: inline-flex; align-items: center; gap: 8px; align-self: flex-start;
-      margin-top: 28px; padding-top: 20px; border-top: 1px solid rgba(255, 255, 255, 0.15);
-      font-size: 0.95rem; font-weight: 700; color: var(--bg); transition: color 0.3s;
-    }
-    .focus--dark-link i { font-style: normal; color: var(--accent); transition: transform 0.3s var(--ease); }
-    .focus--dark-link:hover { color: var(--accent); }
-    .focus--dark-link:hover i { transform: translateY(2px); }
 
     /* --- meet your dietitian --- */
     .rd { padding: clamp(56px, 8vh, 130px) clamp(20px, 5vw, 72px); }
@@ -180,6 +165,24 @@
     
 
     /* --- section 3: why a dietitian --- */
+    .focus__bar {
+      max-width: 1280px; margin: clamp(14px, 1.8vw, 22px) auto 0;
+      display: flex; align-items: center; justify-content: space-between; gap: 20px;
+      background: var(--ink); color: var(--bg);
+      border-radius: 22px; padding: clamp(24px, 2.4vw, 28px) clamp(24px, 2.6vw, 36px);
+    }
+    .focus__bar-id { display: flex; align-items: flex-start; gap: 16px; }
+    .focus__bar-icon {
+      flex: none; display: grid; place-items: center;
+      width: 44px; height: 44px; border-radius: 16px;
+      background: var(--accent); color: #fff;
+    }
+    .focus__bar-icon svg { width: 22px; height: 22px; }
+    .focus__bar p { font-size: 0.97rem; line-height: 1.55; }
+    .focus__bar b { display: block; font-size: 1.05rem; color: var(--bg); }
+    .focus__bar span { color: rgba(255, 255, 255, 0.6); }
+    .focus__bar .btn { flex: none; }
+
     /* --- section 4: how it works --- */
     .how { padding: clamp(56px, 8vh, 130px) clamp(20px, 5vw, 72px); }
     .how__inner {
@@ -374,6 +377,8 @@
       .dh { padding-top: 104px; }
       .dh__visual { max-width: 330px; }
       .dh__actions { flex-direction: column; gap: 12px; }
+      .focus__bar { flex-direction: column; align-items: stretch; gap: 20px; }
+      .focus__bar .btn { width: 100%; text-align: center; justify-content: center; }
       .dh__actions .btn { width: 100%; }
       .dh__pricebadge { left: -8px; top: -16px; padding: 12px 16px; font-size: 1.15rem; }
       .dh__planbadge { right: 0; left: auto; padding: 10px 14px; font-size: 0.74rem; }
@@ -484,6 +489,8 @@
       .dh { padding-top: 104px; }
       .dh__visual { max-width: 330px; }
       .dh__actions { flex-direction: column; gap: 12px; }
+      .focus__bar { flex-direction: column; align-items: stretch; gap: 20px; }
+      .focus__bar .btn { width: 100%; text-align: center; justify-content: center; }
       .dh__actions .btn { width: 100%; }
       .dh__pricebadge { left: -8px; top: -16px; padding: 12px 16px; font-size: 1.15rem; }
       .dh__planbadge { right: 0; left: auto; padding: 10px 14px; font-size: 0.74rem; }
@@ -491,6 +498,8 @@
       .dh { padding-top: 104px; }
       .dh__visual { max-width: 330px; }
       .dh__actions { flex-direction: column; gap: 12px; }
+      .focus__bar { flex-direction: column; align-items: stretch; gap: 20px; }
+      .focus__bar .btn { width: 100%; text-align: center; justify-content: center; }
       .dh__actions .btn { width: 100%; }
       /* desktop offsets put these in the page gutter on a phone */
       .dh__pricebadge { left: -8px; top: -16px; padding: 12px 16px; font-size: 1.15rem; }
@@ -539,12 +548,11 @@
       <div class="dh__ghost" aria-hidden="true">dietitian</div>
       <div class="dh__inner">
         <div>
-          <p class="section-head__kicker">1-on-1 with akaani's registered dietitian</p>
-          <h1>Stop guessing <span class="accent-text">what to eat.</span></h1>
-          <p class="dh__sub">45 minutes with a Registered Dietitian who knows rice, swallow and soup. You leave with a 7-day guide built on the food you already buy.</p>
+          <h1>Talk to our in-house dietitian who knows <span class="accent-text">Nigerian food.</span></h1>
+          <p class="dh__sub">Sit with someone qualified to speak on your goal and your health. Hypertension, diabetes, PCOS, gut issues, training, pregnancy. You leave with a personal Nigerian meal guide in your mail within 24 hours.</p>
           <div class="dh__actions">
             <a href="https://calendly.com/useakaani" target="_blank" rel="noopener" class="btn btn--dark btn--lg">Book consultation</a>
-            <a href="#ask" class="btn btn--ghost-dark btn--lg">Is this you?</a>
+            <a href="#ask" class="btn btn--ghost-dark btn--lg">What we help with</a>
           </div>
         </div>
         <div class="dh__visual" id="dhVisual" aria-hidden="true">
@@ -552,7 +560,7 @@
             <img src="assets/consult-hero.jpg" alt="akaani's in-house dietitian on a video consultation" />
           </div>
           <div class="dh__pricebadge">₦50,000<span>per session</span></div>
-          <div class="dh__planbadge"><i></i>Your guide, in your inbox in 24 hours</div>
+          <div class="dh__planbadge"><i></i>45 minutes, on video</div>
         </div>
       </div>
     </section>
@@ -560,67 +568,92 @@
     <!-- ============ WHAT WE FOCUS ON ============ -->
     <section class="ask" id="ask">
       <div class="ask__head">
-        <p class="section-head__kicker">Why people book</p>
-        <h2>Sound <span class="accent-text">familiar?</span></h2>
-        <p>Five reasons people book. Pick the one that sounds like you.</p>
+        <p class="section-head__kicker">What we help with</p>
+        <h2>What brings <span class="accent-text">you here?</span></h2>
+        <p>Six reasons people book. Pick the one that sounds like you.</p>
       </div>
 
       <div class="focus__grid">
         <article class="focus">
           <div class="focus__top">
-            <span class="focus__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 7l6 6 4-4 8 8"/><path d="M21 12v5h-5"/></svg></span>
+            <span class="focus__id">
+              <span class="focus__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 12a8 8 0 1 1-3.2-6.4"/><path d="M20.5 4.5V9h-4.5"/><circle cx="12" cy="12" r="3"/></svg></span>
+              <h3>PCOS</h3>
+            </span>
+            
+          </div>
+          <q class="focus__q">I am doing everything right and my weight still will not move.</q>
+          <p class="focus__who">Insulin-aware portions and meal timing, built on the food you already cook.</p>
+          <p class="focus__tags">Insulin resistance<i>&middot;</i>Cycle<i>&middot;</i>Weight</p>
+        </article>
+        <article class="focus">
+          <div class="focus__top">
+            <span class="focus__id">
+              <span class="focus__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3s5.5 6 5.5 9.5a5.5 5.5 0 0 1-11 0C6.5 9 12 3 12 3Z"/><path d="M9.5 13.5a2.5 2.5 0 0 0 2.5 2.5"/></svg></span>
+              <h3>Diabetes</h3>
+            </span>
+            
+          </div>
+          <q class="focus__q">Can I still eat swallow?</q>
+          <p class="focus__who">Yes, in portions and pairings that keep your sugar steadier. Your readings shape the guide.</p>
+          <p class="focus__tags">Blood sugar<i>&middot;</i>Portions<i>&middot;</i>Swallow</p>
+        </article>
+        <article class="focus">
+          <div class="focus__top">
+            <span class="focus__id">
+              <span class="focus__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.4 5.6a4.6 4.6 0 0 0-6.5 0L12 7.5l-1.9-1.9a4.6 4.6 0 1 0-6.5 6.5L12 20.4l8.4-8.3a4.6 4.6 0 0 0 0-6.5Z"/><path d="M3.5 12.5h4L9 10.5l2 4 1.5-2.5h2"/></svg></span>
+              <h3>Blood pressure</h3>
+            </span>
+            
+          </div>
+          <q class="focus__q">I was told to cut salt, and nothing else.</q>
+          <p class="focus__who">What to change in your soups, your seasoning and your pot, past the salt advice.</p>
+          <p class="focus__tags">Sodium<i>&middot;</i>Soups<i>&middot;</i>Readings</p>
+        </article>
+        <article class="focus">
+          <div class="focus__top">
+            <span class="focus__id">
+              <span class="focus__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9.4" cy="4.6" r="2.3"/><path d="M9.4 8.2V21"/><path d="M9.4 10.4c3.6 0 5.9 1.6 5.9 4s-2.3 3.9-5.9 3.9"/></svg></span>
+              <h3>Pregnancy</h3>
+            </span>
+            
+          </div>
+          <q class="focus__q">What should I be eating now?</q>
+          <p class="focus__who">Iron, protein and folate from Nigerian food, trimester by trimester, alongside your antenatal care.</p>
+          <p class="focus__tags">Trimesters<i>&middot;</i>Iron<i>&middot;</i>Folate</p>
+        </article>
+        <article class="focus">
+          <div class="focus__top">
+            <span class="focus__id">
+              <span class="focus__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 7l6 6 4-4 8 8"/><path d="M21 12v5h-5"/></svg></span>
+              <h3>Fat loss</h3>
+            </span>
             <span class="focus__badge">Most booked</span>
           </div>
           <q class="focus__q">I am eating less and still not losing weight.</q>
-          <p class="focus__who">You leave knowing your calorie and protein targets, and which of your regular meals to change first.</p>
-          <p class="focus__tags"><b>Weight that will not move</b><i>&middot;</i>Fat loss<i>&middot;</i>PCOS<i>&middot;</i>Plateaus</p>
+          <p class="focus__who">Calorie and protein targets you can actually hit on rice, swallow and soup.</p>
+          <p class="focus__tags">Plateaus<i>&middot;</i>Portions<i>&middot;</i>Protein</p>
         </article>
         <article class="focus">
           <div class="focus__top">
-            <span class="focus__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9v6M8 7v10M16 7v10M20 9v6"/><path d="M8 12h8"/></svg></span>
-            <span class="focus__n">02</span>
+            <span class="focus__id">
+              <span class="focus__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9v6M8 7v10M16 7v10M20 9v6"/><path d="M8 12h8"/></svg></span>
+              <h3>Muscle gain</h3>
+            </span>
+            
           </div>
           <q class="focus__q">Am I eating enough protein for my gym week?</q>
-          <p class="focus__who">You leave with protein targets you can hit on Nigerian food, and what to eat around training days.</p>
-          <p class="focus__tags"><b>Training without the results</b><i>&middot;</i>Protein<i>&middot;</i>Recovery<i>&middot;</i>Muscle gain</p>
+          <p class="focus__who">Protein targets from local food, and what to eat around training days.</p>
+          <p class="focus__tags">Protein<i>&middot;</i>Training<i>&middot;</i>Recovery</p>
         </article>
-        <article class="focus">
-          <div class="focus__top">
-            <span class="focus__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12h18a9 9 0 0 1-18 0Z"/><path d="M9 6c0-1 1-1 1-2M13 6c0-1 1-1 1-2M17 6c0-1 1-1 1-2"/></svg></span>
-            <span class="focus__n">03</span>
-          </div>
-          <q class="focus__q">Is my everyday diet helping me or hurting me?</q>
-          <p class="focus__who">You leave with a read on what you currently eat, and the three changes that matter most for your BP, sugar or cholesterol.</p>
-          <p class="focus__tags"><b>Numbers your doctor flagged</b><i>&middot;</i>Hypertension<i>&middot;</i>Diabetes<i>&middot;</i>Cholesterol</p>
-        </article>
-        <article class="focus">
-          <div class="focus__top">
-            <span class="focus__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 12a8 8 0 1 1-2.6-5.9"/><path d="M20 4v5h-5"/></svg></span>
-            <span class="focus__n">04</span>
-          </div>
-          <q class="focus__q">I want to eat better. I do not know where to start.</q>
-          <p class="focus__who">You leave with seven days mapped out, using meals you already know how to cook.</p>
-          <p class="focus__tags"><b>Starting again</b><i>&middot;</i>Energy<i>&middot;</i>Digestion<i>&middot;</i>Routine</p>
-        </article>
-        <article class="focus">
-          <div class="focus__top">
-            <span class="focus__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8" r="3"/><circle cx="17" cy="9.5" r="2.2"/><path d="M3 20a6 6 0 0 1 12 0M15.5 20a4.5 4.5 0 0 1 5.5-4.4"/></svg></span>
-            <span class="focus__n">05</span>
-          </div>
-          <q class="focus__q">How do I cook once and feed everyone well?</q>
-          <p class="focus__who">You leave with one pot that works for the children, your partner and you.</p>
-          <p class="focus__tags"><b>Feeding a household</b><i>&middot;</i>Children<i>&middot;</i>One-pot<i>&middot;</i>Budget</p>
-        </article>
-        <article class="focus focus--dark">
-          <div>
-            <div class="focus__top">
-              <span class="focus__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9.1 9a3 3 0 0 1 5.8 1c0 2-3 3-3 3"/><path d="M12 17h.01"/><circle cx="12" cy="12" r="9.5"/></svg></span>
-            </div>
-            <h3>Not sure which one you need?</h3>
-            <p class="focus__who">Book anyway and say what is going on. Your dietitian will point the session where it is most useful, and works alongside your doctor, never instead of them.</p>
-          </div>
-          <a href="#book" class="focus--dark-link">See how the session works <i>&#8595;</i></a>
-        </article>
+      </div>
+
+      <div class="focus__bar">
+        <div class="focus__bar-id">
+          <span class="focus__bar-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9.1 9a3 3 0 0 1 5.8 1c0 2-3 3-3 3"/><path d="M12 17h.01"/><circle cx="12" cy="12" r="9.5"/></svg></span>
+          <p><b>None of these quite fit?</b><span>Book anyway and say what is going on. Your session goes where it helps most.</span></p>
+        </div>
+        <a href="https://calendly.com/useakaani" target="_blank" rel="noopener" class="btn btn--accent">Book consultation</a>
       </div>
     </section>
 
@@ -681,7 +714,7 @@
         <div class="guide__head">
           <p class="section-head__kicker">The guide</p>
           <h2>What do I <span class="accent-text">walk away with?</span></h2>
-          <p>A 7-day guide, written for you after the call. Here is what is inside it.</p>
+          <p>A 7-day meal guide, written for you after the call. Here is what is inside it.</p>
         </div>
         <div class="gp">
           <div class="gp__tabs" role="tablist" aria-label="Sections of the guide" aria-orientation="vertical">
@@ -748,7 +781,7 @@
             </p>
             <div class="gp__frame">
               <div class="gp__framehead">
-                <span>Personal Nutrition Guide</span>
+                <span>Personal Nigerian Meal Guide</span>
                 <span class="gp__tag">Example</span>
               </div>
               <div class="gp__body">
@@ -827,7 +860,6 @@
             <p class="gp__caption">A preview. Your own guide is written after your call.</p>
           </div>
         </div>
-        <p class="guide__note"><b>Managing hypertension, diabetes or PCOS?</b> Your guide is shaped by your readings, your medication and what your doctor has already told you.</p>
       </div>
     </section>
 

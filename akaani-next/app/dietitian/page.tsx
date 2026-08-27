@@ -403,7 +403,7 @@ export default function DietitianPage() {
         </section>
 
         {/* ---------- the meal guide ---------- */}
-        <section className={`pb-[clamp(80px,12vh,130px)] ${SECTION_X}`}>
+        <section className={`pb-[clamp(40px,5vh,72px)] ${SECTION_X}`}>
           <FadeIn className="mx-auto mb-[clamp(32px,3.8vw,48px)] max-w-[780px] text-center">
             <p className={KICKER}>The guide</p>
             <h2 className="mb-4 text-[clamp(2.2rem,4.6vw,3.8rem)]">

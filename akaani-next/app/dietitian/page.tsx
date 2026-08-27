@@ -66,11 +66,12 @@ const FOCUS = [
 ];
 
 /**
- * TODO before launch: replace `name` and `photo` with the dietitian's own
- * name and headshot. Everything else here is true of any RD.
+ * PLACEHOLDER, DO NOT SHIP. Replace `name`, `photo` and `pronoun` with the
+ * dietitian's own. Everything in `credentials` is true of any RD and can stay.
+ * The section is laid out for a named person, so this is the only edit needed.
  */
 const DIETITIAN = {
-  name: "akaani's in-house dietitian",
+  name: "[ Dietitian's name ]",
   title: "Registered Dietitian (RD)",
   photo: "/assets/consult-hero.jpg",
   credentials: [
@@ -89,16 +90,12 @@ const STEPS = [
 
 const FAQS = [
   {
-    q: "I am not sick. Is this still for me?",
-    a: "Yes, and most people who book are not. They come for weight that will not shift, energy that dips by 3pm, or a household to feed well. You do not need a diagnosis to want a straight answer about your food.",
+    q: "How is this different from advice online?",
+    a: "Advice online is written for everyone, so it fits nobody in particular. Your dietitian works from your readings, your medication, your budget and the food you actually cook. That is what you are paying for.",
   },
   {
     q: "Will I have to stop eating Nigerian food?",
     a: "No. Your guide is built on what you already cook and buy, adjusted in portion, pairing and frequency. Nothing gets swapped for salmon and quinoa.",
-  },
-  {
-    q: "Do I need lab results before the call?",
-    a: "No. Bring them if you have them and your dietitian will use them. The session works without any.",
   },
   {
     q: "What if I need to reschedule?",
@@ -190,9 +187,8 @@ export default function DietitianPage() {
               </FadeIn>
               <FadeIn delay={0.16}>
                 <p className="mb-8 text-[clamp(1rem,1.35vw,1.16rem)] leading-[1.65] text-ink-soft sm:mb-9 lg:max-w-[560px]">
-                  Sit with someone qualified to speak on your goal and your health. Hypertension, diabetes, PCOS,
-                  gut issues, training, pregnancy. You leave with a personal Nigerian meal guide in your mail within
-                  24 hours.
+                  For a diagnosis, a goal, or just a feeling that something is off. You leave with a personal
+                  Nigerian meal guide in your mail within 24 hours.
                 </p>
               </FadeIn>
               <FadeIn delay={0.24}>
@@ -250,7 +246,7 @@ export default function DietitianPage() {
               What brings <span className="text-accent">you here?</span>
             </h2>
             <p className="text-[1.05rem] leading-[1.65] text-ink-soft">
-              Six reasons people book. Pick the one that sounds like you.
+              Six reasons people book. You do not need a diagnosis to be one of them.
             </p>
           </FadeIn>
 
@@ -280,9 +276,9 @@ export default function DietitianPage() {
                 </svg>
               </span>
               <p className="text-[0.97rem] leading-[1.55]">
-                <b className="block text-[1.05rem]">None of these quite fit?</b>
+                <b className="block text-[1.05rem]">Not sure what is wrong, only that something is?</b>
                 <span className="text-bg/60">
-                  Book anyway and say what is going on. Your session goes where it helps most.
+                  You do not need a diagnosis or lab results. Bring what you have noticed and start there.
                 </span>
               </p>
             </div>
@@ -306,9 +302,6 @@ export default function DietitianPage() {
                   className="h-full w-full object-cover object-[60%_center]"
                 />
               </div>
-              <div className="absolute -bottom-4 left-1/2 -translate-x-1/2 whitespace-nowrap rounded-full bg-ink px-5 py-3 text-[0.8rem] font-bold text-bg shadow-[0_18px_40px_rgba(0,51,51,0.24)]">
-                <span className="text-accent">RD</span> · {DIETITIAN.title}
-              </div>
             </FadeIn>
 
             <div>
@@ -319,14 +312,14 @@ export default function DietitianPage() {
                 </h2>
               </FadeIn>
               <FadeIn delay={0.08}>
-                <p className="mb-4 text-[1.03rem] leading-[1.7] text-ink-soft lg:max-w-[560px]">
-                  A Registered Dietitian, and the same one on every call. RD is a protected title: formal
-                  training, supervised practice, and a licence to treat conditions like hypertension, diabetes and
-                  PCOS. Anyone can call themselves a nutritionist.
+                <p className="mb-4 text-[1.35rem] font-bold leading-[1.25]">
+                  {DIETITIAN.name}
+                  <span className="ml-2 text-[0.95rem] font-semibold text-accent">{DIETITIAN.title}</span>
                 </p>
                 <p className="mb-8 text-[1.03rem] leading-[1.7] text-ink-soft lg:max-w-[560px]">
-                  She builds around rice, swallow, soups and beans, then shows you how to make them work for your
-                  goal.
+                  RD is a protected title: formal training, supervised practice, and a licence to treat
+                  hypertension, diabetes and PCOS. Anyone can call themselves a nutritionist. Every guide here is
+                  built around rice, swallow, soups and beans.
                 </p>
               </FadeIn>
 
@@ -342,6 +335,22 @@ export default function DietitianPage() {
               </Stagger>
             </div>
           </div>
+        </section>
+
+        {/* ---------- the meal guide ---------- */}
+        <section className={`${SECTION_Y} ${SECTION_X}`}>
+          <FadeIn className="mx-auto mb-[clamp(32px,3.8vw,48px)] max-w-[780px] text-center">
+            <p className={KICKER}>The guide</p>
+            <h2 className="mb-4 text-[clamp(2.2rem,4.6vw,3.8rem)]">
+              What do I <span className="text-accent">walk away with?</span>
+            </h2>
+            <p className="text-[1.03rem] leading-[1.65] text-ink-soft">
+              A 7-day meal guide, written for you after the call. Here is what is inside it.
+            </p>
+          </FadeIn>
+
+          <GuidePreview />
+
         </section>
 
         {/* ---------- what you get + booking ---------- */}
@@ -395,28 +404,12 @@ export default function DietitianPage() {
                 <Button href={CALENDLY} external size="lg" className="mt-5 w-full">
                   Book consultation
                 </Button>
-                <p className="mt-3.5 text-center text-[0.78rem] text-ink-soft">
-                  Scheduled via Calendly. Reschedule anytime.
+                <p className="mt-3.5 text-center text-[0.78rem] leading-[1.5] text-ink-soft">
+                  Reschedule anytime. <b className="text-ink">Not what you needed? Full refund within 7 days.</b>
                 </p>
               </div>
             </div>
           </FadeIn>
-        </section>
-
-        {/* ---------- the meal guide ---------- */}
-        <section className={`${SECTION_Y} ${SECTION_X}`}>
-          <FadeIn className="mx-auto mb-[clamp(32px,3.8vw,48px)] max-w-[780px] text-center">
-            <p className={KICKER}>The guide</p>
-            <h2 className="mb-4 text-[clamp(2.2rem,4.6vw,3.8rem)]">
-              What do I <span className="text-accent">walk away with?</span>
-            </h2>
-            <p className="text-[1.03rem] leading-[1.65] text-ink-soft">
-              A 7-day meal guide, written for you after the call. Here is what is inside it.
-            </p>
-          </FadeIn>
-
-          <GuidePreview />
-
         </section>
 
         {/* ---------- faq ---------- */}

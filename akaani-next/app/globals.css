@@ -70,3 +70,13 @@
 @media (hover: none) {
   .hint-hover { display: none; }
 }
+
+/* The guide's chip strip shows its position through its own rail, so the
+   native scrollbar is redundant under the pills. */
+.no-scrollbar {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}

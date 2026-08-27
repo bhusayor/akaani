@@ -381,11 +381,14 @@
       .gp__rail > div { height: 100%; border-radius: 999px; background: var(--accent); }
       .gp__tabs {
         flex-direction: row; gap: 10px;
-        margin: 0 calc(-1 * clamp(20px, 5vw, 72px)) 8px;
-        padding: 0 clamp(20px, 5vw, 72px) 8px;
+        margin: 0 calc(-1 * clamp(20px, 5vw, 72px));
+        padding: 0 clamp(20px, 5vw, 72px);
         scroll-padding: 0 clamp(20px, 5vw, 72px);
         overflow-x: auto; scroll-snap-type: x proximity;
+        /* the rail below shows position, so the native bar is redundant */
+        scrollbar-width: none; -ms-overflow-style: none;
       }
+      .gp__tabs::-webkit-scrollbar { display: none; }
       .gp__tab {
         flex: none; scroll-snap-align: start; width: auto;
         border: 1px solid var(--line); border-radius: 999px; padding: 10px 16px;

@@ -5,7 +5,6 @@ import FooterLight from "@/components/FooterLight";
 import Faq from "@/components/Faq";
 import Button from "@/components/ui/Button";
 import FadeIn from "@/components/motion/FadeIn";
-import { Stagger, StaggerItem } from "@/components/motion/Stagger";
 import HoverLift from "@/components/motion/HoverLift";
 import FocusIcon, { type FocusIconName } from "@/components/ui/FocusIcon";
 import GuidePreview from "@/components/dietitian/GuidePreview";
@@ -78,11 +77,13 @@ const FOCUS = [
 /** TODO before launch: swap `photo` for a real akaani dietitian, not stock. */
 const DIETITIAN = {
   photo: "/assets/consult-hero.jpg",
-  credentials: [
-    "Licensed to provide medical nutrition therapy",
-    "Trained in Nigerian and West African eating patterns",
-    "Works alongside your doctor, never instead of them",
-    "Writes your guide personally, no handoffs",
+  /** Written as capabilities: "licensed to provide medical nutrition therapy"
+   *  tells a reader nothing about what they get for it. */
+  can: [
+    "Read your lab results and build your food around them.",
+    "Work with your medication, not against it.",
+    "Know what rice, swallow and soup actually do to your numbers.",
+    "Say when something needs your doctor, not a meal plan.",
   ],
 };
 
@@ -353,25 +354,34 @@ export default function DietitianPage() {
                   A Registered Dietitian. Not a nutritionist, not a coach.
                 </p>
                 <p className="mb-7 text-[1.03rem] leading-[1.7] text-ink-soft lg:max-w-[560px]">
-                  RD is a protected title: formal training, supervised practice, and a licence to treat conditions
-                  like hypertension, diabetes and PCOS. Anyone can call themselves a nutritionist. Whichever of ours
-                  you sit with, they build around rice, swallow, soups and beans.
+                  RD is a protected title. Anyone can call themselves a nutritionist. Nobody can call themselves an
+                  RD without the training, the supervised practice and the licence behind it.
                 </p>
               </FadeIn>
 
-              <p className="mb-1 text-[0.72rem] font-extrabold uppercase tracking-[0.16em] text-ink/40">
-                Every akaani dietitian
-              </p>
-              <Stagger className="lg:max-w-[560px]" gap={0.08}>
-                {DIETITIAN.credentials.map((c) => (
-                  <StaggerItem key={c}>
-                    <div className="flex items-start gap-3.5 border-t border-line py-[13px] text-[0.98rem] leading-[1.55] last:border-b">
-                      <i className="mt-[2px] flex-none not-italic font-extrabold text-accent">✓</i>
-                      <span>{c}</span>
-                    </div>
-                  </StaggerItem>
-                ))}
-              </Stagger>
+              {/* the panel answers "so what?", which a credential list does not */}
+              <FadeIn delay={0.14} className="overflow-hidden rounded-[22px] border border-line lg:max-w-[560px]">
+                <div className="flex items-center gap-3 bg-ink px-5 py-4 text-bg sm:px-6">
+                  <span className="flex-none rounded-lg bg-accent px-2.5 py-1 text-[0.68rem] font-extrabold tracking-[0.08em] text-white">
+                    RD
+                  </span>
+                  <b className="text-[0.98rem] leading-tight">What that licence lets them do</b>
+                </div>
+
+                <ul>
+                  {DIETITIAN.can.map((c, i) => (
+                    <li
+                      key={c}
+                      className="flex items-start gap-4 border-b border-line px-5 py-4 last:border-0 sm:px-6"
+                    >
+                      <span className="pt-[3px] text-[0.72rem] font-extrabold tabular-nums text-accent">
+                        {String(i + 1).padStart(2, "0")}
+                      </span>
+                      <span className="text-[0.98rem] leading-[1.5]">{c}</span>
+                    </li>
+                  ))}
+                </ul>
+              </FadeIn>
             </div>
           </div>
         </section>

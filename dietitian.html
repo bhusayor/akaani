@@ -149,20 +149,27 @@
     }
     .rd__body h2 { margin-bottom: 16px; font-size: clamp(2rem, 4vw, 3.2rem); }
     .rd__lead { margin-bottom: 16px; font-size: 1.2rem; font-weight: 700; line-height: 1.4; color: var(--ink); }
-    .rd__label {
-      margin-bottom: 4px; font-size: 0.72rem; font-weight: 800;
-      letter-spacing: 0.16em; text-transform: uppercase; color: rgba(0, 51, 51, 0.4);
+    .rdcan { max-width: 560px; margin-top: 28px; border: 1px solid var(--line); border-radius: 22px; overflow: hidden; }
+    .rdcan__head {
+      display: flex; align-items: center; gap: 12px;
+      background: var(--ink); color: var(--bg); padding: 16px clamp(20px, 2vw, 24px);
     }
-    .rd__body > p { max-width: 560px; font-size: 1.03rem; line-height: 1.7; color: var(--ink-soft); margin-bottom: 16px; }
-    .rd__body > p:last-of-type { margin-bottom: 32px; }
-    .rd__list { list-style: none; margin: 0; padding: 0; max-width: 560px; }
-    .rd__list li {
-      display: flex; gap: 14px; align-items: flex-start;
-      padding: 13px 0; border-top: 1px solid var(--line);
-      font-size: 0.98rem; line-height: 1.55;
+    .rdcan__head span {
+      flex: none; background: var(--accent); color: #fff; border-radius: 8px;
+      padding: 4px 10px; font-size: 0.68rem; font-weight: 800; letter-spacing: 0.08em;
     }
-    .rd__list li:last-child { border-bottom: 1px solid var(--line); }
-    .rd__list i { font-style: normal; color: var(--accent); font-weight: 800; flex: none; margin-top: 2px; }
+    .rdcan__head b { font-size: 0.98rem; line-height: 1.2; }
+    .rdcan ul { list-style: none; margin: 0; padding: 0; }
+    .rdcan li {
+      display: flex; align-items: flex-start; gap: 16px;
+      padding: 16px clamp(20px, 2vw, 24px); border-bottom: 1px solid var(--line);
+    }
+    .rdcan li:last-child { border-bottom: 0; }
+    .rdcan i {
+      flex: none; padding-top: 3px; font-style: normal;
+      font-size: 0.72rem; font-weight: 800; font-variant-numeric: tabular-nums; color: var(--accent);
+    }
+    .rdcan span { font-size: 0.98rem; line-height: 1.5; }
 
     
 
@@ -892,14 +899,18 @@
           <p class="section-head__kicker">Your dietitian</p>
           <h2>Who am I <span class="accent-text">talking to?</span></h2>
           <p class="rd__lead">A Registered Dietitian. Not a nutritionist, not a coach.</p>
-          <p>RD is a protected title: formal training, supervised practice, and a licence to treat conditions like hypertension, diabetes and PCOS. Anyone can call themselves a nutritionist. Whichever of ours you sit with, they build around rice, swallow, soups and beans.</p>
-          <p class="rd__label">Every akaani dietitian</p>
-          <ul class="rd__list">
-            <li><i>&#10003;</i>Licensed to provide medical nutrition therapy</li>
-            <li><i>&#10003;</i>Trained in Nigerian and West African eating patterns</li>
-            <li><i>&#10003;</i>Works alongside your doctor, never instead of them</li>
-            <li><i>&#10003;</i>Writes every guide personally, no handoffs</li>
-          </ul>
+          <p>RD is a protected title. Anyone can call themselves a nutritionist. Nobody can call themselves an RD without the training, the supervised practice and the licence behind it.</p>
+
+          <!-- the panel answers "so what?", which a credential list does not -->
+          <div class="rdcan">
+            <div class="rdcan__head"><span>RD</span><b>What that licence lets them do</b></div>
+            <ul>
+              <li><i>01</i><span>Read your lab results and build your food around them.</span></li>
+              <li><i>02</i><span>Work with your medication, not against it.</span></li>
+              <li><i>03</i><span>Know what rice, swallow and soup actually do to your numbers.</span></li>
+              <li><i>04</i><span>Say when something needs your doctor, not a meal plan.</span></li>
+            </ul>
+          </div>
         </div>
       </div>
     </section>

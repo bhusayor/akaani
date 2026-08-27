@@ -9,7 +9,6 @@ import HoverLift from "@/components/motion/HoverLift";
 import FocusIcon, { type FocusIconName } from "@/components/ui/FocusIcon";
 import GuidePreview from "@/components/dietitian/GuidePreview";
 import SignsCheck from "@/components/dietitian/SignsCheck";
-import ConsultVisual from "@/components/dietitian/ConsultVisual";
 import Motion from "./Motion";
 
 export const metadata: Metadata = {
@@ -327,9 +326,18 @@ export default function DietitianPage() {
 
         {/* ---------- who you are talking to ---------- */}
         <section className={`${SECTION_Y} ${SECTION_X}`}>
-          <div className="mx-auto grid max-w-[1180px] items-center gap-[clamp(28px,4vw,64px)] lg:grid-cols-[0.8fr_1.2fr]">
-            <FadeIn className="mx-auto w-full max-w-[340px] sm:max-w-[400px] lg:max-w-[400px]">
-              <ConsultVisual />
+          <div className="mx-auto grid max-w-[1180px] items-center gap-[clamp(28px,4vw,60px)] lg:grid-cols-[0.95fr_1.05fr]">
+            <FadeIn className="mx-auto w-full max-w-[560px]">
+              <div className="aspect-[3/2] overflow-hidden rounded-[26px] border-[5px] border-paper shadow-[0_34px_70px_rgba(0,51,51,0.18)]">
+                <Image
+                  src="/assets/dietitian.png"
+                  alt="A dietitian's desk: a meal plan on a clipboard, fresh produce, and a plate method chart on the wall"
+                  width={1536}
+                  height={1024}
+                  sizes="(max-width: 1024px) 92vw, 560px"
+                  className="h-full w-full object-cover"
+                />
+              </div>
             </FadeIn>
 
             <div>

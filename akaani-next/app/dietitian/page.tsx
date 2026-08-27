@@ -24,42 +24,42 @@ const FOCUS = [
     n: "01",
     icon: "weight" as FocusIconName,
     popular: true,
-    title: "Weight Management Consultation",
-    who: "For weight that will not move, or will not stay off, without giving up the food you love.",
     q: "I am eating less and still not losing weight.",
-    tags: ["Fat loss", "PCOS", "Sustainable habits"],
+    title: "Weight that will not move",
+    outcome: "You leave knowing your calorie and protein targets, and which of your regular meals to change first.",
+    tags: ["Fat loss", "PCOS", "Plateaus"],
   },
   {
     n: "02",
     icon: "fitness" as FocusIconName,
-    title: "Fitness Nutrition Consultation",
-    who: "For training, performance and recovery, built on Nigerian food rather than imported supplements.",
-    q: "Am I even eating enough protein for my gym week?",
-    tags: ["Protein", "Training days", "Muscle gain"],
+    q: "Am I eating enough protein for my gym week?",
+    title: "Training without the results",
+    outcome: "You leave with protein targets you can hit on Nigerian food, and what to eat around training days.",
+    tags: ["Protein", "Recovery", "Muscle gain"],
   },
   {
     n: "03",
     icon: "review" as FocusIconName,
-    title: "African Diet Nutrition Review",
-    who: "A proper look at what you already eat, and what it is doing for your health.",
-    q: "Is my everyday diet working for me, or against me?",
-    tags: ["Hypertension", "Diabetes", "Portions"],
+    q: "Is my everyday diet helping me or hurting me?",
+    title: "Numbers your doctor flagged",
+    outcome: "You leave with a read on what you currently eat, and the three changes that matter most for your BP, sugar or cholesterol.",
+    tags: ["Hypertension", "Diabetes", "Cholesterol"],
   },
   {
     n: "04",
     icon: "reset" as FocusIconName,
-    title: "Healthy Eating Reset",
-    who: "For starting again after things slipped, without a regime you will abandon in a week.",
-    q: "I want to eat better. I just do not know where to start.",
+    q: "I want to eat better. I do not know where to start.",
+    title: "Starting again",
+    outcome: "You leave with seven days mapped out, using meals you already know how to cook.",
     tags: ["Energy", "Digestion", "Routine"],
   },
   {
     n: "05",
     icon: "family" as FocusIconName,
-    title: "Family Nutrition Planning",
-    who: "For the whole household, so one pot can work for everybody at the table.",
-    q: "How do I cook once and still feed everyone properly?",
-    tags: ["Children", "One-pot cooking", "Budget"],
+    q: "How do I cook once and feed everyone well?",
+    title: "Feeding a household",
+    outcome: "You leave with one pot that works for the children, your partner and you.",
+    tags: ["Children", "One-pot", "Budget"],
   },
 ];
 
@@ -72,57 +72,35 @@ const DIETITIAN = {
   title: "Registered Dietitian (RD)",
   photo: "/assets/consult-hero.jpg",
   credentials: [
-    "Registered Dietitian (RD), licensed to provide medical nutrition therapy",
-    "Specialises in Nigerian and West African eating patterns",
+    "Licensed to provide medical nutrition therapy",
+    "Trained in Nigerian and West African eating patterns",
     "Works alongside your doctor, never instead of them",
-    "Writes every nutrition guide personally, no handoffs",
+    "Writes every guide personally, no handoffs",
   ],
 };
 
-const WHY = [
-  {
-    badge: "RD",
-    title: "In-house and qualified",
-    body: "Our dietitian is in-house, trained and licensed to give nutrition advice for real health conditions. Not a marketplace of strangers, and a different thing entirely from advice off the internet.",
-  },
-  {
-    badge: "YOU",
-    title: "Your body, your life",
-    body: "Your results, your medication, your work schedule, your budget, the people you cook for. All of it shapes the guide, so it is one you can actually keep.",
-  },
-  {
-    badge: "9ja",
-    title: "Nigerian food stays",
-    body: "No salmon and quinoa. Your dietitian builds around rice, swallow, soups and beans, then shows you how to make them work for your goal.",
-  },
-];
-
 const STEPS = [
-  { n: "01", title: "Pick your time", body: "Choose a slot and pay once. No forms, no prep." },
-  { n: "02", title: "45-minute video call", body: "One-on-one with akaani's in-house Registered Dietitian." },
-  { n: "03", title: "Your Personal Nutrition Guide", body: "In your inbox within 24 hours." },
+  { n: "01", title: "Pick a time", body: "Choose a slot and pay. No forms to fill in first." },
+  { n: "02", title: "Talk for 45 minutes", body: "A video call with your dietitian, one to one." },
+  { n: "03", title: "Get your guide", body: "Written for you, in your inbox within 24 hours." },
 ];
 
 const FAQS = [
   {
-    q: "Is a dietitian the same as a nutritionist?",
-    a: "Not quite. Registered Dietitian (RD) is a protected title: it means formal training, supervised practice and a licence to provide medical nutrition therapy, which is why ours can work around hypertension, diabetes and PCOS. Anyone can call themselves a nutritionist. akaani works with an in-house RD, so the person on your call is the same person who writes your guide.",
+    q: "I am not sick. Is this still for me?",
+    a: "Yes, and most people who book are not. They come for weight that will not shift, energy that dips by 3pm, or a household to feed well. You do not need a diagnosis to want a straight answer about your food.",
+  },
+  {
+    q: "Will I have to stop eating Nigerian food?",
+    a: "No. Your guide is built on what you already cook and buy, adjusted in portion, pairing and frequency. Nothing gets swapped for salmon and quinoa.",
   },
   {
     q: "Do I need lab results before the call?",
-    a: "No. Bring them if you have them and your dietitian will use them, but the session works perfectly well without any.",
-  },
-  {
-    q: "Will I be told to stop eating Nigerian food?",
-    a: "No. That is the entire point of akaani. Your guide is built on the food you already cook and buy, adjusted in portion, pairing and frequency rather than replaced.",
+    a: "No. Bring them if you have them and your dietitian will use them. The session works without any.",
   },
   {
     q: "What if I need to reschedule?",
-    a: "Use the reschedule link in your confirmation email. There is no charge for moving your session.",
-  },
-  {
-    q: "I am not sick. Is this still for me?",
-    a: "Yes. Most people book for weight management, fitness nutrition, a healthy eating reset or feeding a family well. You do not need a diagnosis to want a guide that fits your body.",
+    a: "Use the link in your confirmation email. Moving your session is free.",
   },
 ];
 
@@ -132,18 +110,18 @@ const SECTION_X = "px-5 sm:px-8 lg:px-[72px]";
 function FocusCard({
   n,
   icon,
-  title,
-  who,
   q,
+  title,
+  outcome,
   tags,
   popular,
   index,
 }: {
   n: string;
   icon: FocusIconName;
-  title: string;
-  who: string;
   q: string;
+  title: string;
+  outcome: string;
   tags: string[];
   popular?: boolean;
   index: number;
@@ -151,13 +129,12 @@ function FocusCard({
   return (
     <HoverLift
       index={index}
-      className="group relative flex h-full flex-col overflow-hidden rounded-[22px] border border-line bg-white p-7 transition-[border-color,box-shadow] duration-300 hover:border-ink/25 hover:shadow-[0_18px_40px_rgba(0,51,51,0.08)] md:p-8"
+      className="group relative flex h-full flex-col overflow-hidden rounded-[22px] border border-line bg-white p-6 transition-[border-color,box-shadow] duration-300 hover:border-ink/25 hover:shadow-[0_18px_40px_rgba(0,51,51,0.08)] sm:p-7 md:p-8"
     >
-      {/* accent rule that draws across the top on hover */}
       <span className="absolute inset-x-0 top-0 h-[3px] origin-left scale-x-0 bg-accent transition-transform duration-500 ease-brand group-hover:scale-x-100" />
 
-      <div className="mb-6 flex items-start justify-between gap-3">
-        <span className="grid h-12 w-12 flex-none place-items-center rounded-2xl bg-ink text-bg transition-colors duration-300 group-hover:bg-accent">
+      <div className="mb-5 flex items-start justify-between gap-3">
+        <span className="grid h-11 w-11 flex-none place-items-center rounded-2xl bg-ink text-bg transition-colors duration-300 group-hover:bg-accent">
           <FocusIcon name={icon} />
         </span>
         {popular ? (
@@ -171,16 +148,15 @@ function FocusCard({
         )}
       </div>
 
-      <h3 className="mb-3 text-[clamp(1.08rem,1.4vw,1.24rem)] leading-[1.25]">{title}</h3>
-      <p className="mb-5 text-[0.95rem] leading-[1.6] text-ink-soft">{who}</p>
-      <q className="mb-6 block border-l-2 border-accent/40 pl-4 text-[0.96rem] font-medium italic leading-[1.5] text-ink/75">
-        {q}
-      </q>
+      {/* the line someone recognises themselves in leads the card */}
+      <q className="mb-4 block text-[clamp(1.02rem,1.35vw,1.18rem)] font-semibold leading-[1.4] text-ink">{q}</q>
+      <p className="mb-5 text-[0.95rem] leading-[1.6] text-ink-soft">{outcome}</p>
 
-      <p className="mt-auto border-t border-line pt-4 text-[0.69rem] font-bold uppercase tracking-[0.12em] text-ink-soft">
-        {tags.map((t, i) => (
+      <p className="mt-auto flex flex-wrap items-center gap-x-2 gap-y-1 border-t border-line pt-4 text-[0.69rem] font-bold uppercase tracking-[0.12em] text-ink-soft">
+        <b className="text-ink">{title}</b>
+        {tags.map((t) => (
           <span key={t}>
-            {i > 0 && <span className="px-2 text-accent">·</span>}
+            <span className="pr-2 text-accent">·</span>
             {t}
           </span>
         ))}
@@ -209,18 +185,17 @@ export default function DietitianPage() {
           <div className="relative mx-auto grid max-w-[1280px] items-center gap-[clamp(30px,4vw,70px)] lg:grid-cols-[1.35fr_1fr]">
             <div>
               <FadeIn>
-                <p className={KICKER}>1-on-1 with our in-house dietitian</p>
+                <p className={KICKER}>1-on-1 with akaani&apos;s registered dietitian</p>
               </FadeIn>
               <FadeIn delay={0.08}>
-                <h1 className="mb-6 text-[clamp(2.6rem,5.2vw,4.5rem)]">
-                  Talk to our in-house dietitian who knows <span className="text-accent">Nigerian food.</span>
+                <h1 className="mb-6 text-[clamp(2.4rem,5.2vw,4.5rem)]">
+                  Stop guessing <span className="text-accent">what to eat.</span>
                 </h1>
               </FadeIn>
               <FadeIn delay={0.16}>
                 <p className="mb-8 text-[clamp(1rem,1.35vw,1.16rem)] leading-[1.65] text-ink-soft sm:mb-9 lg:max-w-[560px]">
-                  Sit with akaani&apos;s Registered Dietitian for personalized guidance around your goals, your health,
-                  and the Nigerian foods you already eat. You leave with your Personal Nutrition Guide in your inbox
-                  within 24 hours.
+                  45 minutes with a Registered Dietitian who knows rice, swallow and soup. You leave with a 7-day
+                  guide built on the food you already buy.
                 </p>
               </FadeIn>
               <FadeIn delay={0.24}>
@@ -229,7 +204,7 @@ export default function DietitianPage() {
                     Book consultation
                   </Button>
                   <Button href="#ask" variant="ghostDark" size="lg" className="w-full sm:w-auto">
-                    See what we focus on
+                    Is this you?
                   </Button>
                 </div>
               </FadeIn>
@@ -261,7 +236,7 @@ export default function DietitianPage() {
               </div>
               <div
                 data-gsap="plan"
-                className="absolute -bottom-4 -right-1 flex items-center gap-2 rounded-full border border-line bg-paper px-3.5 py-2.5 text-[0.76rem] font-bold text-ink shadow-[0_18px_44px_rgba(0,51,51,0.16)] sm:-right-3 sm:px-[18px] sm:py-3 sm:text-[0.84rem]"
+                className="absolute -bottom-4 right-0 flex items-center gap-2 rounded-full border border-line bg-paper px-3.5 py-2.5 text-[0.76rem] font-bold text-ink shadow-[0_18px_44px_rgba(0,51,51,0.16)] sm:-right-3 sm:px-[18px] sm:py-3 sm:text-[0.84rem]"
               >
                 <i className="h-2 w-2 rounded-full bg-accent" />
                 Your guide, in your inbox in 24 hours
@@ -273,14 +248,12 @@ export default function DietitianPage() {
         {/* ---------- what we focus on ---------- */}
         <section id="ask" className={`py-[clamp(56px,8vh,130px)] ${SECTION_X}`}>
           <FadeIn className="mx-auto mb-[clamp(38px,4.4vw,54px)] max-w-[800px] text-center">
-            <p className={KICKER}>What we focus on</p>
+            <p className={KICKER}>Why people book</p>
             <h2 className="mb-4 text-[clamp(2.2rem,4.6vw,3.8rem)]">
-              Pick the conversation
-              <br />
-              <span className="text-accent">you actually need.</span>
+              Sound <span className="text-accent">familiar?</span>
             </h2>
             <p className="text-[1.05rem] leading-[1.65] text-ink-soft">
-              Every session is 45 minutes with the same Registered Dietitian. What changes is where we point it.
+              Five reasons people book. Pick the one that sounds like you.
             </p>
           </FadeIn>
 
@@ -292,7 +265,7 @@ export default function DietitianPage() {
 
             <HoverLift
               index={FOCUS.length}
-              className="group flex h-full flex-col justify-between rounded-[22px] bg-ink p-7 text-bg md:p-8"
+              className="group flex h-full flex-col justify-between rounded-[22px] bg-ink p-6 text-bg sm:p-7 md:p-8"
             >
               <div>
                 <span className="mb-6 grid h-12 w-12 place-items-center rounded-2xl bg-accent text-white">
@@ -312,11 +285,10 @@ export default function DietitianPage() {
                   </svg>
                 </span>
                 <h3 className="mb-3 text-[clamp(1.08rem,1.4vw,1.24rem)] leading-[1.25] text-bg">
-                  Not sure which one you need?
+                  None of these quite fit?
                 </h3>
                 <p className="text-[0.95rem] leading-[1.6] text-bg/60">
-                  Book anyway and say what is going on. Your dietitian will point the session where it is most useful,
-                  and works alongside your doctor, never instead of them.
+                  Book anyway and say what is going on. Your dietitian will point the session where it helps most.
                 </p>
               </div>
 
@@ -324,7 +296,7 @@ export default function DietitianPage() {
                 href="#book"
                 className="mt-7 inline-flex items-center gap-2 self-start border-t border-bg/15 pt-5 text-[0.95rem] font-bold text-bg transition-colors duration-300 hover:text-accent"
               >
-                See how the session works
+                See how booking works
                 <i className="not-italic text-accent transition-transform duration-300 ease-brand group-hover:translate-y-0.5">
                   ↓
                 </i>
@@ -333,43 +305,7 @@ export default function DietitianPage() {
           </div>
         </section>
 
-        {/* ---------- why a dietitian ---------- */}
-        <section className={`bg-mist py-[clamp(56px,8vh,130px)] ${SECTION_X}`}>
-          <div className="mx-auto max-w-[1180px] rounded-[34px] bg-white p-[clamp(32px,4.4vw,64px)]">
-            <FadeIn className="mb-[clamp(34px,4vw,48px)] max-w-[780px]">
-              <p className={KICKER}>Why a dietitian</p>
-              <h2 className="mb-4 text-[clamp(2.2rem,4.6vw,3.8rem)]">
-                You do not need to be sick
-                <br />
-                <span className="text-accent">to see a dietitian.</span>
-              </h2>
-              <p className="text-[1.06rem] leading-[1.65] text-ink-soft">
-                Most people book because something is not adding up. The weight, the bloating, the energy, the lab
-                results, the food you were told to stop eating. A registered dietitian is the person actually qualified
-                to sort that out.
-              </p>
-            </FadeIn>
-
-            <Stagger className="grid gap-[clamp(14px,2vw,26px)] lg:grid-cols-3" gap={0.12}>
-              {WHY.map((card) => (
-                <StaggerItem key={card.badge}>
-                  {/* below lg the badge sits beside the text, so stacking stays compact */}
-                  <article className="flex h-full gap-4 rounded-[22px] border border-line bg-tint p-5 transition-[transform,border-color] duration-500 ease-brand hover:-translate-y-1.5 hover:border-accent/45 sm:gap-5 sm:p-6 lg:flex-col lg:gap-0 lg:p-[30px]">
-                    <i className="grid h-[42px] w-[42px] flex-none place-items-center rounded-[14px] bg-ink text-[0.74rem] font-extrabold not-italic tracking-[0.06em] text-bg sm:h-[46px] sm:w-[46px] sm:text-[0.78rem] lg:mb-5">
-                      {card.badge}
-                    </i>
-                    <div>
-                      <h3 className="mb-2 text-[clamp(1.05rem,1.5vw,1.28rem)] lg:mb-2.5">{card.title}</h3>
-                      <p className="text-[0.94rem] leading-[1.62] text-ink-soft sm:text-[0.95rem]">{card.body}</p>
-                    </div>
-                  </article>
-                </StaggerItem>
-              ))}
-            </Stagger>
-          </div>
-        </section>
-
-        {/* ---------- meet your dietitian ---------- */}
+        {/* ---------- who you are talking to ---------- */}
         <section className={`py-[clamp(56px,8vh,130px)] ${SECTION_X}`}>
           <div className="mx-auto grid max-w-[1180px] items-center gap-[clamp(28px,4vw,64px)] lg:grid-cols-[0.8fr_1.2fr]">
             <FadeIn className="relative mx-auto w-full max-w-[340px] sm:max-w-[440px] lg:max-w-[420px]">
@@ -389,22 +325,20 @@ export default function DietitianPage() {
 
             <div>
               <FadeIn>
-                <p className={KICKER}>Meet your dietitian</p>
+                <p className={KICKER}>Your dietitian</p>
                 <h2 className="mb-4 text-[clamp(2rem,4vw,3.2rem)]">
-                  The same RD on every call,
-                  <br />
-                  <span className="text-accent">and in every guide.</span>
+                  Who am I <span className="text-accent">talking to?</span>
                 </h2>
               </FadeIn>
               <FadeIn delay={0.08}>
                 <p className="mb-4 text-[1.03rem] leading-[1.7] text-ink-soft lg:max-w-[560px]">
-                  Every akaani consultation is run by our in-house Registered Dietitian. RD is a protected title: it
-                  means formal training in nutrition and dietetics, supervised practice, and a licence to provide
-                  medical nutrition therapy. It is not a weekend certificate, and it is not a wellness page.
+                  A Registered Dietitian, and the same one on every call. RD is a protected title: formal
+                  training, supervised practice, and a licence to treat conditions like hypertension, diabetes and
+                  PCOS. Anyone can call themselves a nutritionist.
                 </p>
                 <p className="mb-8 text-[1.03rem] leading-[1.7] text-ink-soft lg:max-w-[560px]">
-                  Her focus is West African food. Rice, swallow, soups, beans and the things you actually buy are the
-                  starting point of your guide, not the thing you are told to give up.
+                  She builds around rice, swallow, soups and beans, then shows you how to make them work for your
+                  goal.
                 </p>
               </FadeIn>
 
@@ -425,15 +359,13 @@ export default function DietitianPage() {
         {/* ---------- what you get + booking ---------- */}
         <section id="book" className={`py-[clamp(56px,8vh,130px)] ${SECTION_X}`}>
           <FadeIn className="mx-auto grid max-w-[1280px] overflow-hidden rounded-[40px] bg-ink text-bg lg:grid-cols-[1.15fr_0.85fr]">
-            <div className="p-[clamp(34px,4.6vw,70px)]">
-              <p className={KICKER}>What you get</p>
+            <div className="p-[clamp(34px,4.6vw,70px)] pb-0 lg:pb-[clamp(34px,4.6vw,70px)]">
+              <p className={KICKER}>Booking</p>
               <h2 className="mb-4 text-[clamp(2.2rem,4.6vw,3.8rem)]">
-                One session.
-                <br />
-                <span className="text-accent">A guide made for you.</span>
+                How do I <span className="text-accent">book?</span>
               </h2>
               <p className="mb-8 text-[1.02rem] leading-[1.65] text-bg/70 lg:mb-9 lg:max-w-[460px]">
-                Nothing to fill in before you book. Pick a time, show up, and talk.
+                Three steps, and nothing to prepare.
               </p>
 
               <ol className="lg:max-w-[520px]">
@@ -452,7 +384,7 @@ export default function DietitianPage() {
               </ol>
             </div>
 
-            <div className="flex items-center justify-center px-[clamp(20px,3vw,46px)] pb-[clamp(30px,3vw,46px)] lg:pt-[clamp(24px,3vw,46px)]">
+            <div className="flex items-center justify-center px-[clamp(20px,3vw,46px)] pb-[clamp(30px,3vw,46px)] pt-8 lg:pt-[clamp(24px,3vw,46px)]">
               <div className="w-full max-w-[420px] rounded-[26px] bg-paper lg:max-w-[340px] p-[30px] text-ink shadow-[0_40px_80px_rgba(0,0,0,0.4)]">
                 <span className="inline-block rounded-full bg-accent px-3.5 py-1.5 text-[0.7rem] font-extrabold uppercase tracking-[0.1em] text-white">
                   1-on-1 session
@@ -486,23 +418,20 @@ export default function DietitianPage() {
         {/* ---------- your personal nutrition guide ---------- */}
         <section className={`pb-[clamp(80px,12vh,130px)] ${SECTION_X}`}>
           <FadeIn className="mx-auto mb-[clamp(32px,3.8vw,48px)] max-w-[780px] text-center">
-            <p className={KICKER}>What you receive</p>
+            <p className={KICKER}>The guide</p>
             <h2 className="mb-4 text-[clamp(2.2rem,4.6vw,3.8rem)]">
-              Your Personal
-              <br />
-              <span className="text-accent">Nutrition Guide.</span>
+              What do I <span className="text-accent">walk away with?</span>
             </h2>
             <p className="text-[1.03rem] leading-[1.65] text-ink-soft">
-              Written after your call and in your inbox within 24 hours, built entirely around the food you already buy.
+              A 7-day guide, written for you after the call. Here is what is inside it.
             </p>
           </FadeIn>
 
           <GuidePreview />
 
           <FadeIn className="mx-auto mt-[clamp(24px,3vw,34px)] max-w-[1180px] border-l-[3px] border-accent pl-[18px] text-[0.96rem] leading-[1.6] text-ink-soft">
-            <b className="text-ink">A week, mapped out.</b> A practical 7-day guide built around the foods you already
-            eat, with meal ideas you can mix, match and repeat. Managing hypertension, diabetes or PCOS? It is shaped by
-            your readings, your medication and what your doctor has already told you.
+            <b className="text-ink">Managing hypertension, diabetes or PCOS?</b> Your guide is shaped by your
+            readings, your medication and what your doctor has already told you.
           </FadeIn>
         </section>
 

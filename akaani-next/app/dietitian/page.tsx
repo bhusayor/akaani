@@ -33,7 +33,7 @@ const FOCUS = [
   {
     icon: "pcos" as FocusIconName,
     popular: true,
-    title: "PCOS",
+    title: "PCOS/PMOS",
     q: "I am doing everything right and my weight still will not move.",
     outcome: "Insulin-aware portions and meal timing, built on the food you already cook.",
     tags: ["Insulin resistance", "Cycle", "Weight"],
@@ -75,20 +75,14 @@ const FOCUS = [
   },
 ];
 
-/**
- * PLACEHOLDER, DO NOT SHIP. Replace `name`, `photo` and `pronoun` with the
- * dietitian's own. Everything in `credentials` is true of any RD and can stay.
- * The section is laid out for a named person, so this is the only edit needed.
- */
+/** TODO before launch: swap `photo` for a real akaani dietitian, not stock. */
 const DIETITIAN = {
-  name: "[ Dietitian's name ]",
-  title: "Registered Dietitian (RD)",
   photo: "/assets/consult-hero.jpg",
   credentials: [
     "Licensed to provide medical nutrition therapy",
     "Trained in Nigerian and West African eating patterns",
     "Works alongside your doctor, never instead of them",
-    "Writes every guide personally, no handoffs",
+    "Writes your guide personally, no handoffs",
   ],
 };
 
@@ -339,7 +333,7 @@ export default function DietitianPage() {
               <div className="aspect-[4/4.4] overflow-hidden rounded-[30px] border-[5px] border-paper shadow-[0_34px_70px_rgba(0,51,51,0.18)]">
                 <Image
                   src={DIETITIAN.photo}
-                  alt="akaani's in-house Registered Dietitian"
+                  alt="An akaani dietitian on a video consultation"
                   width={860}
                   height={946}
                   className="h-full w-full object-cover object-[60%_center]"
@@ -355,17 +349,19 @@ export default function DietitianPage() {
                 </h2>
               </FadeIn>
               <FadeIn delay={0.08}>
-                <p className="mb-4 text-[1.35rem] font-bold leading-[1.25]">
-                  {DIETITIAN.name}
-                  <span className="ml-2 text-[0.95rem] font-semibold text-accent">{DIETITIAN.title}</span>
+                <p className="mb-4 text-[1.2rem] font-bold leading-[1.4] lg:max-w-[560px]">
+                  A Registered Dietitian. Not a nutritionist, not a coach.
                 </p>
-                <p className="mb-8 text-[1.03rem] leading-[1.7] text-ink-soft lg:max-w-[560px]">
-                  RD is a protected title: formal training, supervised practice, and a licence to treat
-                  hypertension, diabetes and PCOS. Anyone can call themselves a nutritionist. Every guide here is
-                  built around rice, swallow, soups and beans.
+                <p className="mb-7 text-[1.03rem] leading-[1.7] text-ink-soft lg:max-w-[560px]">
+                  RD is a protected title: formal training, supervised practice, and a licence to treat conditions
+                  like hypertension, diabetes and PCOS. Anyone can call themselves a nutritionist. Whichever of ours
+                  you sit with, they build around rice, swallow, soups and beans.
                 </p>
               </FadeIn>
 
+              <p className="mb-1 text-[0.72rem] font-extrabold uppercase tracking-[0.16em] text-ink/40">
+                Every akaani dietitian
+              </p>
               <Stagger className="lg:max-w-[560px]" gap={0.08}>
                 {DIETITIAN.credentials.map((c) => (
                   <StaggerItem key={c}>
@@ -431,8 +427,8 @@ export default function DietitianPage() {
                 <Button href={CALENDLY} external size="lg" className="mt-5 w-full">
                   Book consultation
                 </Button>
-                <p className="mt-3.5 text-center text-[0.78rem] leading-[1.5] text-ink-soft">
-                  Reschedule anytime. <b className="text-ink">Not what you needed? Full refund within 7 days.</b>
+                <p className="mt-3.5 text-center text-[0.78rem] text-ink-soft">
+                  Scheduled via Calendly. Reschedule anytime.
                 </p>
               </div>
             </div>
@@ -451,7 +447,7 @@ export default function DietitianPage() {
           <FadeIn className="mx-auto mt-[clamp(40px,5vw,64px)] max-w-[900px] rounded-[26px] bg-mist p-[clamp(30px,3.6vw,44px)] text-center">
             <b className="mb-2 block text-[1.3rem]">Ready when you are.</b>
             <p className="mb-6 text-[1rem] text-ink-soft">
-              45 minutes, and your Nigerian meal guide within 24 hours. Full refund if it is not what you needed.
+              45 minutes on a video call, and your Nigerian meal guide in your mail within 24 hours.
             </p>
             <div className="flex flex-col items-center justify-center gap-3 sm:flex-row">
               <Button href={CALENDLY} external size="lg" className="w-full sm:w-auto">

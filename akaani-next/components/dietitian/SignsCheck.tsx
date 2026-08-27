@@ -5,9 +5,10 @@ import { useState } from "react";
 import Button from "@/components/ui/Button";
 
 /**
- * A self-check, not a list. Reading six symptoms is passive; ticking the ones
+ * A self-check, not a list. Reading six symptoms is passive; picking the ones
  * that apply makes the reader argue the case to themselves, which is the whole
- * job of this section.
+ * job of this section. The card itself carries the state, so the section fills
+ * with ink as the case builds and the count is legible at a glance.
  */
 export default function SignsCheck({ signs, cta }: { signs: string[]; cta: string }) {
   const [picked, setPicked] = useState<number[]>([]);
@@ -20,42 +21,37 @@ export default function SignsCheck({ signs, cta }: { signs: string[]; cta: strin
 
   const verdict =
     n === 0
-      ? "Tick the ones that sound like you."
+      ? "Pick the ones that sound like you."
       : n === 1
         ? "Even one is worth a conversation."
         : `${n} of ${signs.length}. That is exactly what the session is for.`;
 
   return (
-    <div className="mx-auto max-w-[1000px] rounded-[28px] border border-line bg-white p-[clamp(20px,3vw,36px)]">
-      <div role="group" aria-label="Signs you might need a dietitian" className="grid gap-x-[clamp(16px,2.4vw,32px)] sm:grid-cols-2">
+    <div className="mx-auto max-w-[1000px]">
+      <div
+        role="group"
+        aria-label="Signs you might need a dietitian"
+        className="grid gap-[clamp(10px,1.2vw,14px)] sm:grid-cols-2"
+      >
         {signs.map((s, i) => {
           const on = picked.includes(i);
           return (
-            <button
+            <motion.button
               key={s}
               type="button"
               aria-pressed={on}
               onClick={() => toggle(i)}
-              className="group flex w-full cursor-pointer items-start gap-3.5 border-b border-line py-4 text-left focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+              whileHover={reduced ? undefined : { y: -3 }}
+              whileTap={reduced ? undefined : { scale: 0.985 }}
+              transition={{ type: "spring", stiffness: 380, damping: 26 }}
+              className={`flex w-full cursor-pointer items-center rounded-[18px] border p-[clamp(18px,2vw,24px)] text-left text-[0.99rem] leading-[1.5] transition-colors duration-300 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent ${
+                on
+                  ? "border-ink bg-ink font-semibold text-bg"
+                  : "border-line bg-white text-ink-soft hover:border-ink/30"
+              }`}
             >
-              <span
-                aria-hidden="true"
-                className={`mt-[2px] grid h-[22px] w-[22px] flex-none place-items-center rounded-[7px] border-2 transition-colors duration-200 ${
-                  on ? "border-accent bg-accent text-white" : "border-line text-transparent group-hover:border-ink/35"
-                }`}
-              >
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3.2" strokeLinecap="round" strokeLinejoin="round" className="h-3 w-3">
-                  <path d="m5 12.5 4.5 4.5L19 7.5" />
-                </svg>
-              </span>
-              <span
-                className={`text-[0.99rem] leading-[1.5] transition-colors duration-200 ${
-                  on ? "font-semibold text-ink" : "text-ink-soft"
-                }`}
-              >
-                {s}
-              </span>
-            </button>
+              {s}
+            </motion.button>
           );
         })}
       </div>

@@ -419,9 +419,9 @@ export default function DietitianPage() {
                   <span className="text-[0.82rem] font-semibold text-ink-soft">per session</span>
                 </div>
                 {[
-                  ["Length", "45 minutes"],
-                  ["Format", "Video call"],
                   ["Your guide", "Inbox, 24 hours"],
+                  ["The call", "45 minutes, on video"],
+                  ["Follow-up", "Free reschedule"],
                 ].map(([k, v]) => (
                   <div key={k} className="flex justify-between gap-3 border-t border-line py-[11px] text-[0.92rem]">
                     <span className="text-ink-soft">{k}</span>
@@ -449,13 +449,18 @@ export default function DietitianPage() {
           <Faq items={FAQS} />
 
           <FadeIn className="mx-auto mt-[clamp(40px,5vw,64px)] max-w-[900px] rounded-[26px] bg-mist p-[clamp(30px,3.6vw,44px)] text-center">
-            <b className="mb-2 block text-[1.3rem]">Still have questions?</b>
+            <b className="mb-2 block text-[1.3rem]">Ready when you are.</b>
             <p className="mb-6 text-[1rem] text-ink-soft">
-              Cannot find the answer you are looking for? Please chat to our friendly team.
+              45 minutes, and your Nigerian meal guide within 24 hours. Full refund if it is not what you needed.
             </p>
-            <Button href="/contact" variant="dark" size="lg">
-              Get in touch
-            </Button>
+            <div className="flex flex-col items-center justify-center gap-3 sm:flex-row">
+              <Button href={CALENDLY} external size="lg" className="w-full sm:w-auto">
+                Book consultation
+              </Button>
+              <Button href="/contact" variant="ghostDark" size="lg" className="w-full sm:w-auto">
+                Ask a question first
+              </Button>
+            </div>
           </FadeIn>
         </section>
       </main>

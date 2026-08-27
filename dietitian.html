@@ -474,6 +474,7 @@
     }
     .faq2__cta b { display: block; font-size: 1.3rem; margin-bottom: 8px; }
     .faq2__cta p { color: var(--ink-soft); font-size: 1rem; margin-bottom: 24px; }
+    .faq2__cta-actions { display: flex; justify-content: center; gap: 12px; }
 
     /* --- light footer --- */
     .lfoot { padding: clamp(50px, 7vh, 80px) clamp(20px, 5vw, 72px) 40px; border-top: 1px solid var(--line); }
@@ -538,6 +539,8 @@
       .dh__pricebadge { left: -8px; top: -16px; padding: 12px 16px; font-size: 1.15rem; }
       .dh__planbadge { right: 0; left: auto; padding: 10px 14px; font-size: 0.74rem; }
       .focus__grid { grid-template-columns: 1fr; }
+      .faq2__cta-actions { flex-direction: column; }
+      .faq2__cta-actions .btn { width: 100%; text-align: center; justify-content: center; }
       .signs__grid { grid-template-columns: 1fr; }
       .signs__cta { flex-direction: column; gap: 16px; text-align: center; }
       .signs__cta .btn { width: 100%; text-align: center; justify-content: center; }
@@ -936,9 +939,9 @@
             <span class="bookcard__tag">1-on-1 session</span>
             <b>Nutrition consultation</b>
             <div class="bookcard__price"><b>₦50,000</b><span>per session</span></div>
-            <div class="bookcard__row"><span>Length</span><b>45 minutes</b></div>
-            <div class="bookcard__row"><span>Format</span><b>Video call</b></div>
             <div class="bookcard__row"><span>Your guide</span><b>Inbox, 24 hours</b></div>
+            <div class="bookcard__row"><span>The call</span><b>45 minutes, on video</b></div>
+            <div class="bookcard__row"><span>Follow-up</span><b>Free reschedule</b></div>
             <a href="https://calendly.com/useakaani" target="_blank" rel="noopener" class="btn btn--accent btn--lg">Book consultation</a>
             <p class="bookcard__foot">Reschedule anytime. <b>Not what you needed? Full refund within 7 days.</b></p>
           </div>
@@ -968,9 +971,12 @@
       </div>
 
       <div class="faq2__cta">
-        <b>Still have questions?</b>
-        <p>Cannot find the answer you are looking for? Please chat to our friendly team.</p>
-        <a href="contact.html" class="btn btn--dark btn--lg">Get in touch</a>
+        <b>Ready when you are.</b>
+        <p>45 minutes, and your Nigerian meal guide within 24 hours. Full refund if it is not what you needed.</p>
+        <div class="faq2__cta-actions">
+          <a href="https://calendly.com/useakaani" target="_blank" rel="noopener" class="btn btn--accent btn--lg">Book consultation</a>
+          <a href="contact.html" class="btn btn--ghost-dark btn--lg">Ask a question first</a>
+        </div>
       </div>
     </section>
 

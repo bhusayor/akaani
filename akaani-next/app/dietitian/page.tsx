@@ -9,6 +9,7 @@ import HoverLift from "@/components/motion/HoverLift";
 import FocusIcon, { type FocusIconName } from "@/components/ui/FocusIcon";
 import GuidePreview from "@/components/dietitian/GuidePreview";
 import SignsCheck from "@/components/dietitian/SignsCheck";
+import ConsultVisual from "@/components/dietitian/ConsultVisual";
 import Motion from "./Motion";
 
 export const metadata: Metadata = {
@@ -74,18 +75,15 @@ const FOCUS = [
   },
 ];
 
-/** TODO before launch: swap `photo` for a real akaani dietitian, not stock. */
-const DIETITIAN = {
-  photo: "/assets/consult-hero.jpg",
-  /** Written as capabilities: "licensed to provide medical nutrition therapy"
-   *  tells a reader nothing about what they get for it. */
-  can: [
-    "Read your lab results and build your food around them.",
-    "Work with your medication, not against it.",
-    "Know what rice, swallow and soup actually do to your numbers.",
-    "Say when something needs your doctor, not a meal plan.",
-  ],
-};
+/** What the RD licence lets them do, written as capabilities rather than
+ *  credentials: "licensed to provide medical nutrition therapy" tells a reader
+ *  nothing about what they get for it. */
+const DIETITIAN_CAN = [
+  "Read your lab results and build your food around them.",
+  "Work with your medication, not against it.",
+  "Know what rice, swallow and soup actually do to your numbers.",
+  "Say when something needs your doctor, not a meal plan.",
+];
 
 const STEPS = [
   { n: "01", title: "Pick a time", body: "Choose a slot and pay. No forms to fill in first." },
@@ -330,16 +328,8 @@ export default function DietitianPage() {
         {/* ---------- who you are talking to ---------- */}
         <section className={`${SECTION_Y} ${SECTION_X}`}>
           <div className="mx-auto grid max-w-[1180px] items-center gap-[clamp(28px,4vw,64px)] lg:grid-cols-[0.8fr_1.2fr]">
-            <FadeIn className="relative mx-auto w-full max-w-[340px] sm:max-w-[440px] lg:max-w-[420px]">
-              <div className="aspect-[4/4.4] overflow-hidden rounded-[30px] border-[5px] border-paper shadow-[0_34px_70px_rgba(0,51,51,0.18)]">
-                <Image
-                  src={DIETITIAN.photo}
-                  alt="An akaani dietitian on a video consultation"
-                  width={860}
-                  height={946}
-                  className="h-full w-full object-cover object-[60%_center]"
-                />
-              </div>
+            <FadeIn className="mx-auto w-full max-w-[340px] sm:max-w-[400px] lg:max-w-[400px]">
+              <ConsultVisual />
             </FadeIn>
 
             <div>
@@ -369,7 +359,7 @@ export default function DietitianPage() {
                 </div>
 
                 <ul>
-                  {DIETITIAN.can.map((c, i) => (
+                  {DIETITIAN_CAN.map((c, i) => (
                     <li
                       key={c}
                       className="flex items-start gap-4 border-b border-line px-5 py-4 last:border-0 sm:px-6"

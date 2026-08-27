@@ -141,12 +141,37 @@
       display: grid; grid-template-columns: 0.8fr 1.2fr;
       gap: clamp(28px, 4vw, 64px); align-items: center;
     }
-    .rd__photo { position: relative; width: 100%; max-width: 420px; justify-self: center; }
-    .rd__photo img {
-      width: 100%; aspect-ratio: 4 / 4.4; object-fit: cover; object-position: 60% center;
-      border-radius: 30px; border: 5px solid var(--paper);
-      box-shadow: 0 34px 70px rgba(0, 51, 51, 0.18);
+    .cv { width: 100%; max-width: 400px; margin: 0 auto; }
+    .cv__card {
+      background: #fff; border: 1px solid var(--line); border-radius: 22px; overflow: hidden;
+      box-shadow: 0 30px 60px -34px rgba(0, 51, 51, 0.45);
     }
+    .cv__head {
+      display: flex; align-items: center; justify-content: space-between; gap: 12px;
+      background: var(--ink); color: var(--bg); padding: 14px 20px;
+      font-size: 0.68rem; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase;
+    }
+    .cv__tag {
+      border: 1px solid rgba(255, 255, 255, 0.25); border-radius: 999px;
+      padding: 4px 10px; font-size: 0.58rem; letter-spacing: 0.1em; color: rgba(255, 255, 255, 0.7);
+    }
+    .cv dl, .cv ul { margin: 0; padding: 8px 20px; list-style: none; }
+    .cv dl div, .cv li { border-bottom: 1px solid var(--line); }
+    .cv dl div:last-child, .cv li:last-child { border-bottom: 0; }
+    .cv dl div { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; padding: 12px 0; }
+    .cv dt { font-size: 0.9rem; color: var(--ink-soft); }
+    .cv dd { display: flex; align-items: center; gap: 6px; font-size: 0.95rem; font-weight: 700; }
+    .cv dd.is-flag { color: var(--accent); }
+    .cv dd svg { width: 12px; height: 12px; }
+    .cv li { display: flex; align-items: flex-start; gap: 12px; padding: 12px 0; font-size: 0.93rem; line-height: 1.45; }
+    .cv li i { flex: none; margin-top: 3px; color: var(--accent); }
+    .cv li svg { width: 14px; height: 14px; }
+    .cv__arrow { display: flex; justify-content: center; padding: 10px 0; }
+    .cv__arrow i {
+      display: grid; place-items: center; width: 36px; height: 36px;
+      border-radius: 50%; background: var(--accent); color: #fff;
+    }
+    .cv__arrow svg { width: 16px; height: 16px; }
     .rd__body h2 { margin-bottom: 16px; font-size: clamp(2rem, 4vw, 3.2rem); }
     .rd__lead { margin-bottom: 16px; font-size: 1.2rem; font-weight: 700; line-height: 1.4; color: var(--ink); }
     .rdcan { max-width: 560px; margin-top: 28px; border: 1px solid var(--line); border-radius: 22px; overflow: hidden; }
@@ -892,9 +917,26 @@
     <!-- ============ WHO YOU ARE TALKING TO ============ -->
     <section class="rd">
       <div class="rd__inner">
-        <figure class="rd__photo">
-          <img src="assets/consult-hero.jpg" alt="An akaani dietitian on a video consultation" loading="lazy" />
-        </figure>
+        <!-- depicts the first capability listed alongside: readings become food -->
+        <div class="cv">
+          <div class="cv__card">
+            <div class="cv__head"><span>From your results</span><b class="cv__tag">Example</b></div>
+            <dl>
+              <div><dt>Fasting glucose</dt><dd class="is-flag">6.8 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7"/></svg></dd></div>
+              <div><dt>Blood pressure</dt><dd class="is-flag">138/88 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7"/></svg></dd></div>
+              <div><dt>Weight</dt><dd>No change, 8 months</dd></div>
+            </dl>
+          </div>
+          <div class="cv__arrow" aria-hidden="true"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12l7 7 7-7"/></svg></i></div>
+          <div class="cv__card">
+            <div class="cv__head"><span>To your plate</span></div>
+            <ul>
+              <li><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg></i>Ofada rice, one measured portion</li>
+              <li><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg></i>Beans at lunch, four days a week</li>
+              <li><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg></i>Swallow moved earlier in the day</li>
+            </ul>
+          </div>
+        </div>
         <div class="rd__body">
           <p class="section-head__kicker">Your dietitian</p>
           <h2>Who am I <span class="accent-text">talking to?</span></h2>
@@ -1114,7 +1156,7 @@
     staggerReveal(".guide__head > *", { stagger: 0.1 });
     staggerReveal(".gp__tab", { stagger: 0.07 });
     staggerReveal(".gp__frame");
-    staggerReveal(".rd__photo");
+    staggerReveal(".cv__card", { stagger: 0.12 });
     staggerReveal(".rd__body > *", { stagger: 0.1 });
     staggerReveal(".guide__note");
 

@@ -220,6 +220,41 @@ export default function GuidePreview() {
   const [active, setActive] = useState(0);
   const reduced = useReducedMotion();
   const tabs = useRef<(HTMLButtonElement | null)[]>([]);
+  const strip = useRef<HTMLDivElement>(null);
+  const [rail, setRail] = useState({ shown: 0, at: 0 });
+
+  /** Track how much of the strip is visible and where, to drive the rail. */
+  function readStrip() {
+    const el = strip.current;
+    if (!el) return;
+    const max = el.scrollWidth - el.clientWidth;
+    setRail({
+      shown: el.scrollWidth > 0 ? el.clientWidth / el.scrollWidth : 1,
+      at: max > 8 ? el.scrollLeft / max : 0,
+    });
+  }
+
+  useEffect(() => {
+    readStrip();
+    window.addEventListener("resize", readStrip);
+    return () => window.removeEventListener("resize", readStrip);
+  }, []);
+
+  /**
+   * Keep the selected chip in view when something other than a tap selects it,
+   * scrolling the strip only, never the page.
+   */
+  useEffect(() => {
+    const el = strip.current;
+    const tab = tabs.current[active];
+    if (!el || !tab || el.scrollWidth <= el.clientWidth) return;
+    const t = tab.getBoundingClientRect();
+    const s = el.getBoundingClientRect();
+    const pad = 20;
+    const behavior: ScrollBehavior = reduced ? "auto" : "smooth";
+    if (t.left < s.left + pad) el.scrollBy({ left: t.left - s.left - pad, behavior });
+    else if (t.right > s.right - pad) el.scrollBy({ left: t.right - s.right + pad, behavior });
+  }, [active, reduced]);
   const hoverTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   useEffect(() => () => { if (hoverTimer.current) clearTimeout(hoverTimer.current); }, []);
@@ -262,7 +297,28 @@ export default function GuidePreview() {
   return (
     <div className="mx-auto grid max-w-[1180px] items-start gap-[clamp(28px,4vw,60px)] lg:grid-cols-[minmax(0,1fr)_minmax(0,1.05fr)]">
       {/* contents: a chip strip on small screens, a list on large ones */}
+      <div className="min-w-0 lg:contents">
+        {/* the instruction belongs where the chips are, not beside the panel */}
+        <p className="mb-2.5 flex items-center gap-2 text-[0.84rem] text-ink-soft lg:hidden">
+          <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="1.8"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            className="h-4 w-4 flex-none text-accent"
+            aria-hidden="true"
+          >
+            <path d="M9 6h9M9 6l2.5-2.5M9 6l2.5 2.5" />
+            <path d="M4 13.5V9a1.5 1.5 0 0 1 3 0v6l3.2 1.2a3 3 0 0 1 1.9 2.8V21" />
+          </svg>
+          Swipe, then tap a section to preview it
+        </p>
+
       <div
+        ref={strip}
+        onScroll={readStrip}
         role="tablist"
         aria-label="Sections of the guide"
         aria-orientation="vertical"
@@ -319,6 +375,18 @@ export default function GuidePreview() {
             </button>
           );
         })}
+      </div>
+
+        {/* how much of the strip is off screen, and where you are in it */}
+        <div className="mt-1 h-[3px] overflow-hidden rounded-full bg-line lg:hidden" aria-hidden="true">
+          <div
+            className="h-full rounded-full bg-accent"
+            style={{
+              width: `${Math.min(100, rail.shown * 100)}%`,
+              transform: `translateX(${rail.at * (100 / Math.max(rail.shown, 0.01) - 100)}%)`,
+            }}
+          />
+        </div>
       </div>
 
       {/* the page that section produces */}

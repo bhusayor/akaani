@@ -108,6 +108,7 @@ const FAQS = [
 
 const KICKER = "mb-4 text-[0.85rem] font-bold uppercase tracking-[0.2em] text-accent";
 const SECTION_X = "px-5 sm:px-8 lg:px-[72px]";
+const SECTION_Y = "py-7 md:py-10 lg:py-14";
 
 function FocusCard({
   icon,
@@ -170,7 +171,7 @@ export default function DietitianPage() {
 
       <main>
         {/* ---------- hero ---------- */}
-        <section className={`relative overflow-hidden pb-7 pt-[104px] sm:pb-[clamp(48px,7vh,110px)] sm:pt-[132px] lg:pt-[165px] ${SECTION_X}`}>
+        <section className={`relative overflow-hidden pb-7 pt-[104px] md:pb-10 md:pt-[132px] lg:pb-14 lg:pt-[165px] ${SECTION_X}`}>
           <span
             aria-hidden="true"
             data-gsap="ghost"
@@ -242,7 +243,7 @@ export default function DietitianPage() {
         </section>
 
         {/* ---------- what brings you here ---------- */}
-        <section id="ask" className={`py-7 sm:py-[clamp(56px,8vh,130px)] ${SECTION_X}`}>
+        <section id="ask" className={`${SECTION_Y} ${SECTION_X}`}>
           <FadeIn className="mx-auto mb-[clamp(34px,4vw,52px)] max-w-[760px] text-center">
             <p className={KICKER}>What we help with</p>
             <h2 className="mb-4 text-[clamp(2.1rem,4.6vw,3.8rem)]">
@@ -293,7 +294,7 @@ export default function DietitianPage() {
         </section>
 
         {/* ---------- who you are talking to ---------- */}
-        <section className={`py-7 sm:py-[clamp(56px,8vh,130px)] ${SECTION_X}`}>
+        <section className={`${SECTION_Y} ${SECTION_X}`}>
           <div className="mx-auto grid max-w-[1180px] items-center gap-[clamp(28px,4vw,64px)] lg:grid-cols-[0.8fr_1.2fr]">
             <FadeIn className="relative mx-auto w-full max-w-[340px] sm:max-w-[440px] lg:max-w-[420px]">
               <div className="aspect-[4/4.4] overflow-hidden rounded-[30px] border-[5px] border-paper shadow-[0_34px_70px_rgba(0,51,51,0.18)]">
@@ -344,7 +345,7 @@ export default function DietitianPage() {
         </section>
 
         {/* ---------- what you get + booking ---------- */}
-        <section id="book" className={`py-7 sm:pb-[clamp(32px,4vh,56px)] sm:pt-[clamp(56px,8vh,130px)] ${SECTION_X}`}>
+        <section id="book" className={`${SECTION_Y} ${SECTION_X}`}>
           <FadeIn className="mx-auto grid max-w-[1280px] overflow-hidden rounded-[40px] bg-ink text-bg lg:grid-cols-[1.15fr_0.85fr]">
             <div className="p-[clamp(34px,4.6vw,70px)] pb-0 lg:pb-[clamp(34px,4.6vw,70px)]">
               <p className={KICKER}>Booking</p>
@@ -403,7 +404,7 @@ export default function DietitianPage() {
         </section>
 
         {/* ---------- the meal guide ---------- */}
-        <section className={`py-7 sm:pb-[clamp(40px,5vh,72px)] sm:pt-0 ${SECTION_X}`}>
+        <section className={`${SECTION_Y} ${SECTION_X}`}>
           <FadeIn className="mx-auto mb-[clamp(32px,3.8vw,48px)] max-w-[780px] text-center">
             <p className={KICKER}>The guide</p>
             <h2 className="mb-4 text-[clamp(2.2rem,4.6vw,3.8rem)]">
@@ -419,7 +420,7 @@ export default function DietitianPage() {
         </section>
 
         {/* ---------- faq ---------- */}
-        <section id="faq" className={`pt-7 pb-[clamp(44px,6vh,90px)] sm:pt-0 ${SECTION_X}`}>
+        <section id="faq" className={`pt-7 pb-16 md:pt-10 md:pb-24 lg:pt-14 lg:pb-28 ${SECTION_X}`}>
           <FadeIn className="mx-auto mb-[clamp(34px,4vw,50px)] max-w-[760px] text-center">
             <p className="mb-3.5 text-[0.8rem] font-bold uppercase tracking-[0.18em] text-ink-soft">Before you book</p>
             <h2 className="text-[clamp(1.9rem,3.2vw,2.6rem)]">Everything else you are wondering</h2>

@@ -80,3 +80,10 @@
 .no-scrollbar::-webkit-scrollbar {
   display: none;
 }
+
+/* Country-aware pricing. Both prices are in the markup; the region set on
+   <html> before paint decides which one is shown. With no JS the Naira price
+   stands, which is the home market. */
+.price-us { display: none; }
+[data-region="us"] .price-ng { display: none; }
+[data-region="us"] .price-us { display: inline; }

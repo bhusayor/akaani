@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Outfit } from "next/font/google";
 import "./globals.css";
 import SmoothScroll from "@/components/SmoothScroll";
+import RegionScript from "@/components/RegionScript";
 
 const outfit = Outfit({
   subsets: ["latin"],
@@ -19,6 +20,9 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
+      <head>
+        <RegionScript />
+      </head>
       <body className={outfit.className}>
         <SmoothScroll />
         {children}

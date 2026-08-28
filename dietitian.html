@@ -52,7 +52,7 @@
       padding: 14px 22px; border-radius: 18px; border-bottom-left-radius: 4px;
       box-shadow: 0 18px 44px rgba(218, 112, 0, 0.35);
     }
-    .dh__pricebadge span { display: block; font-size: 0.7rem; font-weight: 600; opacity: 0.85; letter-spacing: 0.06em; text-transform: uppercase; margin-top: 3px; }
+    .dh__pricebadge .sub { display: block; font-size: 0.7rem; font-weight: 600; opacity: 0.85; letter-spacing: 0.06em; text-transform: uppercase; margin-top: 3px; }
     .dh__planbadge {
       position: absolute; bottom: -16px; right: -12px;
       display: flex; align-items: center; gap: 8px;
@@ -269,7 +269,7 @@
     .bookcard > b { display: block; font-size: 1.3rem; margin: 14px 0 0; }
     .bookcard__price { display: flex; align-items: baseline; gap: 8px; margin: 10px 0 20px; }
     .bookcard__price b { font-size: 2.3rem; font-weight: 800; line-height: 1; }
-    .bookcard__price span { font-size: 0.82rem; font-weight: 600; color: var(--ink-soft); }
+    .bookcard__price .sub { font-size: 0.82rem; font-weight: 600; color: var(--ink-soft); }
     .bookcard__row {
       display: flex; justify-content: space-between; gap: 12px;
       font-size: 0.92rem; padding: 11px 0;
@@ -581,7 +581,27 @@
     @media (min-width: 640px) and (max-width: 1023.98px) {
       .dh { padding-top: 132px; }
     }
+    /* Country-aware pricing. Both prices are in the markup; the region set on
+       <html> before paint decides which shows. With no JS the Naira price
+       stands, which is the home market. */
+    .price-us { display: none; }
+    [data-region="us"] .price-ng { display: none; }
+    [data-region="us"] .price-us { display: inline; }
+    .regiontoggle { display: inline-flex; gap: 4px; padding: 4px; border: 1px solid var(--line); border-radius: 999px; }
+    .regiontoggle button {
+      border: 0; background: none; cursor: pointer; font: inherit;
+      padding: 4px 10px; border-radius: 999px;
+      font-size: 0.68rem; font-weight: 700; color: var(--ink-soft);
+      transition: background 0.2s, color 0.2s;
+    }
+    .regiontoggle button:hover { color: var(--ink); }
+    .regiontoggle button[aria-pressed="true"] { background: var(--ink); color: var(--bg); }
+    .regiontoggle button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
   </style>
+  <!-- Region before paint, so the right currency is painted rather than swapped
+       in afterwards. Timezone, not geo-IP: no network call, no third party,
+       nothing to consent to. A saved choice always wins. -->
+  <script>(function(){try{var s=localStorage.getItem("akaani-region");if(s==="ng"||s==="us"){document.documentElement.dataset.region=s;return}var t=(Intl.DateTimeFormat().resolvedOptions().timeZone||"");document.documentElement.dataset.region=t==="Africa/Lagos"?"ng":"us"}catch(e){document.documentElement.dataset.region="ng"}})();</script>
 </head>
 <body>
 
@@ -630,7 +650,7 @@
           <div class="dh__photo">
             <img src="assets/consult-hero.jpg" alt="akaani's in-house dietitian on a video consultation" />
           </div>
-          <div class="dh__pricebadge">₦50,000<span>per session</span></div>
+          <div class="dh__pricebadge"><span class="price-ng">&#8358;50,000</span><span class="price-us">$50</span><span class="sub">per session</span></div>
           <div class="dh__planbadge"><i></i>45 minutes, on video</div>
         </div>
       </div>
@@ -977,7 +997,11 @@
           <div class="bookcard" id="bookCard">
             <span class="bookcard__tag">1-on-1 session</span>
             <b>Nutrition consultation</b>
-            <div class="bookcard__price"><b>₦50,000</b><span>per session</span></div>
+            <div class="bookcard__price"><b><span class="price-ng">&#8358;50,000</span><span class="price-us">$50</span></b><span class="sub">per session</span></div>
+            <div class="regiontoggle" role="group" aria-label="Currency">
+              <button type="button" data-region-set="ng" aria-pressed="true">&#8358; NGN</button>
+              <button type="button" data-region-set="us" aria-pressed="false">$ USD</button>
+            </div>
             <div class="bookcard__row"><span>Your guide</span><b>Inbox, 24 hours</b></div>
             <div class="bookcard__row"><span>The call</span><b>45 minutes, on video</b></div>
             <div class="bookcard__row"><span>Prepared by</span><b>A Registered Dietitian</b></div>
@@ -1136,6 +1160,26 @@
       });
     }
     staggerReveal(".ask__head > *", { stagger: 0.1 });
+    /* --- currency override --- */
+    (function () {
+      var btns = Array.prototype.slice.call(document.querySelectorAll("[data-region-set]"));
+      if (!btns.length) return;
+      function paint() {
+        var r = document.documentElement.dataset.region === "us" ? "us" : "ng";
+        btns.forEach(function (b) {
+          b.setAttribute("aria-pressed", b.dataset.regionSet === r ? "true" : "false");
+        });
+      }
+      btns.forEach(function (b) {
+        b.addEventListener("click", function () {
+          document.documentElement.dataset.region = b.dataset.regionSet;
+          try { localStorage.setItem("akaani-region", b.dataset.regionSet); } catch (e) {}
+          paint();
+        });
+      });
+      paint();
+    })();
+
     staggerReveal(".signs__head > *", { stagger: 0.1 });
     staggerReveal(".sign", { stagger: 0.07 });
     staggerReveal(".signs__close");

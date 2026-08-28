@@ -10,6 +10,8 @@ import { Stagger, StaggerItem } from "@/components/motion/Stagger";
 import FocusIcon, { type FocusIconName } from "@/components/ui/FocusIcon";
 import GuidePreview from "@/components/dietitian/GuidePreview";
 import SignIcon, { type SignIconName } from "@/components/ui/SignIcon";
+import Price from "@/components/ui/Price";
+import RegionToggle from "@/components/ui/RegionToggle";
 import Motion from "./Motion";
 
 export const metadata: Metadata = {
@@ -237,7 +239,7 @@ export default function DietitianPage() {
                 data-gsap="price"
                 className="absolute -left-2 -top-4 rounded-[18px] rounded-bl-[4px] bg-accent px-4 py-3 text-[1.15rem] font-extrabold leading-[1.1] text-white shadow-[0_18px_44px_rgba(218,112,0,0.35)] sm:-left-[18px] sm:-top-5 sm:px-[22px] sm:py-3.5 sm:text-[1.35rem]"
               >
-                ₦50,000
+                <Price />
                 <span className="mt-[3px] block text-[0.7rem] font-semibold uppercase tracking-[0.06em] opacity-85">
                   per session
                 </span>
@@ -474,9 +476,14 @@ export default function DietitianPage() {
                   1-on-1 session
                 </span>
                 <b className="mt-3.5 block text-[1.3rem]">Nutrition consultation</b>
-                <div className="mb-5 mt-2.5 flex items-baseline gap-2">
-                  <b className="text-[2.3rem] font-extrabold leading-none">₦50,000</b>
+                <div className="mb-3 mt-2.5 flex items-baseline gap-2">
+                  <b className="text-[2.3rem] font-extrabold leading-none">
+                    <Price />
+                  </b>
                   <span className="text-[0.82rem] font-semibold text-ink-soft">per session</span>
+                </div>
+                <div className="mb-5 flex justify-start">
+                  <RegionToggle />
                 </div>
                 {[
                   ["Your guide", "Inbox, 24 hours"],

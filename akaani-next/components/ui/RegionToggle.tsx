@@ -12,10 +12,14 @@ type Region = "ng" | "us";
 export default function RegionToggle() {
   const [region, setRegion] = useState<Region | null>(null);
 
-  // read what the pre-paint script already decided
+  // follow whatever the detection script settles on, including the async
+  // country-by-IP pass that lands after first paint
   useEffect(() => {
-    const r = document.documentElement.dataset.region;
-    setRegion(r === "us" ? "us" : "ng");
+    const read = () => setRegion(document.documentElement.dataset.region === "us" ? "us" : "ng");
+    read();
+    const onRegion = () => read();
+    document.addEventListener("akaani:region", onRegion);
+    return () => document.removeEventListener("akaani:region", onRegion);
   }, []);
 
   function pick(next: Region) {

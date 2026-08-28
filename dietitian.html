@@ -598,10 +598,31 @@
     .regiontoggle button[aria-pressed="true"] { background: var(--ink); color: var(--bg); }
     .regiontoggle button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
   </style>
-  <!-- Region before paint, so the right currency is painted rather than swapped
-       in afterwards. Timezone, not geo-IP: no network call, no third party,
-       nothing to consent to. A saved choice always wins. -->
-  <script>(function(){try{var s=localStorage.getItem("akaani-region");if(s==="ng"||s==="us"){document.documentElement.dataset.region=s;return}var t=(Intl.DateTimeFormat().resolvedOptions().timeZone||"");document.documentElement.dataset.region=t==="Africa/Lagos"?"ng":"us"}catch(e){document.documentElement.dataset.region="ng"}})();</script>
+  <!-- Currency. Two passes, because neither signal alone is enough:
+       1. Timezone, before first paint, so the common case paints the right
+          price instead of flashing the wrong one. It cannot see a VPN: a VPN
+          moves your IP, not your machine's clock.
+       2. Country by IP, async and best effort, which does see a VPN. It only
+          corrects pass 1 when they disagree, is capped by a timeout, and any
+          failure leaves the timezone answer standing.
+       A saved manual choice short-circuits both. -->
+  <script>(function(){
+var D=document.documentElement,K="akaani-region",C="akaani-cc";
+function set(r){if(D.dataset.region!==r){D.dataset.region=r;try{document.dispatchEvent(new CustomEvent("akaani:region",{detail:r}))}catch(e){}}}
+var saved=null;try{saved=localStorage.getItem(K)}catch(e){}
+if(saved==="ng"||saved==="us"){set(saved);return}
+try{var t=Intl.DateTimeFormat().resolvedOptions().timeZone||"";set(t==="Africa/Lagos"?"ng":"us")}catch(e){set("ng")}
+var cc=null;try{cc=sessionStorage.getItem(C)}catch(e){}
+if(cc){set(cc==="NG"?"ng":"us");return}
+try{
+var a=new AbortController(),k=setTimeout(function(){a.abort()},2500);
+fetch("https://api.country.is/",{signal:a.signal})
+.then(function(r){return r.ok?r.json():null})
+.then(function(d){if(!d||!d.country)return;try{sessionStorage.setItem(C,d.country)}catch(e){}set(d.country==="NG"?"ng":"us")})
+.catch(function(){})
+.then(function(){clearTimeout(k)});
+}catch(e){}
+})();</script>
 </head>
 <body>
 
@@ -1177,6 +1198,7 @@
           paint();
         });
       });
+      document.addEventListener("akaani:region", paint);
       paint();
     })();
 

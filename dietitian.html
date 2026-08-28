@@ -198,48 +198,25 @@
     .signs__head { max-width: 760px; margin: 0 auto clamp(24px, 3vw, 36px); text-align: center; }
     .signs__head h2 { margin-bottom: 16px; font-size: clamp(1.95rem, 4vw, 3.2rem); text-wrap: balance; }
     .signs__head p { color: var(--ink-soft); font-size: 1.03rem; line-height: 1.6; }
-    .signs__wrap { max-width: 1000px; margin: 0 auto; }
-    .signs__bar { display: flex; align-items: center; justify-content: space-between; gap: 16px; margin-bottom: 16px; }
-    .signs__bar > p { font-size: 0.9rem; font-weight: 600; color: var(--ink-soft); }
-    .signs__count {
-      flex: none; font-size: 0.8rem; font-weight: 800;
-      letter-spacing: 0.12em; text-transform: uppercase; color: rgba(0, 51, 51, 0.35);
+    .signs__grid { max-width: 1000px; margin: 0 auto; display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+    .sign {
+      display: flex; flex-direction: column; gap: 16px; height: 100%;
+      padding: 24px; background: #fff;
+      border: 1px solid var(--line); border-radius: 16px;
+      transition: border-color 0.3s;
     }
-    .signs__count b.is-on { color: var(--accent); }
-    /* each sign is its own tile, so it reads as tappable on a phone */
-    .signs__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
-    .signs__item {
-      display: flex; align-items: flex-start; gap: 12px; width: 100%; height: 100%;
-      padding: 20px; border: 1.5px solid var(--line); border-radius: 16px;
-      background: #fff; font: inherit; text-align: left; cursor: pointer;
-      transition: border-color 0.2s;
+    .sign:hover { border-color: rgba(0, 51, 51, 0.25); }
+    .sign__icon { color: var(--accent); }
+    .sign__icon svg { width: 26px; height: 26px; }
+    .sign p { font-size: 1rem; line-height: 1.5; }
+    .signs__close {
+      max-width: 1000px; margin: 12px auto 0;
+      display: flex; align-items: center; justify-content: space-between; gap: 16px;
+      padding: 24px; border-radius: 16px; background: var(--ink); color: var(--bg);
     }
-    .signs__item:hover { border-color: rgba(0, 51, 51, 0.3); }
-    .signs__item:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
-    .signs__item[aria-pressed="true"] { border-color: var(--accent); }
-    .signs__item i {
-      flex: none; display: grid; place-items: center; margin-top: 1px;
-      width: 22px; height: 22px; border-radius: 7px;
-      border: 2px solid var(--line); color: transparent;
-      transition: background 0.2s, border-color 0.2s, color 0.2s;
-    }
-    .signs__item i svg { width: 12px; height: 12px; }
-    .signs__item[aria-pressed="true"] i { background: var(--accent); border-color: var(--accent); color: #fff; }
-    .signs__item span { font-size: 0.96rem; line-height: 1.45; color: var(--ink-soft); transition: color 0.2s; }
-    .signs__item[aria-pressed="true"] span { color: var(--ink); font-weight: 600; }
-    /* the verdict goes solid once enough is ticked to matter */
-    .signs__verdict {
-      margin-top: 12px; display: flex; align-items: center; justify-content: space-between; gap: 16px;
-      padding: 20px; border: 1.5px solid var(--line); border-radius: 16px; background: #fff;
-      transition: background 0.3s, border-color 0.3s;
-    }
-    .signs__verdict p { font-size: 1rem; line-height: 1.5; color: var(--ink-soft); }
-    .signs__verdict p b { color: var(--ink); }
-    .signs__verdict.is-on { background: var(--ink); border-color: var(--ink); }
-    .signs__verdict.is-on p { color: rgba(255, 255, 255, 0.65); }
-    .signs__verdict.is-on p b { color: var(--bg); }
-    .signs__verdict.is-on .btn { background: var(--accent); border-color: var(--accent); color: #fff; }
-    .signs__verdict.is-on .btn:hover { background: #fff; border-color: #fff; color: var(--ink); }
+    .signs__close p { font-size: 1rem; line-height: 1.5; }
+    .signs__close span { color: rgba(255, 255, 255, 0.65); }
+    .signs__close .btn:hover { background: #fff; border-color: #fff; color: var(--ink); }
 
     /* --- section 4: how it works --- */
     .how { padding: var(--section-y) clamp(20px, 5vw, 72px); }
@@ -538,6 +515,7 @@
 
 
     @media (max-width: 1023.98px) {
+      .signs__grid { grid-template-columns: 1fr 1fr; }
       .dh__inner { grid-template-columns: 1fr; }
       /* the portrait used to be dropped entirely below this width */
       .dh__inner { gap: 46px; }
@@ -575,8 +553,8 @@
       .faq2__cta-actions { flex-direction: column; }
       .faq2__cta-actions .btn { width: 100%; text-align: center; justify-content: center; }
       .signs__grid { grid-template-columns: 1fr; }
-      .signs__verdict { flex-direction: column; text-align: center; }
-      .signs__verdict .btn { width: 100%; text-align: center; justify-content: center; }
+      .signs__close { flex-direction: column; text-align: center; }
+      .signs__close .btn { width: 100%; text-align: center; justify-content: center; }
       .focus__bar { flex-direction: column; align-items: stretch; gap: 20px; }
       .focus__bar .btn { width: 100%; text-align: center; justify-content: center; }
       .gp__body { min-height: 248px; padding: 24px 20px; }
@@ -650,37 +628,36 @@
         <p>Most people book without a diagnosis. See how many of these you recognise.</p>
       </div>
 
-      <div class="signs__wrap">
-        <div class="signs__bar">
-          <p>Tap the ones that sound like you.</p>
-          <p class="signs__count"><b id="signsCount">0</b> / 6</p>
-        </div>
+      <div class="signs__grid">
+        <article class="sign">
+          <span class="sign__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg></span>
+          <p>You are tired by 3pm most days, and it is not sleep.</p>
+        </article>
+        <article class="sign">
+          <span class="sign__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h11"/><path d="M15 8.5 19.5 12 15 15.5"/></svg></span>
+          <p>Your weight has not moved in months, whatever you change.</p>
+        </article>
+        <article class="sign">
+          <span class="sign__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8Z"/><path d="M14 3v5h5M9 13h6M9 17h4"/></svg></span>
+          <p>A test came back borderline and nobody told you what to eat.</p>
+        </article>
+        <article class="sign">
+          <span class="sign__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12h18a9 9 0 0 1-18 0Z"/><path d="M9 6c0-1 1-1 1-2M13 6c0-1 1-1 1-2M17 6c0-1 1-1 1-2"/></svg></span>
+          <p>You feel heavy or bloated after most meals.</p>
+        </article>
+        <article class="sign">
+          <span class="sign__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M5.6 5.6l12.8 12.8"/></svg></span>
+          <p>You have cut out foods you love and seen no difference.</p>
+        </article>
+        <article class="sign">
+          <span class="sign__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 14H5.5A2.5 2.5 0 0 1 3 11.5v-4A2.5 2.5 0 0 1 5.5 5h8A2.5 2.5 0 0 1 16 7.5V9"/><path d="M21 14.5a2.5 2.5 0 0 1-2.5 2.5H14l-3 3v-3h-.5A2.5 2.5 0 0 1 8 14.5v-3A2.5 2.5 0 0 1 10.5 9h8a2.5 2.5 0 0 1 2.5 2.5Z"/></svg></span>
+          <p>Everyone gives you different advice and none of it fits your kitchen.</p>
+        </article>
+      </div>
 
-        <div class="signs__grid" role="group" aria-label="Signs you might need a dietitian">
-            <button type="button" class="signs__item" aria-pressed="false">
-              <i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg></i><span>You are tired by 3pm most days, and it is not sleep.</span>
-            </button>
-            <button type="button" class="signs__item" aria-pressed="false">
-              <i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg></i><span>Your weight has not moved in months, whatever you change.</span>
-            </button>
-            <button type="button" class="signs__item" aria-pressed="false">
-              <i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg></i><span>A test came back borderline and nobody told you what to eat.</span>
-            </button>
-            <button type="button" class="signs__item" aria-pressed="false">
-              <i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg></i><span>You feel heavy or bloated after most meals.</span>
-            </button>
-            <button type="button" class="signs__item" aria-pressed="false">
-              <i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg></i><span>You have cut out foods you love and seen no difference.</span>
-            </button>
-            <button type="button" class="signs__item" aria-pressed="false">
-              <i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg></i><span>Everyone gives you different advice and none of it fits your kitchen.</span>
-            </button>
-        </div>
-
-        <div class="signs__verdict" id="signsVerdictBox">
-          <p id="signsVerdict" aria-live="polite">Nothing ticked yet. Most people recognise two or three.</p>
-          <a href="https://calendly.com/useakaani" target="_blank" rel="noopener" class="btn btn--dark">Book consultation</a>
-        </div>
+      <div class="signs__close">
+        <p><b>Two or more sound familiar?</b> <span>That is exactly what the session is for.</span></p>
+        <a href="https://calendly.com/useakaani" target="_blank" rel="noopener" class="btn btn--accent">Book consultation</a>
       </div>
     </section>
 
@@ -1135,37 +1112,9 @@
     }
     staggerReveal(".ask__head > *", { stagger: 0.1 });
     staggerReveal(".signs__head > *", { stagger: 0.1 });
-    staggerReveal(".signs__item", { stagger: 0.06 });
+    staggerReveal(".sign", { stagger: 0.07 });
+    staggerReveal(".signs__close");
 
-    /* --- the self-check: ticking makes the reader argue the case themselves --- */
-    (function () {
-      var grid = document.querySelector(".signs__grid");
-      var out = document.getElementById("signsVerdict");
-      var box = document.getElementById("signsVerdictBox");
-      var count = document.getElementById("signsCount");
-      if (!grid || !out || !box || !count) return;
-      var items = Array.prototype.slice.call(grid.querySelectorAll(".signs__item"));
-      var total = items.length;
-
-      function update() {
-        var n = items.filter(function (b) { return b.getAttribute("aria-pressed") === "true"; }).length;
-        count.textContent = n;
-        count.classList.toggle("is-on", n > 0);
-        box.classList.toggle("is-on", n >= 2);
-        out.innerHTML = n === 0
-          ? "Nothing ticked yet. Most people recognise two or three."
-          : n === 1
-            ? "<b>One is enough.</b> That is a conversation worth having."
-            : "<b>" + n + " of " + total + ".</b> That is exactly what the session is for.";
-      }
-
-      items.forEach(function (b) {
-        b.addEventListener("click", function () {
-          b.setAttribute("aria-pressed", b.getAttribute("aria-pressed") === "true" ? "false" : "true");
-          update();
-        });
-      });
-    })();
     staggerReveal(".focus", { stagger: 0.1 });
     staggerReveal(".how__inner");
     staggerReveal(".guide__head > *", { stagger: 0.1 });

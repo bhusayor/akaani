@@ -6,9 +6,10 @@ import Faq from "@/components/Faq";
 import Button from "@/components/ui/Button";
 import FadeIn from "@/components/motion/FadeIn";
 import HoverLift from "@/components/motion/HoverLift";
+import { Stagger, StaggerItem } from "@/components/motion/Stagger";
 import FocusIcon, { type FocusIconName } from "@/components/ui/FocusIcon";
 import GuidePreview from "@/components/dietitian/GuidePreview";
-import SignsCheck from "@/components/dietitian/SignsCheck";
+import SignIcon, { type SignIconName } from "@/components/ui/SignIcon";
 import Motion from "./Motion";
 
 export const metadata: Metadata = {
@@ -20,12 +21,12 @@ export const metadata: Metadata = {
 const CALENDLY = "https://calendly.com/useakaani";
 
 const SIGNS = [
-  "You are tired by 3pm most days, and it is not sleep.",
-  "Your weight has not moved in months, whatever you change.",
-  "A test came back borderline and nobody told you what to eat.",
-  "You feel heavy or bloated after most meals.",
-  "You have cut out foods you love and seen no difference.",
-  "Everyone gives you different advice and none of it fits your kitchen.",
+  { icon: "clock" as SignIconName, text: "You are tired by 3pm most days, and it is not sleep." },
+  { icon: "flat" as SignIconName, text: "Your weight has not moved in months, whatever you change." },
+  { icon: "report" as SignIconName, text: "A test came back borderline and nobody told you what to eat." },
+  { icon: "bowl" as SignIconName, text: "You feel heavy or bloated after most meals." },
+  { icon: "cut" as SignIconName, text: "You have cut out foods you love and seen no difference." },
+  { icon: "advice" as SignIconName, text: "Everyone gives you different advice and none of it fits your kitchen." },
 ];
 
 const FOCUS = [
@@ -252,8 +253,27 @@ export default function DietitianPage() {
             </p>
           </FadeIn>
 
-          <FadeIn>
-            <SignsCheck signs={SIGNS} cta={CALENDLY} />
+          <Stagger className="mx-auto grid max-w-[1000px] gap-3 sm:grid-cols-2 lg:grid-cols-3" gap={0.07}>
+            {SIGNS.map((s) => (
+              <StaggerItem key={s.text}>
+                <article className="flex h-full flex-col gap-4 rounded-2xl border border-line bg-white p-6 transition-colors duration-300 hover:border-ink/25">
+                  <span className="text-accent">
+                    <SignIcon name={s.icon} />
+                  </span>
+                  <p className="text-[1rem] leading-[1.5]">{s.text}</p>
+                </article>
+              </StaggerItem>
+            ))}
+          </Stagger>
+
+          <FadeIn className="mx-auto mt-3 flex max-w-[1000px] flex-col items-center gap-4 rounded-2xl bg-ink p-6 text-center text-bg sm:flex-row sm:justify-between sm:text-left">
+            <p className="text-[1rem] leading-[1.5]">
+              <b>Two or more sound familiar?</b>{" "}
+              <span className="text-bg/65">That is exactly what the session is for.</span>
+            </p>
+            <Button href={CALENDLY} external size="md" className="w-full flex-none hover:bg-white hover:text-ink sm:w-auto">
+              Book consultation
+            </Button>
           </FadeIn>
         </section>
 

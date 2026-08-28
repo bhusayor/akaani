@@ -302,7 +302,7 @@ export default function DietitianPage() {
             ))}
           </div>
 
-          <FadeIn className="mx-auto mt-[clamp(14px,1.8vw,22px)] flex max-w-[1280px] flex-col gap-5 rounded-[22px] bg-ink p-6 text-bg sm:flex-row sm:items-center sm:justify-between sm:p-7 md:px-9">
+          <FadeIn className="mx-auto mt-[clamp(14px,1.8vw,22px)] flex max-w-[1280px] gap-5 rounded-[22px] bg-ink p-6 text-bg sm:items-center sm:p-7 md:px-9">
             <div className="flex items-start gap-4">
               <span className="grid h-11 w-11 flex-none place-items-center rounded-2xl bg-accent text-white">
                 <svg
@@ -328,9 +328,6 @@ export default function DietitianPage() {
               </p>
             </div>
 
-            <Button href={CALENDLY} external size="md" className="w-full flex-none sm:w-auto">
-              Book consultation
-            </Button>
           </FadeIn>
         </section>
 

@@ -113,8 +113,8 @@ const FAQS = [
     a: "A one-off. It covers the 45-minute call and the guide written for you afterwards. Nothing renews and there is nothing to cancel.",
   },
   {
-    q: "What if I need to reschedule?",
-    a: "Use the link in your confirmation email. Moving your session is free.",
+    q: "Do I need to prepare anything?",
+    a: "No. There are no forms to fill in and nothing to send ahead. Pick a slot, show up, and talk. If you happen to have recent results, bring them.",
   },
 ];
 
@@ -481,7 +481,7 @@ export default function DietitianPage() {
                 {[
                   ["Your guide", "Inbox, 24 hours"],
                   ["The call", "45 minutes, on video"],
-                  ["Follow-up", "Free reschedule"],
+                  ["Prepared by", "A Registered Dietitian"],
                 ].map(([k, v]) => (
                   <div key={k} className="flex justify-between gap-3 border-t border-line py-[11px] text-[0.92rem]">
                     <span className="text-ink-soft">{k}</span>
@@ -492,7 +492,7 @@ export default function DietitianPage() {
                   Book consultation
                 </Button>
                 <p className="mt-3.5 text-center text-[0.78rem] text-ink-soft">
-                  Scheduled via Calendly. Reschedule anytime.
+                  Scheduled via Calendly.
                 </p>
               </div>
             </div>

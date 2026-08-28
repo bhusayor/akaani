@@ -93,12 +93,24 @@ const STEPS = [
 
 const FAQS = [
   {
+    q: "Do I need lab results or a referral first?",
+    a: "No. Most people book with nothing more than a feeling that something is off. If you have recent results, bring them and they shape your guide. If you do not, the session works from what you eat and how you feel.",
+  },
+  {
     q: "How is this different from advice online?",
     a: "Advice online is written for everyone, so it fits nobody in particular. Your dietitian works from your readings, your medication, your budget and the food you actually cook. That is what you are paying for.",
   },
   {
     q: "Will I have to stop eating Nigerian food?",
     a: "No. Your guide is built on what you already cook and buy, adjusted in portion, pairing and frequency. Nothing gets swapped for salmon and quinoa.",
+  },
+  {
+    q: "Can this replace my doctor?",
+    a: "No, and it is not meant to. Your dietitian works alongside your doctor, never instead of them. If something in the session needs medical attention, you will be told to take it there.",
+  },
+  {
+    q: "Is the fee a one-off, or a subscription?",
+    a: "A one-off. It covers the 45-minute call and the guide written for you afterwards. Nothing renews and there is nothing to cancel.",
   },
   {
     q: "What if I need to reschedule?",
@@ -266,14 +278,22 @@ export default function DietitianPage() {
             ))}
           </Stagger>
 
-          <FadeIn className="mx-auto mt-3 flex max-w-[1000px] flex-col items-center gap-4 rounded-2xl bg-ink p-6 text-center text-bg sm:flex-row sm:justify-between sm:text-left">
-            <p className="text-[1rem] leading-[1.5]">
-              <b>Two or more sound familiar?</b>{" "}
-              <span className="text-bg/65">That is exactly what the session is for.</span>
+          <FadeIn className="mx-auto mt-3 flex max-w-[1000px] flex-col items-center gap-4 rounded-2xl border border-line bg-white p-6 text-center sm:flex-row sm:justify-between sm:text-left">
+            <p className="text-[1rem] leading-[1.55]">
+              <b>One of these is enough to book.</b>{" "}
+              <span className="text-ink-soft">So is none of them, if something still feels off.</span>
             </p>
-            <Button href={CALENDLY} external size="md" className="w-full flex-none hover:bg-white hover:text-ink sm:w-auto">
-              Book consultation
-            </Button>
+            <a
+              href={CALENDLY}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group inline-flex flex-none items-center gap-2 font-bold text-accent underline decoration-accent/35 underline-offset-4 transition-colors duration-300 hover:text-ink hover:decoration-ink/40"
+            >
+              Book a consultation
+              <span aria-hidden="true" className="transition-transform duration-300 ease-brand group-hover:translate-x-1">
+                &rarr;
+              </span>
+            </a>
           </FadeIn>
         </section>
 
@@ -302,7 +322,7 @@ export default function DietitianPage() {
             ))}
           </div>
 
-          <FadeIn className="mx-auto mt-[clamp(14px,1.8vw,22px)] flex max-w-[1280px] gap-5 rounded-[22px] bg-ink p-6 text-bg sm:items-center sm:p-7 md:px-9">
+          <FadeIn className="mx-auto mt-[clamp(14px,1.8vw,22px)] flex max-w-[1280px] flex-col gap-5 rounded-[22px] bg-ink p-6 text-bg sm:flex-row sm:items-center sm:justify-between sm:p-7 md:px-9">
             <div className="flex items-start gap-4">
               <span className="grid h-11 w-11 flex-none place-items-center rounded-2xl bg-accent text-white">
                 <svg
@@ -323,10 +343,23 @@ export default function DietitianPage() {
               <p className="text-[0.97rem] leading-[1.55]">
                 <b className="block text-[1.05rem]">None of these quite fit?</b>
                 <span className="text-bg/60">
-                  Book anyway and say what is going on. Your session goes where it helps most.
+                  These six are the most common, not the only ones. Bring whatever is going on and the session
+                  starts there.
                 </span>
               </p>
             </div>
+
+            <a
+              href={CALENDLY}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group inline-flex flex-none items-center gap-2 font-bold text-accent underline decoration-accent/35 underline-offset-4 transition-colors duration-300 hover:text-bg hover:decoration-bg/40"
+            >
+              Book a consultation
+              <span aria-hidden="true" className="transition-transform duration-300 ease-brand group-hover:translate-x-1">
+                &rarr;
+              </span>
+            </a>
 
           </FadeIn>
         </section>
@@ -480,14 +513,9 @@ export default function DietitianPage() {
             <p className="mb-6 text-[1rem] text-ink-soft">
               45 minutes on a video call, and your Nigerian meal guide in your mail within 24 hours.
             </p>
-            <div className="flex flex-col items-center justify-center gap-3 sm:flex-row">
-              <Button href={CALENDLY} external size="lg" className="w-full sm:w-auto">
-                Book consultation
-              </Button>
-              <Button href="/contact" variant="ghostDark" size="lg" className="w-full sm:w-auto">
-                Ask a question first
-              </Button>
-            </div>
+            <Button href={CALENDLY} external size="lg">
+              Book consultation
+            </Button>
           </FadeIn>
         </section>
       </main>

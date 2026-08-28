@@ -687,13 +687,15 @@ h2 { font-size: clamp(2.2rem, 4.6vw, 3.8rem); }
 }
 .faq__item summary::-webkit-details-marker { display: none; }
 .faq__icon { position: relative; width: 18px; height: 18px; flex: none; }
-.faq__icon::before, .faq__icon::after {
-  content: ""; position: absolute; background: var(--accent); border-radius: 2px;
-  transition: transform 0.4s var(--ease);
+.faq__icon::before {
+  content: ""; position: absolute; inset: 0; margin: auto;
+  width: 8px; height: 8px;
+  border-right: 2px solid var(--accent);
+  border-bottom: 2px solid var(--accent);
+  transform: translateY(-2px) rotate(45deg);
+  transition: transform 0.35s var(--ease);
 }
-.faq__icon::before { inset: 8px 0; }
-.faq__icon::after { inset: 0 8px; }
-.faq__item[open] .faq__icon::after { transform: rotate(90deg) scaleY(0); }
+.faq__item[open] .faq__icon::before { transform: translateY(2px) rotate(225deg); }
 .faq__answer { padding: 0 26px; overflow: hidden; }
 .faq__answer p { padding-bottom: 24px; color: var(--ink-soft); max-width: 560px; }
 

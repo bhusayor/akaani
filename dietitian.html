@@ -466,14 +466,17 @@
       border: 1.5px solid var(--line);
       transition: border-color 0.35s, transform 0.45s var(--ease);
     }
-    .faq2__icon::before, .faq2__icon::after {
-      content: ""; position: absolute; background: var(--accent); border-radius: 2px;
-      transition: transform 0.4s var(--ease);
+    /* a chevron drawn from two borders, so the markup stays an empty span */
+    .faq2__icon::before {
+      content: ""; position: absolute; inset: 0; margin: auto;
+      width: 8px; height: 8px;
+      border-right: 2px solid var(--accent);
+      border-bottom: 2px solid var(--accent);
+      transform: translateY(-2px) rotate(45deg);
+      transition: transform 0.35s var(--ease);
     }
-    .faq2__icon::before { inset: 12.5px 7px; }
-    .faq2__icon::after { inset: 7px 12.5px; }
     .faq2__item[open] .faq2__icon { border-color: var(--accent); }
-    .faq2__item[open] .faq2__icon::after { transform: rotate(90deg) scaleY(0); }
+    .faq2__item[open] .faq2__icon::before { transform: translateY(2px) rotate(225deg); }
     .faq2__answer { overflow: hidden; }
     .faq2__answer p { padding: 0 44px 26px 4px; color: var(--ink-soft); font-size: 1rem; line-height: 1.65; }
 

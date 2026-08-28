@@ -25,17 +25,25 @@ export default function Faq({ items }: { items: FaqItem[] }) {
               {item.q}
               <span
                 className={
-                  "relative h-7 w-7 flex-none rounded-full border-[1.5px] transition-colors duration-300 " +
+                  "grid h-7 w-7 flex-none place-items-center rounded-full border-[1.5px] transition-colors duration-300 " +
                   (open ? "border-accent" : "border-line")
                 }
               >
-                <span className="absolute inset-x-[7px] top-1/2 h-[2px] -translate-y-1/2 rounded-sm bg-accent" />
-                <span
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2.6"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  aria-hidden="true"
                   className={
-                    "absolute inset-y-[7px] left-1/2 w-[2px] -translate-x-1/2 rounded-sm bg-accent transition-transform duration-400 ease-brand " +
-                    (open ? "scale-y-0" : "scale-y-100")
+                    "h-3 w-3 text-accent transition-transform duration-300 ease-brand " +
+                    (open ? "rotate-180" : "rotate-0")
                   }
-                />
+                >
+                  <path d="m6 9 6 6 6-6" />
+                </svg>
               </span>
             </button>
 

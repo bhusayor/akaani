@@ -565,7 +565,10 @@
       .signs__grid { grid-template-columns: 1fr; }
       .signs__close { flex-direction: column; text-align: center; }
       .signs__close .btn { width: 100%; text-align: center; justify-content: center; }
-      .focus__bar { gap: 16px; }
+      .focus__bar { flex-direction: column; align-items: stretch; gap: 18px; }
+      .focus__bar-id { flex-direction: column; gap: 14px; }
+      .focus__bar-id p b { white-space: nowrap; margin-bottom: 6px; }
+      .focus__bar-id p span { display: block; }
       .focus__bar .btn { width: 100%; text-align: center; justify-content: center; }
       .gp__body { min-height: 248px; padding: 24px 20px; }
       .gp__framehead { padding: 14px 20px; }
@@ -666,7 +669,7 @@
       </div>
 
       <div class="signs__close">
-        <p><b>One of these is enough to book.</b> <span>So is none of them, if something still feels off.</span></p>
+        <p><b>Any one of these is worth a conversation.</b> <span>So is a feeling you cannot quite name.</span></p>
         <a href="https://calendly.com/useakaani" target="_blank" rel="noopener" class="arrowlink">Book a consultation <span aria-hidden="true">&rarr;</span></a>
       </div>
     </section>

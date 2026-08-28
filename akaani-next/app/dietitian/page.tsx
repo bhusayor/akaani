@@ -280,8 +280,8 @@ export default function DietitianPage() {
 
           <FadeIn className="mx-auto mt-3 flex max-w-[1000px] flex-col items-center gap-4 rounded-2xl border border-line bg-white p-6 text-center sm:flex-row sm:justify-between sm:text-left">
             <p className="text-[1rem] leading-[1.55]">
-              <b>One of these is enough to book.</b>{" "}
-              <span className="text-ink-soft">So is none of them, if something still feels off.</span>
+              <b>Any one of these is worth a conversation.</b>{" "}
+              <span className="text-ink-soft">So is a feeling you cannot quite name.</span>
             </p>
             <a
               href={CALENDLY}
@@ -323,7 +323,7 @@ export default function DietitianPage() {
           </div>
 
           <FadeIn className="mx-auto mt-[clamp(14px,1.8vw,22px)] flex max-w-[1280px] flex-col gap-5 rounded-[22px] bg-ink p-6 text-bg sm:flex-row sm:items-center sm:justify-between sm:p-7 md:px-9">
-            <div className="flex items-start gap-4">
+            <div className="flex flex-col gap-4 sm:flex-row sm:items-start">
               <span className="grid h-11 w-11 flex-none place-items-center rounded-2xl bg-accent text-white">
                 <svg
                   viewBox="0 0 24 24"
@@ -341,8 +341,8 @@ export default function DietitianPage() {
                 </svg>
               </span>
               <p className="text-[0.97rem] leading-[1.55]">
-                <b className="block text-[1.05rem]">None of these quite fit?</b>
-                <span className="text-bg/60">
+                <b className="mb-1.5 block whitespace-nowrap text-[1.05rem]">None of these quite fit?</b>
+                <span className="block text-bg/60">
                   These six are the most common, not the only ones. Bring whatever is going on and the session
                   starts there.
                 </span>

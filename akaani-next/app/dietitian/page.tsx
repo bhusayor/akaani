@@ -270,9 +270,15 @@ export default function DietitianPage() {
           </FadeIn>
 
           {/* six cards fill an even 3 x 2, so the reassurance sits below as a bar */}
-          <div className="mx-auto grid max-w-[1280px] items-stretch gap-[clamp(14px,1.8vw,22px)] sm:grid-cols-2 lg:grid-cols-3">
+          <div className="mx-auto block max-w-[1280px] space-y-3 sm:grid sm:items-stretch sm:gap-[clamp(14px,1.8vw,22px)] sm:space-y-0 sm:grid-cols-2 lg:grid-cols-3">
             {FOCUS.map((f, i) => (
-              <FocusCard key={f.title} {...f} index={i} />
+              <div
+                key={f.title}
+                className="sticky sm:static"
+                style={{ top: `calc(84px + ${i * 10}px)` }}
+              >
+                <FocusCard {...f} index={i} />
+              </div>
             ))}
           </div>
 

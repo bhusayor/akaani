@@ -323,7 +323,8 @@ export default function GuidePreview() {
         aria-label="Sections of the guide"
         aria-orientation="vertical"
         onKeyDown={onKeyDown}
-        onMouseLeave={clearHover}
+        onPointerLeave={clearHover}
+        onTouchStart={clearHover}
         className="no-scrollbar -mx-5 flex snap-x scroll-px-5 gap-2.5 overflow-x-auto px-5 sm:-mx-8 sm:scroll-px-8 sm:px-8 lg:mx-0 lg:flex-col lg:gap-0 lg:overflow-visible lg:px-0"
       >
         {SECTIONS.map((s, i) => {
@@ -342,7 +343,9 @@ export default function GuidePreview() {
               tabIndex={on ? 0 : -1}
               onClick={() => select(i)}
               onFocus={() => select(i)}
-              onMouseEnter={() => previewOnHover(i)}
+              onPointerEnter={(e) => {
+                if (e.pointerType === "mouse") previewOnHover(i);
+              }}
               className={`group relative flex-none cursor-pointer snap-start rounded-full border px-4 py-2.5 text-left transition-colors duration-300 focus-visible:outline-2 focus-visible:outline-offset-[3px] focus-visible:outline-accent lg:w-full lg:flex-auto lg:rounded-none lg:border-0 lg:border-b lg:border-line lg:py-5 lg:pl-5 lg:pr-0 ${
                 on ? "border-ink bg-ink text-bg lg:bg-transparent lg:text-ink" : "border-line hover:border-ink/30 lg:hover:border-line"
               }`}

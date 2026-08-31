@@ -77,7 +77,7 @@ export default function BlogPage() {
           <div className="jpost__body">
             <div className="jpost__meta"><span className="jpost__cat">Food lifestyle</span><span className="jpost__read">4 min</span></div>
             <h3><span>Foodie tech: how artificial intelligence is revolutionizing the way we eat</span></h3>
-            <p className="jpost__excerpt">From smart pantries to macro-aware meal planning — the quiet revolution happening in our kitchens.</p>
+            <p className="jpost__excerpt">From smart pantries to macro-aware meal planning, the quiet revolution happening in our kitchens.</p>
           </div>
         </a>
 
@@ -85,7 +85,7 @@ export default function BlogPage() {
           <div className="jpost__img"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f5/Efo_Riro_with_fried_mackerel_fishes_and_roasted_cowskin.jpg/1280px-Efo_Riro_with_fried_mackerel_fishes_and_roasted_cowskin.jpg" alt="Efo riro with fried mackerel" loading="lazy" /><span className="jpost__arrow">→</span></div>
           <div className="jpost__body">
             <div className="jpost__meta"><span className="jpost__cat">Nutrition</span><span className="jpost__read">6 min</span></div>
-            <h3><span>Efo riro is a protein play — if you build it right</span></h3>
+            <h3><span>Efo riro is a protein play, if you build it right</span></h3>
             <p className="jpost__excerpt">The Yoruba classic can carry 35g+ of protein per bowl. The macro math, ingredient by ingredient.</p>
           </div>
         </a>
@@ -95,7 +95,7 @@ export default function BlogPage() {
           <div className="jpost__body">
             <div className="jpost__meta"><span className="jpost__cat">Nutrition</span><span className="jpost__read">4 min</span></div>
             <h3><span>Suya: the original street-food protein</span></h3>
-            <p className="jpost__excerpt">Lean beef, yaji spice, open fire — why the roadside classic beats most protein bars.</p>
+            <p className="jpost__excerpt">Lean beef, yaji spice, open fire, why the roadside classic beats most protein bars.</p>
           </div>
         </a>
 
@@ -113,11 +113,11 @@ export default function BlogPage() {
           <div className="jpost__body">
             <div className="jpost__meta"><span className="jpost__cat">Recipes</span><span className="jpost__read">5 min</span></div>
             <h3><span>Party jollof vs. cut-season jollof: one pot, two macros</span></h3>
-            <p className="jpost__excerpt">Same smoke, same party energy — 240 fewer calories per plate. Here's the technique.</p>
+            <p className="jpost__excerpt">Same smoke, same party energy, 240 fewer calories per plate. Here's the technique.</p>
           </div>
         </a>
 
-        <p className="jgrid__empty" id="gridEmpty">No stories in this category yet — more are cooking. 🍲</p>
+        <p className="jgrid__empty" id="gridEmpty">No stories in this category yet, more are cooking. 🍲</p>
       </div>
     </section>
       </div>

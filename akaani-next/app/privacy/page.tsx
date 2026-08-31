@@ -71,7 +71,7 @@ export default function PrivacyPage() {
 
 <section id="p4"><h2><span className="num">4.</span>Your Choices and Opting-Out</h2>
 <p><b>General.</b> You have certain choices about the use and disclosure of your Personal Information, as set out in this Privacy Policy. You may decline to provide Personal Information to akaani. Declining to provide Personal Information may disqualify you from using akaani Services, Site, and App features that require certain Personal Information.</p>
-<h3><span className="num">4.1</span>Opting-Out — Obtaining and Withdrawing Consent</h3>
+<h3><span className="num">4.1</span>Opting-Out. Obtaining and Withdrawing Consent</h3>
 <p>When you have consented to akaani's use of your Personal Information, you may withdraw that consent at any time and opt-out of future use by submitting a physical mail to the contacts indicated under the "Contact Us" section below. Users must opt-out of providing akaani Personal Information to continue to use the Services. Users must close their accounts in order to opt-out of providing akaani with Personal Information. Additionally, before we use Personal Information for any new purpose we will provide information regarding the new purpose.</p></section>
 
 <section id="p5"><h2><span className="num">5.</span>Email and Telephone Communications</h2>

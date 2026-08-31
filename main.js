@@ -1,5 +1,5 @@
 /* ============================================================
-   akaani — motion system (GSAP 3 + ScrollTrigger)
+   akaani motion system (GSAP 3 + ScrollTrigger)
    ============================================================ */
 
 gsap.registerPlugin(ScrollTrigger);
@@ -158,7 +158,7 @@ const ghost = document.getElementById("luGhost");
 const phoneEl = document.querySelector(".phone");
 const mascot = document.getElementById("luMascot");
 const luSection = document.querySelector(".lu");
-// a different backdrop for every feature — teal, toasted clay, deep green, plum, midnight
+// a different backdrop for every feature: teal, toasted clay, deep green, plum, midnight
 const luColors = ["#003333", "#4A2606", "#143B2E", "#3A2138", "#122840"];
 let currentStep = 0;
 
@@ -267,7 +267,7 @@ function setStep(step) {
 const ghostX = gsap.quickSetter(ghost, "x", "px");
 const phoneX = gsap.quickSetter(phoneEl, "x", "px");
 const glowRot = gsap.quickSetter(".lu__phone-glow", "rotation", "deg");
-// scroll progress rail — driven 1:1 by scroll, so it moves the instant you do
+// scroll progress rail, driven 1:1 by scroll, so it moves the instant you do
 const railFill = gsap.quickSetter("#luRailFill", "scaleY");
 const railDotY = gsap.quickSetter("#luRailDot", "y", "px");
 const railEl = document.querySelector(".lu__rail");
@@ -367,7 +367,7 @@ function staggerReveal(selector, opts = {}) {
 }
 
 staggerReveal(".section-head");
-// cards fade in without a transform of their own — the parallax CSS var owns translateY
+// cards fade in without a transform of their own, the parallax CSS var owns translateY
 staggerReveal(".bundle", { lift: false, stagger: 0.15 });
 staggerReveal(".post", { lift: false, stagger: 0.12 });
 
@@ -412,7 +412,7 @@ function plxImg(img) {
 
 if (!prefersReduced) {
   gsap.utils.toArray(".bundle").forEach((el) => plxVar(el, 26));
-  gsap.utils.toArray(".post").forEach((el, i) => plxVar(el, [14, 44, 24][i] ?? 20));
+  gsap.utils.toArray(".post").forEach((el) => plxVar(el, 22));
   gsap.utils.toArray(".section-head h2").forEach((el) => plxY(el, 26));
   plxY(".manifesto__text", 34);
   plxY(".waitlist__text", 24);
@@ -440,7 +440,7 @@ if (featurePost) {
 }
 
 /* ============ MICRO-INTERACTIONS ============ */
-// magnetic buttons — they lean toward the cursor
+// magnetic buttons, they lean toward the cursor
 if (!prefersReduced && window.matchMedia("(pointer: fine)").matches) {
   document.querySelectorAll(".btn, .storebtn, .lu__progress button").forEach((btn) => {
     const xTo = gsap.quickTo(btn, "x", { duration: 0.4, ease: "power3.out" });

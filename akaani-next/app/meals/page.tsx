@@ -46,7 +46,7 @@ export default function MealsPage() {
           <div className="mh__photo rounded-lg overflow-hidden shadow">
             <img src="/assets/meals-hero.jpg" alt="A week of chef-prepared meals packed in delivery containers" />
           </div>
-          <div className="mh__badge mt-4">📦 Your week, packed — <span>12 meals</span></div>
+          <div className="mh__badge mt-4">📦 Your week, packed, <span>12 meals</span></div>
           <div className="mh__badge2 mt-2"><i></i>Chef-prepared · Delivered Sat &amp; Sun</div>
         </div>
       </div>
@@ -63,7 +63,7 @@ export default function MealsPage() {
           <span className="step__rule"><i></i></span>
           <span className="step__kicker">Preferences</span>
           <h3>Tell us how you eat</h3>
-          <p>Your dietary needs, spice tolerance and favourite dishes — set once during onboarding. Lu remembers everything.</p>
+          <p>Your dietary needs, spice tolerance and favourite dishes, set once during onboarding. Lu remembers everything.</p>
         </article>
         <article className="step">
           <span className="step__rule"><i></i></span>
@@ -75,7 +75,7 @@ export default function MealsPage() {
           <span className="step__rule"><i></i></span>
           <span className="step__kicker">Delivery</span>
           <h3>Fresh to your door</h3>
-          <p>Delivered every <b>Saturday or Sunday</b>. Heat, serve, and log it in the app with one tap — macros included.</p>
+          <p>Delivered every <b>Saturday or Sunday</b>. Heat, serve, and log it in the app with one tap, macros included.</p>
         </article>
       </div>
     </section>
@@ -114,7 +114,7 @@ export default function MealsPage() {
       <div className="section-head" style={{textAlign: "center"}}>
         <p className="section-head__kicker">Meal plans</p>
         <h2>Pick your pace.</h2>
-        <p className="section-head__sub" style={{marginLeft: "auto", marginRight: "auto"}}>Founding-member pricing announced at launch — waitlist members lock in the best rate.</p>
+        <p className="section-head__sub" style={{marginLeft: "auto", marginRight: "auto"}}>Founding-member pricing announced at launch, waitlist members lock in the best rate.</p>
       </div>
       <div className="plans__grid">
         <article className="plan-card">
@@ -161,7 +161,7 @@ export default function MealsPage() {
       <div className="section-head">
         <p className="section-head__kicker">Where we cook</p>
         <h2>Rolling out, city by city.</h2>
-        <p className="section-head__sub">More cities launching soon — waitlist members hear first.</p>
+        <p className="section-head__sub">More cities launching soon, waitlist members hear first.</p>
       </div>
       <div className="cities__grid">
         <article className="city">
@@ -197,19 +197,19 @@ export default function MealsPage() {
           </details>
           <details className="faq__item">
             <summary>Who is Lu?<span className="faq__icon"></span></summary>
-            <div className="faq__answer"><p>Lu is akaani's AI food companion — part chef, part coach. For meals, Lu learns your preferences and helps curate your weekly menu around your goals.</p></div>
+            <div className="faq__answer"><p>Lu is akaani's AI food companion, part chef, part coach. For meals, Lu learns your preferences and helps curate your weekly menu around your goals.</p></div>
           </details>
           <details className="faq__item">
             <summary>Is it strictly Nigerian food?<span className="faq__icon"></span></summary>
-            <div className="faq__answer"><p>We start with the classics — jollof, egusi, suya, pepper soup — and we're expanding across West African cuisine. If you love the food, you're home here.</p></div>
+            <div className="faq__answer"><p>We start with the classics: jollof, egusi, suya and pepper soup, and we're expanding across West African cuisine. If you love the food, you're home here.</p></div>
           </details>
           <details className="faq__item">
             <summary>How is this different from other meal services?<span className="faq__icon"></span></summary>
-            <div className="faq__answer"><p>Nobody else does authentic Nigerian food with accurate macros. Generic services give you bland "fusion"; we give you the real pot — and the numbers to hit your goals with it.</p></div>
+            <div className="faq__answer"><p>Nobody else does authentic Nigerian food with accurate macros. Generic services give you bland "fusion"; we give you the real pot, and the numbers to hit your goals with it.</p></div>
           </details>
           <details className="faq__item">
             <summary>Do I need the akaani app?<span className="faq__icon"></span></summary>
-            <div className="faq__answer"><p>No — meals work on their own. But with the app, every delivered meal logs itself with one tap, so your macros track automatically. It's free for 30 days.</p></div>
+            <div className="faq__answer"><p>No, meals work on their own. But with the app, every delivered meal logs itself with one tap, so your macros track automatically. It's free for 30 days.</p></div>
           </details>
         </div>
       </div>
@@ -221,7 +221,7 @@ export default function MealsPage() {
         <div className="wform__side">
           <p className="section-head__kicker">The waitlist</p>
           <h2>Be first<br />at the table.</h2>
-          <p>Founding members don't just eat first — they shape the menu.</p>
+          <p>Founding members don't just eat first, they shape the menu.</p>
           <ul className="wform__perks">
             <li><i>🏷️</i> Lock in founding-member pricing, forever</li>
             <li><i>🚪</i> First pick of delivery slots in your city</li>

@@ -38,7 +38,7 @@ export default function RecipesPage() {
         </div>
         <div className="rh__visual flex-1 max-w-md mx-auto" id="rhVisual" aria-hidden="true">
           <figure className="rh__card rh__card--back rounded-lg overflow-hidden shadow-sm">
-            <img src="/assets/asun.jpg" alt="" />
+            <img src="/assets/dish-asun.jpg" alt="" />
             <figcaption>The Protein Pot <em>$4.99</em></figcaption>
           </figure>
           <figure className="rh__card rh__card--front rounded-lg overflow-hidden shadow-lg mt-4">

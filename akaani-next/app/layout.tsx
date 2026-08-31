@@ -12,7 +12,7 @@ const outfit = Outfit({
 });
 
 export const metadata: Metadata = {
-  title: "akaani — Nigerian food, tracked properly.",
+  title: "akaani | Nigerian food, tracked properly.",
   description:
     "200+ Nigerian dishes, accurate macros, no guessing. akaani is the nutrition app built for how we actually eat.",
 };

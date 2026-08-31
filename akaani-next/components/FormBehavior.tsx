@@ -53,7 +53,7 @@ export default function FormBehavior({ kind }: { kind: Kind }) {
           if (!form.checkValidity()) return form.reportValidity();
           const d = new FormData(form);
           const subject = `[${d.get("topic")}] ${d.get("subject")}`;
-          const body = `${d.get("message")}\n\n— ${d.get("name")} (${d.get("email")})`;
+          const body = `${d.get("message")}\n\nFrom ${d.get("name")} (${d.get("email")})`;
           window.location.href = `mailto:hello@useakaani.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
           gsap.to(form, {
             autoAlpha: 0,

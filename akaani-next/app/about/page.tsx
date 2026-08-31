@@ -32,7 +32,7 @@ export default function AboutPage() {
           </h1>
           <p className="ah__sub text-gray-700 dark:text-gray-300 mt-4">akaani is the first AI-powered meal platform that truly understands West African cuisine and turns it into a precision health tool for millions of people.</p>
           <div className="ah__actions mt-6 flex gap-4">
-            <a href="/#cta" className="btn btn--accent btn--lg">Start free — 30 days</a>
+            <a href="/#cta" className="btn btn--accent btn--lg">Start free for 30 days</a>
             <a href="#team" className="btn btn--ghost-dark btn--lg">Meet the team</a>
           </div>
         </div>
@@ -66,18 +66,18 @@ export default function AboutPage() {
       <div className="section-head" style={{position: "relative"}}>
         <p className="section-head__kicker">Our values</p>
         <h2>Our values shape every<br />decision we make.</h2>
-        <p className="section-head__sub" style={{color: "rgba(251,245,236,0.65)"}}>These aren't words on a wall. They're the principles that guide how we build akaani — and how Lu shows up for you every day.</p>
+        <p className="section-head__sub" style={{color: "rgba(251,245,236,0.65)"}}>These aren't words on a wall. They're the principles that guide how we build akaani, and how Lu shows up for you every day.</p>
       </div>
       <div className="values__grid">
         <article className="value">
           <span className="value__num">01</span>
           <h3>Culture first</h3>
-          <p>African food is not a niche — it's the daily reality of over a billion people. Every decision we make starts by asking: does this honour the culture it serves? We never compromise cultural identity for convenience.</p>
+          <p>African food is not a niche, it's the daily reality of over a billion people. Every decision we make starts by asking: does this honour the culture it serves? We never compromise cultural identity for convenience.</p>
         </article>
         <article className="value">
           <span className="value__num">02</span>
           <h3>Radical Personalisation</h3>
-          <p>Generic health advice has failed Africa for decades. We believe nutrition must be as individual as a fingerprint — shaped by your food culture, your health goals, your pantry, and your lived experience. Lu learns you, not a profile.</p>
+          <p>Generic health advice has failed Africa for decades. We believe nutrition must be as individual as a fingerprint, shaped by your food culture, your health goals, your pantry, and your lived experience. Lu learns you, not a profile.</p>
         </article>
         <article className="value">
           <span className="value__num">03</span>
@@ -222,7 +222,7 @@ export default function AboutPage() {
           <div className="chan__card chan__card--dark">
             <span className="chan__kicker">Ask Lu instead</span>
             <b>Instant answers, in the app</b>
-            <p>Meal questions? Lu answers in seconds — free for your first 30 days.</p>
+            <p>Meal questions? Lu answers in seconds, free for your first 30 days.</p>
             <div className="chan__mascot" aria-hidden="true"><Lu /></div>
           </div>
 
@@ -245,7 +245,7 @@ export default function AboutPage() {
           <h2>Enough about us. What are you eating?</h2>
           <p>Thirty days free, no card. Track your own rice, swallow and soup, and see the numbers properly.</p>
         </div>
-        <a href="/#cta" className="btn btn--dark btn--lg">Start free — 30 days</a>
+        <a href="/#cta" className="btn btn--dark btn--lg">Start free for 30 days</a>
       </div>
     </section>
       </main>

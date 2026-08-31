@@ -1,6 +1,6 @@
 /* ============ MEALS PAGE ============ */
 
-    /* hero — split: copy left, packed-meals image right */
+    /* hero, split: copy left, packed-meals image right */
     .mh {
       position: relative; min-height: 100svh;
       display: flex; align-items: center;
@@ -56,7 +56,7 @@
       .mh__badge2 { right: -2px; }
     }
 
-    /* steps — clean editorial columns */
+    /* steps, clean editorial columns */
     .steps { padding: clamp(90px, 14vh, 160px) clamp(20px, 5vw, 72px); }
     .steps__grid { max-width: 1280px; margin: 0 auto; display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(28px, 4vw, 64px); }
     .step { padding-top: 28px; position: relative; }

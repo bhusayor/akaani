@@ -25,7 +25,7 @@ export default function Motion() {
       staggerReveal(".waitlist__inner");
 
       parallaxVar(".bundle", [26, 26, 26]);
-      parallaxVar(".post", [14, 44, 24]);
+      parallaxVar(".post", [22, 22, 22]);
       parallaxY(".section-head h2", 26);
       parallaxY(".manifesto__text", 34);
 

@@ -44,15 +44,15 @@
 
     /* main split */
     .cwrap { padding: clamp(30px, 5vh, 60px) clamp(20px, 5vw, 72px) clamp(90px, 14vh, 150px); }
-    .cwrap__inner {
-      max-width: 1280px; margin: 0 auto;
-      display: grid; grid-template-columns: 0.9fr 1.1fr;
-      gap: clamp(24px, 3vw, 48px);
-      align-items: start;
-    }
+    .cwrap__inner { max-width: 1280px; margin: 0 auto; }
 
     /* channels column */
-    .chan { display: flex; flex-direction: column; gap: clamp(14px, 1.8vw, 22px); }
+    .chan {
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      gap: clamp(14px, 1.8vw, 22px); align-items: stretch;
+    }
+    @media (max-width: 1023.98px) { .chan { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 639.98px) { .chan { grid-template-columns: 1fr; } }
     .chan__card {
       background: var(--paper); border: 1px solid var(--line);
       border-radius: var(--radius-lg);
@@ -88,47 +88,6 @@
     .chan__socials a:hover { border-color: var(--accent); color: var(--accent); }
 
     /* form column */
-    .cform {
-      background: var(--ink); color: var(--bg);
-      border-radius: 40px;
-      padding: clamp(30px, 4vw, 56px);
-    }
-    .cform h2 { font-size: clamp(1.7rem, 2.6vw, 2.3rem); margin-bottom: 8px; }
-    .cform__hint { color: rgba(251, 245, 236, 0.6); font-size: 0.95rem; margin-bottom: 28px; }
-    .cform form { display: flex; flex-direction: column; gap: 18px; }
-    .cform__row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
-    .cform label { font-size: 0.82rem; font-weight: 600; color: rgba(251, 245, 236, 0.75); display: flex; flex-direction: column; gap: 8px; }
-    .cform input, .cform textarea, .cform select {
-      font: inherit; font-size: 0.96rem;
-      padding: 14px 18px; border-radius: 14px;
-      border: 1.5px solid rgba(251, 245, 236, 0.22);
-      background: rgba(251, 245, 236, 0.07); color: var(--bg);
-      outline: none; transition: border-color 0.3s; width: 100%;
-      resize: vertical;
-    }
-    .cform input:focus, .cform textarea:focus, .cform select:focus { border-color: var(--accent); }
-    .cform input::placeholder, .cform textarea::placeholder { color: rgba(251, 245, 236, 0.4); }
-    .cform select option { color: var(--ink); }
-    .cform textarea { min-height: 140px; }
-
-    .cform__topics { display: flex; gap: 8px; flex-wrap: wrap; }
-    .cform__topics input { position: absolute; opacity: 0; pointer-events: none; width: 1px; height: 1px; }
-    .cform__topics label { flex-direction: row; }
-    .cform__topics span {
-      display: block; font-size: 0.85rem; font-weight: 600;
-      padding: 9px 18px; border-radius: 999px;
-      border: 1.5px solid rgba(251, 245, 236, 0.22);
-      cursor: pointer; transition: all 0.25s;
-    }
-    .cform__topics span:hover { border-color: var(--accent); }
-    .cform__topics input:checked + span { background: var(--accent); border-color: var(--accent); color: #fff; }
-
-    .cform__note { font-size: 0.8rem; color: rgba(251, 245, 236, 0.5); }
-    .cform__success { display: none; text-align: center; padding: 50px 10px; }
-    .cform__success svg { width: 130px; margin: 0 auto 18px; display: block; }
-    .cform__success b { display: block; font-size: 1.5rem; margin-bottom: 8px; }
-    .cform__success p { color: rgba(251, 245, 236, 0.7); }
-
     /* FAQ teaser */
     .cfaq { padding: 0 clamp(20px, 5vw, 72px) clamp(90px, 14vh, 150px); }
     .cfaq__inner {
@@ -143,5 +102,4 @@
 
     @media (max-width: 1024px) {
       .cwrap__inner { grid-template-columns: 1fr; }
-      .cform__row { grid-template-columns: 1fr; }
     }

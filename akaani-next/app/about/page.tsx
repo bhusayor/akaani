@@ -4,7 +4,6 @@ import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 import Lu from "@/components/Lu";
 import Motion from "./Motion";
-import FormBehavior from "@/components/FormBehavior";
 import "../../styles/about.css";
 import "../../styles/contact.css";
 
@@ -18,7 +17,6 @@ export default function AboutPage() {
     <>
       <Nav ctaLabel="Get the app" ctaHref="/#cta" />
       <Motion />
-      <FormBehavior kind="contact" />
 
       <main>
 
@@ -229,7 +227,7 @@ export default function AboutPage() {
           </div>
 
           <div className="chan__card">
-            <span className="chan__kicker">Where we cook</span>
+            <span className="chan__kicker">Where we operate</span>
             <b>United States</b>
             <p>akaani meals currently delivers in:</p>
             <div className="chan__cities"><span>Dallas, TX</span><span>Houston, TX</span><span>Seattle, WA</span></div>
@@ -244,55 +242,15 @@ export default function AboutPage() {
           </div>
         </div>
 
-        <div className="cform" id="cform">
-          <form id="contactForm" noValidate>
-            <div>
-              <h2>Send a message</h2>
-              <p className="cform__hint">Tell us what's on your mind — we read every one.</p>
-            </div>
-
-            <div className="cform__topics" role="group" aria-label="Topic">
-              <label><input type="radio" name="topic" value="General" checked /><span>General</span></label>
-              <label><input type="radio" name="topic" value="Meals" /><span>Meals</span></label>
-              <label><input type="radio" name="topic" value="Recipe bundles" /><span>Recipe bundles</span></label>
-              <label><input type="radio" name="topic" value="Partnership" /><span>Partnership</span></label>
-              <label><input type="radio" name="topic" value="Press" /><span>Press</span></label>
-            </div>
-
-            <div className="cform__row">
-              <label>Full name
-                <input type="text" name="name" placeholder="Adaeze Okafor" required />
-              </label>
-              <label>Email address
-                <input type="email" name="email" placeholder="you@example.com" required />
-              </label>
-            </div>
-
-            <label>Subject
-              <input type="text" name="subject" placeholder="What's it about?" required />
-            </label>
-
-            <label>Message
-              <textarea name="message" placeholder="Go ahead, we're listening…" required></textarea>
-            </label>
-
-            <button type="submit" className="btn btn--accent btn--lg">Send message</button>
-            <p className="cform__note">This opens your email app with everything pre-filled — nothing gets lost.</p>
-          </form>
-
-          <div className="cform__success" id="cformSuccess">
-            <Lu />
-            <b>Message on its way! 📨</b>
-            <p>Your email app should have opened with everything filled in.<br />We'll get back to you within one business day.</p>
-          </div>
-        </div>
-
       </div>
     </section>
 
     <section className="acta">
       <div className="acta__inner">
-        <h2>Hungry for what we're cooking?</h2>
+        <div className="acta__copy">
+          <h2>Enough about us. What are you eating?</h2>
+          <p>Thirty days free, no card. Track your own rice, swallow and soup, and see the numbers properly.</p>
+        </div>
         <a href="/#cta" className="btn btn--dark btn--lg">Start free — 30 days</a>
       </div>
     </section>

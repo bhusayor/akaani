@@ -131,7 +131,9 @@
       display: flex; align-items: center; justify-content: space-between;
       gap: 30px; flex-wrap: wrap;
     }
-    .acta h2 { font-size: clamp(1.9rem, 3.6vw, 3rem); max-width: 560px; }
+    .acta__copy { max-width: 620px; }
+    .acta h2 { font-size: clamp(1.9rem, 3.6vw, 3rem); margin-bottom: 12px; }
+    .acta__copy p { font-size: 1.02rem; line-height: 1.6; color: rgba(255, 255, 255, 0.82); }
     .acta .btn--dark:hover { background: var(--paper); color: var(--ink); }
 
     @media (max-width: 1024px) {

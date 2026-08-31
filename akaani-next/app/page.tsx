@@ -25,7 +25,6 @@ export default function HomePage() {
     <section className="hero" id="hero">
       <div className="hero__inner">
         <div className="hero__content">
-          <p className="hero__eyebrow"><span className="hero__pulse"></span> 2,000+ people already eating smarter</p>
           <h1 className="hero__title">
             <span className="line"><span className="line__inner">The only app that</span></span>
             <span className="line"><span className="line__inner">tracks macros for</span></span>
@@ -36,6 +35,12 @@ export default function HomePage() {
             <a href="#cta" className="btn btn--accent btn--lg">Start free — 30 days</a>
             <a href="#story" className="btn btn--ghost-dark btn--lg">Our story</a>
           </div>
+          <p className="hero__proof">
+            <span className="hero__faces" aria-hidden="true">
+              <i>A</i><i>C</i><i>N</i><i>T</i>
+            </span>
+            <span className="hero__pulse"></span> 2,000+ people already eating smarter
+          </p>
         </div>
         <div className="hero__visual" id="heroVisual" aria-hidden="true">
           <div className="hero__photo">
@@ -63,16 +68,16 @@ export default function HomePage() {
         </div>
         <div className="manifesto__media">
           <figure className="manifesto__img manifesto__img--main">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f6/Jollof_spaghetti.jpg/1280px-Jollof_spaghetti.jpg" alt="A plate of Nigerian jollof spaghetti" loading="lazy" />
+            <figcaption><b>Jollof spaghetti</b> · 1 plate · 380 kcal</figcaption>
+          </figure>
+          <figure className="manifesto__img manifesto__img--float1">
             <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0d/Jollof_%28Jollof-_Rice%29.jpg/1920px-Jollof_%28Jollof-_Rice%29.jpg" alt="A plate of smoky Nigerian jollof rice" loading="lazy" />
             <figcaption><b>Jollof rice</b> · 1 cup · 310 kcal</figcaption>
           </figure>
-          <figure className="manifesto__img manifesto__img--float1">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/89/Egusi_soup_in_a_plate.jpg/1920px-Egusi_soup_in_a_plate.jpg" alt="Egusi soup in a plate" loading="lazy" />
-            <figcaption><b>Egusi soup</b> · 1 bowl · 420 kcal</figcaption>
-          </figure>
           <figure className="manifesto__img manifesto__img--float2">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fc/Suya_preparation_for_grilling_5.jpg/1920px-Suya_preparation_for_grilling_5.jpg" alt="Suya skewers on the grill" loading="lazy" />
-            <figcaption><b>Suya</b> · 3 skewers · 280 kcal</figcaption>
+            <img src="/assets/asun.jpg" alt="Peppered asun, grilled goat meat with chillies" loading="lazy" />
+            <figcaption><b>Asun</b> · 1 portion · 290 kcal</figcaption>
           </figure>
         </div>
       </div>
@@ -230,7 +235,7 @@ export default function HomePage() {
     <section className="bridge">
       <figure className="bridge__float bridge__float--1" aria-hidden="true"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b4/Suya_with_pepper_sauce.jpg/1280px-Suya_with_pepper_sauce.jpg" alt="" loading="lazy" /></figure>
       <figure className="bridge__float bridge__float--2" aria-hidden="true"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/63/Goat_meat_pepper_soup_served_with_bread.jpg/1920px-Goat_meat_pepper_soup_served_with_bread.jpg" alt="" loading="lazy" /></figure>
-      <p className="bridge__kicker">One app, many doors</p>
+      <p className="bridge__kicker">One platform, many doors</p>
       <h2 className="bridge__text" id="bridgeText">However you want to eat better, akaani meets you there.</h2>
     </section>
 

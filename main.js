@@ -73,7 +73,7 @@ mobileMenu.querySelectorAll("a").forEach((a) =>
 const heroIntro = gsap.timeline({ defaults: { ease: "power4.out" } });
 heroIntro
   .to(".hero .line__inner", { y: 0, duration: 1.2, stagger: 0.12, delay: 0.25 })
-  .from(".hero__eyebrow", { y: 24, autoAlpha: 0, duration: 0.8 }, "-=0.9")
+  .from(".hero__proof", { y: 24, autoAlpha: 0, duration: 0.8 }, "-=0.35")
   .from(".hero__desc", { y: 30, autoAlpha: 0, duration: 0.9 }, "-=0.7")
   .from(".hero__actions .btn", { y: 24, autoAlpha: 0, duration: 0.7, stagger: 0.1 }, "-=0.6")
   .from(".hero__photo", { y: 80, autoAlpha: 0, rotation: -4, duration: 1, ease: "power4.out" }, "-=0.9")
@@ -370,6 +370,19 @@ staggerReveal(".section-head");
 // cards fade in without a transform of their own — the parallax CSS var owns translateY
 staggerReveal(".bundle", { lift: false, stagger: 0.15 });
 staggerReveal(".post", { lift: false, stagger: 0.12 });
+
+/* The featured post had no entrance while the cards beside it animated,
+   so it read as the flattest thing in the section. */
+if (!prefersReduced) {
+  const fp = document.querySelector(".feature-post");
+  if (fp) {
+    gsap.timeline({ scrollTrigger: { trigger: fp, start: "top 80%", once: true } })
+      .from(fp, { y: 44, autoAlpha: 0, duration: 0.85, ease: "power3.out" })
+      .from(fp.querySelector(".feature-post__img img"), { scale: 1.2, duration: 1.4, ease: "power3.out" }, "-=0.75")
+      .from(fp.querySelectorAll(".feature-post__body > *"), { y: 24, autoAlpha: 0, duration: 0.6, stagger: 0.09, ease: "power3.out" }, "-=1.05")
+      .from(fp.querySelector(".feature-post__badge"), { scale: 0, autoAlpha: 0, duration: 0.5, ease: "back.out(1.9)" }, "-=0.6");
+  }
+}
 staggerReveal(".faq__item", { stagger: 0.08 });
 staggerReveal(".waitlist__inner");
 staggerReveal(".faq__head");
@@ -398,7 +411,7 @@ function plxImg(img) {
 }
 
 if (!prefersReduced) {
-  gsap.utils.toArray(".bundle").forEach((el, i) => plxVar(el, [16, 46, 28][i] ?? 20));
+  gsap.utils.toArray(".bundle").forEach((el) => plxVar(el, 26));
   gsap.utils.toArray(".post").forEach((el, i) => plxVar(el, [14, 44, 24][i] ?? 20));
   gsap.utils.toArray(".section-head h2").forEach((el) => plxY(el, 26));
   plxY(".manifesto__text", 34);

@@ -8,7 +8,7 @@ export default function Motion() {
   useEffect(() => {
     const ctx = gsap.context(() => {
       revealLines(".hero .line__inner");
-      gsap.from(".hero__eyebrow", { y: 24, autoAlpha: 0, duration: 0.8, delay: 0.3 });
+      gsap.from(".hero__proof", { y: 24, autoAlpha: 0, duration: 0.8, delay: 0.75 });
       gsap.from(".hero__desc", { y: 30, autoAlpha: 0, duration: 0.9, delay: 0.5 });
       gsap.from(".hero__actions .btn", { y: 24, autoAlpha: 0, duration: 0.7, stagger: 0.1, delay: 0.7 });
       gsap.from(".hero__pop", { scale: 0, autoAlpha: 0, duration: 0.6, ease: "back.out(1.8)", stagger: 0.14, delay: 0.9 });
@@ -24,10 +24,32 @@ export default function Motion() {
       staggerReveal(".faq__head");
       staggerReveal(".waitlist__inner");
 
-      parallaxVar(".bundle", [16, 46, 28]);
+      parallaxVar(".bundle", [26, 26, 26]);
       parallaxVar(".post", [14, 44, 24]);
       parallaxY(".section-head h2", 26);
       parallaxY(".manifesto__text", 34);
+
+      // The featured post was the only card in the section with no entrance,
+      // so it read as the flattest thing on a page full of movement.
+      if (!prefersReduced()) {
+        const fp = document.querySelector<HTMLElement>(".feature-post");
+        if (fp) {
+          gsap
+            .timeline({ scrollTrigger: { trigger: fp, start: "top 80%", once: true } })
+            .from(fp, { y: 44, autoAlpha: 0, duration: 0.85, ease: "power3.out" })
+            .from(fp.querySelector(".feature-post__img img"), { scale: 1.2, duration: 1.4, ease: "power3.out" }, "-=0.75")
+            .from(
+              fp.querySelectorAll(".feature-post__body > *"),
+              { y: 24, autoAlpha: 0, duration: 0.6, stagger: 0.09, ease: "power3.out" },
+              "-=1.05",
+            )
+            .from(
+              fp.querySelector(".feature-post__badge"),
+              { scale: 0, autoAlpha: 0, duration: 0.5, ease: "back.out(1.9)" },
+              "-=0.6",
+            );
+        }
+      }
 
       if (!prefersReduced()) {
         gsap.to(".hero__photo img", { y: -14, duration: 2.6, yoyo: true, repeat: -1, ease: "sine.inOut" });

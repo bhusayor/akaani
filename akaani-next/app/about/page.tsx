@@ -226,12 +226,6 @@ export default function AboutPage() {
             <div className="chan__mascot" aria-hidden="true"><Lu /></div>
           </div>
 
-          <div className="chan__card">
-            <span className="chan__kicker">Where we operate</span>
-            <b>United States</b>
-            <p>akaani meals currently delivers in:</p>
-            <div className="chan__cities"><span>Dallas, TX</span><span>Houston, TX</span><span>Seattle, WA</span></div>
-          </div>
 
           <div className="chan__card">
             <span className="chan__kicker">Follow along</span>

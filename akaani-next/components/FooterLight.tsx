@@ -6,7 +6,7 @@ const LINKS = [
   { href: "/recipes", label: "Recipes" },
   { href: "/blog", label: "Blog" },
   { href: "/about", label: "About us" },
-  { href: "/contact", label: "Contact us" },
+  { href: "/about#contact", label: "Contact us" },
 ];
 
 const SOCIAL_CLS =

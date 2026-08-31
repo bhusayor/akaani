@@ -419,7 +419,7 @@ export default function HomePage() {
             <a href="/about">About</a>
             <a href="/blog">Blog</a>
             <a href="#faq">FAQ</a>
-            <a href="/contact">Contact</a>
+            <a href="/about#contact">Contact</a>
           </div>
           <div className="footer__col">
             <h4>Social</h4>

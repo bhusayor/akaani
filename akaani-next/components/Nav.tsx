@@ -11,7 +11,6 @@ const LINKS = [
   { href: "/recipes", label: "Recipes" },
   { href: "/blog", label: "Blog" },
   { href: "/about", label: "About" },
-  { href: "/contact", label: "Contact" },
 ] as const;
 
 type NavProps = {

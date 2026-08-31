@@ -7,6 +7,9 @@ const nextConfig: NextConfig = {
   turbopack: {
     root: path.join(__dirname),
   },
+  async redirects() {
+    return [{ source: "/contact", destination: "/about#contact", permanent: true }];
+  },
   images: {
     remotePatterns: [
       { protocol: "https", hostname: "upload.wikimedia.org" },

@@ -4,11 +4,13 @@ import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 import Lu from "@/components/Lu";
 import Motion from "./Motion";
+import FormBehavior from "@/components/FormBehavior";
 import "../../styles/about.css";
+import "../../styles/contact.css";
 
 export const metadata: Metadata = {
-  title: "About | akaani",
-  description: "We're building the first AI meal platform made for Nigerian food. Meet the team and the story behind akaani.",
+  title: "About & contact | akaani",
+  description: "The story behind akaani, the team building it, and how to reach us.",
 };
 
 export default function AboutPage() {
@@ -16,6 +18,7 @@ export default function AboutPage() {
     <>
       <Nav ctaLabel="Get the app" ctaHref="/#cta" />
       <Motion />
+      <FormBehavior kind="contact" />
 
       <main>
 
@@ -203,6 +206,90 @@ export default function AboutPage() {
     </section>
 
     
+    <section className="cwrap" id="contact">
+      <div className="cwrap__inner">
+        <div className="cwrap__head">
+          <p className="section-head__kicker">Contact</p>
+          <h2>Talk to us. <span className="accent-text">We answer fast.</span></h2>
+          <p>Questions, ideas, partnerships, press, or just to argue about whose jollof is better. The kitchen door is open.</p>
+        </div>
+
+        <div className="chan">
+          <a className="chan__card" href="mailto:hello@useakaani.com">
+            <span className="chan__kicker">Email us</span>
+            <b>hello@useakaani.com</b>
+            <p>For anything and everything. We usually reply within one business day.</p>
+          </a>
+
+          <div className="chan__card chan__card--dark">
+            <span className="chan__kicker">Ask Lu instead</span>
+            <b>Instant answers, in the app</b>
+            <p>Meal questions? Lu answers in seconds — free for your first 30 days.</p>
+            <div className="chan__mascot" aria-hidden="true"><Lu /></div>
+          </div>
+
+          <div className="chan__card">
+            <span className="chan__kicker">Where we cook</span>
+            <b>United States</b>
+            <p>akaani meals currently delivers in:</p>
+            <div className="chan__cities"><span>Dallas, TX</span><span>Houston, TX</span><span>Seattle, WA</span></div>
+          </div>
+
+          <div className="chan__card">
+            <span className="chan__kicker">Follow along</span>
+            <b>Social</b>
+            <div className="chan__socials">
+              <a href="#">Instagram</a><a href="#">TikTok</a><a href="#">X (Twitter)</a><a href="#">YouTube</a>
+            </div>
+          </div>
+        </div>
+
+        <div className="cform" id="cform">
+          <form id="contactForm" noValidate>
+            <div>
+              <h2>Send a message</h2>
+              <p className="cform__hint">Tell us what's on your mind — we read every one.</p>
+            </div>
+
+            <div className="cform__topics" role="group" aria-label="Topic">
+              <label><input type="radio" name="topic" value="General" checked /><span>General</span></label>
+              <label><input type="radio" name="topic" value="Meals" /><span>Meals</span></label>
+              <label><input type="radio" name="topic" value="Recipe bundles" /><span>Recipe bundles</span></label>
+              <label><input type="radio" name="topic" value="Partnership" /><span>Partnership</span></label>
+              <label><input type="radio" name="topic" value="Press" /><span>Press</span></label>
+            </div>
+
+            <div className="cform__row">
+              <label>Full name
+                <input type="text" name="name" placeholder="Adaeze Okafor" required />
+              </label>
+              <label>Email address
+                <input type="email" name="email" placeholder="you@example.com" required />
+              </label>
+            </div>
+
+            <label>Subject
+              <input type="text" name="subject" placeholder="What's it about?" required />
+            </label>
+
+            <label>Message
+              <textarea name="message" placeholder="Go ahead, we're listening…" required></textarea>
+            </label>
+
+            <button type="submit" className="btn btn--accent btn--lg">Send message</button>
+            <p className="cform__note">This opens your email app with everything pre-filled — nothing gets lost.</p>
+          </form>
+
+          <div className="cform__success" id="cformSuccess">
+            <Lu />
+            <b>Message on its way! 📨</b>
+            <p>Your email app should have opened with everything filled in.<br />We'll get back to you within one business day.</p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
     <section className="acta">
       <div className="acta__inner">
         <h2>Hungry for what we're cooking?</h2>

@@ -35,7 +35,7 @@ export default function Footer({ giant = "akaani" }: { giant?: string }) {
             <h4>Company</h4>
             <Link href="/about">About</Link>
             <Link href="/blog">Blog</Link>
-            <Link href="/contact">Contact</Link>
+            <Link href="/about#contact">Contact</Link>
           </div>
           <div className="footer__col">
             <h4>Legal</h4>

@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>About — akaani</title>
+  <title>About &amp; contact — akaani</title>
   <meta name="description" content="We're building the first AI meal platform made for Nigerian food. Meet the team and the story behind akaani." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -156,6 +156,155 @@
       .team__grid { grid-template-columns: 1fr; max-width: 420px; margin-inline: auto; }
     }
   </style>
+  <style>
+    /* ============ CONTACT PAGE ============ */
+
+    .ch { position: relative; overflow: hidden; padding: 175px clamp(20px, 5vw, 72px) clamp(40px, 6vh, 60px); }
+    .ch__inner {
+      max-width: 1280px; margin: 0 auto;
+      display: grid; grid-template-columns: 1.35fr 1fr;
+      gap: clamp(30px, 4vw, 70px); align-items: center;
+    }
+    .ch h1 { font-size: clamp(2.8rem, 5.6vw, 5rem); margin-bottom: 24px; }
+    .ch h1 .line { display: block; overflow: hidden; }
+    .ch h1 .line__inner { display: block; transform: translateY(110%); }
+    .ch__sub { font-size: clamp(1.02rem, 1.5vw, 1.2rem); color: var(--ink-soft); max-width: 540px; }
+
+    /* hero visual: photo card with floating chat details */
+    .ch__visual { position: relative; justify-self: center; width: min(440px, 100%); }
+    .ch__photo {
+      border-radius: 28px; overflow: hidden;
+      transform: rotate(-2.5deg);
+      box-shadow: 0 34px 70px rgba(0, 51, 51, 0.18);
+      border: 5px solid var(--paper);
+    }
+    .ch__photo img { width: 100%; display: block; }
+    .ch__bubble {
+      position: absolute; top: -20px; right: -14px;
+      background: var(--ink); color: var(--bg);
+      padding: 13px 19px; border-radius: 18px 18px 4px 18px;
+      font-size: 0.92rem; font-weight: 600;
+      box-shadow: 0 16px 36px rgba(0, 51, 51, 0.22);
+    }
+    .ch__stamp {
+      position: absolute; bottom: -16px; left: -14px;
+      display: inline-flex; align-items: center; gap: 8px;
+      font-size: 0.8rem; font-weight: 700;
+      background: var(--paper); color: var(--accent);
+      padding: 11px 18px; border-radius: 999px;
+      box-shadow: 0 16px 36px rgba(0, 51, 51, 0.16);
+    }
+    .ch__stamp i { font-style: normal; width: 8px; height: 8px; border-radius: 50%; background: var(--accent); animation: chpulse 1.8s infinite; }
+    @keyframes chpulse {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(218, 112, 0, 0.5); }
+      60% { box-shadow: 0 0 0 8px rgba(218, 112, 0, 0); }
+    }
+    @media (max-width: 900px) { .ch__inner { grid-template-columns: 1fr; } .ch__visual { display: none; } }
+
+    /* main split */
+    .cwrap { padding: clamp(30px, 5vh, 60px) clamp(20px, 5vw, 72px) clamp(90px, 14vh, 150px); }
+    .cwrap__inner {
+      max-width: 1280px; margin: 0 auto;
+      display: grid; grid-template-columns: 0.9fr 1.1fr;
+      gap: clamp(24px, 3vw, 48px);
+      align-items: start;
+    }
+
+    /* channels column */
+    .chan { display: flex; flex-direction: column; gap: clamp(14px, 1.8vw, 22px); }
+    .chan__card {
+      background: var(--paper); border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      padding: clamp(24px, 2.6vw, 34px);
+      display: block; color: var(--ink);
+      transition: transform 0.5s var(--ease), box-shadow 0.5s, border-color 0.4s;
+    }
+    a.chan__card:hover { transform: translateY(-6px); box-shadow: 0 22px 44px rgba(0, 51, 51, 0.12); border-color: var(--accent); }
+    .chan__kicker {
+      display: block;
+      font-size: 0.74rem; font-weight: 800; letter-spacing: 0.16em; text-transform: uppercase;
+      color: var(--accent); margin-bottom: 10px;
+    }
+    .chan__card b { display: block; font-size: clamp(1.15rem, 1.6vw, 1.4rem); margin-bottom: 6px; }
+    .chan__card p { color: var(--ink-soft); font-size: 0.93rem; }
+    .chan__card--dark { background: var(--ink); color: var(--bg); border: none; position: relative; overflow: hidden; }
+    .chan__card--dark p { color: rgba(251, 245, 236, 0.7); }
+    .chan__mascot { position: absolute; right: -16px; bottom: -34px; width: 120px; transform: rotate(-6deg); }
+    .chan__mascot svg { width: 100%; height: auto; }
+    .chan__cities { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 14px; }
+    .chan__cities span {
+      font-size: 0.78rem; font-weight: 700;
+      background: var(--bg-soft); color: var(--accent);
+      padding: 6px 14px; border-radius: 999px;
+    }
+    .chan__socials { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 14px; }
+    .chan__socials a {
+      font-size: 0.85rem; font-weight: 600;
+      padding: 9px 18px; border-radius: 999px;
+      border: 1.5px solid var(--line); color: var(--ink);
+      transition: all 0.3s;
+    }
+    .chan__socials a:hover { border-color: var(--accent); color: var(--accent); }
+
+    /* form column */
+    .cform {
+      background: var(--ink); color: var(--bg);
+      border-radius: 40px;
+      padding: clamp(30px, 4vw, 56px);
+    }
+    .cform h2 { font-size: clamp(1.7rem, 2.6vw, 2.3rem); margin-bottom: 8px; }
+    .cform__hint { color: rgba(251, 245, 236, 0.6); font-size: 0.95rem; margin-bottom: 28px; }
+    .cform form { display: flex; flex-direction: column; gap: 18px; }
+    .cform__row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    .cform label { font-size: 0.82rem; font-weight: 600; color: rgba(251, 245, 236, 0.75); display: flex; flex-direction: column; gap: 8px; }
+    .cform input, .cform textarea, .cform select {
+      font: inherit; font-size: 0.96rem;
+      padding: 14px 18px; border-radius: 14px;
+      border: 1.5px solid rgba(251, 245, 236, 0.22);
+      background: rgba(251, 245, 236, 0.07); color: var(--bg);
+      outline: none; transition: border-color 0.3s; width: 100%;
+      resize: vertical;
+    }
+    .cform input:focus, .cform textarea:focus, .cform select:focus { border-color: var(--accent); }
+    .cform input::placeholder, .cform textarea::placeholder { color: rgba(251, 245, 236, 0.4); }
+    .cform select option { color: var(--ink); }
+    .cform textarea { min-height: 140px; }
+
+    .cform__topics { display: flex; gap: 8px; flex-wrap: wrap; }
+    .cform__topics input { position: absolute; opacity: 0; pointer-events: none; width: 1px; height: 1px; }
+    .cform__topics label { flex-direction: row; }
+    .cform__topics span {
+      display: block; font-size: 0.85rem; font-weight: 600;
+      padding: 9px 18px; border-radius: 999px;
+      border: 1.5px solid rgba(251, 245, 236, 0.22);
+      cursor: pointer; transition: all 0.25s;
+    }
+    .cform__topics span:hover { border-color: var(--accent); }
+    .cform__topics input:checked + span { background: var(--accent); border-color: var(--accent); color: #fff; }
+
+    .cform__note { font-size: 0.8rem; color: rgba(251, 245, 236, 0.5); }
+    .cform__success { display: none; text-align: center; padding: 50px 10px; }
+    .cform__success svg { width: 130px; margin: 0 auto 18px; display: block; }
+    .cform__success b { display: block; font-size: 1.5rem; margin-bottom: 8px; }
+    .cform__success p { color: rgba(251, 245, 236, 0.7); }
+
+    /* FAQ teaser */
+    .cfaq { padding: 0 clamp(20px, 5vw, 72px) clamp(90px, 14vh, 150px); }
+    .cfaq__inner {
+      max-width: 1280px; margin: 0 auto;
+      background: var(--bg-soft); border-radius: 40px;
+      padding: clamp(40px, 5.4vw, 70px);
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 30px; flex-wrap: wrap;
+    }
+    .cfaq h2 { font-size: clamp(1.7rem, 3vw, 2.6rem); max-width: 520px; }
+    .cfaq p { color: var(--ink-soft); margin-top: 8px; }
+
+    @media (max-width: 1024px) {
+      .cwrap__inner { grid-template-columns: 1fr; }
+      .cform__row { grid-template-columns: 1fr; }
+    }
+  </style>
 </head>
 <body>
 
@@ -235,7 +384,6 @@
         <a href="recipes.html">Recipes</a>
         <a href="blog.html">Blog</a>
         <a href="about.html" class="is-active">About</a>
-        <a href="contact.html">Contact</a>
       </nav>
       <a href="index.html#cta" class="btn btn--accent nav__cta">Get the app</a>
       <button class="nav__burger" id="burger" aria-label="Open menu"><span></span><span></span></button>
@@ -248,7 +396,7 @@
     <a href="recipes.html">Recipes</a>
     <a href="blog.html">Blog</a>
     <a href="about.html" class="is-active">About</a>
-    <a href="contact.html">Contact</a>
+    <a href="about.html#contact">Contact</a>
     <a href="index.html#cta" class="btn btn--accent">Get the app</a>
   </div>
 
@@ -438,6 +586,93 @@
     </section>
 
     <!-- ============ CTA ============ -->
+    <!-- ============ CONTACT ============ -->
+    <section class="cwrap" id="contact">
+      <div class="cwrap__inner">
+        <div class="cwrap__head">
+          <p class="section-head__kicker">Contact</p>
+          <h2>Talk to us. <span class="accent-text">We answer fast.</span></h2>
+          <p>Questions, ideas, partnerships, press, or just to argue about whose jollof is better. The kitchen door is open.</p>
+        </div>
+
+        <div class="chan">
+          <a class="chan__card" href="mailto:hello@useakaani.com">
+            <span class="chan__kicker">Email us</span>
+            <b>hello@useakaani.com</b>
+            <p>For anything and everything. We usually reply within one business day.</p>
+          </a>
+
+          <div class="chan__card chan__card--dark">
+            <span class="chan__kicker">Ask Lu instead</span>
+            <b>Instant answers, in the app</b>
+            <p>Meal questions? Lu answers in seconds — free for your first 30 days.</p>
+            <div class="chan__mascot" aria-hidden="true"><svg viewBox="0 0 420 480"><use href="#luSym"/></svg></div>
+          </div>
+
+          <div class="chan__card">
+            <span class="chan__kicker">Where we cook</span>
+            <b>United States</b>
+            <p>akaani meals currently delivers in:</p>
+            <div class="chan__cities"><span>Dallas, TX</span><span>Houston, TX</span><span>Seattle, WA</span></div>
+          </div>
+
+          <div class="chan__card">
+            <span class="chan__kicker">Follow along</span>
+            <b>Social</b>
+            <div class="chan__socials">
+              <a href="#">Instagram</a><a href="#">TikTok</a><a href="#">X (Twitter)</a><a href="#">YouTube</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="cform" id="cform">
+          <form id="contactForm" novalidate>
+            <div>
+              <h2>Send a message</h2>
+              <p class="cform__hint">Tell us what's on your mind — we read every one.</p>
+            </div>
+
+            <div class="cform__topics" role="group" aria-label="Topic">
+              <label><input type="radio" name="topic" value="General" checked /><span>General</span></label>
+              <label><input type="radio" name="topic" value="Meals" /><span>Meals</span></label>
+              <label><input type="radio" name="topic" value="Recipe bundles" /><span>Recipe bundles</span></label>
+              <label><input type="radio" name="topic" value="Partnership" /><span>Partnership</span></label>
+              <label><input type="radio" name="topic" value="Press" /><span>Press</span></label>
+            </div>
+
+            <div class="cform__row">
+              <label>Full name
+                <input type="text" name="name" placeholder="Adaeze Okafor" required />
+              </label>
+              <label>Email address
+                <input type="email" name="email" placeholder="you@example.com" required />
+              </label>
+            </div>
+
+            <label>Subject
+              <input type="text" name="subject" placeholder="What's it about?" required />
+            </label>
+
+            <label>Message
+              <textarea name="message" placeholder="Go ahead, we're listening…" required></textarea>
+            </label>
+
+            <button type="submit" class="btn btn--accent btn--lg">Send message</button>
+            <p class="cform__note">This opens your email app with everything pre-filled — nothing gets lost.</p>
+          </form>
+
+          <div class="cform__success" id="cformSuccess">
+            <svg viewBox="0 0 420 480"><use href="#luSym"/></svg>
+            <b>Message on its way! 📨</b>
+            <p>Your email app should have opened with everything filled in.<br />We'll get back to you within one business day.</p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ============ FAQ TEASER ============ -->
+
     <section class="acta">
       <div class="acta__inner">
         <h2>Hungry for what we're cooking?</h2>
@@ -467,7 +702,6 @@
           <h4>Company</h4>
           <a href="about.html">About</a>
           <a href="index.html#faq">FAQ</a>
-          <a href="contact.html">Contact</a>
         </div>
         <div class="footer__col">
           <h4>Social</h4>

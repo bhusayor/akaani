@@ -112,7 +112,7 @@
     .cform textarea { min-height: 140px; }
 
     .cform__topics { display: flex; gap: 8px; flex-wrap: wrap; }
-    .cform__topics input { position: absolute; opacity: 0; pointer-events: none; }
+    .cform__topics input { position: absolute; opacity: 0; pointer-events: none; width: 1px; height: 1px; }
     .cform__topics label { flex-direction: row; }
     .cform__topics span {
       display: block; font-size: 0.85rem; font-weight: 600;

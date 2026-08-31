@@ -25,7 +25,7 @@ export default function PrivacyPage() {
       <div className="lg__head">
         <p className="section-head__kicker">Legal</p>
         <h1>We care about your privacy.</h1>
-        <div className="lg__meta"><span className="lg__badge">Last updated · July 2026</span><span>Questions? <a href="/contact" style={{color: "var(--accent)", fontWeight: "600"}}>Contact us</a></span></div>
+        <div className="lg__meta"><span className="lg__badge">Last updated · July 2026</span><span>Questions? <a href="/about#contact" style={{color: "var(--accent)", fontWeight: "600"}}>Contact us</a></span></div>
       </div>
     </section>
 

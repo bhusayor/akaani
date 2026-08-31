@@ -44,15 +44,18 @@
 
     /* main split */
     .cwrap { padding: clamp(30px, 5vh, 60px) clamp(20px, 5vw, 72px) clamp(90px, 14vh, 150px); }
-    .cwrap__inner { max-width: 1280px; margin: 0 auto; }
+    .cwrap__inner {
+      max-width: 1280px; margin: 0 auto;
+      display: grid; grid-template-columns: 0.85fr 1.15fr;
+      gap: clamp(28px, 4vw, 64px); align-items: start;
+    }
+    /* the heading holds the left column while the cards run down the right */
+    .cwrap__head { position: sticky; top: 110px; }
+    .cwrap__head h2 { font-size: clamp(1.9rem, 3.4vw, 2.9rem); margin: 6px 0 14px; }
+    .cwrap__head p { color: var(--ink-soft); font-size: 1.02rem; line-height: 1.65; max-width: 42ch; }
 
     /* channels column */
-    .chan {
-      display: grid; grid-template-columns: repeat(4, 1fr);
-      gap: clamp(14px, 1.8vw, 22px); align-items: stretch;
-    }
-    @media (max-width: 1023.98px) { .chan { grid-template-columns: repeat(2, 1fr); } }
-    @media (max-width: 639.98px) { .chan { grid-template-columns: 1fr; } }
+    .chan { display: flex; flex-direction: column; gap: clamp(14px, 1.8vw, 22px); }
     .chan__card {
       background: var(--paper); border: 1px solid var(--line);
       border-radius: var(--radius-lg);
@@ -100,6 +103,8 @@
     .cfaq h2 { font-size: clamp(1.7rem, 3vw, 2.6rem); max-width: 520px; }
     .cfaq p { color: var(--ink-soft); margin-top: 8px; }
 
-    @media (max-width: 1024px) {
+    @media (max-width: 1023.98px) {
       .cwrap__inner { grid-template-columns: 1fr; }
+      /* nothing to hold beside once it stacks */
+      .cwrap__head { position: static; }
     }

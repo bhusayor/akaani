@@ -87,3 +87,9 @@
 .price-us { display: none; }
 [data-region="us"] .price-ng { display: none; }
 [data-region="us"] .price-us { display: inline; }
+
+/* Indeterminate bar on the booking confirmation screen. */
+@keyframes slide {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(300%); }
+}

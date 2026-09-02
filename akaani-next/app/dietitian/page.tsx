@@ -20,7 +20,7 @@ export const metadata: Metadata = {
     "A 45-minute video call with akaani's in-house Registered Dietitian. Weight management, fitness nutrition, African diet review, healthy eating resets and family planning. Your Personal Nigerian Meal Guide lands in your inbox within 24 hours.",
 };
 
-const CALENDLY = "https://calendly.com/useakaani";
+const BOOK = "/dietitian/book";
 
 const SIGNS = [
   { icon: "clock" as SignIconName, text: "You are tired by 3pm most days, and it is not sleep." },
@@ -180,7 +180,7 @@ function FocusCard({
 export default function DietitianPage() {
   return (
     <>
-      <Nav ctaLabel="Book consultation" ctaHref={CALENDLY} ctaExternal />
+      <Nav ctaLabel="Book consultation" ctaHref={BOOK} ctaExternal />
       <Motion />
 
       <main>
@@ -210,7 +210,7 @@ export default function DietitianPage() {
               </FadeIn>
               <FadeIn delay={0.24}>
                 <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:gap-3.5">
-                  <Button href={CALENDLY} external variant="dark" size="lg" className="w-full sm:w-auto">
+                  <Button href={BOOK} variant="dark" size="lg" className="w-full sm:w-auto">
                     Book consultation
                   </Button>
                   <Button href="#signs" variant="ghostDark" size="lg" className="w-full sm:w-auto">
@@ -286,9 +286,7 @@ export default function DietitianPage() {
               <span className="text-ink-soft">So is a feeling you cannot quite name.</span>
             </p>
             <a
-              href={CALENDLY}
-              target="_blank"
-              rel="noopener noreferrer"
+              href={BOOK}
               className="group inline-flex flex-none items-center gap-2 font-bold text-accent underline decoration-accent/35 underline-offset-4 transition-colors duration-300 hover:text-ink hover:decoration-ink/40"
             >
               Book a consultation
@@ -352,9 +350,7 @@ export default function DietitianPage() {
             </div>
 
             <a
-              href={CALENDLY}
-              target="_blank"
-              rel="noopener noreferrer"
+              href={BOOK}
               className="group inline-flex flex-none items-center gap-2 font-bold text-accent underline decoration-accent/35 underline-offset-4 transition-colors duration-300 hover:text-bg hover:decoration-bg/40"
             >
               Book a consultation
@@ -495,11 +491,11 @@ export default function DietitianPage() {
                     <b>{v}</b>
                   </div>
                 ))}
-                <Button href={CALENDLY} external size="lg" className="mt-5 w-full">
+                <Button href={BOOK} size="lg" className="mt-5 w-full">
                   Book consultation
                 </Button>
                 <p className="mt-3.5 text-center text-[0.78rem] text-ink-soft">
-                  Scheduled via Calendly.
+                  Secure payment. You choose the time.
                 </p>
               </div>
             </div>
@@ -520,7 +516,7 @@ export default function DietitianPage() {
             <p className="mb-6 text-[1rem] text-ink-soft">
               45 minutes on a video call, and your Nigerian meal guide in your mail within 24 hours.
             </p>
-            <Button href={CALENDLY} external size="lg">
+            <Button href={BOOK} size="lg">
               Book consultation
             </Button>
           </FadeIn>

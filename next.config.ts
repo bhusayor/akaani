@@ -1,12 +1,6 @@
 import type { NextConfig } from "next";
-import path from "node:path";
 
 const nextConfig: NextConfig = {
-  // The legacy static site at the repo root also has a lockfile; pin the
-  // workspace root so Turbopack never guesses the wrong one.
-  turbopack: {
-    root: path.join(__dirname),
-  },
   async redirects() {
     return [{ source: "/contact", destination: "/about#contact", permanent: true }];
   },

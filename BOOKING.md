@@ -66,4 +66,4 @@ links resolve only when the Next app is what is deployed on the domain.
 Opening `dietitian.html` directly, or serving the repo root as static files,
 will 404 on Book. That is expected. Run the Next app to use the flow:
 
-    cd akaani-next && npm run dev
+    npm run dev

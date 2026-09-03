@@ -5,3 +5,6 @@ akaani-next/node_modules
 akaani-next/.next
 akaani-next/out
 akaani-next/next-env.d.ts
+
+# npm writes this at the repo root when commands run from here rather than akaani-next
+/package-lock.json

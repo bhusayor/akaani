@@ -57,7 +57,13 @@ from the live dietitian page. Defaulted and unconfirmed: the 24 hour
 cancel/reschedule window, phone being optional, no extra intake fields, and
 the meeting platform (the UI currently says the join link is emailed).
 
-## Not on the static site
+## The static mirror cannot host this
 
-`dietitian.html` still points at Calendly. This flow needs a server for the API
-routes, so it cannot run on the static mirror.
+`dietitian.html` now links to `/dietitian/book`, but it cannot serve that route
+itself: the flow needs the API routes, and the static site has no server. The
+links resolve only when the Next app is what is deployed on the domain.
+
+Opening `dietitian.html` directly, or serving the repo root as static files,
+will 404 on Book. That is expected. Run the Next app to use the flow:
+
+    cd akaani-next && npm run dev

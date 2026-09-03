@@ -180,7 +180,7 @@ function FocusCard({
 export default function DietitianPage() {
   return (
     <>
-      <Nav ctaLabel="Book consultation" ctaHref={BOOK} ctaExternal />
+      <Nav ctaLabel="Book consultation" ctaHref={BOOK} />
       <Motion />
 
       <main>

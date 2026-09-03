@@ -11,7 +11,6 @@ import FocusIcon, { type FocusIconName } from "@/components/ui/FocusIcon";
 import GuidePreview from "@/components/dietitian/GuidePreview";
 import SignIcon, { type SignIconName } from "@/components/ui/SignIcon";
 import Price from "@/components/ui/Price";
-import RegionToggle from "@/components/ui/RegionToggle";
 import Motion from "./Motion";
 
 export const metadata: Metadata = {
@@ -477,9 +476,6 @@ export default function DietitianPage() {
                     <Price />
                   </b>
                   <span className="text-[0.82rem] font-semibold text-ink-soft">per session</span>
-                </div>
-                <div className="mb-5 flex justify-start">
-                  <RegionToggle />
                 </div>
                 {[
                   ["Your guide", "Inbox, 24 hours"],

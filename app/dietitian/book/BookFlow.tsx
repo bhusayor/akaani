@@ -5,6 +5,7 @@ import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import SlotPicker from "@/components/booking/SlotPicker";
 import { startCheckout } from "@/lib/booking";
 import { PRICE, useRegion } from "@/lib/useRegion";
+import { browserTimezone, tzLabel } from "@/lib/timezone";
 
 const STEPS = ["Choose a time", "Your details", "Review and pay"] as const;
 const DURATION = 45;
@@ -68,8 +69,8 @@ export default function BookFlow() {
 
   // the customer's real timezone, which is what Zoho books against; separate
   // from the region, which only decides the currency
-  const timezone = useMemo(() => Intl.DateTimeFormat().resolvedOptions().timeZone || "UTC", []);
-  const [region, chooseRegion] = useRegion();
+  const timezone = useMemo(browserTimezone, []);
+  const [region] = useRegion();
   const price = PRICE[region];
 
   const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
@@ -136,7 +137,7 @@ export default function BookFlow() {
               <span className="hidden sm:inline">{slotLabel(slot.date, slot.time)}</span>
             </span>
             <span className="block text-[0.8rem] text-ink-soft">
-              {DURATION} minutes · {timezone.replace(/_/g, " ")}
+              {DURATION} minutes · {tzLabel(timezone)}
             </span>
           </span>
           <span className="flex-none text-[0.82rem] font-bold text-accent">Change</span>
@@ -195,37 +196,21 @@ export default function BookFlow() {
 
           {step === 2 && slot && (
             <div className="overflow-hidden rounded-2xl border border-line bg-white">
-              <div className="flex items-baseline justify-between gap-4 border-b border-line px-5 py-5 sm:px-7">
-                <div>
-                  <p className="text-[0.78rem] font-bold uppercase tracking-[0.14em] text-ink/40">Total</p>
-                  <p className="text-[2rem] font-extrabold leading-tight">{price.label}</p>
-                </div>
-                {/* detection is good, not perfect, and this is the moment it matters */}
-                <div className="text-right">
-                  <p className="mb-1.5 text-[0.72rem] font-semibold text-ink-soft">Charged in</p>
-                  <div className="inline-flex items-center gap-1 rounded-full border border-line p-1">
-                    {(["ng", "us"] as const).map((r) => (
-                      <button
-                        key={r}
-                        type="button"
-                        onClick={() => chooseRegion(r)}
-                        aria-pressed={region === r}
-                        className={`rounded-full px-2.5 py-1 text-[0.7rem] font-bold transition-colors ${
-                          region === r ? "bg-ink text-bg" : "text-ink-soft hover:text-ink"
-                        }`}
-                      >
-                        {r === "ng" ? "₦ NGN" : "$ USD"}
-                      </button>
-                    ))}
-                  </div>
-                </div>
+              <div className="border-b border-line px-5 py-5 sm:px-7">
+                <p className="text-[0.78rem] font-bold uppercase tracking-[0.14em] text-ink/40">Total</p>
+                <p className="text-[2rem] font-extrabold leading-tight">{price.label}</p>
+                {/* the currency follows their location, so name the reason */}
+                <p className="mt-1 text-[0.82rem] text-ink-soft">
+                  Charged in {price.currency}, based on your location.
+                </p>
               </div>
 
               <dl className="divide-y divide-line">
                 {[
                   ["Consultation", "Nutrition consultation"],
                   ["With", "An akaani Registered Dietitian"],
-                  ["When", `${slotLabel(slot.date, slot.time)} (${timezone.replace(/_/g, " ")})`],
+                  ["When", slotLabel(slot.date, slot.time)],
+                  ["Timezone", tzLabel(timezone)],
                   ["Length", `${DURATION} minutes, on video`],
                   ["Your guide", "In your mail within 24 hours"],
                   ["Email", email],

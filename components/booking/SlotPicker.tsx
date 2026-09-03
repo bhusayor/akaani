@@ -3,6 +3,7 @@
 import { useCallback, useEffect, useState } from "react";
 import { motion, useReducedMotion } from "framer-motion";
 import { getAvailability, type Availability } from "@/lib/booking";
+import { nowIn, tzLabel } from "@/lib/timezone";
 
 /**
  * Section 7.1. The one date/time component on the site: the booking flow and
@@ -104,10 +105,19 @@ export default function SlotPicker({
 
   return (
     <div className="rounded-2xl border border-line bg-white p-5 sm:p-6">
-      <div className="mb-3 flex flex-wrap items-baseline justify-between gap-2">
-        <p className="text-[0.9rem] font-semibold">Pick a day</p>
-        <p className="text-[0.8rem] text-ink-soft">
-          Times shown in <b className="text-ink">{timezone.replace(/_/g, " ")}</b>
+      <div className="mb-4">
+        <p className="mb-2 text-[0.9rem] font-semibold">Pick a day</p>
+        {/* the identifier means nothing to a customer; the city, the zone name
+            and their own current time do */}
+        <p className="flex flex-wrap items-center gap-x-2 gap-y-1 rounded-lg bg-mist px-3 py-2 text-[0.8rem] text-ink-soft">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" className="h-3.5 w-3.5 flex-none text-accent">
+            <circle cx="12" cy="12" r="9" />
+            <path d="M12 7v5l3 2" />
+          </svg>
+          <span>
+            All times are in <b className="text-ink">{tzLabel(timezone)}</b>, your local time.
+          </span>
+          <span className="text-ink/45">It is {nowIn(timezone)} there now.</span>
         </p>
       </div>
 

@@ -49,7 +49,7 @@ export default function Nav({
 
   const ctaClass =
     "hidden md:inline-flex items-center justify-center rounded-full bg-accent px-[26px] py-3 text-[0.95rem] " +
-    "font-semibold text-white transition-[transform,background-color] duration-300 ease-brand hover:-translate-y-[3px] hover:bg-ink";
+    "font-semibold text-white transition-transform duration-300 ease-brand hover:-translate-y-[3px] hover:bg-ink";
 
   return (
     <>
@@ -57,13 +57,13 @@ export default function Nav({
         <div
           className={
             "mx-auto flex max-w-[1280px] items-center justify-between rounded-full px-[22px] py-3 transition-[background-color,box-shadow] duration-500 " +
-            (solid ? "bg-paper shadow-[0_12px_40px_rgba(0,51,51,0.10)]" : "bg-transparent shadow-none")
+            (solid || open ? "bg-paper shadow-[0_12px_40px_rgba(0,51,51,0.10)]" : "bg-transparent shadow-none")
           }
         >
           <Link
             href="/"
             aria-label="akaani home"
-            className={"transition-colors duration-500 " + (solid ? "text-ink" : "text-white")}
+            className={"transition-colors duration-500 " + (solid || open ? "text-ink" : "text-white")}
           >
             <Logo className="h-[26px] w-auto" />
           </Link>
@@ -109,14 +109,14 @@ export default function Nav({
           >
             <span
               className={
-                "block h-[2.5px] w-[26px] rounded-sm transition-transform duration-300 ease-brand " +
-                (open ? "translate-y-[4px] rotate-45 bg-bg" : solid ? "bg-ink" : "bg-white")
+                "block h-[2.5px] w-[26px] rounded-sm transition-[transform,background-color] duration-300 ease-brand " +
+                (open ? "translate-y-[4px] rotate-45 bg-ink" : solid ? "bg-ink" : "bg-white")
               }
             />
             <span
               className={
-                "block h-[2.5px] w-[26px] rounded-sm transition-transform duration-300 ease-brand " +
-                (open ? "-translate-y-[4px] -rotate-45 bg-bg" : solid ? "bg-ink" : "bg-white")
+                "block h-[2.5px] w-[26px] rounded-sm transition-[transform,background-color] duration-300 ease-brand " +
+                (open ? "-translate-y-[4px] -rotate-45 bg-ink" : solid ? "bg-ink" : "bg-white")
               }
             />
           </button>

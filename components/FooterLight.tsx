@@ -26,7 +26,7 @@ export default function FooterLight() {
             <Link
               key={l.href}
               href={l.href}
-              className="text-[0.97rem] font-medium text-ink-soft transition-colors duration-300 hover:text-accent"
+              className="block py-2.5 text-[0.97rem] font-medium text-ink-soft transition-colors duration-300 hover:text-accent"
             >
               {l.label}
             </Link>

@@ -5,13 +5,13 @@
     .ah__inner {
       max-width: 1280px; margin: 0 auto;
       display: grid; grid-template-columns: 1.5fr 1fr;
-      gap: clamp(30px, 4vw, 70px); align-items: center;
+      gap: clamp(32px, 4vw, 72px); align-items: center;
     }
     .ah h1 { font-size: clamp(2.4rem, 4.2vw, 4rem); margin-bottom: 28px; }
     .ah h1 .line { display: block; overflow: hidden; }
     .ah h1 .line__inner { display: block; transform: translateY(110%); }
     .ah__sub { font-size: clamp(1.05rem, 1.5vw, 1.25rem); color: var(--ink-soft); max-width: 620px; margin-bottom: 36px; }
-    .ah__actions { display: flex; align-items: center; gap: 18px; flex-wrap: wrap; }
+    .ah__actions { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
     .ah__mascot { position: relative; justify-self: center; width: clamp(210px, 21vw, 320px); }
     .ah__mascot svg { width: 100%; height: auto; display: block; }
     .ah__mascot-shadow {
@@ -30,7 +30,7 @@
       align-items: start;
     }
     .story__side { position: sticky; top: 130px; }
-    .story__side h2 { margin: 0 0 22px; }
+    .story__side h2 { margin: 0 0 24px; }
     .story__body { font-size: clamp(1.1rem, 1.6vw, 1.35rem); font-weight: 500; line-height: 1.7; }
     .story__body p { margin-bottom: 28px; }
     .story__body .w { color: rgba(0, 51, 51, 0.16); transition: color 0.2s linear; }
@@ -54,23 +54,23 @@
     .values__grid {
       max-width: 1280px; margin: 0 auto;
       display: grid; grid-template-columns: 1fr 1fr;
-      gap: clamp(18px, 2.4vw, 32px);
+      gap: clamp(16px, 2.4vw, 32px);
       position: relative;
     }
     .value {
       background: rgba(251, 245, 236, 0.05);
       border: 1px solid rgba(251, 245, 236, 0.14);
       border-radius: var(--radius-lg);
-      padding: clamp(28px, 3.4vw, 46px);
+      padding: clamp(28px, 3.4vw, 48px);
       transition: border-color 0.4s, transform 0.5s var(--ease);
     }
     .value:hover { border-color: var(--accent); transform: translateY(-6px); }
     .value__num {
       display: inline-block;
       font-size: 0.8rem; font-weight: 800; letter-spacing: 0.16em;
-      color: var(--accent); margin-bottom: 18px;
+      color: var(--accent); margin-bottom: 16px;
     }
-    .value h3 { font-size: clamp(1.4rem, 2vw, 1.8rem); margin-bottom: 14px; }
+    .value h3 { font-size: clamp(1.4rem, 2vw, 1.8rem); margin-bottom: 16px; }
     .value p { color: rgba(251, 245, 236, 0.7); font-size: 1rem; }
 
     /* team */
@@ -78,7 +78,7 @@
     .team__grid {
       max-width: 1280px; margin: 0 auto;
       display: grid; grid-template-columns: repeat(3, 1fr);
-      gap: clamp(18px, 2.4vw, 32px);
+      gap: clamp(16px, 2.4vw, 32px);
     }
     /* flip cards: hover (or tap) reveals the bio */
     .member {
@@ -104,7 +104,7 @@
       transform: rotateY(180deg);
       background: var(--ink); color: var(--bg);
       border: none;
-      padding: clamp(24px, 2.4vw, 34px);
+      padding: clamp(24px, 2.4vw, 32px);
       display: flex; flex-direction: column; justify-content: center;
     }
     .member__back b { font-size: 1.25rem; margin-bottom: 4px; }
@@ -122,14 +122,14 @@
     .member--lu svg { width: 62%; height: auto; }
 
     /* CTA */
-    .acta { padding: 0 clamp(20px, 5vw, 72px) clamp(90px, 14vh, 150px); }
+    .acta { padding: 0 clamp(20px, 5vw, 72px) clamp(88px, 14vh, 152px); }
     .acta__inner {
       max-width: 1280px; margin: 0 auto;
       background: var(--accent); color: #fff;
       border-radius: 40px;
-      padding: clamp(50px, 7vw, 90px);
+      padding: clamp(48px, 7vw, 88px);
       display: flex; align-items: center; justify-content: space-between;
-      gap: 30px; flex-wrap: wrap;
+      gap: 32px; flex-wrap: wrap;
     }
     .acta__copy { max-width: 620px; }
     .acta h2 { font-size: clamp(1.9rem, 3.6vw, 3rem); margin-bottom: 12px; }

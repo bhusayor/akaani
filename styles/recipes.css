@@ -3,17 +3,17 @@
     /* --- hero --- */
     .rh {
       position: relative; overflow: hidden;
-      padding: 165px clamp(20px, 5vw, 72px) clamp(60px, 8vh, 90px);
+      padding: 165px clamp(20px, 5vw, 72px) clamp(60px, 8vh, 88px);
     }
     .rh__inner {
       max-width: 1280px; margin: 0 auto;
       display: grid; grid-template-columns: 1.25fr 1fr;
-      gap: clamp(30px, 4vw, 70px); align-items: center;
+      gap: clamp(32px, 4vw, 72px); align-items: center;
     }
-    .rh h1 { font-size: clamp(2.5rem, 5vw, 4.3rem); margin-bottom: 22px; }
+    .rh h1 { font-size: clamp(2.5rem, 5vw, 4.3rem); margin-bottom: 24px; }
     .rh__sub { color: var(--ink-soft); font-size: clamp(1rem, 1.35vw, 1.16rem); line-height: 1.65; max-width: 540px; margin-bottom: 32px; }
-    .rh__actions { display: flex; gap: 14px; flex-wrap: wrap; margin-bottom: 30px; }
-    .rh__ticks { display: flex; flex-wrap: wrap; gap: 10px; }
+    .rh__actions { display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 32px; }
+    .rh__ticks { display: flex; flex-wrap: wrap; gap: 8px; }
     .rh__tick {
       display: inline-flex; align-items: center; gap: 8px;
       font-size: 0.85rem; font-weight: 600; color: var(--ink);
@@ -38,29 +38,29 @@
       background: var(--paper); color: var(--ink);
       border-radius: 14px; padding: 11px 16px;
       font-size: 0.86rem; font-weight: 700;
-      display: flex; justify-content: space-between; align-items: center; gap: 10px;
+      display: flex; justify-content: space-between; align-items: center; gap: 8px;
     }
     .rh__card figcaption em { font-style: normal; color: var(--accent); }
 
     /* --- inside every bundle --- */
-    .inside { padding: 0 clamp(20px, 5vw, 72px) clamp(70px, 10vh, 110px); }
+    .inside { padding: 0 clamp(20px, 5vw, 72px) clamp(72px, 10vh, 112px); }
     .inside__inner {
       max-width: 1280px; margin: 0 auto;
       background: var(--bg-soft); border-radius: 30px;
-      padding: clamp(28px, 3.2vw, 46px);
+      padding: clamp(28px, 3.2vw, 48px);
       display: grid; grid-template-columns: auto repeat(4, 1fr);
-      gap: clamp(18px, 2.6vw, 40px); align-items: start;
+      gap: clamp(16px, 2.6vw, 40px); align-items: start;
     }
     .inside__title { font-size: 1.05rem; font-weight: 800; max-width: 150px; }
     .inside__item { font-size: 0.92rem; line-height: 1.55; color: var(--ink-soft); padding-left: 16px; border-left: 2px solid rgba(218, 112, 0, 0.35); }
     .inside__item b { display: block; color: var(--ink); font-size: 0.97rem; margin-bottom: 3px; }
 
     /* --- bundle grid --- */
-    .shop { padding: 0 clamp(20px, 5vw, 72px) clamp(80px, 12vh, 130px); }
+    .shop { padding: 0 clamp(20px, 5vw, 72px) clamp(80px, 12vh, 128px); }
     .shop__head { max-width: 1280px; margin: 0 auto 44px; }
-    .shop__head h2 { margin-bottom: 14px; }
+    .shop__head h2 { margin-bottom: 16px; }
     .shop__head p { color: var(--ink-soft); font-size: 1.04rem; max-width: 560px; }
-    .shop__grid { max-width: 1280px; margin: 0 auto; display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(18px, 2.2vw, 30px); }
+    .shop__grid { max-width: 1280px; margin: 0 auto; display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(16px, 2.2vw, 32px); }
     @media (min-width: 1025px) { .shop__grid .product:nth-child(4) { grid-column: 1; } }
     .product {
       background: var(--paper); border: 1px solid var(--line);
@@ -77,7 +77,7 @@
       position: absolute; right: 16px; bottom: 16px;
       background: var(--accent); color: #fff;
       font-size: 1.05rem; font-weight: 800;
-      padding: 10px 18px; border-radius: 999px;
+      padding: 8px 16px; border-radius: 999px;
       box-shadow: 0 12px 30px rgba(218, 112, 0, 0.4);
     }
     .product__count {
@@ -86,28 +86,28 @@
       font-size: 0.75rem; font-weight: 700;
       padding: 7px 15px; border-radius: 999px;
     }
-    .product__body { padding: clamp(22px, 2vw, 28px); display: flex; flex-direction: column; flex: 1; }
-    .product__body h3 { font-size: clamp(1.35rem, 1.6vw, 1.55rem); margin: 8px 0 6px; }
+    .product__body { padding: clamp(24px, 2vw, 28px); display: flex; flex-direction: column; flex: 1; }
+    .product__body h3 { font-size: clamp(1.35rem, 1.6vw, 1.55rem); margin: 8px 0 8px; }
     .product__tagline { font-size: 0.88rem; font-weight: 700; color: var(--accent); }
-    .product__body > p { color: var(--ink-soft); font-size: 0.92rem; line-height: 1.6; margin-bottom: 18px; }
+    .product__body > p { color: var(--ink-soft); font-size: 0.92rem; line-height: 1.6; margin-bottom: 16px; }
     .product__chips { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 24px; }
     .product__chips span {
       font-size: 0.72rem; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase;
-      padding: 6px 12px; border-radius: 999px;
+      padding: 8px 12px; border-radius: 999px;
       background: var(--bg-soft); color: var(--accent);
     }
-    .product__actions { margin-top: auto; display: flex; gap: 10px; }
+    .product__actions { margin-top: auto; display: flex; gap: 8px; }
     .product__actions .btn { flex: 1; }
 
     /* --- bridge to the dietitian --- */
-    .bridge2 { padding: 0 clamp(20px, 5vw, 72px) clamp(90px, 14vh, 150px); }
+    .bridge2 { padding: 0 clamp(20px, 5vw, 72px) clamp(88px, 14vh, 152px); }
     .bridge2__inner {
       position: relative; overflow: hidden;
       max-width: 1280px; margin: 0 auto;
       background: var(--ink); color: var(--bg);
       border-radius: 40px; padding: clamp(40px, 5.2vw, 72px);
       display: grid; grid-template-columns: 1.15fr 0.85fr;
-      gap: clamp(30px, 4vw, 64px); align-items: center;
+      gap: clamp(32px, 4vw, 64px); align-items: center;
     }
     .bridge2__glow {
       position: absolute; width: 420px; height: 420px; border-radius: 50%;
@@ -143,10 +143,10 @@
       padding: 9px 16px; border-radius: 999px;
     }
     .bridge2__cardbody { padding: 24px; }
-    .bridge2__cardbody > b { display: block; font-size: 1.18rem; margin-bottom: 14px; }
+    .bridge2__cardbody > b { display: block; font-size: 1.18rem; margin-bottom: 16px; }
     .bridge2__row {
       display: flex; justify-content: space-between; gap: 12px;
-      font-size: 0.9rem; padding: 10px 0;
+      font-size: 0.9rem; padding: 8px 0;
       border-top: 1px solid var(--line);
     }
     .bridge2__row span { color: var(--ink-soft); }
@@ -158,9 +158,9 @@
       transform: translate(-50%, 120px);
       background: var(--ink); color: var(--bg);
       font-weight: 600; font-size: 0.95rem;
-      padding: 15px 26px; border-radius: 999px;
+      padding: 15px 24px; border-radius: 999px;
       box-shadow: 0 20px 50px rgba(0, 51, 51, 0.35);
-      display: flex; align-items: center; gap: 10px;
+      display: flex; align-items: center; gap: 8px;
       opacity: 0; pointer-events: none;
     }
     .toast i { font-style: normal; color: var(--accent); font-weight: 800; }
@@ -201,7 +201,7 @@
     }
     .cartdrawer__head {
       display: flex; align-items: center; justify-content: space-between;
-      padding: 24px 26px; border-bottom: 1px solid var(--line);
+      padding: 24px 24px; border-bottom: 1px solid var(--line);
     }
     .cartdrawer__head b { font-size: 1.25rem; }
     .cartdrawer__close {
@@ -211,16 +211,16 @@
       transition: background 0.3s, transform 0.3s;
     }
     .cartdrawer__close:hover { background: var(--accent); color: #fff; transform: rotate(90deg); }
-    .cartdrawer__items { flex: 1; overflow-y: auto; padding: 10px 26px; }
+    .cartdrawer__items { flex: 1; overflow-y: auto; padding: 8px 24px; }
     .cartitem {
-      display: flex; gap: 14px; align-items: center;
-      padding: 18px 0; border-bottom: 1px solid var(--line);
+      display: flex; gap: 16px; align-items: center;
+      padding: 16px 0; border-bottom: 1px solid var(--line);
     }
     .cartitem img { width: 64px; height: 64px; border-radius: 14px; object-fit: cover; }
     .cartitem__info { flex: 1; }
     .cartitem__info b { display: block; font-size: 0.98rem; }
     .cartitem__info em { font-style: normal; color: var(--accent); font-weight: 700; font-size: 0.9rem; }
-    .cartitem__qty { display: flex; align-items: center; gap: 10px; }
+    .cartitem__qty { display: flex; align-items: center; gap: 8px; }
     .cartitem__qty button {
       width: 28px; height: 28px; border-radius: 50%;
       border: 1.5px solid var(--line); background: none; color: var(--ink);
@@ -230,13 +230,13 @@
     .cartitem__qty b { min-width: 18px; text-align: center; font-size: 0.95rem; }
     .cartitem__remove {
       background: none; border: none; cursor: pointer;
-      color: var(--ink-soft); font-size: 1rem; padding: 6px;
+      color: var(--ink-soft); font-size: 1rem; padding: 8px;
       transition: color 0.25s;
     }
     .cartitem__remove:hover { color: #C0392B; }
-    .cartdrawer__empty { text-align: center; padding: 70px 20px; color: var(--ink-soft); }
+    .cartdrawer__empty { text-align: center; padding: 72px 20px; color: var(--ink-soft); }
     .cartdrawer__empty b { display: block; font-size: 1.15rem; color: var(--ink); margin-bottom: 8px; }
-    .cartdrawer__foot { padding: 22px 26px 28px; border-top: 1px solid var(--line); }
+    .cartdrawer__foot { padding: 24px 24px 28px; border-top: 1px solid var(--line); }
     .cartdrawer__total {
       display: flex; justify-content: space-between; align-items: center;
       font-size: 1.05rem; margin-bottom: 16px;
@@ -263,7 +263,7 @@
     /* --- a single bundle, shown in place rather than sent off site --- */
     .bundlepage { padding: 165px clamp(20px, 5vw, 72px) clamp(60px, 8vh, 100px); }
     .bundlepage__inner { max-width: 1180px; margin: 0 auto; }
-    .bundlepage__back { display: inline-block; margin-bottom: 26px; font-weight: 700; font-size: 0.92rem; color: var(--ink-soft); }
+    .bundlepage__back { display: inline-block; padding: 11px 0; margin-bottom: 16px; font-weight: 700; font-size: 0.92rem; color: var(--ink-soft); }
     .bundlepage__back:hover { color: var(--accent); }
 
     .bundlepage__top { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(28px, 4vw, 56px); align-items: start; }
@@ -274,7 +274,7 @@
 
 
     .bundlepage__more { margin-top: clamp(56px, 8vh, 96px); }
-    .bundlepage__moregrid { display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(18px, 2.2vw, 30px); }
+    .bundlepage__moregrid { display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(16px, 2.2vw, 32px); }
 
     @media (max-width: 900px) {
       .bundlepage__top { grid-template-columns: 1fr; }
@@ -287,7 +287,7 @@
     /* the two card buttons sit side by side in a narrow column, so they need
        to be shorter than a default button and must not wrap */
     .product__actions .btn {
-      padding: 10px 18px; font-size: 0.9rem; white-space: nowrap;
+      padding: 8px 16px; font-size: 0.9rem; white-space: nowrap;
     }
 
     /* --- the plan card: dark head states what it is, white body sells it --- */
@@ -299,13 +299,13 @@
     .plancard__head { background: var(--ink); color: var(--bg); padding: clamp(24px, 3vw, 36px); }
     .plancard__kicker {
       font-size: 0.74rem; font-weight: 800; letter-spacing: 0.16em;
-      text-transform: uppercase; color: rgba(251, 245, 236, 0.6); margin-bottom: 10px;
+      text-transform: uppercase; color: rgba(251, 245, 236, 0.6); margin-bottom: 8px;
     }
-    .plancard__head h1 { font-size: clamp(1.7rem, 2.8vw, 2.4rem); margin-bottom: 14px; color: var(--bg); }
+    .plancard__head h1 { font-size: clamp(1.7rem, 2.8vw, 2.4rem); margin-bottom: 16px; color: var(--bg); }
     .plancard__head p { font-size: 1rem; line-height: 1.65; color: rgba(251, 245, 236, 0.75); }
 
     .plancard__body { padding: clamp(24px, 3vw, 36px); }
-    .plancard__list { list-style: none; margin-bottom: 26px; }
+    .plancard__list { list-style: none; margin-bottom: 24px; }
     .plancard__list li {
       display: flex; align-items: flex-start; gap: 12px;
       padding: 9px 0; font-size: 1rem; line-height: 1.5;
@@ -318,10 +318,10 @@
       font-size: 0.72rem; font-weight: 800;
     }
 
-    .plancard__label { font-size: 1.05rem; font-weight: 700; margin-bottom: 12px; padding-top: 22px; border-top: 1px solid var(--line); }
+    .plancard__label { font-size: 1.05rem; font-weight: 700; margin-bottom: 12px; padding-top: 24px; border-top: 1px solid var(--line); }
     .plancard__benefits { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 28px; }
     .plancard__benefits span {
-      border-radius: 999px; padding: 7px 14px;
+      border-radius: 999px; padding: 7px 16px;
       font-size: 0.86rem; font-weight: 600;
       color: var(--ink);
     }

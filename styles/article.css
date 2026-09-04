@@ -13,25 +13,27 @@
     /* article head */
     .art { padding: 165px clamp(20px, 5vw, 72px) 0; }
     .art__head { max-width: 840px; margin: 0 auto clamp(36px, 5vh, 56px); }
+    /* a standalone control, so it gets a real target rather than text height */
+    .art__back { padding: 11px 0; }
     .art__back {
       display: inline-flex; align-items: center; gap: 8px;
       font-size: 0.9rem; font-weight: 600; color: var(--ink-soft);
-      margin-bottom: 26px; transition: color 0.3s, transform 0.3s;
+      margin-bottom: 24px; transition: color 0.3s, transform 0.3s;
     }
     .art__back:hover { color: var(--accent); transform: translateX(-4px); }
     .art__meta { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; font-size: 0.82rem; color: var(--ink-soft); margin-bottom: 20px; }
     .art__cat {
       background: var(--bg-soft); color: var(--accent);
-      font-weight: 700; padding: 5px 14px; border-radius: 999px;
+      font-weight: 700; padding: 5px 16px; border-radius: 999px;
       text-transform: uppercase; letter-spacing: 0.05em; font-size: 0.72rem;
     }
     .art__title {
       font-size: clamp(2.2rem, 5vw, 4rem);
-      line-height: 1.06; margin-bottom: 26px;
+      line-height: 1.06; margin-bottom: 24px;
     }
     .art__title .line { display: block; overflow: hidden; }
     .art__title .line__inner { display: block; transform: translateY(110%); }
-    .art__author { display: flex; align-items: center; gap: 14px; }
+    .art__author { display: flex; align-items: center; gap: 16px; }
     .art__avatar {
       width: 46px; height: 46px; border-radius: 50%;
       background: var(--accent); color: #fff;
@@ -53,27 +55,27 @@
 
     /* body */
     .art__body {
-      max-width: 720px; margin: clamp(44px, 6vh, 70px) auto 0;
+      max-width: 720px; margin: clamp(44px, 6vh, 72px) auto 0;
       font-size: 1.12rem; line-height: 1.75; color: rgba(0, 51, 51, 0.86);
     }
-    .art__body > p { margin-bottom: 26px; }
+    .art__body > p { margin-bottom: 24px; }
     .art__body h2 {
       font-size: clamp(1.5rem, 2.4vw, 2rem);
-      margin: 46px 0 18px; color: var(--ink);
+      margin: 48px 0 16px; color: var(--ink);
       line-height: 1.2;
     }
     .art__body .lead {
       font-size: clamp(1.2rem, 1.8vw, 1.4rem);
       font-weight: 500; color: var(--ink); line-height: 1.55;
     }
-    .art__body ul { margin: 0 0 26px 22px; }
-    .art__body li { margin-bottom: 10px; }
+    .art__body ul { margin: 0 0 24px 24px; }
+    .art__body li { margin-bottom: 8px; }
     .art__body li::marker { color: var(--accent); }
 
     .pullquote {
       border-left: 4px solid var(--accent);
-      padding: 6px 0 6px 26px;
-      margin: 38px 0;
+      padding: 8px 0 8px 24px;
+      margin: 40px 0;
       font-size: clamp(1.3rem, 2vw, 1.6rem);
       font-weight: 700; line-height: 1.35; color: var(--ink);
     }
@@ -81,8 +83,8 @@
     .lutip {
       background: var(--bg-soft);
       border-radius: var(--radius-md);
-      padding: 24px 26px;
-      margin: 38px 0;
+      padding: 24px 24px;
+      margin: 40px 0;
       display: flex; gap: 16px; align-items: flex-start;
     }
     .lutip__badge {
@@ -94,14 +96,14 @@
     .lutip b { display: block; font-size: 0.95rem; margin-bottom: 4px; color: var(--ink); }
     .lutip p { font-size: 0.98rem; margin: 0; color: var(--ink-soft); }
 
-    .art__figure { margin: 38px 0; border-radius: var(--radius-md); overflow: hidden; }
+    .art__figure { margin: 40px 0; border-radius: var(--radius-md); overflow: hidden; }
     .art__figure img { width: 100%; display: block; }
     .art__figure figcaption { font-size: 0.82rem; color: var(--ink-soft); padding: 12px 4px 0; text-align: center; }
 
     /* share / tags */
     .art__foot {
       max-width: 720px; margin: clamp(44px, 6vh, 64px) auto 0;
-      padding: 26px 0;
+      padding: 24px 0;
       border-top: 1px solid var(--line);
       display: flex; align-items: center; justify-content: space-between;
       gap: 16px; flex-wrap: wrap;
@@ -110,24 +112,24 @@
     .art__tags span {
       font-size: 0.76rem; font-weight: 700;
       background: var(--bg-soft); color: var(--accent);
-      padding: 6px 14px; border-radius: 999px;
+      padding: 8px 16px; border-radius: 999px;
     }
     .art__share { display: flex; gap: 8px; align-items: center; }
     .art__share a, .art__share button {
       font: inherit; font-size: 0.85rem; font-weight: 600;
-      padding: 9px 18px; border-radius: 999px;
+      padding: 9px 16px; border-radius: 999px;
       border: 1.5px solid var(--line); background: none; color: var(--ink);
       cursor: pointer; transition: all 0.3s;
     }
     .art__share a:hover, .art__share button:hover { border-color: var(--accent); color: var(--accent); }
 
     /* keep reading */
-    .related { padding: clamp(70px, 10vh, 110px) clamp(20px, 5vw, 72px) clamp(80px, 12vh, 130px); }
+    .related { padding: clamp(72px, 10vh, 112px) clamp(20px, 5vw, 72px) clamp(80px, 12vh, 128px); }
     .related .section-head--row { margin-bottom: 40px; }
     .related__grid {
       max-width: 1280px; margin: 0 auto;
       display: grid; grid-template-columns: repeat(3, 1fr);
-      gap: clamp(18px, 2.4vw, 32px);
+      gap: clamp(16px, 2.4vw, 32px);
     }
     .jpost {
       background: var(--paper); border-radius: var(--radius-lg);
@@ -139,7 +141,7 @@
     .jpost__img { position: relative; aspect-ratio: 16 / 10; overflow: hidden; }
     .jpost__img img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.8s var(--ease); }
     .jpost:hover .jpost__img img { transform: scale(1.08); }
-    .jpost__body { padding: 22px; }
+    .jpost__body { padding: 24px; }
     .jpost__meta { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; font-size: 0.78rem; color: var(--ink-soft); }
     .jpost__cat {
       background: var(--bg-soft); color: var(--accent);

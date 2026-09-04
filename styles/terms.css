@@ -4,19 +4,19 @@
 
     .lg { padding: 165px clamp(20px, 5vw, 72px) clamp(40px, 6vh, 60px); }
     .lg__head { max-width: 1180px; margin: 0 auto; }
-    .lg__head h1 { font-size: clamp(2.4rem, 5.4vw, 4.6rem); margin-bottom: 18px; max-width: 860px; }
+    .lg__head h1 { font-size: clamp(2.4rem, 5.4vw, 4.6rem); margin-bottom: 16px; max-width: 860px; }
     .lg__meta { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; font-size: 0.85rem; color: var(--ink-soft); }
     .lg__badge {
       background: var(--bg-soft); color: var(--accent);
       font-size: 0.74rem; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase;
-      padding: 6px 14px; border-radius: 999px;
+      padding: 8px 16px; border-radius: 999px;
     }
 
-    .lgwrap { padding: clamp(20px, 4vh, 50px) clamp(20px, 5vw, 72px) clamp(90px, 14vh, 150px); }
+    .lgwrap { padding: clamp(20px, 4vh, 48px) clamp(20px, 5vw, 72px) clamp(88px, 14vh, 152px); }
     .lgwrap__inner {
       max-width: 1180px; margin: 0 auto;
       display: grid; grid-template-columns: 250px 1fr;
-      gap: clamp(30px, 5vw, 90px); align-items: start;
+      gap: clamp(32px, 5vw, 88px); align-items: start;
     }
     .lgtoc {
       position: sticky; top: 120px;
@@ -25,7 +25,7 @@
     }
     .lgtoc a {
       font-size: 0.88rem; font-weight: 500; color: var(--ink-soft);
-      padding: 8px 0 8px 18px; margin-left: -1px;
+      padding: 8px 0 8px 16px; margin-left: -1px;
       border-left: 2px solid transparent;
       transition: color 0.25s, border-color 0.25s;
     }
@@ -33,32 +33,32 @@
     .lgtoc a.is-on { color: var(--ink); font-weight: 700; border-left-color: var(--accent); }
 
     .lgbody { font-size: 1.02rem; line-height: 1.75; color: rgba(0, 51, 51, 0.85); max-width: 760px; }
-    .lgbody > p { margin-bottom: 22px; }
+    .lgbody > p { margin-bottom: 24px; }
     .lgbody .lead { font-size: clamp(1.1rem, 1.5vw, 1.25rem); font-weight: 500; color: var(--ink); }
-    .lgbody section { scroll-margin-top: 120px; padding-top: 18px; }
+    .lgbody section { scroll-margin-top: 120px; padding-top: 16px; }
     .lgbody h2 {
       font-size: clamp(1.4rem, 2vw, 1.75rem); color: var(--ink);
-      margin: 30px 0 16px; line-height: 1.25;
-      display: flex; gap: 14px; align-items: baseline;
+      margin: 32px 0 16px; line-height: 1.25;
+      display: flex; gap: 16px; align-items: baseline;
     }
     .lgbody h2 .num { color: var(--accent); font-size: 0.9em; flex: none; }
-    .lgbody h3 { font-size: 1.1rem; color: var(--ink); margin: 26px 0 12px; }
+    .lgbody h3 { font-size: 1.1rem; color: var(--ink); margin: 24px 0 12px; }
     .lgbody h3 .num { color: var(--accent); margin-right: 8px; }
-    .lgbody ul { margin: 0 0 22px 4px; list-style: none; }
-    .lgbody li { position: relative; padding-left: 24px; margin-bottom: 10px; }
+    .lgbody ul { margin: 0 0 24px 4px; list-style: none; }
+    .lgbody li { position: relative; padding-left: 24px; margin-bottom: 8px; }
     .lgbody li::before { content: "✓"; position: absolute; left: 0; color: var(--accent); font-weight: 800; }
     .lgbody ul.neg li::before { content: "✕"; color: #C0392B; }
     .lgbody a { color: var(--accent); font-weight: 600; text-decoration: underline; text-underline-offset: 3px; }
     .lgbody .callout {
       background: var(--bg-soft); border-radius: var(--radius-md);
-      padding: 20px 24px; margin: 26px 0;
+      padding: 20px 24px; margin: 24px 0;
       font-size: 0.95rem; color: var(--ink);
     }
     .lgbody .callout b { color: var(--accent); }
 
     @media (max-width: 900px) {
-      .lgwrap__inner { grid-template-columns: 250px 1fr; }
-      .lgtoc { position: static; flex-direction: row; flex-wrap: wrap; gap: 8px; border-left: none; margin-bottom: 10px; }
-      .lgtoc a { border-left: none; border: 1px solid var(--line); border-radius: 999px; padding: 7px 14px; font-size: 0.8rem; }
+      .lgwrap__inner { grid-template-columns: 1fr; }
+      .lgtoc { position: static; flex-direction: row; flex-wrap: wrap; gap: 8px; border-left: none; margin-bottom: 8px; }
+      .lgtoc a { border-left: none; border: 1px solid var(--line); border-radius: 999px; padding: 12px 16px; font-size: 0.8rem; }
       .lgtoc a.is-on { border-color: var(--accent); }
     }

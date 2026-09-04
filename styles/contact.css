@@ -4,7 +4,7 @@
     .ch__inner {
       max-width: 1280px; margin: 0 auto;
       display: grid; grid-template-columns: 1.35fr 1fr;
-      gap: clamp(30px, 4vw, 70px); align-items: center;
+      gap: clamp(32px, 4vw, 72px); align-items: center;
     }
     .ch h1 { font-size: clamp(2.8rem, 5.6vw, 5rem); margin-bottom: 24px; }
     .ch h1 .line { display: block; overflow: hidden; }
@@ -32,7 +32,7 @@
       display: inline-flex; align-items: center; gap: 8px;
       font-size: 0.8rem; font-weight: 700;
       background: var(--paper); color: var(--accent);
-      padding: 11px 18px; border-radius: 999px;
+      padding: 11px 16px; border-radius: 999px;
       box-shadow: 0 16px 36px rgba(0, 51, 51, 0.16);
     }
     .ch__stamp i { font-style: normal; width: 8px; height: 8px; border-radius: 50%; background: var(--accent); animation: chpulse 1.8s infinite; }
@@ -43,7 +43,7 @@
     @media (max-width: 900px) { .ch__inner { grid-template-columns: 1fr; } .ch__visual { display: none; } }
 
     /* main split */
-    .cwrap { padding: clamp(30px, 5vh, 60px) clamp(20px, 5vw, 72px) clamp(90px, 14vh, 150px); }
+    .cwrap { padding: clamp(32px, 5vh, 60px) clamp(20px, 5vw, 72px) clamp(88px, 14vh, 152px); }
     .cwrap__inner {
       max-width: 1280px; margin: 0 auto;
       display: grid; grid-template-columns: 0.85fr 1.15fr;
@@ -51,15 +51,15 @@
     }
     /* the heading holds the left column while the cards run down the right */
     .cwrap__head { position: sticky; top: 110px; }
-    .cwrap__head h2 { font-size: clamp(1.9rem, 3.4vw, 2.9rem); margin: 6px 0 14px; }
+    .cwrap__head h2 { font-size: clamp(1.9rem, 3.4vw, 2.9rem); margin: 8px 0 16px; }
     .cwrap__head p { color: var(--ink-soft); font-size: 1.02rem; line-height: 1.65; max-width: 42ch; }
 
     /* channels column */
-    .chan { display: flex; flex-direction: column; gap: clamp(14px, 1.8vw, 22px); }
+    .chan { display: flex; flex-direction: column; gap: clamp(16px, 1.8vw, 24px); }
     .chan__card {
       background: var(--paper); border: 1px solid var(--line);
       border-radius: var(--radius-lg);
-      padding: clamp(24px, 2.6vw, 34px);
+      padding: clamp(24px, 2.6vw, 32px);
       display: block; color: var(--ink);
       transition: transform 0.5s var(--ease), box-shadow 0.5s, border-color 0.4s;
     }
@@ -67,24 +67,24 @@
     .chan__kicker {
       display: block;
       font-size: 0.74rem; font-weight: 800; letter-spacing: 0.16em; text-transform: uppercase;
-      color: var(--accent); margin-bottom: 10px;
+      color: var(--accent); margin-bottom: 8px;
     }
-    .chan__card b { display: block; font-size: clamp(1.15rem, 1.6vw, 1.4rem); margin-bottom: 6px; }
+    .chan__card b { display: block; font-size: clamp(1.15rem, 1.6vw, 1.4rem); margin-bottom: 8px; }
     .chan__card p { color: var(--ink-soft); font-size: 0.93rem; }
     .chan__card--dark { background: var(--ink); color: var(--bg); border: none; position: relative; overflow: hidden; }
     .chan__card--dark p { color: rgba(251, 245, 236, 0.7); }
     .chan__mascot { position: absolute; right: -16px; bottom: -34px; width: 120px; transform: rotate(-6deg); }
     .chan__mascot svg, .chan__mascot img { width: 100%; height: auto; }
-    .chan__cities { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 14px; }
+    .chan__cities { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 16px; }
     .chan__cities span {
       font-size: 0.78rem; font-weight: 700;
       background: var(--bg-soft); color: var(--accent);
-      padding: 6px 14px; border-radius: 999px;
+      padding: 8px 16px; border-radius: 999px;
     }
-    .chan__socials { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 14px; }
+    .chan__socials { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 16px; }
     .chan__socials a {
       font-size: 0.85rem; font-weight: 600;
-      padding: 9px 18px; border-radius: 999px;
+      padding: 9px 16px; border-radius: 999px;
       border: 1.5px solid var(--line); color: var(--ink);
       transition: all 0.3s;
     }
@@ -92,13 +92,13 @@
 
     /* form column */
     /* FAQ teaser */
-    .cfaq { padding: 0 clamp(20px, 5vw, 72px) clamp(90px, 14vh, 150px); }
+    .cfaq { padding: 0 clamp(20px, 5vw, 72px) clamp(88px, 14vh, 152px); }
     .cfaq__inner {
       max-width: 1280px; margin: 0 auto;
       background: var(--bg-soft); border-radius: 40px;
-      padding: clamp(40px, 5.4vw, 70px);
+      padding: clamp(40px, 5.4vw, 72px);
       display: flex; align-items: center; justify-content: space-between;
-      gap: 30px; flex-wrap: wrap;
+      gap: 32px; flex-wrap: wrap;
     }
     .cfaq h2 { font-size: clamp(1.7rem, 3vw, 2.6rem); max-width: 520px; }
     .cfaq p { color: var(--ink-soft); margin-top: 8px; }

@@ -730,7 +730,7 @@ h2 { font-size: clamp(2.2rem, 4.6vw, 3.8rem); }
   width: clamp(110px, 13vw, 190px);
   pointer-events: none;
 }
-.cta__mascot svg { width: 100%; height: auto; display: block; }
+.cta__mascot svg, .cta__mascot img { width: 100%; height: auto; display: block; }
 
 /* ============ FOOTER ============ */
 .footer { background: var(--ink); color: var(--bg); padding: clamp(70px, 10vh, 110px) clamp(20px, 5vw, 72px) 0; overflow: hidden; }

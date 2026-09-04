@@ -28,7 +28,6 @@ export default function LuMotion() {
       const stepBtns = Array.from(document.querySelectorAll<HTMLButtonElement>("#luProgress button"));
       const ghost = document.getElementById("luGhost");
       const phoneEl = document.querySelector<HTMLElement>(".phone");
-      const mascot = document.getElementById("luMascot");
       if (!panels.length || !ghost || !phoneEl) return;
 
       let current = 0;
@@ -111,12 +110,6 @@ export default function LuMotion() {
 
         gsap.to(section, { backgroundColor: COLORS[step], duration: 0.9, ease: "power2.inOut", overwrite: "auto" });
 
-        // big Lu owns the stage on step 01 and bows out after
-        if (mascot) {
-          if (step === 0) gsap.fromTo(mascot, { autoAlpha: 0, y: 90, rotation: -6 }, { autoAlpha: 1, y: 0, rotation: 0, duration: 0.8, ease: "back.out(1.6)", overwrite: true });
-          else if (prev === 0) gsap.to(mascot, { autoAlpha: 0, y: 70, rotation: 5, duration: 0.4, ease: "power2.in", overwrite: true });
-        }
-
         animateChips(step, dir);
         animateScreen(step);
         stepBtns.forEach((b, i) => b.classList.toggle("is-active", i === step));
@@ -156,7 +149,6 @@ export default function LuMotion() {
         },
       });
 
-      if (mascot) gsap.set(mascot, { autoAlpha: 0 });
       let introPlayed = false;
       ScrollTrigger.create({
         trigger: "#lu",
@@ -164,14 +156,12 @@ export default function LuMotion() {
         onEnter: () => {
           if (introPlayed) return;
           introPlayed = true;
-          if (mascot) gsap.fromTo(mascot, { autoAlpha: 0, y: 110, rotation: -8 }, { autoAlpha: 1, y: 0, rotation: 0, duration: 0.9, ease: "back.out(1.5)", delay: 0.2 });
           animateChips(0, 1);
           animateScreen(0);
         },
       });
 
       if (!reduced) {
-        gsap.to("#luMascot svg", { y: -14, duration: 2.2, yoyo: true, repeat: -1, ease: "sine.inOut" });
         gsap.to(".phone", { y: -12, duration: 2.6, yoyo: true, repeat: -1, ease: "sine.inOut" });
         chips.forEach((c, i) => {
           if (c.firstElementChild)

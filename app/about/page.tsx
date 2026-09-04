@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
-import Lu from "@/components/Lu";
+import LuGif from "@/components/LuGif";
 import Motion from "./Motion";
 import "../../styles/about.css";
 import "../../styles/contact.css";
@@ -37,7 +37,7 @@ export default function AboutPage() {
           </div>
         </div>
         <div className="ah__mascot flex-1 max-w-md mx-auto" id="ahMascot" aria-hidden="true">
-          <Lu />
+          <LuGif />
           <div className="ah__mascot-shadow"></div>
         </div>
       </div>
@@ -187,7 +187,7 @@ export default function AboutPage() {
         <article className="member member--lu" tabIndex={0}>
           <div className="member__card">
             <div className="member__front">
-              <div className="member__img"><Lu /></div>
+              <div className="member__img"><LuGif /></div>
               <div className="member__body">
                 <div><b>Lu</b><span>AI guide</span></div>
                 </div>
@@ -223,7 +223,7 @@ export default function AboutPage() {
             <span className="chan__kicker">Ask Lu instead</span>
             <b>Instant answers, in the app</b>
             <p>Meal questions? Lu answers in seconds, free for your first 30 days.</p>
-            <div className="chan__mascot" aria-hidden="true"><Lu /></div>
+            <div className="chan__mascot" aria-hidden="true"><LuGif /></div>
           </div>
 
 

@@ -5,7 +5,7 @@ import Footer from "@/components/Footer";
 import LuMotion from "./LuMotion";
 import { FEATURED, REST } from "@/lib/posts";
 import { BUNDLES } from "@/lib/bundles";
-import Lu from "@/components/Lu";
+import LuGif from "@/components/LuGif";
 import Motion from "./Motion";
 import FaqBehavior from "@/components/FaqBehavior";
 
@@ -153,7 +153,7 @@ export default function HomePage() {
                 
                 <div className="screen screen--intro is-active">
                   <div className="intro-splash">
-                    <Lu />
+                    <LuGif className="intro-splash__mascot" />
                     <b>Hi, I'm Lu! 👋</b>
                     <em>Your AI food companion</em>
                     <span className="intro-splash__cta">Let's cook something</span>
@@ -234,10 +234,6 @@ export default function HomePage() {
           </div>
 
           
-          <div className="lu__mascot" id="luMascot" aria-hidden="true">
-            <Lu />
-            <div className="lu__mascot-shadow"></div>
-          </div>
         </div>
       </div>
     </section>
@@ -417,7 +413,7 @@ export default function HomePage() {
         </div>
       </div>
       <div className="cta__mascot" aria-hidden="true">
-        <Lu />
+        <LuGif />
       </div>
     </section>
 

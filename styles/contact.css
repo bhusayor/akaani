@@ -74,7 +74,7 @@
     .chan__card--dark { background: var(--ink); color: var(--bg); border: none; position: relative; overflow: hidden; }
     .chan__card--dark p { color: rgba(251, 245, 236, 0.7); }
     .chan__mascot { position: absolute; right: -16px; bottom: -34px; width: 120px; transform: rotate(-6deg); }
-    .chan__mascot svg { width: 100%; height: auto; }
+    .chan__mascot svg, .chan__mascot img { width: 100%; height: auto; }
     .chan__cities { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 14px; }
     .chan__cities span {
       font-size: 0.78rem; font-weight: 700;

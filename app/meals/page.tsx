@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
-import Lu from "@/components/Lu";
+import LuGif from "@/components/LuGif";
 import Motion from "./Motion";
 import FormBehavior from "@/components/FormBehavior";
 import FaqBehavior from "@/components/FaqBehavior";
@@ -228,7 +228,7 @@ export default function MealsPage() {
             <li><i>🗳️</i> Vote on which dishes make the menu</li>
           </ul>
           <div className="wform__mascot" aria-hidden="true">
-            <Lu />
+            <LuGif />
           </div>
         </div>
         <form className="wform__form" id="waitlistForm" noValidate>
@@ -272,7 +272,7 @@ export default function MealsPage() {
         </form>
         <div className="wform__form wform__success" id="wformSuccess">
           <div>
-            <Lu />
+            <LuGif />
             <b>You're on the list! 🎉</b>
             <p>Lu is already sharpening his knives. We'll email you the moment your city opens.</p>
           </div>

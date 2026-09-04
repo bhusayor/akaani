@@ -93,3 +93,27 @@
   0% { transform: translateX(-100%); }
   100% { transform: translateX(300%); }
 }
+
+/* Covers that are graphics with the headline already set into them would print
+   the title twice on a card that also shows it, so they are zoomed past the
+   type to the photograph.
+
+   This lives here rather than in base.css because base.css is imported into
+   the `legacy` layer, and the per-page stylesheets that style these frames are
+   imported unlayered. Unlayered beats layered whatever the specificity, so a
+   rule in base.css could never win. */
+.feature-post__img img.is-cropped,
+.jfeat__img img.is-cropped,
+.post__img img.is-cropped,
+.jpost__img img.is-cropped,
+.art__cover img.is-cropped {
+  position: absolute;
+  inset: auto auto auto 0;
+  top: 50%;
+  width: 205%;
+  height: auto;
+  max-width: none;
+  object-fit: fill;
+  object-position: center;
+  transform: translateY(-50%);
+}

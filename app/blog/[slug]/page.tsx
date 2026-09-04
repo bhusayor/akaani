@@ -65,7 +65,7 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
       <ProgressBar />
       <Motion />
 
-      <main className="py-16 lg:py-24">
+      <main className="pb-16 lg:pb-24">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <article className="art">
             <div className="art__head">

@@ -100,7 +100,7 @@ export default function HomePage() {
             <button type="button"><i></i><span>Chat</span></button>
             <button type="button"><i></i><span>Track</span></button>
             <button type="button"><i></i><span>Plan</span></button>
-            <button type="button"><i></i><span>Goals</span></button>
+            {/* <button type="button"><i></i><span>Goals</span></button> */}
           </div>
         </div>
 
@@ -135,11 +135,13 @@ export default function HomePage() {
               <h3>Plans that fit your week.</h3>
               <p>Lu builds a weekly Nigerian meal plan around your goal, then writes the grocery list for you. Sunday market run, sorted.</p>
             </article>
+            {/* Goals step, commented out
             <article className="lu__panel" data-step={4}>
               <span className="lu__index">05</span>
               <h3>Goals that move.</h3>
               <p>Cutting, bulking or maintaining. Lu recalibrates your targets as your body changes, and nudges you before you drift, not after.</p>
             </article>
+            */}
           </div>
 
           
@@ -200,6 +202,7 @@ export default function HomePage() {
                 </div>
 
                 
+                {/* Goals screen, commented out
                 <div className="screen screen--goal">
                   <div className="screen__title">Your goal <b>Lean by December</b></div>
                   <div className="goalcard">
@@ -211,6 +214,7 @@ export default function HomePage() {
                   <div className="nudge">💡 <div><b>Lu's nudge</b><em>You're 40g short on protein this week, add moi moi to Thursday?</em></div></div>
                   <div className="nudge nudge--alt">🔥 <div><b>12-day streak</b><em>Longest one yet. Keep it going.</em></div></div>
                 </div>
+                */}
 
               </div>
             </div>
@@ -223,8 +227,8 @@ export default function HomePage() {
               <div className="lu-chip lu-chip--bl" data-step={2}><span>💪 Protein on track</span></div>
               <div className="lu-chip lu-chip--tl" data-step={3}><span>🛒 Grocery list · 14 items</span></div>
               <div className="lu-chip lu-chip--br" data-step={3}><span>📅 4 dinners planned</span></div>
-              <div className="lu-chip lu-chip--tr" data-step={4}><span>⚖️ −4.2 kg and counting</span></div>
-              <div className="lu-chip lu-chip--bl" data-step={4}><span>🔥 12-day streak</span></div>
+              {/* <div className="lu-chip lu-chip--tr" data-step={4}><span>⚖️ −4.2 kg and counting</span></div> */}
+              {/* <div className="lu-chip lu-chip--bl" data-step={4}><span>🔥 12-day streak</span></div> */}
             </div>
             <div className="lu__phone-glow" aria-hidden="true"></div>
           </div>

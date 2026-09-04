@@ -10,9 +10,9 @@ import { gsap, ScrollTrigger, prefersReduced } from "@/lib/animations";
  * the homepage moved to Next, so the section pinned nothing and neither the
  * panels nor the backdrop changed on scroll.
  */
-const STEPS = 5;
+const STEPS = 4;
 /** A different backdrop per feature: teal, toasted clay, deep green, plum, midnight. */
-const COLORS = ["#003333", "#4A2606", "#143B2E", "#3A2138", "#122840"];
+const COLORS = ["#003333", "#4A2606", "#143B2E", "#3A2138" /*, "#122840" for the Goals step */];
 
 export default function LuMotion() {
   useEffect(() => {

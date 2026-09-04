@@ -326,14 +326,14 @@ export default function HomePage() {
           </div>
           <h3>{FEATURED.title}</h3>
           <p>{FEATURED.excerpt}</p>
-          <a href={FEATURED.href} className="btn btn--dark" target="_blank" rel="noopener noreferrer">
+          <a href={FEATURED.href} className="btn btn--dark">
             Read the article →
           </a>
         </div>
       </article>
       <div className="blog__grid">
         {REST.map((post) => (
-          <a key={post.slug} className="post" href={post.href} target="_blank" rel="noopener noreferrer">
+          <a key={post.slug} className="post" href={post.href}>
             <div className="post__img">
               <img src={post.image} alt={post.alt} loading="lazy" className={post.cropPastType ? "is-cropped" : undefined} />
               <span className="post__arrow">→</span>

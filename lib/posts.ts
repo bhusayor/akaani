@@ -3,8 +3,7 @@
  * homepage and the blog index cannot drift apart. Both pages previously
  * hardcoded their own separate copies.
  *
- * Only these four are live. `href` points at the published article; once this
- * site has its own /blog/[slug] route these become internal links.
+ * Only these four are live. Each has its own page here at /blog/[slug].
  */
 export type Post = {
   slug: string;
@@ -22,8 +21,6 @@ export type Post = {
   href: string;
 };
 
-const LIVE = "https://useakaani.com/blog";
-
 export const POSTS: Post[] = [
   {
     slug: "nutrient-maxxing-how-to-build-high-protein-high-fiber-meals",
@@ -35,7 +32,7 @@ export const POSTS: Post[] = [
     image: "https://res.cloudinary.com/dax6lymsu/image/upload/v1786088603/m3nvb3ykfdxwssdwcprp.png",
     alt: "A high-protein, high-fibre plate",
     cropPastType: true,
-    href: `${LIVE}/nutrient-maxxing-how-to-build-high-protein-high-fiber-meals`,
+    href: "/blog/nutrient-maxxing-how-to-build-high-protein-high-fiber-meals",
   },
   {
     slug: "the-700-pm-struggle-why-deciding-whats-for-dinner-feels-like-a-daily-battle-and-how-to-win",
@@ -46,7 +43,7 @@ export const POSTS: Post[] = [
     date: "Aug 7, 2026",
     image: "https://useakaani.com/images/fridge.jpg",
     alt: "An open fridge at dinner time",
-    href: `${LIVE}/the-700-pm-struggle-why-deciding-whats-for-dinner-feels-like-a-daily-battle-and-how-to-win`,
+    href: "/blog/the-700-pm-struggle-why-deciding-whats-for-dinner-feels-like-a-daily-battle-and-how-to-win",
   },
   {
     slug: "welcome-lu-your-ai-kitchen-companion-crafted-with-care",
@@ -57,7 +54,7 @@ export const POSTS: Post[] = [
     date: "Aug 7, 2026",
     image: "https://useakaani.com/images/third_post.jpg",
     alt: "Cooking with a phone to hand",
-    href: `${LIVE}/welcome-lu-your-ai-kitchen-companion-crafted-with-care`,
+    href: "/blog/welcome-lu-your-ai-kitchen-companion-crafted-with-care",
   },
   {
     slug: "foodie-tech-how-artificial-intelligence-is-revolutionizing-the-way-we-eat",
@@ -68,7 +65,7 @@ export const POSTS: Post[] = [
     date: "Aug 7, 2026",
     image: "https://useakaani.com/images/third_post.jpg",
     alt: "Technology and food",
-    href: `${LIVE}/foodie-tech-how-artificial-intelligence-is-revolutionizing-the-way-we-eat`,
+    href: "/blog/foodie-tech-how-artificial-intelligence-is-revolutionizing-the-way-we-eat",
   },
 ];
 

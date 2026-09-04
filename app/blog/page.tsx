@@ -46,7 +46,7 @@ export default function BlogPage() {
 
     
     <section className="jfeat">
-      <a className="jfeat__card" id="featCard" href={FEATURED.href} target="_blank" rel="noopener noreferrer">
+      <a className="jfeat__card" id="featCard" href={FEATURED.href}>
         <div className="jfeat__img">
           <img id="featImg" src={FEATURED.image} alt={FEATURED.alt} className={FEATURED.cropPastType ? "is-cropped" : undefined} />
           <span className="jfeat__badge">Featured</span>
@@ -74,8 +74,6 @@ export default function BlogPage() {
             className="jpost"
             data-cat={post.category.toLowerCase().replace(/\s+/g, "-")}
             href={post.href}
-            target="_blank"
-            rel="noopener noreferrer"
           >
             <div className="jpost__img">
               <img src={post.image} alt={post.alt} loading="lazy" className={post.cropPastType ? "is-cropped" : undefined} />

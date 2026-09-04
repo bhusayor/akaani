@@ -13,6 +13,9 @@ const nextConfig: NextConfig = {
       ["/article.html", "/article"],
       ["/about.html", "/about"],
       ["/contact.html", "/about#contact"],
+      // the placeholder article is superseded by the real posts
+      ["/article", "/blog"],
+      ["/article.html", "/blog"],
       ["/disclaimer.html", "/disclaimer"],
       ["/terms.html", "/terms"],
       ["/privacy.html", "/privacy"],

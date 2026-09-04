@@ -323,9 +323,16 @@
     .plancard__benefits span {
       border-radius: 999px; padding: 7px 14px;
       font-size: 0.86rem; font-weight: 600;
-      background: var(--mist); color: var(--ink);
+      color: var(--ink);
     }
-    .plancard__benefits span:first-child { background: var(--accent-soft); }
+    /* A pastel each, rotating, so a bundle with one benefit and a bundle with
+       three both read as a set. All are light enough that ink text on them
+       stays comfortably legible. */
+    .plancard__benefits span:nth-child(5n + 1) { background: #F7E4CB; }
+    .plancard__benefits span:nth-child(5n + 2) { background: #DDE9E0; }
+    .plancard__benefits span:nth-child(5n + 3) { background: #F7EAC6; }
+    .plancard__benefits span:nth-child(5n + 4) { background: #F6E0DA; }
+    .plancard__benefits span:nth-child(5n + 5) { background: #DEE8EF; }
 
     .plancard__buy {
       display: block; width: 100%; border: 0; cursor: pointer;

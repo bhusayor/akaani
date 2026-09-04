@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Logo from "@/components/Logo";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
@@ -61,9 +62,10 @@ export default function Nav({
         >
           <Link
             href="/"
-            className={"text-2xl font-extrabold transition-colors duration-500 " + (solid ? "text-ink" : "text-white")}
+            aria-label="akaani home"
+            className={"transition-colors duration-500 " + (solid ? "text-ink" : "text-white")}
           >
-            akaani<span className="text-accent">.</span>
+            <Logo className="h-[26px] w-auto" />
           </Link>
 
           <nav className="hidden items-center gap-[clamp(14px,2.4vw,34px)] md:flex">

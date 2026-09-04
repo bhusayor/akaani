@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Logo from "@/components/Logo";
 
 const DISCLAIMER = (
   <p className="footer__disclaimer">
@@ -14,8 +15,8 @@ export default function Footer({ giant = "akaani" }: { giant?: string }) {
     <footer className="footer">
       <div className="footer__top">
         <div className="footer__brand">
-          <Link className="footer__logo" href="/">
-            akaani<span>.</span>
+          <Link className="footer__logo" href="/" aria-label="akaani home">
+            <Logo />
           </Link>
           <p>
             Nigerian food was never the problem.

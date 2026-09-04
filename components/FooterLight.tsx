@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Logo from "@/components/Logo";
 
 const LINKS = [
   { href: "/", label: "Home" },
@@ -16,8 +17,8 @@ export default function FooterLight() {
   return (
     <footer className="border-t border-line px-5 pb-10 pt-[clamp(50px,7vh,80px)] sm:px-8 lg:px-[72px]">
       <div className="mx-auto flex max-w-[1280px] flex-wrap items-center justify-between gap-8 pb-9">
-        <Link href="/" className="text-[1.7rem] font-extrabold text-ink">
-          akaani<span className="text-accent">.</span>
+        <Link href="/" className="text-ink" aria-label="akaani home">
+          <Logo className="h-[30px] w-auto" />
         </Link>
 
         <nav className="flex flex-wrap gap-[clamp(18px,2.6vw,38px)]">

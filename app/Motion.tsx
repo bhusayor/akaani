@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect } from "react";
-import { gsap, ScrollTrigger, staggerReveal, parallaxVar, parallaxY, scrubWords, magneticButtons, revealLines, prefersReduced } from "@/lib/animations";
+import { gsap, ScrollTrigger, staggerReveal, parallaxVar, parallaxY, scrubWords, magneticButtons, revealLines, revealLinesOnScroll, prefersReduced } from "@/lib/animations";
 
 /** Home page choreography: hero intro, manifesto scrub, pinned Lu, parallax. */
 export default function Motion() {
@@ -10,7 +10,7 @@ export default function Motion() {
       revealLines(".hero .line__inner");
       // the CTA headline uses the same line mask as the hero, but nothing ever
       // revealed it, so it stayed parked at translateY(110%) and read as missing
-      revealLines(".cta .line__inner", 0);
+      revealLinesOnScroll(".cta .line__inner", ".cta");
       staggerReveal(".cta__content p, .cta__actions");
       gsap.from(".hero__proof", { y: 24, autoAlpha: 0, duration: 0.8, delay: 0.75 });
       gsap.from(".hero__desc", { y: 30, autoAlpha: 0, duration: 0.9, delay: 0.5 });

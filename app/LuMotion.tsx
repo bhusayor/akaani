@@ -140,6 +140,9 @@ export default function LuMotion() {
         pin: true,
         scrub: false,
         anticipatePin: 1,
+        // this pin inserts ~5800px of spacer, so it has to be measured before
+        // any trigger below it, or they all compute against the unpinned page
+        refreshPriority: 1,
         onUpdate: (self) => {
           const p = self.progress;
           setStep(Math.min(STEPS - 1, Math.floor(p * STEPS)));
@@ -185,6 +188,10 @@ export default function LuMotion() {
           else window.scrollTo({ top: y, behavior: "smooth" });
         });
       });
+
+      // the pin only exists now, and every trigger further down the page was
+      // positioned without it. Re-measure them all against the real layout.
+      ScrollTrigger.refresh();
 
       return () => ScrollTrigger.removeEventListener("refresh", onRefresh);
     }, section);

@@ -138,4 +138,21 @@ export function revealLines(selector: string, delay = 0.25) {
   return gsap.to(lines, { y: 0, duration: 1.1, ease: "power4.out", stagger: 0.12, delay });
 }
 
+/**
+ * Same masked reveal, held until the lines are actually on screen. The timed
+ * version is right for the hero, which is above the fold; anywhere further
+ * down the page it would play to nobody and be over before you arrived.
+ */
+export function revealLinesOnScroll(selector: string, trigger: string) {
+  const lines = gsap.utils.toArray<HTMLElement>(selector);
+  if (!lines.length) return null;
+  return gsap.to(lines, {
+    y: 0,
+    duration: 1.1,
+    ease: "power4.out",
+    stagger: 0.12,
+    scrollTrigger: { trigger, start: "top 75%", once: true },
+  });
+}
+
 export { gsap, ScrollTrigger };

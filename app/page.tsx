@@ -3,6 +3,7 @@ import Link from "next/link";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 import LuMotion from "./LuMotion";
+import { FEATURED, REST } from "@/lib/posts";
 import Lu from "@/components/Lu";
 import Motion from "./Motion";
 import FaqBehavior from "@/components/FaqBehavior";
@@ -314,38 +315,39 @@ export default function HomePage() {
       </div>
       <article className="feature-post">
         <div className="feature-post__img">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f5/Efo_Riro_with_fried_mackerel_fishes_and_roasted_cowskin.jpg/1280px-Efo_Riro_with_fried_mackerel_fishes_and_roasted_cowskin.jpg" alt="Efo riro with fried mackerel" loading="lazy" />
+          <img src={FEATURED.image} alt={FEATURED.alt} loading="lazy" className={FEATURED.cropPastType ? "is-cropped" : undefined} />
           <span className="feature-post__badge">Featured</span>
         </div>
         <div className="feature-post__body">
-          <div className="post__meta"><span className="post__cat">Nutrition</span><time>Jul 8, 2026</time><span className="post__read">6 min read</span></div>
-          <h3>Efo riro is a protein play, if you build it right</h3>
-          <p>The Yoruba classic can carry 35g+ of protein per bowl. We break down the macro math ingredient by ingredient, mackerel, cowskin, and all, so your next pot pulls double duty.</p>
-          <a href="#" className="btn btn--dark">Read the article →</a>
+          <div className="post__meta">
+            <span className="post__cat">{FEATURED.category}</span>
+            <time>{FEATURED.date}</time>
+            <span className="post__read">{FEATURED.read} read</span>
+          </div>
+          <h3>{FEATURED.title}</h3>
+          <p>{FEATURED.excerpt}</p>
+          <a href={FEATURED.href} className="btn btn--dark" target="_blank" rel="noopener noreferrer">
+            Read the article →
+          </a>
         </div>
       </article>
       <div className="blog__grid">
-        <article className="post">
-          <div className="post__img"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b4/Suya_with_pepper_sauce.jpg/1280px-Suya_with_pepper_sauce.jpg" alt="Suya with pepper sauce" loading="lazy" /><span className="post__arrow">→</span></div>
-          <div className="post__body">
-            <div className="post__meta"><span className="post__cat">Macros</span><time>Jun 30, 2026</time><span className="post__read">4 min</span></div>
-            <h3><span className="post__titletext">Suya: the original street-food protein</span></h3>
-          </div>
-        </article>
-        <article className="post">
-          <div className="post__img"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/89/Egusi_soup_in_a_plate.jpg/1920px-Egusi_soup_in_a_plate.jpg" alt="Egusi soup" loading="lazy" /><span className="post__arrow">→</span></div>
-          <div className="post__body">
-            <div className="post__meta"><span className="post__cat">Deep dive</span><time>Jun 21, 2026</time><span className="post__read">7 min</span></div>
-            <h3><span className="post__titletext">Why egusi never made it into food databases</span></h3>
-          </div>
-        </article>
-        <article className="post">
-          <div className="post__img"><img src="/assets/dish-jollof.jpg" alt="Jollof rice" loading="lazy" /><span className="post__arrow">→</span></div>
-          <div className="post__body">
-            <div className="post__meta"><span className="post__cat">Recipes</span><time>Jun 12, 2026</time><span className="post__read">5 min</span></div>
-            <h3><span className="post__titletext">Party jollof vs. cut-season jollof: one pot, two macros</span></h3>
-          </div>
-        </article>
+        {REST.map((post) => (
+          <a key={post.slug} className="post" href={post.href} target="_blank" rel="noopener noreferrer">
+            <div className="post__img">
+              <img src={post.image} alt={post.alt} loading="lazy" className={post.cropPastType ? "is-cropped" : undefined} />
+              <span className="post__arrow">→</span>
+            </div>
+            <div className="post__body">
+              <div className="post__meta">
+                <span className="post__cat">{post.category}</span>
+                <time>{post.date}</time>
+                <span className="post__read">{post.read}</span>
+              </div>
+              <h3><span className="post__titletext">{post.title}</span></h3>
+            </div>
+          </a>
+        ))}
       </div>
     </section>
 

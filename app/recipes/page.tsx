@@ -15,7 +15,7 @@ export const metadata: Metadata = {
 export default function RecipesPage() {
   return (
     <>
-      <Nav ctaLabel="Browse bundles" ctaHref="/recipes#bundles" />
+      <Nav ctaLabel="Get app" ctaHref="/#cta" />
       <Motion />
 
       <main>
@@ -27,10 +27,7 @@ export default function RecipesPage() {
           <p className="section-head__kicker">Recipe bundles</p>
           <h1 className="text-3xl md:text-4xl font-extrabold leading-tight">Nigerian recipes with the <span className="accent-text">maths already done.</span></h1>
           <p className="rh__sub text-gray-700 dark:text-gray-300 mt-4">Every bundle is five to seven recipes built for one goal, with the macros worked out, the steps written plainly, and a tip from Lu on every page. Buy it once, download it straight away, cook from it forever.</p>
-          <div className="rh__actions mt-6">
-            <a href="#bundles" className="btn btn--accent btn--lg">Browse bundles</a>
-          </div>
-          <div className="rh__ticks mt-4 flex gap-4 flex-wrap text-sm text-gray-600">
+          <div className="rh__ticks mt-6 flex gap-4 flex-wrap text-sm text-gray-600">
             <span className="rh__tick"><i>✓</i> Instant PDF download</span>
             <span className="rh__tick"><i>✓</i> Full macro breakdown</span>
             <span className="rh__tick"><i>✓</i> Ingredients you can buy here</span>
@@ -85,7 +82,7 @@ export default function RecipesPage() {
               </div>
               <div className="product__actions">
                 <button className="btn btn--ghost-dark add-cart" type="button">Add to cart</button>
-                <a href={`/recipes/${b.slug}`} className="btn btn--dark">See what is inside</a>
+                <a href={`/recipes/${b.slug}`} className="btn btn--dark">See inside</a>
               </div>
             </div>
           </article>

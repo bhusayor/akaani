@@ -29,7 +29,7 @@ export default async function BundlePage({ params }: { params: Promise<{ slug: s
 
   return (
     <>
-      <Nav ctaLabel="Browse bundles" ctaHref="/recipes#bundles" />
+      <Nav ctaLabel="Get app" ctaHref="/#cta" />
 
       <main className="bundlepage">
         <div className="bundlepage__inner">
@@ -71,28 +71,27 @@ export default async function BundlePage({ params }: { params: Promise<{ slug: s
 
           <section className="bundlepage__cols">
             <div>
-              <h2>What you cook</h2>
-              <ol className="bundlepage__recipes">
-                {b.recipes.map((r, i) => (
-                  <li key={r}>
-                    <i>{String(i + 1).padStart(2, "0")}</i>
-                    <span>{r}</span>
-                  </li>
-                ))}
-              </ol>
-            </div>
-
-            <aside>
               <h2>What is inside</h2>
               <ul className="bundlepage__included">
                 {INCLUDED.map((x) => <li key={x}>{x}</li>)}
               </ul>
+            </div>
 
-              <h2 className="bundlepage__h2-gap">Good for</h2>
+            <div>
+              <h2>Good for</h2>
               <ul className="bundlepage__included">
                 {b.benefits.map((x) => <li key={x}>{x}</li>)}
               </ul>
-            </aside>
+            </div>
+
+            <div>
+              <h2>How you get it</h2>
+              <ul className="bundlepage__included">
+                <li>{b.recipes.length} recipes, {b.servings} servings each</li>
+                <li>Download straight after paying</li>
+                <li>Yours to keep, no subscription</li>
+              </ul>
+            </div>
           </section>
 
           <section className="bundlepage__more">

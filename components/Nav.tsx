@@ -22,7 +22,7 @@ type NavProps = {
 };
 
 export default function Nav({
-  ctaLabel = "Get the app",
+  ctaLabel = "Get app",
   ctaHref = "/#cta",
   ctaExternal = false,
   transparentOnTop = false,

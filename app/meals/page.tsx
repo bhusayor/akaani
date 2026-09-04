@@ -16,7 +16,7 @@ export const metadata: Metadata = {
 export default function MealsPage() {
   return (
     <>
-      <Nav ctaLabel="Join the waitlist" ctaHref="/meals#waitlist" />
+      <Nav ctaLabel="Get app" ctaHref="/#cta" />
       <Motion />
       <FaqBehavior />
       <FormBehavior kind="waitlist" />

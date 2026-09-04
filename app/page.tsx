@@ -17,7 +17,7 @@ export const metadata: Metadata = {
 export default function HomePage() {
   return (
     <>
-      <Nav ctaLabel="Get the app" ctaHref="/#cta" />
+      <Nav ctaLabel="Get app" ctaHref="/#cta" />
       <Motion />
       <LuMotion />
       <FaqBehavior />

@@ -14,7 +14,7 @@ export const metadata: Metadata = {
 export default function PrivacyPage() {
   return (
     <>
-      <Nav ctaLabel="Get the app" ctaHref="/#cta" />
+      <Nav ctaLabel="Get app" ctaHref="/#cta" />
       <ProgressBar />
       <Motion />
 

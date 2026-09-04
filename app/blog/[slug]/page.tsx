@@ -61,7 +61,7 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
 
   return (
     <>
-      <Nav ctaLabel="Get the app" ctaHref="/#cta" />
+      <Nav ctaLabel="Get app" ctaHref="/#cta" />
       <ProgressBar />
       <Motion />
 

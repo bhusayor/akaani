@@ -15,7 +15,7 @@ export const metadata: Metadata = {
 export default function BlogPage() {
   return (
     <>
-      <Nav ctaLabel="Get the app" ctaHref="/#cta" />
+      <Nav ctaLabel="Get app" ctaHref="/#cta" />
       <Motion />
       <FormBehavior kind="blogFilters" />
       <FormBehavior kind="newsletter" />

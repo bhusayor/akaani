@@ -16,7 +16,7 @@ export default async function BookingPage({
 
   return (
     <>
-      <Nav ctaLabel="Back to dietitian" ctaHref="/dietitian" />
+      <Nav ctaLabel="Get app" ctaHref="/#cta" />
       <main className="px-5 pb-20 pt-[130px] sm:px-8 lg:px-[72px]">
         <Manage id={id} token={t} />
       </main>

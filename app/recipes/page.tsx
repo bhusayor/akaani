@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { BUNDLES } from "@/lib/bundles";
 import Link from "next/link";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
@@ -68,79 +69,27 @@ export default function RecipesPage() {
         <p>Each one is built around a single goal, so you are not scrolling through recipes that were never meant for you.</p>
       </div>
       <div className="shop__grid">
-
-        <article className="product" data-name="Mama Put Macros" data-price="4.99">
-          <div className="product__img">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fc/Suya_preparation_for_grilling_5.jpg/1920px-Suya_preparation_for_grilling_5.jpg" alt="Suya on a street grill" loading="lazy" />
-            <span className="product__count">5 recipes</span>
-            <span className="product__price">$4.99</span>
-          </div>
-          <div className="product__body">
-            <p className="product__tagline">Street-food classics, macro optimized.</p>
-            <h3>Mama Put Macros</h3>
-            <p>The roadside flavours you grew up on, rebuilt so the macros work as hard as the taste.</p>
-            <div className="product__chips"><span>Balanced macros</span><span>Breakfast</span><span>Lunch</span></div>
-            <div className="product__actions">
-              <button className="btn btn--ghost-dark add-cart" type="button">Add to cart</button>
-              <a href="https://useakaani.com/recipes" className="btn btn--dark">Buy now</a>
+        {BUNDLES.map((b) => (
+          <article key={b.slug} className="product" data-name={b.name} data-price={String(b.price)}>
+            <a className="product__img" href={`/recipes/${b.slug}`}>
+              <img src={b.image} alt={b.alt} loading="lazy" />
+              <span className="product__count">{b.recipes.length} recipes</span>
+              <span className="product__price">{b.currency}{b.price.toFixed(2)}</span>
+            </a>
+            <div className="product__body">
+              <p className="product__tagline">{b.tagline}</p>
+              <h3><a href={`/recipes/${b.slug}`}>{b.name}</a></h3>
+              <p>{b.blurb}</p>
+              <div className="product__chips">
+                {[b.plan, ...b.mealTypes].map((c) => <span key={c}>{c}</span>)}
+              </div>
+              <div className="product__actions">
+                <button className="btn btn--ghost-dark add-cart" type="button">Add to cart</button>
+                <a href={`/recipes/${b.slug}`} className="btn btn--dark">See what is inside</a>
+              </div>
             </div>
-          </div>
-        </article>
-
-        <article className="product" data-name="Roots &amp; Restore" data-price="4.99">
-          <div className="product__img">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Afang_soup_and_pounded_yam_03.jpg/1920px-Afang_soup_and_pounded_yam_03.jpg" alt="Afang soup with pounded yam" loading="lazy" />
-            <span className="product__count">5 recipes</span>
-            <span className="product__price">$4.99</span>
-          </div>
-          <div className="product__body">
-            <p className="product__tagline">Ancient ingredients, modern gut health.</p>
-            <h3>Roots &amp; Restore</h3>
-            <p>Five fibre-rich, gut-friendly recipes curated to aid digestion. The vegetables and roots our grandmothers swore by.</p>
-            <div className="product__chips"><span>Gut health</span><span>Digestion</span><span>Fibre-rich</span></div>
-            <div className="product__actions">
-              <button className="btn btn--ghost-dark add-cart" type="button">Add to cart</button>
-              <a href="https://useakaani.com/recipes" className="btn btn--dark">Buy now</a>
-            </div>
-          </div>
-        </article>
-
-        <article className="product" data-name="Cut Season" data-price="5.99">
-          <div className="product__img">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/63/Goat_meat_pepper_soup_served_with_bread.jpg/1920px-Goat_meat_pepper_soup_served_with_bread.jpg" alt="Goat meat pepper soup" loading="lazy" />
-            <span className="product__count">7 recipes</span>
-            <span className="product__price">$5.99</span>
-          </div>
-          <div className="product__body">
-            <p className="product__tagline">Eat less, lose more, stay Nigerian.</p>
-            <h3>Cut Season</h3>
-            <p>Seven low-calorie, high-protein recipes for fat loss without giving up the food you love.</p>
-            <div className="product__chips"><span>Fat loss</span><span>Low calorie</span><span>High satiety</span></div>
-            <div className="product__actions">
-              <button className="btn btn--ghost-dark add-cart" type="button">Add to cart</button>
-              <a href="https://useakaani.com/recipes" className="btn btn--dark">Buy now</a>
-            </div>
-          </div>
-        </article>
-
-        <article className="product" data-name="The Protein Pot" data-price="4.99">
-          <div className="product__img">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/89/Egusi_soup_in_a_plate.jpg/1920px-Egusi_soup_in_a_plate.jpg" alt="Egusi soup with assorted meat" loading="lazy" />
-            <span className="product__count">7 recipes</span>
-            <span className="product__price">$4.99</span>
-          </div>
-          <div className="product__body">
-            <p className="product__tagline">Maximum protein. Pure Nigerian.</p>
-            <h3>The Protein Pot</h3>
-            <p>Seven recipes for muscle building and active lifestyles, without a single chicken-and-rice cliché.</p>
-            <div className="product__chips"><span>Muscle building</span><span>Active lifestyle</span></div>
-            <div className="product__actions">
-              <button className="btn btn--ghost-dark add-cart" type="button">Add to cart</button>
-              <a href="https://useakaani.com/recipes" className="btn btn--dark">Buy now</a>
-            </div>
-          </div>
-        </article>
-
+          </article>
+        ))}
       </div>
     </section>
 

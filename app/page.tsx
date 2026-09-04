@@ -4,6 +4,7 @@ import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 import LuMotion from "./LuMotion";
 import { FEATURED, REST } from "@/lib/posts";
+import { BUNDLES } from "@/lib/bundles";
 import Lu from "@/components/Lu";
 import Motion from "./Motion";
 import FaqBehavior from "@/components/FaqBehavior";
@@ -253,30 +254,22 @@ export default function HomePage() {
         <p className="section-head__sub">Chef-tested Nigerian recipe collections, organised by goal. No subscription, download, cook, track.</p>
       </div>
       <div className="bundles__grid">
-        <article className="bundle">
-          <div className="bundle__img"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/34/Jollof_rice_and_tomato_stew.jpg/1920px-Jollof_rice_and_tomato_stew.jpg" alt="Jollof rice with tomato stew" loading="lazy" /><span className="bundle__tag">Best seller</span></div>
-          <div className="bundle__body">
-            <h3>The Protein Pot</h3>
-            <p>Maximum protein, pure Nigerian, 7 recipes curated for muscle building and active lifestyles.</p>
-            <div className="bundle__foot"><b>$4.99</b><a href="/recipes" className="btn btn--dark btn--sm">Get the bundle</a></div>
-          </div>
-        </article>
-        <article className="bundle">
-          <div className="bundle__img"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/63/Goat_meat_pepper_soup_served_with_bread.jpg/1920px-Goat_meat_pepper_soup_served_with_bread.jpg" alt="Goat meat pepper soup" loading="lazy" /><span className="bundle__tag">New</span></div>
-          <div className="bundle__body">
-            <h3>Cut Season</h3>
-            <p>Eat less, lose more, stay Nigerian, 7 low-calorie, high-protein recipes curated for fat loss.</p>
-            <div className="bundle__foot"><b>$5.99</b><a href="/recipes" className="btn btn--dark btn--sm">Get the bundle</a></div>
-          </div>
-        </article>
-        <article className="bundle">
-          <div className="bundle__img"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Afang_soup_and_pounded_yam_03.jpg/1920px-Afang_soup_and_pounded_yam_03.jpg" alt="Afang soup with pounded yam" loading="lazy" /><span className="bundle__tag">Gut health</span></div>
-          <div className="bundle__body">
-            <h3>Roots &amp; Restore</h3>
-            <p>Ancient ingredients, modern gut health, 5 fibre-rich recipes curated to aid digestion.</p>
-            <div className="bundle__foot"><b>$4.99</b><a href="/recipes" className="btn btn--dark btn--sm">Get the bundle</a></div>
-          </div>
-        </article>
+        {BUNDLES.slice(0, 3).map((b) => (
+          <article key={b.slug} className="bundle">
+            <a className="bundle__img" href={`/recipes/${b.slug}`}>
+              <img src={b.image} alt={b.alt} loading="lazy" />
+              {b.tag && <span className="bundle__tag">{b.tag}</span>}
+            </a>
+            <div className="bundle__body">
+              <h3>{b.name}</h3>
+              <p>{b.blurb}</p>
+              <div className="bundle__foot">
+                <b>{b.currency}{b.price.toFixed(2)}</b>
+                <a href={`/recipes/${b.slug}`} className="btn btn--dark btn--sm">Get the bundle</a>
+              </div>
+            </div>
+          </article>
+        ))}
       </div>
       <div className="bundles__more">
         <a href="/recipes" className="btn btn--dark btn--lg">See all bundles →</a>

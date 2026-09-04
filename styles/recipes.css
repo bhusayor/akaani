@@ -61,7 +61,7 @@
     .shop__head h2 { margin-bottom: 14px; }
     .shop__head p { color: var(--ink-soft); font-size: 1.04rem; max-width: 560px; }
     .shop__grid { max-width: 1280px; margin: 0 auto; display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(18px, 2.2vw, 30px); }
-    @media (min-width: 1025px) { .shop__grid .product:nth-child(4) { grid-column: 2; } }
+    @media (min-width: 1025px) { .shop__grid .product:nth-child(4) { grid-column: 1; } }
     .product {
       background: var(--paper); border: 1px solid var(--line);
       border-radius: var(--radius-lg); overflow: hidden;
@@ -258,4 +258,52 @@
       .inside__inner { grid-template-columns: 1fr; }
       .shop__grid { grid-template-columns: 1fr; max-width: 440px; }
       .product__actions { flex-direction: column; }
+    }
+
+    /* --- a single bundle, shown in place rather than sent off site --- */
+    .bundlepage { padding: 165px clamp(20px, 5vw, 72px) clamp(60px, 8vh, 100px); }
+    .bundlepage__inner { max-width: 1180px; margin: 0 auto; }
+    .bundlepage__back { display: inline-block; margin-bottom: 26px; font-weight: 700; font-size: 0.92rem; color: var(--ink-soft); }
+    .bundlepage__back:hover { color: var(--accent); }
+
+    .bundlepage__top { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(28px, 4vw, 56px); align-items: start; }
+    .bundlepage__img { border-radius: var(--radius-lg); overflow: hidden; aspect-ratio: 4 / 3; background: var(--mist); }
+    .bundlepage__img img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+    .bundlepage__tagline { font-size: 0.8rem; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent); margin-bottom: 12px; }
+    .bundlepage__buy h1 { font-size: clamp(2rem, 4vw, 3.1rem); margin-bottom: 14px; }
+    .bundlepage__blurb { font-size: 1.05rem; line-height: 1.65; color: var(--ink-soft); margin-bottom: 20px; }
+    .bundlepage__chips { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 24px; }
+    .bundlepage__chips span { border: 1px solid var(--line); border-radius: 999px; padding: 6px 13px; font-size: 0.82rem; font-weight: 600; }
+
+    .bundlepage__facts { border-top: 1px solid var(--line); margin-bottom: 24px; }
+    .bundlepage__facts div { display: flex; justify-content: space-between; gap: 16px; padding: 12px 0; border-bottom: 1px solid var(--line); }
+    .bundlepage__facts dt { color: var(--ink-soft); font-size: 0.93rem; }
+    .bundlepage__facts dd { font-weight: 700; font-size: 0.96rem; }
+
+    .bundlepage__price { display: flex; align-items: baseline; gap: 10px; margin-bottom: 20px; }
+    .bundlepage__price b { font-size: 2.2rem; font-weight: 800; line-height: 1; }
+    .bundlepage__price span { font-size: 0.85rem; color: var(--ink-soft); }
+    .bundlepage__actions { display: flex; flex-wrap: wrap; gap: 12px; }
+
+    .bundlepage__cols { display: grid; grid-template-columns: 1.35fr 1fr; gap: clamp(28px, 4vw, 60px); margin-top: clamp(48px, 6vh, 80px); }
+    .bundlepage__cols h2 { font-size: clamp(1.4rem, 2.2vw, 1.9rem); margin-bottom: 18px; }
+    .bundlepage__h2-gap { margin-top: 32px; }
+    .bundlepage__recipes { list-style: none; }
+    .bundlepage__recipes li { display: flex; gap: 16px; padding: 15px 0; border-bottom: 1px solid var(--line); font-size: 1.02rem; }
+    .bundlepage__recipes i { flex: none; font-style: normal; font-weight: 800; font-size: 0.82rem; color: var(--accent); padding-top: 3px; }
+    .bundlepage__included { list-style: none; }
+    .bundlepage__included li { position: relative; padding: 9px 0 9px 26px; font-size: 0.97rem; line-height: 1.5; color: var(--ink-soft); }
+    .bundlepage__included li::before { content: "✓"; position: absolute; left: 0; color: var(--accent); font-weight: 800; }
+
+    .bundlepage__more { margin-top: clamp(56px, 8vh, 96px); }
+    .bundlepage__moregrid { display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(18px, 2.2vw, 30px); }
+
+    @media (max-width: 900px) {
+      .bundlepage__top, .bundlepage__cols { grid-template-columns: 1fr; }
+      .bundlepage__moregrid { grid-template-columns: 1fr; max-width: 440px; margin: 0 auto; }
+    }
+    @media (max-width: 640px) {
+      .bundlepage { padding-top: 104px; }
+      .bundlepage__actions .btn { width: 100%; text-align: center; justify-content: center; }
     }

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
+import LuMotion from "./LuMotion";
 import Lu from "@/components/Lu";
 import Motion from "./Motion";
 import FaqBehavior from "@/components/FaqBehavior";
@@ -16,6 +17,7 @@ export default function HomePage() {
     <>
       <Nav ctaLabel="Get the app" ctaHref="/#cta" />
       <Motion />
+      <LuMotion />
       <FaqBehavior />
 
       <main>
@@ -398,8 +400,21 @@ export default function HomePage() {
         </h2>
         <p>Download akaani and let Lu handle the rest.</p>
         <div className="cta__actions">
-          <a href="#" className="storebtn"><small>Download on the</small><b> App Store</b></a>
-          <a href="#" className="storebtn"><small>Get it on</small><b>Google Play</b></a>
+          <a href="#" className="storebtn">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M16.4 12.7c0-2.2 1.8-3.3 1.9-3.4-1-1.5-2.6-1.7-3.2-1.7-1.4-.1-2.7.8-3.3.8-.7 0-1.7-.8-2.8-.8-1.5 0-2.8.8-3.6 2.1-1.5 2.6-.4 6.5 1.1 8.6.7 1 1.6 2.2 2.7 2.2 1.1 0 1.5-.7 2.8-.7 1.3 0 1.6.7 2.8.7 1.2 0 1.9-1 2.6-2.1.8-1.2 1.2-2.4 1.2-2.5-.1 0-2.2-.9-2.2-3.2ZM14.3 5.5c.6-.7 1-1.7.9-2.7-.9 0-2 .6-2.6 1.3-.6.6-1.1 1.7-.9 2.6 1 .1 2-.5 2.6-1.2Z" />
+            </svg>
+            <span><small>Download on the</small><b>App Store</b></span>
+          </a>
+          <a href="#" className="storebtn">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path fill="#34A853" d="M4.2 21.3c.3.1.7.1 1.1-.1l9-5.2-2.4-2.4-7.7 7.7Z" />
+              <path fill="#EA4335" d="M13.9 12.5 16.3 10 5.3 3.7c-.4-.2-.8-.2-1.1-.1l9.7 8.9Z" />
+              <path fill="#4285F4" d="m16.3 10 2.9 1.7c.9.5.9 1.9 0 2.4l-2.9 1.7-2.6-2.9 2.6-2.9Z" />
+              <path fill="#FBBC04" d="M3.5 3.9c-.3.3-.5.7-.5 1.2v13.8c0 .5.2.9.5 1.2l9-8.1-9-8.1Z" />
+            </svg>
+            <span><small>Get it on</small><b>Google Play</b></span>
+          </a>
         </div>
       </div>
       <div className="cta__mascot" aria-hidden="true">
@@ -408,43 +423,6 @@ export default function HomePage() {
     </section>
 
     
-    <footer className="footer">
-      <div className="footer__top">
-        <div className="footer__brand">
-          <a className="footer__logo" href="#top">akaani<span>.</span></a>
-          <p>Nigerian food was never the problem.<br />The apps were.</p>
-        </div>
-        <div className="footer__cols">
-          <div className="footer__col">
-            <h4>Product</h4>
-            <a href="#lu">Meet Lu</a>
-            <a href="#bundles">Recipe bundles</a>
-            <a href="#waitlist">akaani meals</a>
-            <a href="#cta">Download</a>
-          </div>
-          <div className="footer__col">
-            <h4>Company</h4>
-            <a href="/about">About</a>
-            <a href="/blog">Blog</a>
-            <a href="#faq">FAQ</a>
-            <a href="/about#contact">Contact</a>
-          </div>
-          <div className="footer__col">
-            <h4>Social</h4>
-            <a href="#">Instagram</a>
-            <a href="#">TikTok</a>
-            <a href="#">X (Twitter)</a>
-            <a href="#">YouTube</a>
-          </div>
-        </div>
-      </div>
-      <div className="footer__giant" aria-hidden="true">akaani</div>
-      <div className="footer__bottom">
-      <p className="footer__disclaimer">akaani provides nutritional guidance for informational purposes only<br />and is not a substitute for medical advice. <a href="/disclaimer">Read our full disclaimer.</a></p>
-      <span>© 2026 akaani. All rights reserved.</span>
-      <div><a href="/privacy">Privacy Policy</a><a href="/terms">Terms of Service</a></div>
-    </div>
-  </footer>
       </main>
 
       <Footer giant="akaani" />

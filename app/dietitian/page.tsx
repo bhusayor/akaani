@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Nav from "@/components/Nav";
-import FooterLight from "@/components/FooterLight";
+import Footer from "@/components/Footer";
 import Faq from "@/components/Faq";
 import Button from "@/components/ui/Button";
 import FadeIn from "@/components/motion/FadeIn";
@@ -519,7 +519,7 @@ export default function DietitianPage() {
         </section>
       </main>
 
-      <FooterLight />
+      <Footer giant="akaani" />
     </>
   );
 }

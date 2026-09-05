@@ -27,12 +27,7 @@ export default function MealsPage() {
     <section className="mh py-16 lg:py-24">
       <div className="mh__inner max-w-7xl mx-auto px-6 lg:px-8 flex flex-col lg:flex-row items-center gap-8">
         <div className="mh__content flex-1">
-          <div className="mh__cities text-sm text-gray-600">
-            <span className="mh__city mr-3"><i>●</i>Dallas</span>
-            <span className="mh__city mr-3"><i>●</i>Houston</span>
-            <span className="mh__city"><i>●</i>Seattle</span>
-          </div>
-          <h1 className="mh__title text-3xl md:text-4xl font-extrabold leading-tight mt-3">
+          <h1 className="mh__title text-3xl md:text-4xl font-extrabold leading-tight">
             <span className="line"><span className="line__inner">Authentic Nigerian meals,</span></span>
             <span className="line"><span className="line__inner accent-text">delivered weekly.</span></span>
           </h1>
@@ -82,29 +77,26 @@ export default function MealsPage() {
 
     
     <section className="taste">
-      <div className="section-head section-head--row">
-        <div>
-          <p className="section-head__kicker">On the menu</p>
-          <h2>A taste of what's coming.</h2>
-        </div>
-        <a href="/recipes" className="btn btn--ghost-dark">Browse recipes →</a>
+      <div className="section-head">
+        <p className="section-head__kicker">On the menu</p>
+        <h2>A taste of what's coming.</h2>
       </div>
       <div className="taste__grid">
         <figure className="dish">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0d/Jollof_%28Jollof-_Rice%29.jpg/1920px-Jollof_%28Jollof-_Rice%29.jpg" alt="Smoky party jollof" loading="lazy" />
-          <figcaption className="dish__label"><span><b>Smoky party jollof</b>with grilled chicken</span><em>620 kcal</em></figcaption>
+          <img src="https://res.cloudinary.com/dax6lymsu/image/upload/f_auto,q_auto,w_900/v1774722433/dsq9dp7uinjuj5yeo9pi.jpg" alt="Asun, peppered goat" loading="lazy" />
+          <figcaption className="dish__label"><span><b>Peppered goat asun</b>red onion &amp; scotch bonnet</span><em>540 kcal</em></figcaption>
         </figure>
         <figure className="dish">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/89/Egusi_soup_in_a_plate.jpg/1920px-Egusi_soup_in_a_plate.jpg" alt="Egusi soup" loading="lazy" />
-          <figcaption className="dish__label"><span><b>Egusi deluxe</b>assorted meat</span><em>540 kcal</em></figcaption>
+          <img src="https://res.cloudinary.com/dax6lymsu/image/upload/f_auto,q_auto,w_900/v1774723310/i0bwzl9kv6shhpxe2ltz.jpg" alt="Okra soup with chicken" loading="lazy" />
+          <figcaption className="dish__label"><span><b>Okra &amp; chicken</b>light, green, filling</span><em>410 kcal</em></figcaption>
         </figure>
         <figure className="dish">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fc/Suya_preparation_for_grilling_5.jpg/1920px-Suya_preparation_for_grilling_5.jpg" alt="Suya" loading="lazy" />
-          <figcaption className="dish__label"><span><b>Suya night</b>beef, yaji, onions</span><em>480 kcal</em></figcaption>
+          <img src="https://res.cloudinary.com/dax6lymsu/image/upload/f_auto,q_auto,w_900/v1774724528/vfqjzg6mdgkrf8frlqbu.jpg" alt="Moin moin with plantain" loading="lazy" />
+          <figcaption className="dish__label"><span><b>Moin moin</b>with sweet plantain</span><em>480 kcal</em></figcaption>
         </figure>
         <figure className="dish">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/63/Goat_meat_pepper_soup_served_with_bread.jpg/1920px-Goat_meat_pepper_soup_served_with_bread.jpg" alt="Pepper soup" loading="lazy" />
-          <figcaption className="dish__label"><span><b>Goat pepper soup</b>light &amp; fiery</span><em>310 kcal</em></figcaption>
+          <img src="https://res.cloudinary.com/dax6lymsu/image/upload/f_auto,q_auto,w_900/v1774726076/kvvx10nhcg6qfwyn0aw6.jpg" alt="Rice, beans and stew with egg" loading="lazy" />
+          <figcaption className="dish__label"><span><b>Rice, beans &amp; stew</b>mama put, macro-counted</span><em>620 kcal</em></figcaption>
         </figure>
       </div>
     </section>
@@ -161,23 +153,32 @@ export default function MealsPage() {
       <div className="section-head">
         <p className="section-head__kicker">Where we cook</p>
         <h2>Rolling out, city by city.</h2>
-        <p className="section-head__sub">More cities launching soon, waitlist members hear first.</p>
+        <p className="section-head__sub">We open a city once enough neighbours are on the list. That keeps delivery routes short and the food fresh when it reaches you.</p>
       </div>
       <div className="cities__grid">
         <article className="city">
-          <span className="city__badge">Now cooking</span>
+          <span className="city__badge"><i className="city__dot" aria-hidden="true"></i>Now cooking</span>
           <h3>Dallas</h3>
-          <span>Texas</span>
+          <span className="city__state">Texas</span>
+          <span className="city__meta">Delivered Saturday &amp; Sunday</span>
         </article>
         <article className="city">
-          <span className="city__badge">Now cooking</span>
+          <span className="city__badge"><i className="city__dot" aria-hidden="true"></i>Now cooking</span>
           <h3>Houston</h3>
-          <span>Texas</span>
+          <span className="city__state">Texas</span>
+          <span className="city__meta">Delivered Saturday &amp; Sunday</span>
         </article>
         <article className="city">
-          <span className="city__badge">Now cooking</span>
+          <span className="city__badge"><i className="city__dot" aria-hidden="true"></i>Now cooking</span>
           <h3>Seattle</h3>
-          <span>Washington</span>
+          <span className="city__state">Washington</span>
+          <span className="city__meta">Delivered Saturday &amp; Sunday</span>
+        </article>
+        <article className="city city--next">
+          <span className="city__badge city__badge--next">Up next</span>
+          <h3>Your city</h3>
+          <span className="city__state">Not cooking here yet</span>
+          <a className="city__link" href="#waitlist">Add your city<i aria-hidden="true">→</i></a>
         </article>
       </div>
     </section>

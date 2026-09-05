@@ -132,26 +132,61 @@
     .dish__label em { font-style: normal; color: var(--accent); font-weight: 700; white-space: nowrap; }
 
     /* cities */
-    .cities { padding: clamp(88px, 14vh, 160px) clamp(20px, 5vw, 72px); }
-    .cities__grid { max-width: 1280px; margin: 0 auto; display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(16px, 1.8vw, 24px); }
+    .cities { padding: clamp(88px, 14vh, 160px) clamp(24px, 5vw, 72px); }
+    .cities__grid {
+      max-width: 1280px; margin: 0 auto; display: grid;
+      grid-template-columns: repeat(4, 1fr); gap: clamp(16px, 1.8vw, 24px);
+    }
     .city {
       position: relative; overflow: hidden;
       border-radius: var(--radius-lg);
       background: var(--paper); border: 1px solid var(--line);
-      padding: clamp(24px, 2.6vw, 40px);
-      min-height: 220px;
+      padding: clamp(24px, 2.6vw, 32px);
+      min-height: 240px;
       display: flex; flex-direction: column; justify-content: flex-end;
       transition: transform 0.5s var(--ease), box-shadow 0.5s;
     }
-    .city:hover { transform: translateY(-8px); box-shadow: 0 26px 50px rgba(0, 51, 51, 0.13); }
+    .city:hover { transform: translateY(-8px); box-shadow: 0 24px 48px rgba(0, 51, 51, 0.13); }
     .city__badge {
-      position: absolute; top: 18px; left: 18px;
+      position: absolute; top: 16px; left: 16px;
+      display: inline-flex; align-items: center; gap: 8px;
       font-size: 0.7rem; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase;
       padding: 8px 16px; border-radius: 999px;
       background: var(--bg-soft); color: var(--accent);
     }
-    .city h3 { font-size: clamp(1.7rem, 2.4vw, 2.3rem); }
-    .city span { color: var(--ink-soft); font-size: 0.92rem; }
+    .city__dot {
+      width: 8px; height: 8px; border-radius: 50%;
+      background: var(--accent); flex: none;
+      animation: cityPulse 2s ease-in-out infinite;
+    }
+    @keyframes cityPulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50%      { opacity: 0.45; transform: scale(0.75); }
+    }
+    .city h3 { font-size: clamp(1.7rem, 2.4vw, 2.1rem); line-height: 1.1; }
+    .city__state { color: var(--ink-soft); font-size: 0.92rem; }
+    .city__meta {
+      margin-top: 16px; padding-top: 16px;
+      border-top: 1px solid var(--line);
+      color: var(--ink-soft); font-size: 0.85rem;
+    }
+
+    /* the card for everyone we do not reach yet */
+    .city--next {
+      background: transparent;
+      border: 1px dashed rgba(0, 51, 51, 0.28);
+    }
+    .city--next:hover { border-color: var(--accent); }
+    .city__badge--next { background: rgba(0, 51, 51, 0.06); color: var(--ink-soft); }
+    .city__link {
+      display: inline-flex; align-items: center; gap: 8px;
+      margin-top: 16px; padding: 8px 0;
+      font-weight: 700; font-size: 0.95rem; color: var(--accent);
+    }
+    .city__link i { font-style: normal; transition: transform 0.4s var(--ease); }
+    .city--next:hover .city__link i { transform: translateX(4px); }
+    /* the whole card is the target, the link just shows where it goes */
+    .city__link::after { content: ""; position: absolute; inset: 0; }
 
     /* waitlist form */
     .wform { padding: 0 clamp(20px, 5vw, 72px) clamp(88px, 14vh, 160px); }
@@ -241,6 +276,8 @@
     }
     @media (max-width: 720px) {
       .taste__grid, .cities__grid { grid-template-columns: 1fr; }
+      /* stacked, the cards do not need to hold a square footprint */
+      .city { min-height: 0; padding-top: 64px; }
       .wform__row { grid-template-columns: 1fr; }
       .dish { aspect-ratio: 4 / 3; }
     }

@@ -158,26 +158,20 @@ export default function MealsPage() {
       <div className="cities__grid">
         <article className="city">
           <span className="city__index" aria-hidden="true">01</span>
-          <span className="city__dot" aria-hidden="true"></span>
           <h3>Dallas</h3>
           <span className="city__state">Texas</span>
-          <span className="city__coord">32.78° N · 96.80° W</span>
           <span className="city__meta">Delivered Saturday &amp; Sunday</span>
         </article>
         <article className="city">
           <span className="city__index" aria-hidden="true">02</span>
-          <span className="city__dot" aria-hidden="true"></span>
           <h3>Houston</h3>
           <span className="city__state">Texas</span>
-          <span className="city__coord">29.76° N · 95.37° W</span>
           <span className="city__meta">Delivered Saturday &amp; Sunday</span>
         </article>
         <article className="city">
           <span className="city__index" aria-hidden="true">03</span>
-          <span className="city__dot" aria-hidden="true"></span>
           <h3>Seattle</h3>
           <span className="city__state">Washington</span>
-          <span className="city__coord">47.61° N · 122.33° W</span>
           <span className="city__meta">Delivered Saturday &amp; Sunday</span>
         </article>
       </div>

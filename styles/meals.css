@@ -135,58 +135,62 @@
     .cities { padding: clamp(88px, 14vh, 160px) clamp(24px, 5vw, 72px); }
     .cities__grid {
       max-width: 1280px; margin: 0 auto; display: grid;
-      grid-template-columns: repeat(4, 1fr); gap: clamp(16px, 1.8vw, 24px);
+      grid-template-columns: repeat(3, 1fr); gap: clamp(16px, 1.8vw, 24px);
     }
     .city {
       position: relative; overflow: hidden;
       border-radius: var(--radius-lg);
       background: var(--paper); border: 1px solid var(--line);
-      padding: clamp(24px, 2.6vw, 32px);
-      min-height: 240px;
+      padding: clamp(24px, 2.6vw, 40px);
+      min-height: 288px;
       display: flex; flex-direction: column; justify-content: flex-end;
-      transition: transform 0.5s var(--ease), box-shadow 0.5s;
+      transition: transform 0.5s var(--ease), box-shadow 0.5s, border-color 0.5s;
     }
-    .city:hover { transform: translateY(-8px); box-shadow: 0 24px 48px rgba(0, 51, 51, 0.13); }
-    .city__badge {
-      position: absolute; top: 16px; left: 16px;
-      display: inline-flex; align-items: center; gap: 8px;
-      font-size: 0.7rem; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase;
-      padding: 8px 16px; border-radius: 999px;
-      background: var(--bg-soft); color: var(--accent);
+    /* a warm wash in the corner that wakes up on hover */
+    .city::before {
+      content: ""; position: absolute; inset: 0; pointer-events: none;
+      background: radial-gradient(118% 88% at 100% 0%, rgba(218, 112, 0, 0.15), transparent 62%);
+      opacity: 0.55; transition: opacity 0.6s var(--ease);
+    }
+    .city:hover::before { opacity: 1; }
+    .city:hover {
+      transform: translateY(-8px);
+      border-color: rgba(218, 112, 0, 0.42);
+      box-shadow: 0 24px 48px rgba(0, 51, 51, 0.13);
+    }
+    .city > * { position: relative; }
+
+    .city__index {
+      position: absolute; top: clamp(16px, 2vw, 24px); right: clamp(16px, 2vw, 24px);
+      font-size: clamp(3rem, 5vw, 4.5rem); font-weight: 800; line-height: 1;
+      letter-spacing: -0.04em; color: var(--ink); opacity: 0.07;
     }
     .city__dot {
-      width: 8px; height: 8px; border-radius: 50%;
-      background: var(--accent); flex: none;
-      animation: cityPulse 2s ease-in-out infinite;
+      position: absolute; top: clamp(28px, 2.6vw, 40px); left: clamp(24px, 2.6vw, 40px);
+      width: 8px; height: 8px; border-radius: 50%; background: var(--accent);
     }
-    @keyframes cityPulse {
-      0%, 100% { opacity: 1; transform: scale(1); }
-      50%      { opacity: 0.45; transform: scale(0.75); }
+    .city__dot::after {
+      content: ""; position: absolute; inset: -6px;
+      border-radius: 50%; border: 1px solid var(--accent);
+      animation: cityRing 2.4s ease-out infinite;
     }
-    .city h3 { font-size: clamp(1.7rem, 2.4vw, 2.1rem); line-height: 1.1; }
-    .city__state { color: var(--ink-soft); font-size: 0.92rem; }
+    @keyframes cityRing {
+      0%   { transform: scale(0.6); opacity: 0.7; }
+      100% { transform: scale(1.5); opacity: 0; }
+    }
+
+    .city h3 { font-size: clamp(2rem, 3vw, 2.6rem); line-height: 1; letter-spacing: -0.02em; }
+    .city__state { margin-top: 8px; color: var(--ink-soft); font-size: 0.92rem; }
+    .city__coord {
+      margin-top: 24px;
+      font-size: 0.72rem; letter-spacing: 0.08em; text-transform: uppercase;
+      color: var(--ink-soft); opacity: 0.75; font-variant-numeric: tabular-nums;
+    }
     .city__meta {
       margin-top: 16px; padding-top: 16px;
       border-top: 1px solid var(--line);
       color: var(--ink-soft); font-size: 0.85rem;
     }
-
-    /* the card for everyone we do not reach yet */
-    .city--next {
-      background: transparent;
-      border: 1px dashed rgba(0, 51, 51, 0.28);
-    }
-    .city--next:hover { border-color: var(--accent); }
-    .city__badge--next { background: rgba(0, 51, 51, 0.06); color: var(--ink-soft); }
-    .city__link {
-      display: inline-flex; align-items: center; gap: 8px;
-      margin-top: 16px; padding: 8px 0;
-      font-weight: 700; font-size: 0.95rem; color: var(--accent);
-    }
-    .city__link i { font-style: normal; transition: transform 0.4s var(--ease); }
-    .city--next:hover .city__link i { transform: translateX(4px); }
-    /* the whole card is the target, the link just shows where it goes */
-    .city__link::after { content: ""; position: absolute; inset: 0; }
 
     /* waitlist form */
     .wform { padding: 0 clamp(20px, 5vw, 72px) clamp(88px, 14vh, 160px); }
@@ -271,13 +275,12 @@
       .steps__grid { grid-template-columns: 1fr; max-width: 560px; }
       .plans__grid { grid-template-columns: 1fr; max-width: 480px; }
       .taste__grid { grid-template-columns: repeat(2, 1fr); }
-      .cities__grid { grid-template-columns: repeat(2, 1fr); }
       .wform__inner { grid-template-columns: 1fr; }
     }
     @media (max-width: 720px) {
       .taste__grid, .cities__grid { grid-template-columns: 1fr; }
       /* stacked, the cards do not need to hold a square footprint */
-      .city { min-height: 0; padding-top: 64px; }
+      .city { min-height: 0; padding-top: 72px; }
       .wform__row { grid-template-columns: 1fr; }
       .dish { aspect-ratio: 4 / 3; }
     }

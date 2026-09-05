@@ -519,7 +519,7 @@ export default function DietitianPage() {
         </section>
       </main>
 
-      <Footer giant="akaani" />
+      <Footer giant="dietitian" />
     </>
   );
 }

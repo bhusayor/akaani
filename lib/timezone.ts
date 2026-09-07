@@ -46,3 +46,33 @@ export function tzLabel(tz: string): string {
   const name = tzName(tz);
   return name ? `${city} (${name})` : city;
 }
+
+/**
+ * The short GMT offset for the zone, e.g. "GMT+1", "GMT-4", "GMT+5:30".
+ * Short enough to sit beside a heading, and it needs no translation.
+ */
+export function tzOffset(tz: string): string {
+  try {
+    const parts = new Intl.DateTimeFormat("en", { timeZone: tz, timeZoneName: "shortOffset" }).formatToParts(new Date());
+    const v = parts.find((p) => p.type === "timeZoneName")?.value;
+    // "UTC+1" and "GMT+01:00" both show up depending on the engine
+    if (v && /^(GMT|UTC)/.test(v)) {
+      return v.replace(/^UTC/, "GMT").replace(/([+-]\d{1,2}):00$/, "$1").replace(/([+-])0(\d)/, "$1$2");
+    }
+  } catch {
+    // shortOffset is not in every engine, fall through to the arithmetic
+  }
+  try {
+    const now = new Date();
+    const here = new Date(now.toLocaleString("en-US", { timeZone: tz }));
+    const utc = new Date(now.toLocaleString("en-US", { timeZone: "UTC" }));
+    const mins = Math.round((here.getTime() - utc.getTime()) / 60000);
+    if (!mins) return "GMT";
+    const sign = mins < 0 ? "-" : "+";
+    const h = Math.floor(Math.abs(mins) / 60);
+    const m = Math.abs(mins) % 60;
+    return `GMT${sign}${h}${m ? ":" + String(m).padStart(2, "0") : ""}`;
+  } catch {
+    return "";
+  }
+}

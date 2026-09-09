@@ -1,0 +1,110 @@
+1.	Introduction
+1.1.	Akaani started with a simple question: what do you actually want to eat? Akaani Technologies Limited (‘Akaani’, ‘we’, ‘us’ or ‘our’) brings structure to African meals by helping you decide what to eat based on your preferences, goals and lifestyle, without losing the culture in the process. Through Lu, our AI guide, you go from not knowing what to eat to a clear, personalised answer in seconds. We also connect you, where you choose to use this feature, with independent Registered Dietitians for personalised nutrition consultations.
+1.2.	This Privacy Policy (together with any other documents referred to in it) sets out the basis on which the personal data collected from you, or that you provide to us, is processed by us in connection with your use of our website, mobile application, Lu, our meal planning and recommendation tools, Akaani Meals, and our dietitian consultation services (together, the ‘Services’).
+1.3.	We understand the confidential nature of the Personal Data and Sensitive Personal Data we collect, including data about your health, dietary needs and eating goals, and are committed to protecting it.
+1.4.	This Privacy Policy tells you what Personal Data and Sensitive Personal Data we collect, how and why we collect and process it, how long we keep it, who we share it with, and what rights you have in relation to it.
+1.5.	By using the Services, you acknowledge that you have read, understood and agree to this Privacy Policy, as it may be updated by us from time to time.
+1.6.	At certain intervals, we may make some changes to these notices to meet changing circumstances, law, or any other triggering factor. Where any significant changes are made, we will notify you of such changes. Otherwise, you may track the changes we make from the headers of the notices, which disclose the version of the notice and the most recent updates.
+1.7.	If you have any questions or concerns about this privacy policy or how we collect, process, or manage your personal data at Akaani, you may contact us at hello@useakaani.com  
+
+2.	Definitions
+The following terms have the meanings set out opposite them:
+Akaani, we, us or our means Akaani Technologies Limited and, where the context requires, its affiliated entities, including any U.S. affiliate;
+You means the Data Subject and a User of the Services;
+Data Protection Laws means the Nigeria Data Protection Act 2023 (NDPA), the Nigeria Data Protection Act General Application and Implementation Directive 2025 (GAID), the California Consumer Privacy Act as amended by the California Privacy Rights Act (CCPA/CPRA) and other applicable U.S. state privacy laws, and any other Nigerian, U.S. or other foreign law applicable to the protection of personal data;
+Data Subject means a person to whom Personal Data relates;
+NDPC or the Commission means the Nigeria Data Protection Commission;
+Personal Data means any information relating to an identified or identifiable individual;
+Sensitive Personal Data means Personal Data relating to an individual’s (a) genetic and biometric data; (b) race or ethnic origin; (c) religious or similar beliefs; (d) health status, including dietary requirements, food allergies, intolerances, medical conditions and nutrition or fitness goals; (e) sex life; (f) political opinions or affiliations; (g) trade union memberships; or (h) other information prescribed by the Commission;
+Platform means our website and mobile application through which the Services are made available;
+Services means the Platform, Lu, our meal planning and recommendation tools, Akaani Meals, and our dietitian consultation services;
+Registered Dietitian means an independent, qualified nutrition professional who provides consultation services to Users through the Platform.
+3.	What Data Do We Collect?
+3.1.	We collect and process some or all of the following categories of information from you:
+3.1.1.	Account and identity data: your name, email address, phone number, date of birth, gender, and password;
+3.1.2.	Goals and preference data: your food preferences, cultural or cuisine preferences, and eating goals (for example, weight, protein or fitness-related goals) and other lifestyle information you share with Lu or otherwise input into the Platform to personalise your meal recommendations;
+3.1.3.	Health and dietary data (Sensitive Personal Data): dietary restrictions, food allergies or intolerances, medical conditions relevant to your nutrition, and any information you share during a consultation with a Registered Dietitian, including consultation notes, meal plans and dietary recommendations;
+3.1.4.	Transaction and payment data: your order history and billing address (payment card or mobile money details are collected and processed directly by our payment processors, who are responsible for the security of that data);
+3.1.5.	Usage and device data: your interactions with Lu, app usage patterns, IP address, device identifiers, operating system, browser type, and location data (where enabled on your device);
+3.1.6.	Communications data: your correspondence with our customer support team, and your participation in surveys, competitions or promotions; and
+3.1.7.	Information from Registered Dietitians: consultation records and related nutrition data shared with us by a Registered Dietitian in connection with Services you have requested.
+3.1.8.	Where a Service is not available to you (for example, dietitian consultations may only be offered in certain locations), we will not collect the corresponding data from you.
+3.2.	Sensitive Personal Data
+3.2.1.	Some of the data we collect, in particular, data about your health, dietary restrictions, allergies and medical conditions can be regarded as Sensitive Personal Data under the NDPA and comparable Data Protection Laws.
+3.2.2.	We only collect and process your Sensitive Personal Data with your explicit consent, given when you provide it to us (for example, when setting your nutrition goals with Lu or booking a consultation with a Registered Dietitian), or where another lawful basis under Data Protection Laws applies. For example, where it is necessary to protect your vital interests, such as flagging a serious allergy to protect your health and safety.
+3.2.3.	You may withdraw your consent to our processing of your Sensitive Personal Data at any time by contacting us using the details below. This may, however, limit our ability to provide personalised meal recommendations or consultation services that depend on that data.
+
+4.	How Do We Collect Data
+4.1.	Directly from you, when you create an account, interact with Lu, place an order, book a consultation, complete a survey, or otherwise use the Platform;
+4.2.	Automatically, through your use of the Services (see Clause 8 Cookies and Tracking Technologies);
+4.3.	From Registered Dietitians, who may share consultation notes and related data with us in connection with Services provided to you;
+4.4.	From our payment processor partners, in connection with our services; and
+4.5.	From third parties such as identity verification services and public sources, where necessary for fraud prevention, compliance or safety purposes.
+
+5.	How Do We Process Your Data and on What Legal Basis?
+5.1.	We process your data to:
+5.1.1.	provide the Services, including generating personalised meal recommendations through Lu, and facilitating consultations with Registered Dietitians (necessary for the performance of our contract with you);
+5.1.2.	improve and personalise the Services, and for internal research and analysis (our legitimate interest, balanced against your rights and interests);
+5.1.3.	communicate with you about your orders, consultations, or changes to the Services (necessary for the performance of our contract with you, or our legitimate interest);
+5.1.4.	send you marketing communications, where you have opted in (your consent, which you may withdraw at any time);
+5.1.5.	comply with legal and regulatory requirements, including tax, consumer protection and food-safety obligations (our legal obligation); and
+5.1.6.	protect the vital interests of you or another person. For example, in relation to a disclosed allergy (vital interests).
+5.2.	Where you decline to provide certain Personal Data, or object to its processing, we may be unable to provide some or all of the Services to you. For example, we cannot generate a personalised meal plan without your goals and preferences, and cannot facilitate a dietitian consultation without your relevant health information.
+
+6.	Who Do We Share Your Data With
+6.1.	We do not sell, rent or trade your Personal Data. We only share your Personal Data with:
+6.1.1.	Registered Dietitians, to the extent necessary to provide consultation services you have requested;
+6.1.2.	payment processors for payment of the services;
+6.1.3.	service providers who support our operations (for example, cloud hosting, analytics and customer support tools), under contractual confidentiality and data protection obligations;
+6.1.4.	regulatory, law enforcement or other authorities, where required by law, or to prevent fraud, or to protect the rights, safety or property of Akaani, our Users or others; and
+6.1.5.	a successor entity, in the event of a merger, acquisition or sale of some or all of our business, provided that entity continues to be bound by this Privacy Policy (or a materially similar policy).
+6.1.6.	We may transfer your Personal Data among Akaani’s affiliated entities, including any U.S. affiliate, in connection with the provision of the Services.
+7.	International Data Transfers
+7.1.	Akaani operates in Nigeria and the United States. Your Personal Data may accordingly be transferred to, and processed in, countries other than the one in which you are located, including the United States.
+7.2.	Where we transfer your Personal Data outside Nigeria, we do so in accordance with the cross-border data transfer requirements of the NDPA and GAID, which may include relying on your consent, or another lawful basis recognised under Data Protection Laws.
+
+8.	Cookie and Tracking Technologies
+8.1.	We use cookies and similar tracking technologies to track the activity on our Service and hold certain information. Cookies are files with a small amount of data, including a unique anonymous identifier. Cookies are sent to your browser from a website and stored on your device. Tracking technologies also used are beacons, tags, and scripts to collect and track information and improve and analyse our Service. You can instruct your browser to accept or refuse all cookies or indicate when a cookie is being sent. However, if you do not accept cookies, you may not experience and use some portions of our Service. Examples of Cookies we use:
+8.1.1.	Session Cookies. We use Session Cookies to operate our Service.
+8.1.2.	Preference Cookies. We use Preference Cookies to remember your preferences and various settings.
+8.1.3.	Security Cookies. We use Security Cookies for security purposes.
+8.1.4.	Necessary Cookies. 
+
+9.	How Long Do We Keep Your Data
+9.1.	We keep your Personal Data only so long as necessary to fulfil the purposes we collected it for, including for the purposes of satisfying any legal, regulatory, tax, accounting or reporting requirements. This is also the case for anyone that we share your Personal Data with and who carries out services on our behalf. 
+9.2.	To determine the appropriate retention period for Personal Data, we consider the amount, nature and sensitivity of the Personal Data, the potential risk of harm from unauthorised use or disclosure of your Personal Data, the purposes for which we process your Personal Data and whether we can achieve those purposes through other means, and the applicable legal, regulatory, tax, accounting or other requirements.
+9.3.	In some circumstances you can ask us to delete your Personal Data: see [How to exercise your rights?] below for further information.
+9.4.	In some circumstances we will anonymise your Personal Data (so that it can no longer be associated with you) for research or statistical purposes, in which case we may use this information indefinitely without further notice to you.
+9.5.	When we no longer need to use your information, and there is no need for us to keep it to comply with our legal or regulatory obligations, we either remove it from our systems or depersonalize it so that we cannot identify you.
+
+10.	Your Rights
+10.1.	Under the NDPA, GAID and other applicable Data Protection Laws, you have the right to:
+10.1.1.	request access to the Personal Data we hold about you;
+10.1.2.	request correction of inaccurate or incomplete Personal Data;
+10.1.3.	request erasure of your Personal Data, in certain circumstances;
+10.1.4.	object to, or request restriction of, our processing of your Personal Data;
+10.1.5.	request transfer (portability) of your Personal Data to you or a third party;
+10.1.6.	withdraw your consent at any time, where we rely on consent as our lawful basis for processing; and
+10.1.7.	lodge a complaint with the NDPC, or such other relevant regulator, if you believe we have not processed your Personal Data in accordance with applicable Data Protection Laws,  though we would appreciate the opportunity to address your concern directly first.
+10.1.8.	If you are a resident of California or another U.S. state with a comparable consumer privacy law, you also have the right to:
+10.1.9.	know what Personal Information we collect, use, disclose and (if applicable) sell or share about you;
+10.1.10.	delete Personal Information we have collected from you, subject to certain exceptions;
+10.1.11.	correct inaccurate Personal Information;
+10.1.12.	opt out of the sale or sharing of your Personal Information (we do not sell or share Personal Information for cross-context behavioural advertising);
+10.1.13.	limit the use of Sensitive Personal Information to that necessary to provide the Services; and
+10.1.14.	not be discriminated against for exercising any of these rights.
+10.2.	You may exercise these rights by contacting us using the details below. We will respond within the timeframes required under applicable Data Protection Laws (generally within thirty (30) days, or as otherwise required by the law applicable to your request). We may need to verify your identity before actioning your request.
+11.	Children’s Privacy
+11.1.	The Services are not directed to, and are not intended for use by, children under the age of 18. We do not knowingly collect Personal Data from children
+11.2.	If you are a parent or guardian and believe your child has provided us with Personal Data, please contact us using the details below, and we will take reasonable steps to delete that information
+12.	Security
+12.1.	We take reasonable technical and organisational measures to protect your Personal Data from loss, misuse, unauthorised access, disclosure, alteration and destruction, taking into account the nature of the data,  including the heightened sensitivity of your health and dietary data and the risks involved.
+12.2.	No method of transmission over the internet, or method of electronic storage, is completely secure. While we strive to use commercially acceptable means to protect your Personal Data, we cannot guarantee its absolute security.
+13.	Changes to this Policy
+13.1.	We may update this Privacy Policy from time to time to reflect changes in our practices, our Services, or applicable law. Where we make material changes, we will notify you, for example, by posting a notice on the Platform or sending you an email before the changes take effect.
+13.2.	The ‘Last updated’ date at the top of this Privacy Policy indicates when it was last revised.
+
+14.	Contact Us
+If you have any questions, concerns, or requests relating to this Privacy Policy or our processing of your Personal Data, please contact our Data Protection Officer / Compliance team at: hello@useakaani.com  
+
+

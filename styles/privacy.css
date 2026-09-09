@@ -74,14 +74,7 @@
       .lg__head h1 { font-size: 2.25rem; }
       .lg__meta { flex-direction: column; align-items: flex-start; gap: 10px; }
       .lgwrap { padding: 8px 0 96px; }
-      .lgwrap__inner { gap: 24px; }
-      .lgtoc {
-        flex-wrap: nowrap; overflow-x: auto; overscroll-behavior-inline: contain;
-        margin: 0 -24px 4px; padding: 0 24px 10px;
-        scrollbar-width: none;
-      }
-      .lgtoc::-webkit-scrollbar { display: none; }
-      .lgtoc a { flex: none; min-height: 42px; display: inline-flex; align-items: center; padding: 9px 14px; }
+      .lgtoc { display: none; }
       .lgbody { font-size: 0.96rem; line-height: 1.7; }
       .lgbody section { scroll-margin-top: 96px; padding-top: 8px; }
       .lgbody h2 { display: block; font-size: 1.42rem; margin: 32px 0 16px; }

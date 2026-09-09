@@ -1,9 +1,11 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import Logo from "@/components/Logo";
+import { APP_STORE_URL, GOOGLE_PLAY_URL } from "@/lib/appLinks";
 import { usePathname } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 
 const LINKS = [
@@ -13,6 +15,20 @@ const LINKS = [
   { href: "/blog", label: "Blog" },
   { href: "/about", label: "About" },
 ] as const;
+
+function mobileStoreUrl() {
+  const userAgent = navigator.userAgent;
+
+  if (/android/i.test(userAgent)) return GOOGLE_PLAY_URL;
+  if (
+    /iPad|iPhone|iPod/i.test(userAgent) ||
+    (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1)
+  ) {
+    return APP_STORE_URL;
+  }
+
+  return null;
+}
 
 type NavProps = {
   ctaLabel?: string;
@@ -31,6 +47,9 @@ export default function Nav({
   const pathname = usePathname();
   const [solid, setSolid] = useState(!transparentOnTop);
   const [open, setOpen] = useState(false);
+  const [downloadOpen, setDownloadOpen] = useState(false);
+  const closeButtonRef = useRef<HTMLButtonElement>(null);
+  const smartDownload = !ctaExternal && ctaLabel.trim().toLowerCase() === "get app";
 
   useEffect(() => {
     if (!transparentOnTop) return;
@@ -41,11 +60,40 @@ export default function Nav({
   }, [transparentOnTop]);
 
   useEffect(() => {
-    document.body.style.overflow = open ? "hidden" : "";
+    document.body.style.overflow = open || downloadOpen ? "hidden" : "";
     return () => {
       document.body.style.overflow = "";
     };
-  }, [open]);
+  }, [open, downloadOpen]);
+
+  useEffect(() => {
+    if (!downloadOpen) return;
+
+    const previouslyFocused = document.activeElement as HTMLElement | null;
+    const closeOnEscape = (event: KeyboardEvent) => {
+      if (event.key === "Escape") setDownloadOpen(false);
+    };
+
+    window.addEventListener("keydown", closeOnEscape);
+    closeButtonRef.current?.focus();
+
+    return () => {
+      window.removeEventListener("keydown", closeOnEscape);
+      previouslyFocused?.focus();
+    };
+  }, [downloadOpen]);
+
+  const handleDownload = () => {
+    const storeUrl = mobileStoreUrl();
+    setOpen(false);
+
+    if (storeUrl) {
+      window.location.assign(storeUrl);
+      return;
+    }
+
+    setDownloadOpen(true);
+  };
 
   const ctaClass =
     "hidden md:inline-flex items-center justify-center rounded-full bg-accent px-[26px] py-3 text-[0.95rem] " +
@@ -90,7 +138,11 @@ export default function Nav({
             })}
           </nav>
 
-          {ctaExternal ? (
+          {smartDownload ? (
+            <button type="button" onClick={handleDownload} className={ctaClass}>
+              {ctaLabel}
+            </button>
+          ) : ctaExternal ? (
             <a href={ctaHref} target="_blank" rel="noopener noreferrer" className={ctaClass}>
               {ctaLabel}
             </a>
@@ -143,7 +195,15 @@ export default function Nav({
                 {l.label}
               </Link>
             ))}
-            {ctaExternal ? (
+            {smartDownload ? (
+              <button
+                type="button"
+                onClick={handleDownload}
+                className="rounded-full bg-accent px-7 py-3.5 text-base font-semibold text-white"
+              >
+                {ctaLabel}
+              </button>
+            ) : ctaExternal ? (
               <a
                 href={ctaHref}
                 target="_blank"
@@ -162,6 +222,52 @@ export default function Nav({
                 {ctaLabel}
               </Link>
             )}
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      <AnimatePresence>
+        {downloadOpen && (
+          <motion.div
+            key="download-modal"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.2 }}
+            className="fixed inset-0 z-[200] flex items-center justify-center bg-ink/80 px-4 py-6 backdrop-blur-sm"
+            onMouseDown={(event) => {
+              if (event.target === event.currentTarget) setDownloadOpen(false);
+            }}
+          >
+            <motion.div
+              role="dialog"
+              aria-modal="true"
+              aria-labelledby="download-modal-title"
+              initial={{ opacity: 0, y: 24, scale: 0.96 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              exit={{ opacity: 0, y: 16, scale: 0.97 }}
+              transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+              className="relative max-h-[calc(100svh-3rem)] w-full max-w-[620px] overflow-auto rounded-[28px] bg-white shadow-[0_30px_100px_rgba(0,0,0,0.45)]"
+            >
+              <h2 id="download-modal-title" className="sr-only">Download the akaani app</h2>
+              <button
+                ref={closeButtonRef}
+                type="button"
+                aria-label="Close download dialog"
+                onClick={() => setDownloadOpen(false)}
+                className="absolute right-4 top-4 z-10 grid h-11 w-11 place-items-center rounded-full bg-ink text-2xl leading-none text-white shadow-lg transition-transform hover:scale-105 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+              >
+                <span aria-hidden="true">×</span>
+              </button>
+              <Image
+                src="/assets/akaani-download-qr.png"
+                alt="Scan this QR code with your phone to download the akaani app"
+                width={894}
+                height={880}
+                sizes="(max-width: 680px) calc(100vw - 32px), 620px"
+                className="h-auto w-full"
+              />
+            </motion.div>
           </motion.div>
         )}
       </AnimatePresence>

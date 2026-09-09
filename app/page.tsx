@@ -9,6 +9,7 @@ import { BUNDLES } from "@/lib/bundles";
 import LuGif from "@/components/LuGif";
 import Motion from "./Motion";
 import FaqBehavior from "@/components/FaqBehavior";
+import { APP_STORE_URL, GOOGLE_PLAY_URL } from "@/lib/appLinks";
 
 export const metadata: Metadata = {
   title: "akaani \u2014 Nigerian food, tracked properly.",
@@ -370,13 +371,13 @@ export default function HomePage() {
         </h2>
         <p>Download akaani and let Lu handle the rest.</p>
         <div className="cta__actions">
-          <a href="#" className="storebtn">
+          <a href={APP_STORE_URL} target="_blank" rel="noopener noreferrer" className="storebtn">
             <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
               <path d="M16.4 12.7c0-2.2 1.8-3.3 1.9-3.4-1-1.5-2.6-1.7-3.2-1.7-1.4-.1-2.7.8-3.3.8-.7 0-1.7-.8-2.8-.8-1.5 0-2.8.8-3.6 2.1-1.5 2.6-.4 6.5 1.1 8.6.7 1 1.6 2.2 2.7 2.2 1.1 0 1.5-.7 2.8-.7 1.3 0 1.6.7 2.8.7 1.2 0 1.9-1 2.6-2.1.8-1.2 1.2-2.4 1.2-2.5-.1 0-2.2-.9-2.2-3.2ZM14.3 5.5c.6-.7 1-1.7.9-2.7-.9 0-2 .6-2.6 1.3-.6.6-1.1 1.7-.9 2.6 1 .1 2-.5 2.6-1.2Z" />
             </svg>
             <span><small>Download on the</small><b>App Store</b></span>
           </a>
-          <a href="#" className="storebtn">
+          <a href={GOOGLE_PLAY_URL} target="_blank" rel="noopener noreferrer" className="storebtn">
             <svg viewBox="0 0 24 24" aria-hidden="true">
               <path fill="#34A853" d="M4.2 21.3c.3.1.7.1 1.1-.1l9-5.2-2.4-2.4-7.7 7.7Z" />
               <path fill="#EA4335" d="M13.9 12.5 16.3 10 5.3 3.7c-.4-.2-.8-.2-1.1-.1l9.7 8.9Z" />

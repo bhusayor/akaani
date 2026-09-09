@@ -98,11 +98,11 @@ export default function HomePage() {
         <div className="lu__head">
           <p className="lu__kicker">Meet Lu, your AI food companion</p>
           <div className="lu__progress" id="luProgress">
-            <button className="is-active" type="button"><i></i><span>Lu</span></button>
-            <button type="button"><i></i><span>Chat</span></button>
-            <button type="button"><i></i><span>Track</span></button>
-            <button type="button"><i></i><span>Plan</span></button>
-            {/* <button type="button"><i></i><span>Goals</span></button> */}
+            <button className="is-active" type="button"><span>Lu</span></button>
+            <button type="button"><span>Chat</span></button>
+            <button type="button"><span>Track</span></button>
+            <button type="button"><span>Plan</span></button>
+            {/* <button type="button"><span>Goals</span></button> */}
           </div>
         </div>
 

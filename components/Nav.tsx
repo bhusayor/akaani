@@ -199,7 +199,7 @@ export default function Nav({
               <button
                 type="button"
                 onClick={handleDownload}
-                className="rounded-full bg-accent px-7 py-3.5 text-base font-semibold text-white"
+                className="min-h-11 rounded-full bg-accent px-5 py-2.5 text-sm font-semibold text-white"
               >
                 {ctaLabel}
               </button>
@@ -209,7 +209,7 @@ export default function Nav({
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={() => setOpen(false)}
-                className="rounded-full bg-accent px-7 py-3.5 text-base font-semibold text-white"
+                className="min-h-11 rounded-full bg-accent px-5 py-2.5 text-sm font-semibold text-white"
               >
                 {ctaLabel}
               </a>
@@ -217,7 +217,7 @@ export default function Nav({
               <Link
                 href={ctaHref}
                 onClick={() => setOpen(false)}
-                className="rounded-full bg-accent px-7 py-3.5 text-base font-semibold text-white"
+                className="min-h-11 rounded-full bg-accent px-5 py-2.5 text-sm font-semibold text-white"
               >
                 {ctaLabel}
               </Link>

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
@@ -161,44 +162,18 @@ export default function HomePage() {
                 </div>
 
                 
-                <div className="screen screen--chat">
-                  <div className="screen__bar"><span className="screen__avatar">Lu</span><div><b>Lu</b><em>online</em></div></div>
-                  <div className="chat">
-                    <p className="chat__msg chat__msg--user">What can I eat tonight under 600 kcal? 🥘</p>
-                    <p className="chat__msg chat__msg--lu">Efo riro + 1 wrap of eba = <b>540 kcal</b>, 32g protein. Want the recipe?</p>
-                    <p className="chat__msg chat__msg--user">Yes! And a swap for eba?</p>
-                    <p className="chat__msg chat__msg--lu">Try cauliflower fufu, saves 120 kcal 👌</p>
-                  </div>
-                  <div className="chat__input">Ask Lu anything…</div>
+                <div className="screen screen--chat screen--mock">
+                  <Image className="screen__mock" src="/assets/Lu chat.png" alt="" fill sizes="(max-width: 720px) 200px, (max-width: 1024px) 240px, 310px" />
                 </div>
 
                 
-                <div className="screen screen--track">
-                  <div className="screen__title">Today <b>1,438 / 2,100 kcal</b></div>
-                  <div className="ring">
-                    <svg viewBox="0 0 100 100" aria-hidden="true">
-                      <circle cx="50" cy="50" r="42" fill="none" stroke="#EFE3D2" strokeWidth="10" />
-                      <circle className="ring__arc" cx="50" cy="50" r="42" fill="none" stroke="#DA7000" strokeWidth="10" strokeLinecap="round" strokeDasharray="264" strokeDashoffset="84" transform="rotate(-90 50 50)" />
-                    </svg>
-                    <div className="ring__hole"><b>68%</b><span>of goal</span></div>
-                  </div>
-                  <div className="macros">
-                    <div className="macro"><span>Protein</span><div className="macro__bar"><i style={{width: "74%"}}></i></div><b>96g</b></div>
-                    <div className="macro"><span>Carbs</span><div className="macro__bar"><i style={{width: "58%"}}></i></div><b>141g</b></div>
-                    <div className="macro"><span>Fat</span><div className="macro__bar"><i style={{width: "47%"}}></i></div><b>38g</b></div>
-                  </div>
-                  <div className="logrow"><span>🍚</span><div><b>Jollof rice</b><em>1 cup</em></div><b>310</b></div>
-                  <div className="logrow"><span>🥬</span><div><b>Egusi soup</b><em>1 bowl</em></div><b>420</b></div>
+                <div className="screen screen--track screen--mock">
+                  <Image className="screen__mock" src="/assets/track your meals.png" alt="" fill sizes="(max-width: 720px) 200px, (max-width: 1024px) 240px, 310px" />
                 </div>
 
                 
-                <div className="screen screen--plan">
-                  <div className="screen__title">This week's plan <b>Muscle gain</b></div>
-                  <div className="plan"><b>Mon</b><div><strong>Ofada rice + ayamase</strong><em>620 kcal · 41g protein</em></div></div>
-                  <div className="plan"><b>Tue</b><div><strong>Grilled suya + salad</strong><em>480 kcal · 45g protein</em></div></div>
-                  <div className="plan"><b>Wed</b><div><strong>Beans porridge + plantain</strong><em>560 kcal · 28g protein</em></div></div>
-                  <div className="plan"><b>Thu</b><div><strong>Pepper soup + yam</strong><em>510 kcal · 38g protein</em></div></div>
-                  <div className="plan__cta">🛒 Grocery list ready, 14 items</div>
+                <div className="screen screen--plan screen--mock">
+                  <Image className="screen__mock" src="/assets/View all of the week.png" alt="" fill sizes="(max-width: 720px) 200px, (max-width: 1024px) 240px, 310px" />
                 </div>
 
                 

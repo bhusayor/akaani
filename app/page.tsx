@@ -168,12 +168,12 @@ export default function HomePage() {
 
                 
                 <div className="screen screen--track screen--mock">
-                  <Image className="screen__mock" src="/assets/track your meals.png" alt="" fill sizes="(max-width: 720px) 200px, (max-width: 1024px) 240px, 310px" />
+                  <Image className="screen__mock" src="/assets/Track.png" alt="" fill sizes="(max-width: 720px) 200px, (max-width: 1024px) 240px, 310px" />
                 </div>
 
                 
                 <div className="screen screen--plan screen--mock">
-                  <Image className="screen__mock" src="/assets/View all of the week.png" alt="" fill sizes="(max-width: 720px) 200px, (max-width: 1024px) 240px, 310px" />
+                  <Image className="screen__mock" src="/assets/View all.png" alt="" fill sizes="(max-width: 720px) 200px, (max-width: 1024px) 240px, 310px" />
                 </div>
 
                 
